@@ -58,10 +58,10 @@
                                         <rect key="frame" x="0.0" y="124.5" width="305" height="377.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNp-Vq-Zpk">
-                                                <rect key="frame" x="0.0" y="0.0" width="305" height="54"/>
+                                                <rect key="frame" x="0.0" y="0.5" width="305" height="54"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great tool for your dogs and make friends other dogs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MO2-yA-7f8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="305" height="54"/>
+                                                        <rect key="frame" x="0.0" y="0.5" width="305" height="54"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -76,28 +76,43 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nk3-zV-n6W">
-                                                <rect key="frame" x="0.0" y="54" width="305" height="108"/>
+                                                <rect key="frame" x="0.0" y="54.5" width="305" height="107.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great tool for your dogs and make friends other dogs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Wr-yk-qB6">
-                                                        <rect key="frame" x="91.5" y="0.0" width="213.5" height="108"/>
+                                                        <rect key="frame" x="91.5" y="0.0" width="213.5" height="107.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world_y" translatesAutoresizingMaskIntoConstraints="NO" id="jOb-Vm-1vZ">
+                                                        <rect key="frame" x="0.0" y="23.5" width="61" height="61"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="jOb-Vm-1vZ" secondAttribute="height" id="uli-2R-SAw"/>
+                                                        </constraints>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="jOb-Vm-1vZ" firstAttribute="centerY" secondItem="Nk3-zV-n6W" secondAttribute="centerY" id="8eQ-Lf-ejd"/>
                                                     <constraint firstItem="5Wr-yk-qB6" firstAttribute="width" secondItem="Nk3-zV-n6W" secondAttribute="width" multiplier="7:10" id="CXw-rf-c3j"/>
+                                                    <constraint firstItem="jOb-Vm-1vZ" firstAttribute="width" secondItem="Nk3-zV-n6W" secondAttribute="width" multiplier="2:10" id="Fy1-H7-jhu"/>
                                                     <constraint firstItem="5Wr-yk-qB6" firstAttribute="top" secondItem="Nk3-zV-n6W" secondAttribute="top" id="WnK-DH-haJ"/>
+                                                    <constraint firstItem="jOb-Vm-1vZ" firstAttribute="leading" secondItem="Nk3-zV-n6W" secondAttribute="leading" id="dZ2-Nk-t3f"/>
                                                     <constraint firstAttribute="bottom" secondItem="5Wr-yk-qB6" secondAttribute="bottom" id="rB4-wK-Rd7"/>
                                                     <constraint firstAttribute="trailing" secondItem="5Wr-yk-qB6" secondAttribute="trailing" id="ymt-xY-uhL"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cyd-Lb-DXS">
-                                                <rect key="frame" x="0.0" y="162" width="305" height="108"/>
+                                                <rect key="frame" x="0.0" y="162" width="305" height="108.5"/>
                                                 <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_add_friend_dog" translatesAutoresizingMaskIntoConstraints="NO" id="Sqs-NJ-78J">
+                                                        <rect key="frame" x="0.0" y="23" width="61" height="61"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Sqs-NJ-78J" secondAttribute="height" id="OYg-sG-pjy"/>
+                                                        </constraints>
+                                                    </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great tool for your dogs and make friends other dogs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpC-TR-5sW">
-                                                        <rect key="frame" x="91.5" y="0.0" width="213.5" height="108"/>
+                                                        <rect key="frame" x="91.5" y="0.0" width="213.5" height="108.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -105,15 +120,24 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="Sqs-NJ-78J" firstAttribute="leading" secondItem="Cyd-Lb-DXS" secondAttribute="leading" id="21I-xE-2b7"/>
+                                                    <constraint firstItem="Sqs-NJ-78J" firstAttribute="width" secondItem="Cyd-Lb-DXS" secondAttribute="width" multiplier="2:10" id="YiO-Ao-gUa"/>
                                                     <constraint firstItem="rpC-TR-5sW" firstAttribute="width" secondItem="Cyd-Lb-DXS" secondAttribute="width" multiplier="7:10" id="aV2-s1-bYj"/>
+                                                    <constraint firstItem="Sqs-NJ-78J" firstAttribute="centerY" secondItem="Cyd-Lb-DXS" secondAttribute="centerY" id="h5v-LJ-mlQ"/>
                                                     <constraint firstAttribute="bottom" secondItem="rpC-TR-5sW" secondAttribute="bottom" id="ixj-sZ-l0m"/>
                                                     <constraint firstItem="rpC-TR-5sW" firstAttribute="top" secondItem="Cyd-Lb-DXS" secondAttribute="top" id="w2Q-Ho-yXz"/>
                                                     <constraint firstAttribute="trailing" secondItem="rpC-TR-5sW" secondAttribute="trailing" id="wZa-p5-i9f"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fuK-jU-hlb">
-                                                <rect key="frame" x="0.0" y="270" width="305" height="108"/>
+                                                <rect key="frame" x="0.0" y="270.5" width="305" height="108"/>
                                                 <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_dog" translatesAutoresizingMaskIntoConstraints="NO" id="4eB-AP-cEn">
+                                                        <rect key="frame" x="0.0" y="23" width="61" height="61"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="4eB-AP-cEn" secondAttribute="height" id="fag-gl-VlQ"/>
+                                                        </constraints>
+                                                    </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great tool for your dogs and make friends other dogs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOl-Gt-rPp">
                                                         <rect key="frame" x="91.5" y="0.0" width="213.5" height="108"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -123,9 +147,12 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="4eB-AP-cEn" firstAttribute="centerY" secondItem="fuK-jU-hlb" secondAttribute="centerY" id="1WJ-rF-g0F"/>
+                                                    <constraint firstItem="4eB-AP-cEn" firstAttribute="width" secondItem="fuK-jU-hlb" secondAttribute="width" multiplier="2:10" id="YKE-QB-Iis"/>
                                                     <constraint firstAttribute="trailing" secondItem="XOl-Gt-rPp" secondAttribute="trailing" id="aX8-0I-Xto"/>
                                                     <constraint firstAttribute="bottom" secondItem="XOl-Gt-rPp" secondAttribute="bottom" id="bDy-Of-chI"/>
                                                     <constraint firstItem="XOl-Gt-rPp" firstAttribute="width" secondItem="fuK-jU-hlb" secondAttribute="width" multiplier="7:10" id="cIH-IG-cdc"/>
+                                                    <constraint firstItem="4eB-AP-cEn" firstAttribute="leading" secondItem="fuK-jU-hlb" secondAttribute="leading" id="quj-Lg-oot"/>
                                                     <constraint firstItem="XOl-Gt-rPp" firstAttribute="top" secondItem="fuK-jU-hlb" secondAttribute="top" id="s1S-1j-BWN"/>
                                                 </constraints>
                                             </view>
@@ -203,4 +230,9 @@
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_add_friend_dog" width="540" height="530"/>
+        <image name="icon_dog" width="256" height="256"/>
+        <image name="icon_world_y" width="256" height="256"/>
+    </resources>
 </document>

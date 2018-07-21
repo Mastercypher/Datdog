@@ -2,6 +2,13 @@
 
 An application that allows you to keep track of all your dogs by making it easier saving all personal data and interacting with other owners. It can also help in situations of loss with NFC and GPS technology.
 
+## Functionality
+These are the main functionality of the application:
+* save all personal data of your dogs
+* helps missed dogs
+* make friends other dogs
+* recongize your dog with nfc technology 
+
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning.
@@ -15,7 +22,4 @@ We use [SemVer](http://semver.org/) for versioning.
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-- **[Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0)))**
-
-## Acknowledgments
 

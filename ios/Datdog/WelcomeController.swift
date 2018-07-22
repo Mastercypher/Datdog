@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  Datdog
 //
-//  Created by Alessandro Riccardi on 21/07/2018.
-//  Copyright © 2018 Alessandro Riccardi. All rights reserved.
+//  Created by Alessandro Riccardi on 22/07/2018.
+//  Copyright © 2018 Mastercypher. All rights reserved.
 //
 
 import UIKit
@@ -19,7 +19,7 @@ class WelcomeController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)

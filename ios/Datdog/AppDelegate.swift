@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Datdog
 //
-//  Created by Alessandro Riccardi on 21/07/2018.
-//  Copyright © 2018 Alessandro Riccardi. All rights reserved.
+//  Created by Alessandro Riccardi on 22/07/2018.
+//  Copyright © 2018 Mastercypher. All rights reserved.
 //
 
 import UIKit

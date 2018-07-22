@@ -14,6 +14,8 @@
 		7D0DD8F5210464D000AE131F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D0DD8F4210464D000AE131F /* Assets.xcassets */; };
 		7D0DD8F8210464D000AE131F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0DD8F6210464D000AE131F /* LaunchScreen.storyboard */; };
 		7D0DD90021046AD500AE131F /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0DD8FF21046AD500AE131F /* StartController.swift */; };
+		7DE8995E21048F2F004E646B /* YourDogsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE8995D21048F2F004E646B /* YourDogsController.swift */; };
+		7DE899602104B77C004E646B /* DogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE8995F2104B77C004E646B /* DogController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		7D0DD8F7210464D000AE131F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D0DD8F9210464D000AE131F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D0DD8FF21046AD500AE131F /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
+		7DE8995D21048F2F004E646B /* YourDogsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourDogsController.swift; sourceTree = "<group>"; };
+		7DE8995F2104B77C004E646B /* DogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,11 +65,13 @@
 				7D0DD8EA210464CE00AE131F /* AppDelegate.swift */,
 				7D0DD8EC210464CE00AE131F /* WelcomeController.swift */,
 				7D0DD8FF21046AD500AE131F /* StartController.swift */,
+				7DE8995F2104B77C004E646B /* DogController.swift */,
 				7D0DD8EE210464CE00AE131F /* Main.storyboard */,
 				7D0DD8F4210464D000AE131F /* Assets.xcassets */,
+				7D0DD8F1210464CE00AE131F /* Datdog.xcdatamodeld */,
 				7D0DD8F6210464D000AE131F /* LaunchScreen.storyboard */,
 				7D0DD8F9210464D000AE131F /* Info.plist */,
-				7D0DD8F1210464CE00AE131F /* Datdog.xcdatamodeld */,
+				7DE8995D21048F2F004E646B /* YourDogsController.swift */,
 			);
 			path = Datdog;
 			sourceTree = "<group>";
@@ -144,6 +150,8 @@
 				7D0DD8ED210464CE00AE131F /* WelcomeController.swift in Sources */,
 				7D0DD8F3210464CE00AE131F /* Datdog.xcdatamodeld in Sources */,
 				7D0DD90021046AD500AE131F /* StartController.swift in Sources */,
+				7DE8995E21048F2F004E646B /* YourDogsController.swift in Sources */,
+				7DE899602104B77C004E646B /* DogController.swift in Sources */,
 				7D0DD8EB210464CE00AE131F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,6 @@
 import UIKit
 
 class DogController : UIViewController {
-    //[button setImageEdgeInsets:UIEdgeInsetsMake(0, -70, 0, 0)];
 
     @IBOutlet weak var btnGoMissing: UIButton!
     @IBOutlet weak var btnGoFriends: UIButton!
@@ -18,12 +17,40 @@ class DogController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(-1 * (btnGoFriends.imageView?.frame.size.width)!)
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        btnGoFriends.titleEdgeInsets = UIEdgeInsetsMake(0, -1 * (btnGoFriends.imageView?.frame.size.width)!, 0, (btnGoFriends.imageView?.frame.size.width)!);
+        let imageGoMissing = UIImage(named: "icon_wanted")!
+        let imageGoFriends = UIImage(named: "icon_add_friend_dog")!
+        let imageGoConnect = UIImage(named: "icon_nfc")!
+        let imageGoVacinations = UIImage(named: "icon_vaccination")!
         
-        btnGoFriends.imageEdgeInsets = UIEdgeInsetsMake(0, (btnGoFriends.titleLabel?.frame.size.width)!, 0, -1 * (btnGoFriends.titleLabel?.frame.size.width)!);
+        btnGoMissing.setImage(imageGoMissing, for: UIControlState.normal)
+        btnGoFriends.setImage(imageGoFriends, for: UIControlState.normal)
+        btnGoConnect.setImage(imageGoConnect, for: UIControlState.normal)
+        btnGoVacinations.setImage(imageGoVacinations, for: UIControlState.normal)
 
+        btnGoMissing.titleEdgeInsets = UIEdgeInsetsMake(10, (-1 * imageGoMissing.size.width + 10) , 0, 0);
+        btnGoFriends.titleEdgeInsets = UIEdgeInsetsMake(10, (-1 * imageGoFriends.size.width + 10) , 0, 0);
+        btnGoConnect.titleEdgeInsets = UIEdgeInsetsMake(10, (-1 * imageGoConnect.size.width + 10) , 0, 0);
+        btnGoVacinations.titleEdgeInsets = UIEdgeInsetsMake(10, (-1 * imageGoVacinations.size.width + 10) , 0, 0);
+
+        let height = btnGoMissing.frame.size.height
+        let width = btnGoMissing.frame.size.width
+
+        // prepare dimension for images
+        let heightMissing = (height / 10) * 6
+        let widthMissing = (width / 10) * 5
+        let heightFriends = (height / 10) * 6
+        let widthFriends = (width / 10) * 6
+        let heightConnect = (height / 10) * 6
+        let widthConnect = (width / 10) * 6
+        let heightVacc = (height / 10) * 6
+        let widthVacc = (width / 10) * 5
+        
+        btnGoMissing.imageEdgeInsets = UIEdgeInsetsMake(height - heightMissing, width - widthMissing, 10, 10);
+        btnGoFriends.imageEdgeInsets =  UIEdgeInsetsMake(height - heightFriends, width - widthFriends, 10, 10);
+        btnGoConnect.imageEdgeInsets = UIEdgeInsetsMake(height - heightConnect, width - widthConnect, 10, 10);
+        btnGoVacinations.imageEdgeInsets = UIEdgeInsetsMake(height - heightVacc, width - widthVacc, 10, 10);
+        
     }
     
     override func didReceiveMemoryWarning() {

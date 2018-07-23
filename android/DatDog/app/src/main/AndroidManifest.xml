@@ -24,7 +24,10 @@
         <activity
             android:name=".RegOrLogActivity"
             android:label="New User?" />
-        <activity android:name=".LoginActivity" android:label="Login"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="Login" />
+        <activity android:name=".RegisterActivity" android:label="Registration"></activity>
     </application>
 
 </manifest>

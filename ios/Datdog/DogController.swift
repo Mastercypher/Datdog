@@ -17,6 +17,8 @@ class DogController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Immages for button not implemented becaus of streaching of them 
+        /*
         self.navigationController?.navigationBar.prefersLargeTitles = true
         let imageGoMissing = UIImage(named: "icon_wanted")!
         let imageGoFriends = UIImage(named: "icon_add_friend_dog")!
@@ -38,19 +40,20 @@ class DogController : UIViewController {
 
         // prepare dimension for images
         let heightMissing = (height / 10) * 6
-        let widthMissing = (width / 10) * 5
-        let heightFriends = (height / 10) * 6
-        let widthFriends = (width / 10) * 6
-        let heightConnect = (height / 10) * 6
-        let widthConnect = (width / 10) * 6
+        let widthMissing = (width / 10) * 4
+        let latFriends = (height / 10) * 3
+        let latConnect = (height / 10) * 3
         let heightVacc = (height / 10) * 6
-        let widthVacc = (width / 10) * 5
+        let widthVacc = (width / 10) * 4
+        
+        
+        print(height, latFriends, width, latFriends ,height - latFriends, width - latFriends)
         
         btnGoMissing.imageEdgeInsets = UIEdgeInsetsMake(height - heightMissing, width - widthMissing, 10, 10);
-        btnGoFriends.imageEdgeInsets =  UIEdgeInsetsMake(height - heightFriends, width - widthFriends, 10, 10);
-        btnGoConnect.imageEdgeInsets = UIEdgeInsetsMake(height - heightConnect, width - widthConnect, 10, 10);
+        btnGoFriends.imageEdgeInsets =  UIEdgeInsetsMake(height - latFriends, width - latFriends, 0, 0);
+        btnGoConnect.imageEdgeInsets = UIEdgeInsetsMake(height - latConnect, width - latConnect, 0, 0);
         btnGoVacinations.imageEdgeInsets = UIEdgeInsetsMake(height - heightVacc, width - widthVacc, 10, 10);
-        
+        */
     }
     
     override func didReceiveMemoryWarning() {

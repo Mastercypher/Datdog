@@ -27,7 +27,12 @@
         <activity
             android:name=".LoginActivity"
             android:label="Login" />
-        <activity android:name=".RegisterActivity" android:label="Registration"></activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:label="Registration" />
+        <activity
+            android:name=".HomeActivity"
+            android:label="Home"></activity>
     </application>
 
 </manifest>

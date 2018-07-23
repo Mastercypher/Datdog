@@ -18,13 +18,19 @@ public class HomeActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    mTextMessage.setText("Home");
                     return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                case R.id.navigation_item:
+                    mTextMessage.setText("Item");
                     return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                case R.id.navigation_friends:
+                    mTextMessage.setText("Friends");
+                    return true;
+                case R.id.navigation_connect:
+                    mTextMessage.setText("Connect");
+                    return true;
+                case R.id.navigation_dogs:
+                    mTextMessage.setText("Your dogs");
                     return true;
             }
             return false;

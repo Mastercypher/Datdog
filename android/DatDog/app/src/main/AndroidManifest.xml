@@ -21,7 +21,10 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".RegOrLogActivity" android:label="New User?"></activity>
+        <activity
+            android:name=".RegOrLogActivity"
+            android:label="New User?" />
+        <activity android:name=".LoginActivity" android:label="Login"></activity>
     </application>
 
 </manifest>

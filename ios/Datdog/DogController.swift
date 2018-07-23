@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DogController : UIViewController {
+class MenuController : UIViewController {
 
     @IBOutlet weak var btnGoMissing: UIButton!
     @IBOutlet weak var btnGoFriends: UIButton!
@@ -17,6 +17,8 @@ class DogController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+
         // Immages for button not implemented becaus of streaching of them 
         /*
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -58,5 +60,18 @@ class DogController : UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func goMissing(_ sender: Any) {
+        self.tabBarController?.selectedIndex = 1;
+    }
+    @IBAction func goFriends(_ sender: Any) {
+        self.tabBarController?.selectedIndex = 2;
+    }
+    @IBAction func goConnect(_ sender: Any) {
+        self.tabBarController?.selectedIndex = 3;
+    }
+    @IBAction func goAllDogs(_ sender: Any) {
+        self.tabBarController?.selectedIndex = 4;
     }
 }

@@ -32,7 +32,19 @@
             android:label="Registration" />
         <activity
             android:name=".HomeActivity"
-            android:label="Home"></activity>
+            android:label="Home"/>
+        <activity
+            android:name=".MissingActivity"
+            android:label="@string/title_activity_missing" />
+        <activity
+            android:name=".FriendsActivity"
+            android:label="@string/title_activity_friends" />
+        <activity
+            android:name=".ConnectActivity"
+            android:label="@string/title_activity_connect" />
+        <activity
+            android:name=".DogsActivity"
+            android:label="@string/title_activity_dogs" />
     </application>
 
 </manifest>

@@ -14,9 +14,29 @@ class MissingController: UIViewController {
     @IBOutlet weak var viewReport: UIView!
     @IBOutlet weak var viewLost: UIView!
     
+    var imvReport: UIImageView!
+    var imvLost: UIImageView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        viewReport.layer.shadowColor = UIColor.lightGray.cgColor
+        viewReport.layer.shadowOpacity = 15
+        viewReport.layer.shadowOffset = CGSize(width: -2, height: 10)
+        viewReport.layer.shadowRadius = 10
+        
+        viewLost.layer.shadowColor = UIColor.lightGray.cgColor
+        viewLost.layer.shadowOpacity = 15
+        viewLost.layer.shadowOffset = CGSize(width: -2, height: 10)
+        viewLost.layer.shadowRadius = 10
+        
+        // Set the image for the REPORT view
+        imvReport = UIImageView(image: UIImage(named: "image_dog_face_resize_ios"))
+        
+        
+        // Set the image for the LOST view
+        imvLost = UIImageView(image: UIImage(named: "image_dog_car_resize_ios"))
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -24,17 +44,8 @@ class MissingController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        viewReport.layer.shadowColor = UIColor.lightGray.cgColor
-        viewReport.layer.shadowOpacity = 15
-        viewReport.layer.shadowOffset = CGSize(width: -2, height: 10)
-        viewReport.layer.shadowRadius = 10
-        
-        // Set the image for the REPORT view
-        let widthR = viewReport.frame.size.width
-        let heightR = viewReport.frame.size.height
-        let imgReport = UIImage(named: "image_dog_face")
-        let imvReport = UIImageView(image: imgReport!)
-        imvReport.frame = CGRect(x: 0, y: 0, width: widthR, height: heightR)
+        // Set the size for the REPORT view
+        imvReport.frame = CGRect(x: 0, y: 0, width: viewReport.frame.size.width, height: viewReport.frame.size.height)
         imvReport.contentMode = UIViewContentMode.scaleAspectFill
         imvReport.clipsToBounds = true
         imvReport.layer.cornerRadius = 10;
@@ -42,17 +53,12 @@ class MissingController: UIViewController {
         viewReport.sendSubview(toBack: imvReport)
         
         // Set the image for the LOST view
-        let widthL = viewLost.frame.size.width
-        let heightL = viewLost.frame.size.height
-        let imgLost = UIImage(named: "image_dog_car")
-        let imvLost = UIImageView(image: imgLost!)
-        imvLost.frame = CGRect(x: 0, y: 0, width: widthL, height: heightL)
+        imvLost.frame = CGRect(x: 0, y: 0, width: viewLost.frame.size.width, height: viewLost.frame.size.height)
         imvLost.contentMode = UIViewContentMode.scaleAspectFill
         imvLost.clipsToBounds = true
         imvLost.layer.cornerRadius = 10;
         viewLost.addSubview(imvLost)
         viewLost.sendSubview(toBack: imvLost)
-        
     }
 }
 

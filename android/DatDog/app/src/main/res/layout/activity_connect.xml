@@ -25,9 +25,9 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:background="#009193"
+                android:background="@color/colorNFC"
                 android:paddingLeft="16dp"
-                android:paddingTop="8dp"
+                android:paddingTop="16dp"
                 android:shadowColor="#000"
                 android:shadowDx="3.0"
                 android:shadowDy="3.0"
@@ -67,9 +67,9 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:background="#005493"
+                android:background="@color/colorCode"
                 android:paddingLeft="16dp"
-                android:paddingTop="8dp"
+                android:paddingTop="16dp"
                 android:shadowColor="#000"
                 android:shadowDx="3.0"
                 android:shadowDy="3.0"
@@ -101,6 +101,26 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textView22"
                 app:layout_constraintEnd_toEndOf="@+id/textView22"
                 app:layout_constraintStart_toStartOf="@+id/textView22" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/textView21"
+                app:layout_constraintTop_toTopOf="@+id/textView21"
+                app:srcCompat="@drawable/icon_nfc_w" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/textView22"
+                app:layout_constraintTop_toTopOf="@+id/textView22"
+                app:srcCompat="@drawable/icon_code_w" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

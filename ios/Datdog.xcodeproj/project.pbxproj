@@ -14,6 +14,8 @@
 		7D0DD8F5210464D000AE131F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D0DD8F4210464D000AE131F /* Assets.xcassets */; };
 		7D0DD8F8210464D000AE131F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0DD8F6210464D000AE131F /* LaunchScreen.storyboard */; };
 		7D0DD90021046AD500AE131F /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0DD8FF21046AD500AE131F /* StartController.swift */; };
+		7D2B169521071AAC001DF8EC /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2B169421071AAC001DF8EC /* RegistrationController.swift */; };
+		7D3D41F621073E0600FA4034 /* RegController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3D41F521073E0600FA4034 /* RegController.swift */; };
 		7DD9916021060667001674C8 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD9915F21060667001674C8 /* MenuController.swift */; };
 		7DD9916221068042001674C8 /* LostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD9916121068042001674C8 /* LostController.swift */; };
 		7DD991642106804F001674C8 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD991632106804F001674C8 /* ReportController.swift */; };
@@ -33,6 +35,8 @@
 		7D0DD8F7210464D000AE131F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D0DD8F9210464D000AE131F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D0DD8FF21046AD500AE131F /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
+		7D2B169421071AAC001DF8EC /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		7D3D41F521073E0600FA4034 /* RegController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegController.swift; sourceTree = "<group>"; };
 		7DD9915F21060667001674C8 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		7DD9916121068042001674C8 /* LostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostController.swift; sourceTree = "<group>"; };
 		7DD991632106804F001674C8 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
@@ -87,6 +91,8 @@
 				7DE8995D21048F2F004E646B /* YourDogsController.swift */,
 				7DD9916121068042001674C8 /* LostController.swift */,
 				7DD991632106804F001674C8 /* ReportController.swift */,
+				7D2B169421071AAC001DF8EC /* RegistrationController.swift */,
+				7D3D41F521073E0600FA4034 /* RegController.swift */,
 			);
 			path = Datdog;
 			sourceTree = "<group>";
@@ -170,8 +176,10 @@
 				7D0DD8ED210464CE00AE131F /* WelcomeController.swift in Sources */,
 				7D0DD8F3210464CE00AE131F /* Datdog.xcdatamodeld in Sources */,
 				7D0DD90021046AD500AE131F /* StartController.swift in Sources */,
+				7D3D41F621073E0600FA4034 /* RegController.swift in Sources */,
 				7DE8995E21048F2F004E646B /* YourDogsController.swift in Sources */,
 				7D0DD8EB210464CE00AE131F /* AppDelegate.swift in Sources */,
+				7D2B169521071AAC001DF8EC /* RegistrationController.swift in Sources */,
 				7DE899662106042D004E646B /* ConnectController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

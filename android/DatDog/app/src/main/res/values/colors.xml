@@ -7,4 +7,8 @@
     <color name="colorStandard">#E4AF09</color>
     <color name="colorSecondary">#51b7bc</color>
     <color name="colorIconBg">#84BDDA</color>
+
+    <color name="colorMissing">#ff3b30</color>
+    <color name="colorLightblue">#82c6e6</color>
+    <color name="colorDarkblue">#096b91</color>
 </resources>

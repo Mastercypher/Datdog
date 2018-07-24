@@ -1,16 +1,24 @@
 package com.mastercypher.university.mobile.datdog;
 
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Display;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
+    private Button btnMissing;
+    private Button btnFriends;
+    private Button btnConnect;
+    private Button btnDogs;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -47,6 +55,25 @@ public class HomeActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_home);
+
+        btnMissing = findViewById(R.id.button6);
+        btnFriends = findViewById(R.id.button7);
+        btnConnect = findViewById(R.id.button8);
+        btnDogs = findViewById(R.id.button9);
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+
+        btnMissing.setWidth(width/2);
+        btnMissing.setHeight(width/2);
+        btnFriends.setWidth(width/2);
+        btnFriends.setHeight(width/2);
+        btnConnect.setWidth(width/2);
+        btnConnect.setHeight(width/2);
+        btnDogs.setWidth(width/2);
+        btnDogs.setHeight(width/2);
     }
 
 }

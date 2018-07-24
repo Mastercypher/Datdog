@@ -35,16 +35,16 @@
             android:label="Home"/>
         <activity
             android:name=".MissingActivity"
-            android:label="@string/title_activity_missing" />
+            android:label="Missing" />
         <activity
             android:name=".FriendsActivity"
-            android:label="@string/title_activity_friends" />
+            android:label="Friends" />
         <activity
             android:name=".ConnectActivity"
-            android:label="@string/title_activity_connect" />
+            android:label="Connect" />
         <activity
             android:name=".DogsActivity"
-            android:label="@string/title_activity_dogs" />
+            android:label="Your dogs" />
     </application>
 
 </manifest>

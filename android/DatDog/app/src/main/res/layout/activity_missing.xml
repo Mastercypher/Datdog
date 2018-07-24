@@ -29,7 +29,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/image_dog_face" />
+                app:srcCompat="@drawable/image_dog_face_resize" />
 
             <TextView
                 android:id="@+id/textView17"
@@ -79,7 +79,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView5"
-                app:srcCompat="@drawable/image_dog_car" />
+                app:srcCompat="@drawable/image_dog_car_resize" />
 
             <TextView
                 android:id="@+id/textView19"

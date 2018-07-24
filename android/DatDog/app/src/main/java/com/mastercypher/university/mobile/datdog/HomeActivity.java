@@ -8,6 +8,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -66,14 +67,41 @@ public class HomeActivity extends AppCompatActivity {
         display.getSize(size);
         int width = size.x;
 
-        btnMissing.setWidth(width/2);
-        btnMissing.setHeight(width/2);
-        btnFriends.setWidth(width/2);
-        btnFriends.setHeight(width/2);
-        btnConnect.setWidth(width/2);
-        btnConnect.setHeight(width/2);
-        btnDogs.setWidth(width/2);
-        btnDogs.setHeight(width/2);
-    }
+        btnMissing.setWidth(width / 2);
+        btnMissing.setHeight(width / 2);
+        btnFriends.setWidth(width / 2);
+        btnFriends.setHeight(width / 2);
+        btnConnect.setWidth(width / 2);
+        btnConnect.setHeight(width / 2);
+        btnDogs.setWidth(width / 2);
+        btnDogs.setHeight(width / 2);
 
+        btnMissing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, MissingActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            }
+        });
+
+        btnFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, FriendsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            }
+        });
+
+        btnConnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, ConnectActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            }
+        });
+
+        btnDogs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, DogsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+            }
+        });
+    }
 }

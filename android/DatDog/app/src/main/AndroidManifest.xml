@@ -52,8 +52,12 @@
             android:label="Add dog"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".UserInfo"
-            android:label="@string/title_activity_user_info"></activity>
+            android:name=".UserInfoActivity"
+            android:label="Info utente" />
+        <activity
+            android:name=".EditUserActivity"
+            android:label="Modifica utente"
+            android:windowSoftInputMode="adjustPan"></activity>
     </application>
 
 </manifest>

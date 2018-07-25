@@ -95,7 +95,10 @@
             android:label="Status vaccination" />
         <activity
             android:name=".EditVaxActivity"
-            android:label="@string/title_activity_edit_vax"></activity>
+            android:label="Edit vaccination" />
+        <activity
+            android:name=".LostActivity"
+            android:label="Your lost"></activity>
     </application>
 
 </manifest>

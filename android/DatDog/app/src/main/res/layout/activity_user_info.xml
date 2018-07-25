@@ -55,7 +55,7 @@
                 android:shadowDx="3.0"
                 android:shadowDy="3.0"
                 android:shadowRadius="3.0"
-                android:text=" Delete account"
+                android:text=" Delete"
                 android:textAllCaps="false"
                 android:textColor="@color/colorMissing"
                 app:layout_constraintStart_toStartOf="parent"

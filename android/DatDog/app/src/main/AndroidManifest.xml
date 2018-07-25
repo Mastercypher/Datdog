@@ -70,7 +70,11 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".NfcReportActivity"
-            android:label="Report with NFC"></activity>
+            android:label="Report with NFC" />
+        <activity
+            android:name=".CodeReportActivity"
+            android:label="Report with code"
+            android:windowSoftInputMode="adjustPan"></activity>
     </application>
 
 </manifest>

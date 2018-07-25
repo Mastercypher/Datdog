@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mastercypher.university.mobile.datdog">
 
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-sdk android:minSdkVersion="10"/>
+    <uses-feature android:name="android.hardware.nfc" android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -101,7 +105,18 @@
             android:label="Your lost" />
         <activity
             android:name=".LostDogActivity"
-            android:label="Status lost dog"></activity>
+            android:label="Status lost dog" />
+        <activity
+            android:name=".AddFriendActivity"
+            android:label="Add friend"></activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCoTiI2R3b768NWLqH2Zx7bgZaprD4EpTA" />
     </application>
 
 </manifest>

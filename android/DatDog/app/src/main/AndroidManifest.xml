@@ -26,10 +26,12 @@
             android:label="New User?" />
         <activity
             android:name=".LoginActivity"
-            android:label="Login" />
+            android:label="Login"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".RegisterActivity"
-            android:label="Registration" />
+            android:label="Registration"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".HomeActivity"
             android:label="Home" />
@@ -47,7 +49,11 @@
             android:label="Your dogs" />
         <activity
             android:name=".AddDogActivity"
-            android:label="Add dog"></activity>
+            android:label="Add dog"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".UserInfo"
+            android:label="@string/title_activity_user_info"></activity>
     </application>
 
 </manifest>

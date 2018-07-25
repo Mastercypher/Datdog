@@ -9,4 +9,5 @@
     <string name="title_activity_connect">ConnectActivity</string>
     <string name="title_activity_dogs">DogsActivity</string>
     <string name="title_activity_add_dog">AddDogActivity</string>
+    <string name="title_activity_user_info">UserInfo</string>
 </resources>

@@ -12,4 +12,6 @@
     <string name="title_activity_user_info">UserInfo</string>
     <string name="title_activity_edit_user">EditUser</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_dog_info">DogInfoActivity</string>
+    <string name="title_activity_edit_dog">EditDogActivity</string>
 </resources>

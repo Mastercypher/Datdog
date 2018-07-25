@@ -53,14 +53,20 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".UserInfoActivity"
-            android:label="Info utente" />
+            android:label="User info" />
         <activity
             android:name=".EditUserActivity"
-            android:label="Modifica utente"
+            android:label="Edit user"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SettingsActivity"
-            android:label="Settings"></activity>
+            android:label="Settings" />
+        <activity
+            android:name=".DogInfoActivity"
+            android:label="Dog info" />
+        <activity
+            android:name=".EditDogActivity"
+            android:label="Edit dog"></activity>
     </application>
 
 </manifest>

@@ -22,9 +22,6 @@
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".RegOrLogActivity"
-            android:label="New User?" />
-        <activity
             android:name=".LoginActivity"
             android:label="Login"
             android:windowSoftInputMode="adjustPan" />
@@ -81,8 +78,10 @@
         <activity
             android:name=".ConnectActivity"
             android:label="Connect" />
-        <activity android:name=".ConnectDogActivity"
-            android:label="Connect NFC Tag"></activity>
+        <activity
+            android:name=".ConnectDogActivity"
+            android:label="Connect NFC Tag" />
+        <activity android:name=".DogTagActivity"></activity>
     </application>
 
 </manifest>

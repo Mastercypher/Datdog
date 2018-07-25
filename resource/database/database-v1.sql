@@ -1,0 +1,59 @@
+/* ====================
+    REMOTE
+   ==================== */
+
+/* USER */
+CREATE TABLE IF NOT EXISTS station (
+  mac VARCHAR(20) NOT NULL,
+  name VARCHAR(30),
+  ip VARCHAR(15) NOT NULL,
+  date_create DATETIME NOT NULL,
+  date_update DATETIME NOT NULL,
+  PRIMARY KEY (mac)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/* SCHEDULE */
+CREATE TABLE IF NOT EXISTS schedule (
+  id VARCHAR(40) NOT NULL,
+  mac VARCHAR(20) NOT NULL,
+  week_day INTEGER NOT NULL,
+  hour INTEGER NOT NULL,
+  date_create DATETIME NOT NULL,
+  date_update DATETIME NOT NULL,
+  deleted INTEGER NOT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT UC_Schedule UNIQUE (mac, week_day, hour),
+  FOREIGN KEY (mac) REFERENCES station(mac)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+/* FOOD_LEVEL */
+CREATE TABLE IF NOT EXISTS food_level (
+  mac VARCHAR(20) NOT NULL,
+  type VARCHAR(20) NOT NULL,
+  level INTEGER NOT NULL,
+  date_create VARCHAR(40) NOT NULL,
+  date_update VARCHAR(40) NOT NULL,
+  PRIMARY KEY (mac, type),
+  FOREIGN KEY (mac) REFERENCES station(mac)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/* INSTANT FOOD */
+CREATE TABLE IF NOT EXISTS instant_food (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  mac VARCHAR(20) NOT NULL,
+  done INTEGER NOT NULL,
+  date_create VARCHAR(40) NOT NULL,
+  date_update VARCHAR(40) NOT NULL,
+  FOREIGN KEY (mac) REFERENCES station(mac)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/* INSTANT FOOD */
+CREATE TABLE IF NOT EXISTS instant_food (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  mac VARCHAR(20) NOT NULL,
+  done INTEGER NOT NULL,
+  date_create VARCHAR(40) NOT NULL,
+  date_update VARCHAR(40) NOT NULL,
+  FOREIGN KEY (mac) REFERENCES station(mac)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

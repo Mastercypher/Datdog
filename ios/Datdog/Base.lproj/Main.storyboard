@@ -5751,13 +5751,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of birth: 05/12/96" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTm-uE-KKU">
-                                                <rect key="frame" x="20" y="169.5" width="175" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email: alericcardi1996@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5M-g6-e9D">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Email: alericcardi1996@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5M-g6-e9D">
                                                 <rect key="frame" x="20" y="200.5" width="262" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -5768,14 +5762,11 @@
                                         <constraints>
                                             <constraint firstItem="nO6-ub-8dY" firstAttribute="top" secondItem="bXP-Qn-kSw" secondAttribute="bottom" constant="20" id="9EE-7S-WMo"/>
                                             <constraint firstItem="nO6-ub-8dY" firstAttribute="leading" secondItem="EDL-KR-GBU" secondAttribute="leading" constant="20" id="Bc7-sH-llV"/>
-                                            <constraint firstItem="yTm-uE-KKU" firstAttribute="top" secondItem="eBm-mg-ETr" secondAttribute="bottom" constant="10" id="D8b-EP-FDj"/>
                                             <constraint firstItem="eBm-mg-ETr" firstAttribute="leading" secondItem="EDL-KR-GBU" secondAttribute="leading" constant="20" id="EpU-bC-PAr"/>
                                             <constraint firstItem="bXP-Qn-kSw" firstAttribute="leading" secondItem="EDL-KR-GBU" secondAttribute="leading" constant="20" id="JmG-9i-06w"/>
                                             <constraint firstItem="eBm-mg-ETr" firstAttribute="top" secondItem="XUJ-RL-dLd" secondAttribute="bottom" constant="10" id="KoL-Yq-7E3"/>
                                             <constraint firstItem="XUJ-RL-dLd" firstAttribute="leading" secondItem="EDL-KR-GBU" secondAttribute="leading" constant="20" id="Pac-iY-E8f"/>
-                                            <constraint firstItem="q5M-g6-e9D" firstAttribute="top" secondItem="yTm-uE-KKU" secondAttribute="bottom" constant="10" id="Pm6-Xh-knl"/>
                                             <constraint firstItem="XUJ-RL-dLd" firstAttribute="top" secondItem="nO6-ub-8dY" secondAttribute="bottom" constant="10" id="TYd-yi-rCZ"/>
-                                            <constraint firstItem="yTm-uE-KKU" firstAttribute="leading" secondItem="EDL-KR-GBU" secondAttribute="leading" constant="20" id="iJk-Q3-P6x"/>
                                             <constraint firstItem="bXP-Qn-kSw" firstAttribute="top" secondItem="EDL-KR-GBU" secondAttribute="top" constant="20" id="lQh-V4-bLZ"/>
                                             <constraint firstItem="q5M-g6-e9D" firstAttribute="leading" secondItem="EDL-KR-GBU" secondAttribute="leading" constant="20" id="lsc-WV-dkR"/>
                                         </constraints>

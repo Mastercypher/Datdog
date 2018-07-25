@@ -80,7 +80,9 @@
             android:label="Confirm report" />
         <activity
             android:name=".ConnectActivity"
-            android:label="Connect"></activity>
+            android:label="Connect" />
+        <activity android:name=".ConnectDogActivity"
+            android:label="Connect NFC Tag"></activity>
     </application>
 
 </manifest>

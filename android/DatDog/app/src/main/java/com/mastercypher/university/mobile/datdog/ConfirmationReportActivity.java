@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class EditDogActivity extends AppCompatActivity {
+public class ConfirmationReportActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
 
@@ -19,19 +19,19 @@ public class EditDogActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    startActivity(new Intent(EditDogActivity.this, HomeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    startActivity(new Intent(ConfirmationReportActivity.this, HomeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     return true;
                 case R.id.navigation_missing:
-                    startActivity(new Intent(EditDogActivity.this, MissingActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+
                     return true;
                 case R.id.navigation_friends:
-                    startActivity(new Intent(EditDogActivity.this, FriendsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    startActivity(new Intent(ConfirmationReportActivity.this, FriendsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     return true;
                 case R.id.navigation_connect:
-                    startActivity(new Intent(EditDogActivity.this, ConnectActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    startActivity(new Intent(ConfirmationReportActivity.this, ConnectActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     return true;
                 case R.id.navigation_dogs:
-
+                    startActivity(new Intent(ConfirmationReportActivity.this, DogsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     return true;
             }
             return false;
@@ -41,12 +41,12 @@ public class EditDogActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_dog);
+        setContentView(R.layout.activity_confirmation_report);
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navigation.setSelectedItemId(R.id.navigation_dogs);
+        navigation.setSelectedItemId(R.id.navigation_missing);
     }
 
 }

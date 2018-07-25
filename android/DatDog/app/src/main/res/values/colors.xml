@@ -13,4 +13,5 @@
     <color name="colorDarkblue">#096b91</color>
     <color name="colorNFC">#009193</color>
     <color name="colorCode">#005493</color>
+    <color name="colorIos">#dfdddd</color>
 </resources>

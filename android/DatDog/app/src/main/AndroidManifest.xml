@@ -74,7 +74,10 @@
         <activity
             android:name=".CodeReportActivity"
             android:label="Report with code"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ConfirmationReportActivity"
+            android:label="Confirm report"></activity>
     </application>
 
 </manifest>

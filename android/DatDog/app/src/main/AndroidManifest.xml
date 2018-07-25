@@ -98,7 +98,10 @@
             android:label="Edit vaccination" />
         <activity
             android:name=".LostActivity"
-            android:label="Your lost"></activity>
+            android:label="Your lost" />
+        <activity
+            android:name=".LostDogActivity"
+            android:label="Status lost dog"></activity>
     </application>
 
 </manifest>

@@ -22,4 +22,5 @@
     <string name="title_activity_vax_status">VaxStatusActivity</string>
     <string name="title_activity_edit_vax">EditVaxActivity</string>
     <string name="title_activity_lost">LostActivity</string>
+    <string name="title_activity_lost_dog">LostDogActivity</string>
 </resources>

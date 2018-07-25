@@ -21,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button btnConnect;
     private Button btnDogs;
     private Button btnUserInfo;
+    private Button btnSettings;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -63,6 +64,7 @@ public class HomeActivity extends AppCompatActivity {
         btnConnect = findViewById(R.id.button8);
         btnDogs = findViewById(R.id.button9);
         btnUserInfo = findViewById(R.id.button11);
+        btnSettings = findViewById(R.id.button12);
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -110,6 +112,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, UserInfoActivity.class));
+            }
+        });
+
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
             }
         });
     }

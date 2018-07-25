@@ -57,7 +57,10 @@
         <activity
             android:name=".EditUserActivity"
             android:label="Modifica utente"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Settings"></activity>
     </application>
 
 </manifest>

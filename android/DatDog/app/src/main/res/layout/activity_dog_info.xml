@@ -10,6 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="188dp">
 
@@ -55,7 +56,7 @@
                 android:shadowDx="3.0"
                 android:shadowDy="3.0"
                 android:shadowRadius="3.0"
-                android:text=" Delete dog"
+                android:text="Remove dog"
                 android:textAllCaps="false"
                 android:textColor="@color/colorMissing"
                 app:layout_constraintStart_toStartOf="parent"
@@ -222,6 +223,47 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/textView34"
                 app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+            <RelativeLayout
+                android:layout_width="375dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView35">
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="false"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/icon_vaccination" />
+
+                <Button
+                    android:id="@+id/button11"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@android:color/transparent"
+                    android:paddingLeft="80dp"
+                    android:text="Vaccinations"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    app:srcCompat="@drawable/icon_arrow_right" />
+            </RelativeLayout>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

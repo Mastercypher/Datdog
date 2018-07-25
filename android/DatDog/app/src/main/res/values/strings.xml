@@ -14,4 +14,5 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_dog_info">DogInfoActivity</string>
     <string name="title_activity_edit_dog">EditDogActivity</string>
+    <string name="title_activity_nfc_report">NfcReportActivity</string>
 </resources>

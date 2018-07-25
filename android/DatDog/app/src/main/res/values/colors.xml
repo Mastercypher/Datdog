@@ -14,4 +14,5 @@
     <color name="colorNFC">#009193</color>
     <color name="colorCode">#005493</color>
     <color name="colorIos">#dfdddd</color>
+    <color name="colorCompleted">#28a745</color>
 </resources>

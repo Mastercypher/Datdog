@@ -19,4 +19,5 @@
     <string name="title_activity_confirmation_report">ConfirmationReportActivity</string>
     <string name="title_activity_vaccinations">VaccinationsActivity</string>
     <string name="title_activity_add_vax">AddVaxActivity</string>
+    <string name="title_activity_vax_status">VaxStatusActivity</string>
 </resources>

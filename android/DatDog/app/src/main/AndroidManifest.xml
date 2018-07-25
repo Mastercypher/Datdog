@@ -81,13 +81,16 @@
         <activity
             android:name=".ConnectDogActivity"
             android:label="Connect NFC Tag" />
-        <activity android:name=".DogTagActivity" />
+        <activity android:name=".DogTagActivity" android:label="Dog's tag"/>
         <activity
             android:name=".VaxActivity"
             android:label="Vaccinations" />
         <activity
             android:name=".AddVaxActivity"
-            android:label="Add vaccination"></activity>
+            android:label="Add vaccination" />
+        <activity
+            android:name=".VaxStatusActivity"
+            android:label="Status vaccination"></activity>
     </application>
 
 </manifest>

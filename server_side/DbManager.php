@@ -11,12 +11,12 @@ include 'Control.php';
 
 
 class DbManager {
-    private static $FETCH_SUCCESS = "Success";
-    private static $FETCH_ERROR = "Fail";
+    private static $FETCH_SUCCESS = "";
+    private static $FETCH_ERROR = "";
     private static $INSERTED_SUCCESS = "It has been inserted";
-    private static $INSERTED_ERROR = "It hasn\"t been inserted";
+    private static $INSERTED_ERROR = "It hasn't been inserted";
     private static $UPDATED_SUCCESS = "It has been updated";
-    private static $UPDATED_ERROR = "It hasn\"t been updated";
+    private static $UPDATED_ERROR = "It hasn't been updated";
     private static $SQL_ERROR = "Sql error";
 
     private static $TYPE_INSERT = "insert";
@@ -35,27 +35,34 @@ class DbManager {
         $this->table = $table;
         $this->paramNames = $paramNames;
         $this->params = $params;
+
     }
 
     /**
-     * Upload the data loaded in the constructor, make sure to have
-     * uploaded all the data.
+     *
      *
      * @return bool
      */
-    public function upload() {
-        if (empty($this->table) or empty($this->paramNames) or empty($this->params) or empty($this->params["id"])) {
+    public function insert() {
+        if (empty($this->table) or empty($this->paramNames) or empty($this->params)) {
             return false;
         }
 
-        $exist = $this->existRow($this->params["id"]);
-        if (!$exist) {
-            # Make an insert
-            $success = $this->sqlAction(DbManager::$TYPE_INSERT);
-        } else {
-            $success = $this->sqlAction(DbManager::$TYPE_INSERT);
+        $success = $this->sqlAction(DbManager::$TYPE_INSERT);
+        return $success;
+    }
+
+    /**
+     *
+     *
+     * @return bool
+     */
+    public function update() {
+        if (empty($this->table) or empty($this->paramNames) or empty($this->params)) {
+            return false;
         }
 
+        $success = $this->sqlAction(DbManager::$TYPE_UPDATE);
         return $success;
     }
 
@@ -65,7 +72,7 @@ class DbManager {
     public function fetch() {
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
-            $sql = $this->getSelectSql();
+            $sql = $this->getSelectSql($this->paramNames);
 
             $prep = $conn->prepare($sql);
             $prep->execute(array('id_user_f' => $this->params['id_user_f']));
@@ -76,7 +83,7 @@ class DbManager {
                 JsonMsg::print_response(true, DbManager::$FETCH_SUCCESS, $res);
                 return true;
             } else {
-                JsonMsg::print_response(false, DbManager::$FETCH_ERROR);
+                JsonMsg::print_response(false, DbManager::$FETCH_ERROR, $prep->errorInfo()[2]);
                 return false;
             }
 
@@ -100,21 +107,26 @@ class DbManager {
             # SQL string preparation 
             $sql = "";
             if ($type == DbManager::$TYPE_INSERT) {
-                $sql = $this->getInsertSql();
+                $sql = $this->getInsertSql($this->paramNames);
             } else if ($type == DbManager::$TYPE_UPDATE) {
-                $sql = $this->getUpdateSql();
+                $sql = $this->getUpdateSql($this->paramNames);
             } else {
                 return false;
             }
 
-            # SQL array preparation 
-            $valuesToInject = $this->getArrayValues();
+            # SQL array preparation
+            if ($type == DbManager::$TYPE_INSERT) {
+                $valuesToInject = $this->getArrayValuesInsert($this->paramNames, $this->params);
+            } else if ($type == DbManager::$TYPE_UPDATE) {
+                $valuesToInject = $this->getArrayValuesUpdate($this->paramNames, $this->params);
+            } else {
+                return false;
+            }
 
             # SQL injection
             $prep = $conn->prepare($sql);
             $prep->execute($valuesToInject);
             $prep->fetchAll();
-
 
             # RESPOND string preparation 
             $success = "";
@@ -131,10 +143,10 @@ class DbManager {
 
             # Check the respond
             if (empty($prep->errorInfo()[2])) {
-                JsonMsg::print_response(true, $success);
+                JsonMsg::print_response(true, $success, $prep->errorInfo()[2]);
                 return true;
             } else {
-                JsonMsg::print_response(false, $error);
+                JsonMsg::print_response(false, $error, $prep->errorInfo()[2]);
                 return false;
             }
 
@@ -148,18 +160,22 @@ class DbManager {
     /**
      * Check if the row already exist.
      *
-     * @param $id
+     * @param $keyName
+     * @param $key
      *
      * @return bool
      */
-    private function existRow($id) {
+    public function existRow($keyName, $key) {
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
-            $sql = "SELECT * FROM report WHERE id = ?";
+            $sql = $this->getSelectSql($keyName);
+            $valuesToInject = $this->getArrayValues($keyName, $key);
+
             $prep = $conn->prepare($sql);
-            $prep->execute(array($id));
+            $prep->execute($valuesToInject);
             $res = $prep->fetchAll();
 
+            print_r($valuesToInject);
             return !empty($res);
         } catch (PDOException $e) {
             //echo "Connection failed: " . $e->getMessage();
@@ -172,52 +188,14 @@ class DbManager {
     /**
      * Creation of sql string for INSERT injection.
      *
-     * @return string
-     */
-    private function getSelectSql() {
-        $sql = "SELECT * FROM $this->table WHERE";
-        foreach ($this->paramNames as $name) {
-            if (array_search($name, $this->paramNames) != sizeof($this->paramNames)) {
-                $sql .= "$name=:$name,";
-            } else {
-                $sql .= "$name=:$name,";
-            }
-        }
-
-        return $sql;
-    }
-
-    /**
-     * Creation of sql string for INSERT injection.
+     * @param $paramNames
      *
      * @return string
      */
-    private function getInsertSql() {
-        $sql_start = "INSERT INTO $this->table(";
-        $sql_end = " VALUES (";
-        foreach ($this->paramNames as $name) {
-            if (array_search($name, $this->paramNames) != sizeof($this->paramNames)) {
-                $sql_start .= "$name,";
-                $sql_end .= ":$name,";
-
-            } else {
-                $sql_start .= "$name)";
-                $sql_end .= ":$name,)";
-            }
-        }
-
-        return $sql_start . $sql_end;
-    }
-
-    /**
-     * Creation of sql string for UPDATE injection.
-     *
-     * @return string
-     */
-    private function getUpdateSql() {
-        $sql = "UPDATE $this->table SET ";
-        foreach ($this->paramNames as $name) {
-            if (array_search($name, $this->paramNames) != sizeof($this->paramNames)) {
+    private function getSelectSql($paramNames) {
+        $sql = "SELECT * FROM $this->table WHERE ";
+        foreach ($paramNames as $name) {
+            if (array_search($name, $paramNames) != sizeof($paramNames) - 1) {
                 $sql .= "$name=:$name,";
             } else {
                 $sql .= "$name=:$name";
@@ -228,16 +206,88 @@ class DbManager {
     }
 
     /**
+     * Creation of sql string for INSERT injection.
+     *
+     * @param $paramNames
+     *
+     * @return string
+     */
+    private function getInsertSql($paramNames) {
+        $sql_start = "INSERT INTO $this->table(";
+        $sql_end = " VALUES (";
+        foreach ($paramNames as $name) {
+
+            if (array_search($name, $paramNames) != sizeof($paramNames) - 1) {
+                $sql_start .= "$name,";
+                $sql_end .= ":$name,";
+
+            } else {
+                $sql_start .= "$name)";
+                $sql_end .= ":$name)";
+            }
+        }
+
+        return $sql_start . $sql_end;
+    }
+
+    /**
+     * Creation of sql string for UPDATE injection.
+     *
+     * @param $paramNames
+     *
+     * @return string
+     */
+    private function getUpdateSql($paramNames) {
+        $sql = "UPDATE $this->table SET ";
+        foreach ($paramNames as $name) {
+            if (array_search($name, $paramNames) != sizeof($paramNames) - 1) {
+                $sql .= "$name=:$name,";
+            } else {
+                $sql .= "$name=:$name";
+            }
+        }
+
+        $sql .= " WHERE id=:id";
+
+        return $sql;
+    }
+
+    /**
      * Creation of array to inject in the sql.
+     *
+     * @param $paramNames
+     * @param $param
      *
      * @return array
      */
-    private function getArrayValues() {
-        $array_execute = array();
-        foreach ($this->paramNames as $name) {
-            $array_execute[$name] = $this->params[$name];
+    private function getArrayValuesInsert($paramNames, $param) {
+        $arrayExecute = array();
+
+        foreach ($paramNames as $name) {
+            $arrayExecute[$name] = $param[$name];
         }
 
-        return $array_execute;
+        return $arrayExecute;
+    }
+
+    /**
+     * Creation of array to inject in the sql.
+     *
+     * @param $paramNames
+     * @param $param
+     *
+     * @return array
+     */
+    private function getArrayValuesUpdate($paramNames, $param) {
+        $arrayExecute = array();
+
+        foreach ($paramNames as $name) {
+            $arrayExecute[$name] = $param[$name];
+        }
+
+        unset($arrayExecute['id']);
+        $arrayExecute['id'] = $param['id'];
+
+        return $arrayExecute;
     }
 }

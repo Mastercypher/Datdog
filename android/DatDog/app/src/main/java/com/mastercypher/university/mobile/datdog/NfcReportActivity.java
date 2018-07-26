@@ -1,8 +1,10 @@
 package com.mastercypher.university.mobile.datdog;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.DrawableContainer;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
@@ -15,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class NfcReportActivity extends AppCompatActivity {
 
@@ -90,4 +93,36 @@ public class NfcReportActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
+                new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+        nfcAdapter.enableForegroundDispatch(this, pendingIntent, null, null);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        nfcAdapter.disableForegroundDispatch(this);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
+            String hexdump = "";
+            byte[] byteArray = intent.getByteArrayExtra(NfcAdapter.EXTRA_ID);
+            for (int i = 0; i < byteArray.length; i++) {
+                String x = Integer.toHexString(((int) byteArray[i] & 0xff));
+                if (x.length() == 1) {
+                    x = '0' + x;
+                }
+                hexdump += x + ' ';
+            }
+            Toast.makeText(getApplicationContext(),"NFC Tag serial number: " + hexdump, Toast.LENGTH_LONG).show();
+            txtScan.setText(hexdump);
+        }
+    }
 }

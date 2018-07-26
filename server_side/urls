@@ -35,3 +35,27 @@ http://datdog.altervista.org/report.php?action=update&id=3455&id_user_r=11&id_do
 http://datdog.altervista.org/report.php?action=select_user&id_user_r=11
 ++ by dog
 http://datdog.altervista.org/report.php?action=select_dog&id_dog_r=234s
+
+
+///////////////////
+// FRIEND
+///////////////////
+
+--- Insert ---
+http://datdog.altervista.org/friend.php?action=insert&id=dafd34&id_user_f=11&id_friend_f=10&date_create_f=3243fw&date_update_f=4f43fwe&delete_f=0
+--- Update ---
+http://datdog.altervista.org/friend.php?action=update&id=dafd34&id_user_f=11&id_friend_f=10&date_create_f=3243fw&date_update_f=4f43fwe&delete_f=0
+--- Select ---
+http://datdog.altervista.org/friend.php?action=select&id_user_f=10
+
+
+///////////////////
+// VACCINATIONS
+///////////////////
+
+--- Insert ---
+http://datdog.altervista.org/vaccination.php?action=insert&id=fe3&id_dog_v=234s&name_v=fischia&date_when_v=w4qr4qt&date_create_v=g34g43&date_update_v=fwqw&date_completed_v&delete_v=0
+--- Update ---
+http://datdog.altervista.org/vaccination.php?action=update&id=fe3&id_dog_v=234s&name_v=fischia&date_when_v=w4qr4qt&date_create_v=g34g43&date_update_v=fwqw&date_completed_v&delete_v=0
+--- Select ---
+http://datdog.altervista.org/vaccination.php?action=select&id_dog_v=234s

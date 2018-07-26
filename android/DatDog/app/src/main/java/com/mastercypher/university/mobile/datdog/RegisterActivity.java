@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
@@ -64,9 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                     //TODO: Check remotely if the registration could be done.
                     try {
                         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
-                        Calendar today = Calendar.getInstance();
-                        today.set(Calendar.HOUR_OF_DAY, 0);
-                        Date now = today.getTime();
+                        Date now = new Date();
 
                         account = new RegisterTask().execute(
                                 "http://datdog.altervista.org/user.php?action=insert&name_u="

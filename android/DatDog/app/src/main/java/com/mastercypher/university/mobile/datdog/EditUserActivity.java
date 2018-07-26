@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 public class EditUserActivity extends AppCompatActivity {
 
@@ -23,6 +25,7 @@ public class EditUserActivity extends AppCompatActivity {
     private EditText birth;
     private EditText phone;
     private Button update;
+    private boolean successful;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -80,6 +83,7 @@ public class EditUserActivity extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Date now = new Date();
                 if(txtname.getText().toString().equals("") || txtsurname.getText().toString().equals("")
                         || birth.getText().toString().equals("") || phone.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "You must compile each field.", Toast.LENGTH_LONG).show();
@@ -94,6 +98,35 @@ public class EditUserActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 AccountDirectory.getInstance().getAccount().setPhone(phone.getText().toString());
+                AccountDirectory.getInstance().getAccount().setUpdate(now);
+
+                try {
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
+                    SimpleDateFormat sdfBday = new SimpleDateFormat("dd/MM/yyyy");
+
+                    successful = new EditUserTask().execute(
+                            "http://datdog.altervista.org/user.php?action=update&" +
+                                    "id=" + AccountDirectory.getInstance().getAccount().getId() +
+                                    "&name_u=" + AccountDirectory.getInstance().getAccount().getName() +
+                                    "&surname_u=" + AccountDirectory.getInstance().getAccount().getSurname() +
+                                    "&phone_u=" + AccountDirectory.getInstance().getAccount().getPhone() +
+                                    "&birth_u=" + sdfBday.format(AccountDirectory.getInstance().getAccount().getBirth()) +
+                                    "&email_u=" + AccountDirectory.getInstance().getAccount().getMail() +
+                                    "&password_u=" + AccountDirectory.getInstance().getAccount().getPw() +
+                                    "&date_create_u=" + sdf.format(AccountDirectory.getInstance().getAccount().getCreate()) +
+                                    "&date_update_u=" + sdf.format(AccountDirectory.getInstance().getAccount().getUpdate()) +
+                                    "&delete_u=0").get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+
+                if (successful) {
+                    Toast.makeText(getApplicationContext(), "User info edited successfully.", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Edit unsuccessful.", Toast.LENGTH_LONG).show();
+                }
                 onBackPressed();
             }
         });

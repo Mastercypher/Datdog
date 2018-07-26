@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     } else {
-                        Toast.makeText(getApplicationContext(), "Wrong credentials.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Wrong credentials or deleted account.", Toast.LENGTH_LONG).show();
                     }
                 }
             }

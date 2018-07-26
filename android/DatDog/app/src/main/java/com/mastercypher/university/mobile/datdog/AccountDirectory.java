@@ -36,10 +36,7 @@ public class AccountDirectory {
 
             dateObject = formatter.parse(strDate);
 
-            Calendar today = Calendar.getInstance();
-            today.set(Calendar.HOUR_OF_DAY, 0);
-
-            if (dateObject.after(today.getTime())) {
+            if (dateObject.after(new Date())) {
                 return false;
             }
             return true;

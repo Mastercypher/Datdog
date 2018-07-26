@@ -1,18 +1,23 @@
 package com.mastercypher.university.mobile.datdog;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 public class UserInfoActivity extends AppCompatActivity {
 
@@ -25,6 +30,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private TextView txtPhone;
     private TextView txtBirth;
     private TextView txtEmail;
+    private boolean successful;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -75,6 +81,65 @@ public class UserInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(UserInfoActivity.this, EditUserActivity.class));
+            }
+        });
+
+        btnDeleteAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(UserInfoActivity.this);
+                builder.setTitle("Do you really want to delete your account?");
+                builder.setMessage("Are you sure? You NEVER will be able to get it back ever!");
+                builder.setCancelable(true);
+
+                builder.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Date now = new Date();
+                                try {
+                                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
+                                    SimpleDateFormat sdfBday = new SimpleDateFormat("dd/MM/yyyy");
+
+                                    successful = new EditUserTask().execute(
+                                            "http://datdog.altervista.org/user.php?action=update&" +
+                                                    "id=" + AccountDirectory.getInstance().getAccount().getId() +
+                                                    "&name_u=" + AccountDirectory.getInstance().getAccount().getName() +
+                                                    "&surname_u=" + AccountDirectory.getInstance().getAccount().getSurname() +
+                                                    "&phone_u=" + AccountDirectory.getInstance().getAccount().getPhone() +
+                                                    "&birth_u=" + sdfBday.format(AccountDirectory.getInstance().getAccount().getBirth()) +
+                                                    "&email_u=" + AccountDirectory.getInstance().getAccount().getMail() +
+                                                    "&password_u=" + AccountDirectory.getInstance().getAccount().getPw() +
+                                                    "&date_create_u=" + sdf.format(AccountDirectory.getInstance().getAccount().getCreate()) +
+                                                    "&date_update_u=" + sdf.format(now) +
+                                                    "&delete_u=1").get();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                } catch (ExecutionException e) {
+                                    e.printStackTrace();
+                                }
+
+                                if (successful) {
+                                    Toast.makeText(getApplicationContext(), "Account deleted successfully.", Toast.LENGTH_LONG).show();
+                                    AccountDirectory.getInstance().getAccount().setUpdate(now);
+                                    AccountDirectory.getInstance().getAccount().setDelete(true);
+                                    startActivity(new Intent(UserInfoActivity.this, LoginActivity.class)
+                                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Deletion unsuccessful.", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+
+                builder.setNegativeButton(
+                        "No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                builder.show();
             }
         });
 

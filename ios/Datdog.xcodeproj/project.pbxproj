@@ -13,10 +13,14 @@
 		7D0DD8F3210464CE00AE131F /* Datdog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D0DD8F1210464CE00AE131F /* Datdog.xcdatamodeld */; };
 		7D0DD8F5210464D000AE131F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D0DD8F4210464D000AE131F /* Assets.xcassets */; };
 		7D0DD8F8210464D000AE131F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0DD8F6210464D000AE131F /* LaunchScreen.storyboard */; };
-		7D0DD90021046AD500AE131F /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0DD8FF21046AD500AE131F /* StartController.swift */; };
 		7D2B169521071AAC001DF8EC /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2B169421071AAC001DF8EC /* RegistrationController.swift */; };
 		7D3D41F821075FE500FA4034 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3D41F721075FE500FA4034 /* KeyboardLayoutConstraint.swift */; };
 		7D3D41FA2107CA2800FA4034 /* ReportNfcController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3D41F92107CA2800FA4034 /* ReportNfcController.swift */; };
+		7D44B6302109D851007E6223 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B62F2109D851007E6223 /* User.swift */; };
+		7D44B6322109D861007E6223 /* RegistrationManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B6312109D861007E6223 /* RegistrationManage.swift */; };
+		7D44B634210A6DE2007E6223 /* DateProj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B633210A6DE2007E6223 /* DateProj.swift */; };
+		7DD071292109C4A600037A09 /* my_datadog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7DD071272109C4A600037A09 /* my_datadog.xcdatamodeld */; };
+		7DD0712E2109C72A00037A09 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0712D2109C72A00037A09 /* LoginController.swift */; };
 		7DD9916021060667001674C8 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD9915F21060667001674C8 /* MenuController.swift */; };
 		7DD9916221068042001674C8 /* LostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD9916121068042001674C8 /* LostController.swift */; };
 		7DD991642106804F001674C8 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD991632106804F001674C8 /* ReportController.swift */; };
@@ -35,10 +39,14 @@
 		7D0DD8F4210464D000AE131F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D0DD8F7210464D000AE131F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D0DD8F9210464D000AE131F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D0DD8FF21046AD500AE131F /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 		7D2B169421071AAC001DF8EC /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		7D3D41F721075FE500FA4034 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		7D3D41F92107CA2800FA4034 /* ReportNfcController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportNfcController.swift; sourceTree = "<group>"; };
+		7D44B62F2109D851007E6223 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7D44B6312109D861007E6223 /* RegistrationManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationManage.swift; sourceTree = "<group>"; };
+		7D44B633210A6DE2007E6223 /* DateProj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProj.swift; sourceTree = "<group>"; };
+		7DD071282109C4A600037A09 /* my_datadog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = my_datadog.xcdatamodel; sourceTree = "<group>"; };
+		7DD0712D2109C72A00037A09 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		7DD9915F21060667001674C8 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		7DD9916121068042001674C8 /* LostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostController.swift; sourceTree = "<group>"; };
 		7DD991632106804F001674C8 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
@@ -78,14 +86,25 @@
 		7D0DD8E9210464CD00AE131F /* Datdog */ = {
 			isa = PBXGroup;
 			children = (
+				7DD0712B2109C5D500037A09 /* Core */,
+				7DD0712A2109C5CA00037A09 /* View */,
 				7D0DD8EA210464CE00AE131F /* AppDelegate.swift */,
-				7D0DD8EC210464CE00AE131F /* WelcomeController.swift */,
-				7D0DD8FF21046AD500AE131F /* StartController.swift */,
 				7D0DD8EE210464CE00AE131F /* Main.storyboard */,
 				7D0DD8F4210464D000AE131F /* Assets.xcassets */,
 				7D0DD8F1210464CE00AE131F /* Datdog.xcdatamodeld */,
 				7D0DD8F6210464D000AE131F /* LaunchScreen.storyboard */,
 				7D0DD8F9210464D000AE131F /* Info.plist */,
+				7DD071272109C4A600037A09 /* my_datadog.xcdatamodeld */,
+			);
+			path = Datdog;
+			sourceTree = "<group>";
+		};
+		7DD0712A2109C5CA00037A09 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7D0DD8EC210464CE00AE131F /* WelcomeController.swift */,
+				7DD0712D2109C72A00037A09 /* LoginController.swift */,
+				7D2B169421071AAC001DF8EC /* RegistrationController.swift */,
 				7DD9915F21060667001674C8 /* MenuController.swift */,
 				7DE8996121060414004E646B /* MissingController.swift */,
 				7DE8996321060420004E646B /* FriendsController.swift */,
@@ -93,11 +112,20 @@
 				7DE8995D21048F2F004E646B /* YourDogsController.swift */,
 				7DD9916121068042001674C8 /* LostController.swift */,
 				7DD991632106804F001674C8 /* ReportController.swift */,
-				7D2B169421071AAC001DF8EC /* RegistrationController.swift */,
 				7D3D41F721075FE500FA4034 /* KeyboardLayoutConstraint.swift */,
 				7D3D41F92107CA2800FA4034 /* ReportNfcController.swift */,
 			);
-			path = Datdog;
+			path = View;
+			sourceTree = "<group>";
+		};
+		7DD0712B2109C5D500037A09 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7D44B62F2109D851007E6223 /* User.swift */,
+				7D44B6312109D861007E6223 /* RegistrationManage.swift */,
+				7D44B633210A6DE2007E6223 /* DateProj.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,16 +203,20 @@
 				7DE8996221060414004E646B /* MissingController.swift in Sources */,
 				7DD9916221068042001674C8 /* LostController.swift in Sources */,
 				7DD9916021060667001674C8 /* MenuController.swift in Sources */,
+				7D44B6302109D851007E6223 /* User.swift in Sources */,
+				7DD0712E2109C72A00037A09 /* LoginController.swift in Sources */,
 				7DD991642106804F001674C8 /* ReportController.swift in Sources */,
+				7D44B634210A6DE2007E6223 /* DateProj.swift in Sources */,
 				7DE8996421060420004E646B /* FriendsController.swift in Sources */,
+				7D44B6322109D861007E6223 /* RegistrationManage.swift in Sources */,
 				7D0DD8ED210464CE00AE131F /* WelcomeController.swift in Sources */,
 				7D0DD8F3210464CE00AE131F /* Datdog.xcdatamodeld in Sources */,
-				7D0DD90021046AD500AE131F /* StartController.swift in Sources */,
 				7DE8995E21048F2F004E646B /* YourDogsController.swift in Sources */,
 				7D0DD8EB210464CE00AE131F /* AppDelegate.swift in Sources */,
 				7D2B169521071AAC001DF8EC /* RegistrationController.swift in Sources */,
 				7DE899662106042D004E646B /* ConnectController.swift in Sources */,
 				7D3D41FA2107CA2800FA4034 /* ReportNfcController.swift in Sources */,
+				7DD071292109C4A600037A09 /* my_datadog.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +421,16 @@
 			);
 			currentVersion = 7D0DD8F2210464CE00AE131F /* Datdog.xcdatamodel */;
 			path = Datdog.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		7DD071272109C4A600037A09 /* my_datadog.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7DD071282109C4A600037A09 /* my_datadog.xcdatamodel */,
+			);
+			currentVersion = 7DD071282109C4A600037A09 /* my_datadog.xcdatamodel */;
+			path = my_datadog.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

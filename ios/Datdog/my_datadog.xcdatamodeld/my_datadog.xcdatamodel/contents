@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Dog" representedClassName="Dog" syncable="YES" codeGenerationType="class">
+        <attribute name="birth_d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="breed_d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="colour_d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date_create_d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date_update_d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="delete_d" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id_nfc_d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sex_d" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="size_d" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="birth_u" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date_create_u" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date_update_u" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="delete_u" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="email_u" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name_u" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password_u" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone_u" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="surname_u" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="dog" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dog" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Dog" positionX="-54" positionY="63" width="128" height="225"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="210"/>
+    </elements>
+</model>

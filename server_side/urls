@@ -1,0 +1,61 @@
+///////////////////
+// USER
+///////////////////
+
+--- Insert ---
+http://datdog.altervista.org/user.php?action=insert&name_u=riccardi&surname_u=marchi&phone_u=1234567890&birth_u=12/34/56&email_u=riccardo.marchi@gmail.com&password_u=miaomiao&date_create_u=12/34/56-78:90:12&date_update_u=12/34/56-78:90:12&delete_u=0
+--- Update ---
+http://datdog.altervista.org/user.php?action=update&id=11&name_u=riccardi&surname_u=marchi&phone_u=1234567890&birth_u=12/34/56&email_u=riccardo.marchi@gmail.com&password_u=miaomiao&date_create_u=12/34/56-78:90:12&date_update_u=12/34/56-78:90:12&delete_u=0
+--- Select ---
+http://datdog.altervista.org/user.php?action=select&email_u=riccardo.marchi@gmail.com&password_u=miaomiao
+
+
+///////////////////
+// DOG
+///////////////////
+
+--- Insert ---
+http://datdog.altervista.org/dog.php?action=insert&id=234s&id_nfc_d=&id_user_d=11&name_d=missy&breed_d=meticcio&colour_d=Money&birth_d=24-34-34&size_d=0&sex_d=1&date_create_d=23-23-23&date_update_d=332-24-24&delete_d=0
+--- Update ---
+http://datdog.altervista.org/dog.php?action=update&id=234s&id_nfc_d=24354&id_user_d=11&name_d=missy&breed_d=meticcio&colour_d=Money&birth_d=24-34-34&size_d=0&sex_d=1&date_create_d=23-23-23&date_update_d=332-24-24&delete_d=0
+--- Select ---
+http://datdog.altervista.org/dog.php?action=select&id_user_d=11
+
+
+///////////////////
+// REPORT
+///////////////////
+
+--- Insert ---
+http://datdog.altervista.org/report.php?action=insert&id=3455&id_user_r=11&id_dog_r=234s&location_r=32454324-3243-&date_create_r=234&date_update_r=234&date_found_r=&delete_r=0
+--- Update ---
+http://datdog.altervista.org/report.php?action=update&id=3455&id_user_r=11&id_dog_r=234s&location_r=32454324-3243-&date_create_r=234&date_update_r=234&date_found_r=43567564534&delete_r=0
+--- Select ---
+++ by user
+http://datdog.altervista.org/report.php?action=select_user&id_user_r=11
+++ by dog
+http://datdog.altervista.org/report.php?action=select_dog&id_dog_r=234s
+
+
+///////////////////
+// FRIEND
+///////////////////
+
+--- Insert ---
+http://datdog.altervista.org/friend.php?action=insert&id=dafd34&id_user_f=11&id_friend_f=10&date_create_f=3243fw&date_update_f=4f43fwe&delete_f=0
+--- Update ---
+http://datdog.altervista.org/friend.php?action=update&id=dafd34&id_user_f=11&id_friend_f=10&date_create_f=3243fw&date_update_f=4f43fwe&delete_f=0
+--- Select ---
+http://datdog.altervista.org/friend.php?action=select&id_user_f=10
+
+
+///////////////////
+// VACCINATIONS
+///////////////////
+
+--- Insert ---
+http://datdog.altervista.org/vaccination.php?action=insert&id=fe3&id_dog_v=234s&name_v=fischia&date_when_v=w4qr4qt&date_create_v=g34g43&date_update_v=fwqw&date_completed_v&delete_v=0
+--- Update ---
+http://datdog.altervista.org/vaccination.php?action=update&id=fe3&id_dog_v=234s&name_v=fischia&date_when_v=w4qr4qt&date_create_v=g34g43&date_update_v=fwqw&date_completed_v&delete_v=0
+--- Select ---
+http://datdog.altervista.org/vaccination.php?action=select&id_dog_v=234s

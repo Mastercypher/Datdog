@@ -92,4 +92,21 @@ public class UserInfoActivity extends AppCompatActivity {
         txtEmail.setText(AccountDirectory.getInstance().getAccount().getMail());
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        String name = AccountDirectory.getInstance().getAccount().getName();
+        String upName = name.substring(0,1).toUpperCase() + name.substring(1);
+        String surname = AccountDirectory.getInstance().getAccount().getSurname();
+        String upSurname = surname.substring(0,1).toUpperCase() + surname.substring(1);
+
+        txtName.setText(upName);
+        txtSurname.setText(upSurname);
+        txtComplete.setText(upName + " " + upSurname);
+        txtPhone.setText(AccountDirectory.getInstance().getAccount().getPhone());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        txtBirth.setText(sdf.format(AccountDirectory.getInstance().getAccount().getBirth()));
+        txtEmail.setText(AccountDirectory.getInstance().getAccount().getMail());
+    }
 }

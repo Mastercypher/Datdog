@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnToRegister;
     private EditText loginMail;
     private EditText loginPw;
-    public static Map<String, String> account;
+    private Map<String, String> account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                     try {
                         account = new LoginTask().execute(
                                 "http://datdog.altervista.org/user.php?action=select&email_u="
-                                        + loginMail.getText().toString()
+                                        + loginMail.getText().toString().toLowerCase()
                                         + "&password_u=" + loginPw.getText().toString()).get();
                     } catch (InterruptedException e) {
                         e.printStackTrace();

@@ -33,7 +33,7 @@ if (isset($_GET['action'])) {
 
     if ($action == 'request') {
         # action --> REQUEST
-        $params = Control::get_params($PARAMS_LOGIN);
+        $params = Control::getParams($PARAMS_LOGIN);
         if ($params) {
             try {
                 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -55,7 +55,7 @@ if (isset($_GET['action'])) {
         }
     } else if ($action == 'upload') {
         # action --> REGISTER
-        $params = Control::get_params($PARAMS_CREATE);
+        $params = Control::getParams($PARAMS_CREATE);
         if ($params) {
             # Of course we dont want to insert a delete user.
             $delete = 0;

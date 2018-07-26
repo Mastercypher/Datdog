@@ -7,6 +7,7 @@
  */
 
 class Control {
+    public static $PARAMS_ERROR = "Error with parameters, on or more params missed in GET request.";
 
     /**
      * Get POST parameters.
@@ -15,12 +16,14 @@ class Control {
      *
      * @return array
      */
-    public static function get_params($array) {
+    public static function getParams($array) {
         $params = array();
-        if (Control::verify_post($array) and Control::verify_values($array)) {
+        if (Control::verifyPost($array)) {
             foreach ($array as &$value) {
                 $params[$value] = $_GET[$value];
             }
+        } else {
+            JsonMsg::print_response(false, Control::$PARAMS_ERROR);
         }
         return $params;
     }
@@ -33,7 +36,7 @@ class Control {
      *
      * @return bool
      */
-    public static function verify_post($array) {
+    public static function verifyPost($array) {
         # If it's empty
         if (!$array) {
             return false;
@@ -54,7 +57,7 @@ class Control {
      *
      * @return bool
      */
-    public static function verify_values($array) {
+    public static function verifyValues($array) {
         # If it's empty
         if (!$array) {
             return false;

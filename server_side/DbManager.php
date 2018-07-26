@@ -6,8 +6,8 @@
  * Time: 23:32
  */
 
-include 'JsonMsg.php';
-include 'Control.php';
+include_once 'JsonMsg.php';
+include_once 'Control.php';
 
 
 class DbManager {
@@ -18,6 +18,9 @@ class DbManager {
     private static $UPDATED_SUCCESS = "It has been updated";
     private static $UPDATED_ERROR = "It hasn't been updated";
     private static $SQL_ERROR = "Sql error";
+
+    private static $EMPTY_PARAMS = "Empty parameters";
+    private static $NO_ENOUGH_PARAMS = "No enough parameters";
 
     private static $TYPE_INSERT = "insert";
     private static $TYPE_UPDATE = "update";
@@ -35,47 +38,58 @@ class DbManager {
         $this->table = $table;
         $this->paramNames = $paramNames;
         $this->params = $params;
-
     }
 
     /**
-     *
+     * Insert.
      *
      * @return bool
      */
     public function insert() {
-        if (empty($this->table) or empty($this->paramNames) or empty($this->params)) {
-            return false;
+        if($this->controlInjection()) {
+            $success = $this->sqlAction(DbManager::$TYPE_INSERT);
+            return $success;
         }
-
-        $success = $this->sqlAction(DbManager::$TYPE_INSERT);
-        return $success;
+        return false;
     }
 
     /**
-     *
+     * Update by id.
      *
      * @return bool
      */
     public function update() {
-        if (empty($this->table) or empty($this->paramNames) or empty($this->params)) {
-            return false;
+        if($this->controlInjection()) {
+            $success = $this->sqlAction(DbManager::$TYPE_UPDATE);
+            return $success;
         }
-
-        $success = $this->sqlAction(DbManager::$TYPE_UPDATE);
-        return $success;
+        return false;
     }
 
     /**
-     * Return the data referred to the specific row by parameters
+     * Select row/rows.
+     *
+     * @return bool
      */
-    public function fetch() {
+    public function select(){
+        if($this->controlInjection()) {
+            $success = $this->fetch();
+            return $success;
+        }
+        return false;
+    }
+
+    /**
+     * Return the data referred to the specific row by parameters.
+     */
+    private function fetch() {
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $sql = $this->getSelectSql($this->paramNames);
+            $valuesToInject = $this->getArrayValuesInsert($this->paramNames, $this->params);
 
             $prep = $conn->prepare($sql);
-            $prep->execute(array('id_user_f' => $this->params['id_user_f']));
+            $prep->execute($valuesToInject);
             $res = $prep->fetchAll();
 
             # Check the respond
@@ -94,6 +108,36 @@ class DbManager {
     }
 
     /**
+     * Control before injection.
+     *
+     * @return bool
+     */
+    private function controlInjection(){
+        if (empty($this->table) or empty($this->paramNames) or empty($this->params)) {
+            JsonMsg::print_response(false, DbManager::$EMPTY_PARAMS);
+            return false;
+        }
+
+        if(!$this->areEnough()){
+            JsonMsg::print_response(false, DbManager::$NO_ENOUGH_PARAMS);
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Control if the parameter names match the size of the parameter values.
+     *
+     * @return bool
+     */
+    private function areEnough(){
+        if(sizeof($this->paramNames) ==  sizeof($this->params)){
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Make the action, The action consist in a INSERT or in a UPDATE.
      *
      * @param $type
@@ -104,7 +148,7 @@ class DbManager {
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
 
-            # SQL string preparation 
+            # SQL string preparation
             $sql = "";
             if ($type == DbManager::$TYPE_INSERT) {
                 $sql = $this->getInsertSql($this->paramNames);
@@ -128,7 +172,7 @@ class DbManager {
             $prep->execute($valuesToInject);
             $prep->fetchAll();
 
-            # RESPOND string preparation 
+            # RESPOND string preparation
             $success = "";
             $error = "";
             if ($type == DbManager::$TYPE_INSERT) {
@@ -196,7 +240,7 @@ class DbManager {
         $sql = "SELECT * FROM $this->table WHERE ";
         foreach ($paramNames as $name) {
             if (array_search($name, $paramNames) != sizeof($paramNames) - 1) {
-                $sql .= "$name=:$name,";
+                $sql .= "$name=:$name and ";
             } else {
                 $sql .= "$name=:$name";
             }
@@ -290,4 +334,5 @@ class DbManager {
 
         return $arrayExecute;
     }
+
 }

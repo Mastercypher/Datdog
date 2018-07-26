@@ -19,7 +19,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/txtNfc"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginEnd="16dp"
@@ -55,12 +55,12 @@
                 android:text="If the dog use NFC tecnology, then you can scan it and report the dog to the owner."
                 android:textColor="#fff"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView21"
-                app:layout_constraintEnd_toEndOf="@+id/textView21"
-                app:layout_constraintStart_toStartOf="@+id/textView21" />
+                app:layout_constraintBottom_toBottomOf="@+id/txtNfc"
+                app:layout_constraintEnd_toEndOf="@+id/txtNfc"
+                app:layout_constraintStart_toStartOf="@+id/txtNfc" />
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/txtCode"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginBottom="16dp"
@@ -82,7 +82,7 @@
                 app:layout_constraintDimensionRatio="3:2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+                app:layout_constraintTop_toBottomOf="@+id/txtNfc" />
 
             <TextView
                 android:id="@+id/textView24"
@@ -98,9 +98,9 @@
                 android:text="If the dog does not have NFC tecnology but it has written the identification code, then it is possible to identify it anyway."
                 android:textColor="#fff"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView22"
-                app:layout_constraintEnd_toEndOf="@+id/textView22"
-                app:layout_constraintStart_toStartOf="@+id/textView22" />
+                app:layout_constraintBottom_toBottomOf="@+id/txtCode"
+                app:layout_constraintEnd_toEndOf="@+id/txtCode"
+                app:layout_constraintStart_toStartOf="@+id/txtCode" />
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -108,8 +108,8 @@
                 android:layout_height="80dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/textView21"
-                app:layout_constraintTop_toTopOf="@+id/textView21"
+                app:layout_constraintEnd_toEndOf="@+id/txtNfc"
+                app:layout_constraintTop_toTopOf="@+id/txtNfc"
                 app:srcCompat="@drawable/icon_nfc_w" />
 
             <ImageView
@@ -118,8 +118,8 @@
                 android:layout_height="80dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/textView22"
-                app:layout_constraintTop_toTopOf="@+id/textView22"
+                app:layout_constraintEnd_toEndOf="@+id/txtCode"
+                app:layout_constraintTop_toTopOf="@+id/txtCode"
                 app:srcCompat="@drawable/icon_code_w" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

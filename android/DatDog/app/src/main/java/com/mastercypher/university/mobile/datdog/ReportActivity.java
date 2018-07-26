@@ -6,11 +6,14 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class ReportActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
+    private TextView txtNfc;
+    private TextView txtCode;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -44,9 +47,26 @@ public class ReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_report);
 
         mTextMessage = (TextView) findViewById(R.id.message);
+        txtNfc = findViewById(R.id.txtNfc);
+        txtCode = findViewById(R.id.txtCode);
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_missing);
+
+        txtNfc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ReportActivity.this, NfcReportActivity.class));
+            }
+        });
+
+        txtCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ReportActivity.this, CodeReportActivity.class));
+            }
+        });
     }
 
 }

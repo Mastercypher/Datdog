@@ -6,11 +6,15 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MissingActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
+    private ImageView imgReport;
+    private ImageView imgLost;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -44,9 +48,26 @@ public class MissingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_missing);
 
         mTextMessage = (TextView) findViewById(R.id.message);
+        imgReport = findViewById(R.id.imgReport);
+        imgLost = findViewById(R.id.imgLost);
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_missing);
+
+        imgReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MissingActivity.this, ReportActivity.class));
+            }
+        });
+
+        imgLost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MissingActivity.this, LostActivity.class));
+            }
+        });
     }
 
 }

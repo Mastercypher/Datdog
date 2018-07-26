@@ -27,12 +27,11 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".LoginActivity"
-            android:label="Login"
-            android:windowSoftInputMode="adjustPan" />
+            android:label="Login" />
         <activity
             android:name=".RegisterActivity"
             android:label="Registration"
-            android:windowSoftInputMode="adjustPan" />
+             />
         <activity
             android:name=".HomeActivity"
             android:label="Home" />
@@ -50,15 +49,13 @@
             android:label="Your dogs" />
         <activity
             android:name=".AddDogActivity"
-            android:label="Add dog"
-            android:windowSoftInputMode="adjustPan" />
+            android:label="Add dog" />
         <activity
             android:name=".UserInfoActivity"
             android:label="User info" />
         <activity
             android:name=".EditUserActivity"
-            android:label="Edit user"
-            android:windowSoftInputMode="adjustPan" />
+            android:label="Edit user" />
         <activity
             android:name=".SettingsActivity"
             android:label="Settings" />
@@ -67,15 +64,13 @@
             android:label="Dog info" />
         <activity
             android:name=".EditDogActivity"
-            android:label="Edit dog"
-            android:windowSoftInputMode="adjustPan" />
+            android:label="Edit dog" />
         <activity
             android:name=".NfcReportActivity"
             android:label="Report with NFC" />
         <activity
             android:name=".CodeReportActivity"
-            android:label="Report with code"
-            android:windowSoftInputMode="adjustPan" />
+            android:label="Report with code" />
         <activity
             android:name=".ConfirmationReportActivity"
             android:label="Confirm report" />

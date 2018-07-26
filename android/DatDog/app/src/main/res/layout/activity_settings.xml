@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Switch
-                android:id="@+id/switch1"
+                android:id="@+id/swtLoc"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="16dp"

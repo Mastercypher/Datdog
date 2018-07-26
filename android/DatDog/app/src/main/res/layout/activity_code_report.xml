@@ -31,7 +31,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/textView50"
+                android:id="@+id/txtScan"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -61,7 +61,7 @@
                 android:textColor="@color/colorDarkblue"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView50" />
+                app:layout_constraintTop_toBottomOf="@+id/txtScan" />
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/constraintLayout3"
@@ -86,12 +86,12 @@
                     android:textColor="#000"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/switch1"
+                    app:layout_constraintEnd_toStartOf="@+id/swtLoc"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Switch
-                    android:id="@+id/switch1"
+                    android:id="@+id/swtLoc"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:elegantTextHeight="false"
@@ -138,12 +138,12 @@
                     android:textColor="#000"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/checkBox"
+                    app:layout_constraintEnd_toStartOf="@+id/cbPhone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <CheckBox
-                    android:id="@+id/checkBox"
+                    android:id="@+id/cbPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="16dp"

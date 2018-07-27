@@ -22,7 +22,7 @@ public class UserDbHelper extends SQLiteOpenHelper {
             User.COLUMN_SURNAME + " TEXT NOT NULL, " +
             User.COLUMN_PHONE + " TEXT NOT NULL, " +
             User.COLUMN_BIRTH + " TEXT NOT NULL, " +
-            User.COLUMN_MAIL + " TEXT NOT NULL, " +
+            User.COLUMN_MAIL + " TEXT NOT NULL UNIQUE, " +
             User.COLUMN_PASSWORD + " TEXT NOT NULL, " +
             User.COLUMN_DATE_CREATE + " TEXT NOT NULL, " +
             User.COLUMN_DATE_UPDATE + " TEXT NOT NULL, " +

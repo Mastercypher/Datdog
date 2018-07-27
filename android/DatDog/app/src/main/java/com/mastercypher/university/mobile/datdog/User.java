@@ -18,11 +18,11 @@ public class User {
     public static final String COLUMN_BIRTH = "birth";
     public static final String COLUMN_MAIL = "mail";
     public static final String COLUMN_PASSWORD = "password";
-    public static final String COLUMN_DATE_CREATE = "date_create";
-    public static final String COLUMN_DATE_UPDATE = "date_update";
+    public static final String COLUMN_DATE_CREATE = "create";
+    public static final String COLUMN_DATE_UPDATE = "update";
     public static final String COLUMN_DELETE = "delete";
 
-    private String id;
+    private int id;
     private String name;
     private String surname;
     private String phone;
@@ -31,10 +31,10 @@ public class User {
     private String pw;
     private Date create;
     private Date update;
-    private boolean delete;
+    private int delete;
 
     public User(Map<String, String> res) throws ParseException {
-        id = res.get("id");
+        id = Integer.parseInt(res.get("id"));
         name = res.get("name_u");
         surname = res.get("surname_u");
         phone = res.get("phone_u");
@@ -45,11 +45,11 @@ public class User {
         sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         create = sdf.parse(res.get("date_create_u"));
         update = sdf.parse(res.get("date_update_u"));
-        delete = res.get("delete_u").equals("0") ? false : true;
+        delete = Integer.parseInt(res.get("delete_u"));
     }
 
     public User(Cursor c) throws ParseException {
-        id = c.getString(c.getColumnIndex(COLUMN_ID));
+        id = c.getInt(c.getColumnIndex(COLUMN_ID));
         name = c.getString(c.getColumnIndex(COLUMN_NAME));
         surname = c.getString(c.getColumnIndex(COLUMN_SURNAME));
         phone = c.getString(c.getColumnIndex(COLUMN_PHONE));
@@ -60,7 +60,7 @@ public class User {
         sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         create = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_CREATE)));
         update = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_UPDATE)));
-        delete = c.getString(c.getColumnIndex(COLUMN_DELETE)).equals("0") ? false : true;
+        delete = Integer.parseInt(c.getString(c.getColumnIndex(COLUMN_DELETE)));
     }
 
     public ContentValues getContentValues() {
@@ -76,15 +76,15 @@ public class User {
         sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         cv.put(COLUMN_DATE_CREATE, sdf.format(create));
         cv.put(COLUMN_DATE_UPDATE, sdf.format(update));
-        cv.put(COLUMN_DELETE, delete ? "1" : "0");
+        cv.put(COLUMN_DELETE, delete);
         return cv;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -152,11 +152,11 @@ public class User {
         this.update = update;
     }
 
-    public boolean isDelete() {
+    public int isDelete() {
         return delete;
     }
 
-    public void setDelete(boolean delete) {
+    public void setDelete(int delete) {
         this.delete = delete;
     }
 }

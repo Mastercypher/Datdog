@@ -120,7 +120,7 @@ public class UserInfoActivity extends AppCompatActivity {
                                 if (successful) {
                                     Toast.makeText(getApplicationContext(), "User deleted successfully.", Toast.LENGTH_LONG).show();
                                     AccountDirectory.getInstance().getUser().setUpdate(now);
-                                    AccountDirectory.getInstance().getUser().setDelete(true);
+                                    AccountDirectory.getInstance().getUser().setDelete(1);
                                     startActivity(new Intent(UserInfoActivity.this, LoginActivity.class)
                                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                                 } else {

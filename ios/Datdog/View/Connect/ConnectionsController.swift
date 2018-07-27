@@ -9,9 +9,7 @@
 import UIKit
 import QuartzCore
 
-class ConnectController: UIViewController {
-    
-    @IBOutlet weak var btnAddDog: UIButton!
+class ConnectionsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

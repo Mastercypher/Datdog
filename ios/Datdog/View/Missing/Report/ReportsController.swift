@@ -9,7 +9,7 @@
 import UIKit
 import QuartzCore
 
-class ReportController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ReportsController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var btnAddReport: UIButton!
     override func viewDidLoad() {

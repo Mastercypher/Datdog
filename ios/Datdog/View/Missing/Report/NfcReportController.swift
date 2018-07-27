@@ -9,7 +9,6 @@
 import UIKit
 
 class ReportNfcController: UIViewController {
-    
 
     @IBOutlet weak var aciLoad: UIActivityIndicatorView!
     @IBOutlet weak var lblCode: UILabel!
@@ -18,6 +17,11 @@ class ReportNfcController: UIViewController {
     @IBOutlet weak var btnContinue: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         aciLoad.startAnimating()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 }

@@ -5,8 +5,8 @@
 /* USER */
 CREATE TABLE IF NOT EXISTS user (
   id INTEGER NOT NULL AUTO_INCREMENT,
-  name_u VARCHAR(50),
-  surname_u VARCHAR(50),
+  name_u VARCHAR(50) NOT NULL,
+  surname_u VARCHAR(50) NOT NULL,
   phone_u VARCHAR(50) NOT NULL,
   birth_u VARCHAR(50) NOT NULL,
   email_u VARCHAR(50) NOT NULL,

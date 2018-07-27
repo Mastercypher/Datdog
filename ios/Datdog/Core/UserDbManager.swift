@@ -118,8 +118,9 @@ class UserDbManager {
         } else if currentUsers.count > 1 {
             // Logou for all the user and redirect to login page
             for user in currentUsers {
-                self.logut(user: user)
+                self.logut(user: user, view: nil)
             }
+            // Redirect to Login view
             let vc = view.storyboard?.instantiateViewController(withIdentifier: "loginView") as! LoginController
             view.present(vc, animated: true, completion:nil )
         }
@@ -142,17 +143,23 @@ class UserDbManager {
     }
     
     // Logout the user
-    func logut(user: User) {
+    func logut(user: User, view: UIViewController?) {
         let notCurrent = UserDbManager.STATUS.NOT_CURRENT
-        let deleted = UserDbManager.STATUS.ACTIVE
+
         let dbUser = mTable.filter(mId == user.mId)
         let updateUser = dbUser.update(mName <- user.mName, mId <- user.mId, mSurname <- user.mSurname,
                                        mPhone <- user.mPhone, mBirth <- user.mBirth, mPassword <- user.mPassword,
                                        mDateCreate <- user.mDateCreate, mDateUpdate <- user.mDateUpdate,
-                                       mCurrent <- notCurrent, mDelete <- deleted)
+                                       mCurrent <- notCurrent)
+        
         do {
             try mDatabase.run(updateUser)
-            print("User \(user.mEmail) logout")
+            print("User \(user.mEmail!) logout")
+            if(view != nil){
+                // Redirect to Login view
+                let vc = view?.storyboard?.instantiateViewController(withIdentifier: "loginView") as! LoginController
+                view?.present(vc, animated: true, completion:nil )
+            }
         } catch {
             print(error)
         }
@@ -165,7 +172,7 @@ class UserDbManager {
                                   mCurrent <- current, mDelete <- user.mDelete)
         do {
             try mDatabase.run(query)
-            print("Registred user: \(user.mName)")
+            print("Registred user: \(user.mEmail!)")
             return true
         } catch {
             print(error)
@@ -181,7 +188,7 @@ class UserDbManager {
                                        mDateCreate <- user.mDateCreate, mDateUpdate <- user.mDateUpdate)
         do {
             try mDatabase.run(updateUser)
-            print("User \(user.mEmail) updated")
+            print("User \(user.mEmail!) updated")
             return true
         } catch {
             print(error)
@@ -200,7 +207,7 @@ class UserDbManager {
                                        mCurrent <- notCurrent, mDelete <- deleted)
         do {
             try mDatabase.run(updateUser)
-            print("User \(user.mEmail) deleted")
+            print("User \(user.mEmail!) deleted")
             return true
         } catch {
             print(error)

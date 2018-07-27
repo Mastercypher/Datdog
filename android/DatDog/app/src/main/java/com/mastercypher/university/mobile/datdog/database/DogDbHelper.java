@@ -19,7 +19,7 @@ public class DogDbHelper extends SQLiteOpenHelper {
     public static final String CREATE_TABLE_USER = "CREATE TABLE " +
             Dog.TABLE_NAME + " (" +
             Dog.COLUMN_ID + " INTEGER PRIMARY KEY, " +
-            Dog.COLUMN_ID_NFC + " TEXT NOT NULL, " +
+            Dog.COLUMN_ID_NFC + " TEXT, " +
             Dog.COLUMN_ID_USER + " INTEGER NOT NULL, " +
             Dog.COLUMN_NAME + " TEXT NOT NULL, " +
             Dog.COLUMN_BREED + " TEXT NOT NULL, " +

@@ -45,7 +45,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/btnDeleteAcc"
+                android:id="@+id/btnLogout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -55,7 +55,7 @@
                 android:shadowDx="3.0"
                 android:shadowDy="3.0"
                 android:shadowRadius="3.0"
-                android:text=" Delete"
+                android:text="Logout"
                 android:textAllCaps="false"
                 android:textColor="@color/colorMissing"
                 app:layout_constraintStart_toStartOf="parent"

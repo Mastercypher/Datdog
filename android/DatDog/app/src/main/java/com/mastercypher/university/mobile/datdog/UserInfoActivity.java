@@ -13,8 +13,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ExecutionException;
@@ -69,7 +67,7 @@ public class UserInfoActivity extends AppCompatActivity {
         navigation.setSelectedItemId(R.id.navigation_home);
 
         btnEdit = findViewById(R.id.btnEditAcc);
-        btnDeleteAcc = findViewById(R.id.btnDeleteAcc);
+        btnDeleteAcc = findViewById(R.id.btnLogout);
         txtComplete = findViewById(R.id.txtComplete);
         txtName = findViewById(R.id.textView38);
         txtSurname = findViewById(R.id.textView39);
@@ -88,8 +86,8 @@ public class UserInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(UserInfoActivity.this);
-                builder.setTitle("Do you really want to delete your account?");
-                builder.setMessage("Are you sure? You NEVER will be able to get it back ever!");
+                builder.setTitle("Logout");
+                builder.setMessage("Do you really want to logout?");
                 builder.setCancelable(true);
 
                 builder.setPositiveButton(
@@ -103,14 +101,14 @@ public class UserInfoActivity extends AppCompatActivity {
 
                                     successful = new EditUserTask().execute(
                                             "http://datdog.altervista.org/user.php?action=update&" +
-                                                    "id=" + AccountDirectory.getInstance().getAccount().getId() +
-                                                    "&name_u=" + AccountDirectory.getInstance().getAccount().getName() +
-                                                    "&surname_u=" + AccountDirectory.getInstance().getAccount().getSurname() +
-                                                    "&phone_u=" + AccountDirectory.getInstance().getAccount().getPhone() +
-                                                    "&birth_u=" + sdfBday.format(AccountDirectory.getInstance().getAccount().getBirth()) +
-                                                    "&email_u=" + AccountDirectory.getInstance().getAccount().getMail() +
-                                                    "&password_u=" + AccountDirectory.getInstance().getAccount().getPw() +
-                                                    "&date_create_u=" + sdf.format(AccountDirectory.getInstance().getAccount().getCreate()) +
+                                                    "id=" + AccountDirectory.getInstance().getUser().getId() +
+                                                    "&name_u=" + AccountDirectory.getInstance().getUser().getName() +
+                                                    "&surname_u=" + AccountDirectory.getInstance().getUser().getSurname() +
+                                                    "&phone_u=" + AccountDirectory.getInstance().getUser().getPhone() +
+                                                    "&birth_u=" + sdfBday.format(AccountDirectory.getInstance().getUser().getBirth()) +
+                                                    "&email_u=" + AccountDirectory.getInstance().getUser().getMail() +
+                                                    "&password_u=" + AccountDirectory.getInstance().getUser().getPw() +
+                                                    "&date_create_u=" + sdf.format(AccountDirectory.getInstance().getUser().getCreate()) +
                                                     "&date_update_u=" + sdf.format(now) +
                                                     "&delete_u=1").get();
                                 } catch (InterruptedException e) {
@@ -120,9 +118,9 @@ public class UserInfoActivity extends AppCompatActivity {
                                 }
 
                                 if (successful) {
-                                    Toast.makeText(getApplicationContext(), "Account deleted successfully.", Toast.LENGTH_LONG).show();
-                                    AccountDirectory.getInstance().getAccount().setUpdate(now);
-                                    AccountDirectory.getInstance().getAccount().setDelete(true);
+                                    Toast.makeText(getApplicationContext(), "User deleted successfully.", Toast.LENGTH_LONG).show();
+                                    AccountDirectory.getInstance().getUser().setUpdate(now);
+                                    AccountDirectory.getInstance().getUser().setDelete(true);
                                     startActivity(new Intent(UserInfoActivity.this, LoginActivity.class)
                                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                                 } else {
@@ -143,35 +141,35 @@ public class UserInfoActivity extends AppCompatActivity {
             }
         });
 
-        String name = AccountDirectory.getInstance().getAccount().getName();
+        String name = AccountDirectory.getInstance().getUser().getName();
         String upName = name.substring(0,1).toUpperCase() + name.substring(1);
-        String surname = AccountDirectory.getInstance().getAccount().getSurname();
+        String surname = AccountDirectory.getInstance().getUser().getSurname();
         String upSurname = surname.substring(0,1).toUpperCase() + surname.substring(1);
 
         txtName.setText(upName);
         txtSurname.setText(upSurname);
         txtComplete.setText(upName + " " + upSurname);
-        txtPhone.setText(AccountDirectory.getInstance().getAccount().getPhone());
+        txtPhone.setText(AccountDirectory.getInstance().getUser().getPhone());
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        txtBirth.setText(sdf.format(AccountDirectory.getInstance().getAccount().getBirth()));
-        txtEmail.setText(AccountDirectory.getInstance().getAccount().getMail());
+        txtBirth.setText(sdf.format(AccountDirectory.getInstance().getUser().getBirth()));
+        txtEmail.setText(AccountDirectory.getInstance().getUser().getMail());
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        String name = AccountDirectory.getInstance().getAccount().getName();
+        String name = AccountDirectory.getInstance().getUser().getName();
         String upName = name.substring(0,1).toUpperCase() + name.substring(1);
-        String surname = AccountDirectory.getInstance().getAccount().getSurname();
+        String surname = AccountDirectory.getInstance().getUser().getSurname();
         String upSurname = surname.substring(0,1).toUpperCase() + surname.substring(1);
 
         txtName.setText(upName);
         txtSurname.setText(upSurname);
         txtComplete.setText(upName + " " + upSurname);
-        txtPhone.setText(AccountDirectory.getInstance().getAccount().getPhone());
+        txtPhone.setText(AccountDirectory.getInstance().getUser().getPhone());
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        txtBirth.setText(sdf.format(AccountDirectory.getInstance().getAccount().getBirth()));
-        txtEmail.setText(AccountDirectory.getInstance().getAccount().getMail());
+        txtBirth.setText(sdf.format(AccountDirectory.getInstance().getUser().getBirth()));
+        txtEmail.setText(AccountDirectory.getInstance().getUser().getMail());
     }
 }

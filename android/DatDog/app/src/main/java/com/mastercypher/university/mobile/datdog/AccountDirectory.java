@@ -2,14 +2,13 @@ package com.mastercypher.university.mobile.datdog;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class AccountDirectory {
 
     private static AccountDirectory instance = null;
 
-    private Account account = null;
+    private User user = null;
 
     private AccountDirectory() {}
 
@@ -20,12 +19,12 @@ public class AccountDirectory {
         return instance;
     }
 
-    public void setAccount(Account acc) {
-        account = acc;
+    public void setUser(User acc) {
+        user = acc;
     }
 
-    public Account getAccount() {
-        return account;
+    public User getUser() {
+        return user;
     }
 
     public boolean checkDate(String strDate) {

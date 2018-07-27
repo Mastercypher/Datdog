@@ -69,16 +69,16 @@ public class EditUserActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_home);
 
-        String name = AccountDirectory.getInstance().getAccount().getName();
+        String name = AccountDirectory.getInstance().getUser().getName();
         String upName = name.substring(0,1).toUpperCase() + name.substring(1);
-        String surname = AccountDirectory.getInstance().getAccount().getSurname();
+        String surname = AccountDirectory.getInstance().getUser().getSurname();
         String upSurname = surname.substring(0,1).toUpperCase() + surname.substring(1);
 
         txtname.setText(upName);
         txtsurname.setText(upSurname);
         final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        birth.setText(sdf.format(AccountDirectory.getInstance().getAccount().getBirth()));
-        phone.setText(AccountDirectory.getInstance().getAccount().getPhone());
+        birth.setText(sdf.format(AccountDirectory.getInstance().getUser().getBirth()));
+        phone.setText(AccountDirectory.getInstance().getUser().getPhone());
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,15 +90,15 @@ public class EditUserActivity extends AppCompatActivity {
                 } else if (!AccountDirectory.getInstance().checkDate(birth.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "Date is not compliant to hint or representing the future.", Toast.LENGTH_LONG).show();
                 }
-                AccountDirectory.getInstance().getAccount().setName(txtname.getText().toString().toLowerCase());
-                AccountDirectory.getInstance().getAccount().setSurname(txtsurname.getText().toString().toLowerCase());
+                AccountDirectory.getInstance().getUser().setName(txtname.getText().toString().toLowerCase());
+                AccountDirectory.getInstance().getUser().setSurname(txtsurname.getText().toString().toLowerCase());
                 try {
-                    AccountDirectory.getInstance().getAccount().setBirth(sdf.parse(birth.getText().toString()));
+                    AccountDirectory.getInstance().getUser().setBirth(sdf.parse(birth.getText().toString()));
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                AccountDirectory.getInstance().getAccount().setPhone(phone.getText().toString());
-                AccountDirectory.getInstance().getAccount().setUpdate(now);
+                AccountDirectory.getInstance().getUser().setPhone(phone.getText().toString());
+                AccountDirectory.getInstance().getUser().setUpdate(now);
 
                 try {
                     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
@@ -106,15 +106,15 @@ public class EditUserActivity extends AppCompatActivity {
 
                     successful = new EditUserTask().execute(
                             "http://datdog.altervista.org/user.php?action=update&" +
-                                    "id=" + AccountDirectory.getInstance().getAccount().getId() +
-                                    "&name_u=" + AccountDirectory.getInstance().getAccount().getName() +
-                                    "&surname_u=" + AccountDirectory.getInstance().getAccount().getSurname() +
-                                    "&phone_u=" + AccountDirectory.getInstance().getAccount().getPhone() +
-                                    "&birth_u=" + sdfBday.format(AccountDirectory.getInstance().getAccount().getBirth()) +
-                                    "&email_u=" + AccountDirectory.getInstance().getAccount().getMail() +
-                                    "&password_u=" + AccountDirectory.getInstance().getAccount().getPw() +
-                                    "&date_create_u=" + sdf.format(AccountDirectory.getInstance().getAccount().getCreate()) +
-                                    "&date_update_u=" + sdf.format(AccountDirectory.getInstance().getAccount().getUpdate()) +
+                                    "id=" + AccountDirectory.getInstance().getUser().getId() +
+                                    "&name_u=" + AccountDirectory.getInstance().getUser().getName() +
+                                    "&surname_u=" + AccountDirectory.getInstance().getUser().getSurname() +
+                                    "&phone_u=" + AccountDirectory.getInstance().getUser().getPhone() +
+                                    "&birth_u=" + sdfBday.format(AccountDirectory.getInstance().getUser().getBirth()) +
+                                    "&email_u=" + AccountDirectory.getInstance().getUser().getMail() +
+                                    "&password_u=" + AccountDirectory.getInstance().getUser().getPw() +
+                                    "&date_create_u=" + sdf.format(AccountDirectory.getInstance().getUser().getCreate()) +
+                                    "&date_update_u=" + sdf.format(AccountDirectory.getInstance().getUser().getUpdate()) +
                                     "&delete_u=0").get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();

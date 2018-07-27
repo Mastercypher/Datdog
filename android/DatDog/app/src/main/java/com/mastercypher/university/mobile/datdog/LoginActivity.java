@@ -8,11 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.text.ParseException;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -55,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (account != null) {
                         try {
-                            AccountDirectory.getInstance().setAccount(new Account(account));
+                            AccountDirectory.getInstance().setUser(new User(account));
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }

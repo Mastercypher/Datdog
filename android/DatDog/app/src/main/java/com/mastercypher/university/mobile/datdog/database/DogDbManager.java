@@ -16,20 +16,20 @@ public class DogDbManager {
 
     public boolean addUser(Dog dog) {
         SQLiteDatabase db = dogDbHelper.getWritableDatabase();
-        long row = db.insert(User.TABLE_NAME, null, dog.getContentValues());
+        long row = db.insert(Dog.TABLE_NAME, null, dog.getContentValues());
         return row > 0;
     }
 
     public boolean updateUser(Dog dog) {
         SQLiteDatabase db = dogDbHelper.getWritableDatabase();
-        long row = db.update(User.TABLE_NAME, dog.getContentValues(),
-                User.COLUMN_ID + " = ?", new String[]{String.valueOf(dog.getId())});
+        long row = db.update(Dog.TABLE_NAME, dog.getContentValues(),
+                Dog.COLUMN_ID + " = ?", new String[]{String.valueOf(dog.getId())});
         return row > 0;
     }
 
     public boolean deleteUser(Dog dog) {
         SQLiteDatabase db = dogDbHelper.getWritableDatabase();
-        long row = db.delete(User.TABLE_NAME,
+        long row = db.delete(Dog.TABLE_NAME,
                 Dog.COLUMN_ID + " = ? ", new String[]{String.valueOf(dog.getId())});
         return row > 0;
     }

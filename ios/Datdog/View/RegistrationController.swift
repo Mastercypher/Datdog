@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 import Foundation
 
 
@@ -25,7 +24,6 @@ class RegistrationController : UIViewController, UITextFieldDelegate {
     @IBOutlet weak var contentView: UIView!
     
     var activeField: UITextField?
-    var managedObjectContext: NSManagedObjectContext? = nil
     
     var name = String("")
     var surname = String("")
@@ -37,7 +35,7 @@ class RegistrationController : UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         // Set textfield delegate
         txfName.delegate = self
         txfSurname.delegate = self
@@ -108,6 +106,9 @@ class RegistrationController : UIViewController, UITextFieldDelegate {
         }
     }
     
+    /////////////////////
+    // END UI Funcions //
+    /////////////////////
     
     // Action listener for the registration button.
     @IBAction func touchRegister(_ sender: Any) {
@@ -148,7 +149,6 @@ class RegistrationController : UIViewController, UITextFieldDelegate {
     
     // Permit to oush the registration data online.
     func pushRegistration(){
-        
         let dateNow = DateProj.getDateNow()
         let urlString = "http://datdog.altervista.org/user.php?action=insert&" +
             "name_u=\(name)&surname_u=\(surname)&phone_u=\(phone)&birth_u=\(birth)&" +
@@ -159,11 +159,11 @@ class RegistrationController : UIViewController, UITextFieldDelegate {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request) { [unowned self](data, response, error) in
-            
+            /*
             if (data != nil) {
                 let string = String(data: data!, encoding: .utf8)
                 debugPrint(string!)
-            }
+            }*/
             
             do {
                 let respond = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)

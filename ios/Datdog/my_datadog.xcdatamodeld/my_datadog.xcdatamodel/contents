@@ -12,7 +12,6 @@
         <attribute name="name_d" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sex_d" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="size_d" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="birth_u" optional="YES" attributeType="String" syncable="YES"/>
@@ -25,10 +24,10 @@
         <attribute name="password_u" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone_u" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="surname_u" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="dog" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dog" syncable="YES"/>
+        <relationship name="dog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dog" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Dog" positionX="-54" positionY="63" width="128" height="225"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="210"/>
+        <element name="Dog" positionX="-54" positionY="63" width="128" height="208"/>
+        <element name="User" positionX="-531" positionY="99" width="128" height="208"/>
     </elements>
 </model>

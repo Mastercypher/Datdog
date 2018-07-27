@@ -203,7 +203,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="X8v-Ib-v11" kind="show" id="1Da-5A-iHp"/>
+                                            <segue destination="X8v-Ib-v11" kind="show" id="Z5V-z3-cZo"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -276,13 +276,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="50.5"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="email"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hef-90-Q0c">
                                                         <rect key="frame" x="0.0" y="50.5" width="335" height="50"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2787,7 +2787,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="XN8-ks-fuO">
             <objects>
-                <tabBarController storyboardIdentifier="main_navigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1oz-T2-x0F" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1oz-T2-x0F" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="1Hk-zn-mQT"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kkW-0H-k5W">
@@ -3763,8 +3763,8 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfF-YH-fhJ">
-                                                        <rect key="frame" x="15" y="0.0" width="45" height="50"/>
-                                                        <state key="normal" title="Delete">
+                                                        <rect key="frame" x="15" y="0.0" width="48" height="50"/>
+                                                        <state key="normal" title="Logout">
                                                             <color key="titleColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>

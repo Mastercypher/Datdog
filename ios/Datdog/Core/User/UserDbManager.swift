@@ -42,7 +42,7 @@ class UserDbManager {
             let fileUrl = documentDirectory.appendingPathComponent("users").appendingPathExtension("sqlite3")
             let database = try Connection(fileUrl.path)
             mDatabase = database
-            print("Connected to " + tableName + " db, path: " + fileUrl.path)
+            //1print("Connected to " + tableName + " db, path: " + fileUrl.path)
         } catch {
             print(error)
         }
@@ -101,8 +101,8 @@ class UserDbManager {
                 // Get if he's only the current in the session
                 if user[mCurrent] == UserDbManager.STATUS.CURRENT {
                     let curUser = User(id: user[mId], name: user[mName], surname: user[mSurname], phone: user[mPhone],
-                                   birth: user[mBirth], email: user[mEmail], password: user[mPassword],
-                                   dateCreate: user[mDateCreate], dateUpdate: user[mDateUpdate], delete: user[mDelete])
+                                       birth: user[mBirth], email: user[mEmail], password: user[mPassword],
+                                       dateCreate: user[mDateCreate], dateUpdate: user[mDateUpdate], delete: user[mDelete])
                     currentUsers.insert(curUser)
                 }
             }
@@ -111,18 +111,17 @@ class UserDbManager {
         }
         
         // Controll if we have only one user logged in
-        if currentUsers.count == 1 {
+        if (currentUsers.count == 1) {
             for user in currentUsers {
                 return user
             }
-        } else if currentUsers.count > 1 {
+        } else if (currentUsers.count > 1){
             // Logou for all the user and redirect to login page
             for user in currentUsers {
-                self.logut(user: user, view: nil)
+                self.logut(user: user)
             }
             // Redirect to Login view
-            let vc = view.storyboard?.instantiateViewController(withIdentifier: "loginView") as! LoginController
-            view.present(vc, animated: true, completion:nil )
+            UtilProj.alertLogout(view: view)
         }
         return nil
     }
@@ -130,22 +129,21 @@ class UserDbManager {
     
     // Login the user
     func login(user: User) -> Bool {
-        let current = UserDbManager.STATUS.CURRENT
         // We have to be sure that the user is not deleted
         if user.mDelete == UserDbManager.STATUS.ACTIVE {
             if self.getById(id: user.mId) != nil {
-                return self.update(user: user)
+                return self.update(user: user, current: UserDbManager.STATUS.CURRENT)
             } else {
-                return self.insert(user: user,current: current)
+                return self.insert(user: user, current: UserDbManager.STATUS.CURRENT)
             }
         }
         return false
     }
     
     // Logout the user
-    func logut(user: User, view: UIViewController?) {
+    func logut(user: User) {
         let notCurrent = UserDbManager.STATUS.NOT_CURRENT
-
+        
         let dbUser = mTable.filter(mId == user.mId)
         let updateUser = dbUser.update(mName <- user.mName, mId <- user.mId, mSurname <- user.mSurname,
                                        mPhone <- user.mPhone, mBirth <- user.mBirth, mPassword <- user.mPassword,
@@ -154,12 +152,7 @@ class UserDbManager {
         
         do {
             try mDatabase.run(updateUser)
-            print("User \(user.mEmail!) logout")
-            if(view != nil){
-                // Redirect to Login view
-                let vc = view?.storyboard?.instantiateViewController(withIdentifier: "loginView") as! LoginController
-                view?.present(vc, animated: true, completion:nil )
-            }
+            print("User \(user.mEmail) logout")
         } catch {
             print(error)
         }
@@ -181,14 +174,15 @@ class UserDbManager {
     }
     
     // Update a specific user
-    func update(user: User) -> Bool {
+    func update(user: User, current: Int) -> Bool {
         let dbUser = mTable.filter(mId == user.mId)
         let updateUser = dbUser.update(mName <- user.mName, mId <- user.mId, mSurname <- user.mSurname,
                                        mPhone <- user.mPhone, mBirth <- user.mBirth, mPassword <- user.mPassword,
-                                       mDateCreate <- user.mDateCreate, mDateUpdate <- user.mDateUpdate)
+                                       mDateCreate <- user.mDateCreate, mDateUpdate <- user.mDateUpdate,
+                                       mCurrent <- current, mDelete <- user.mDelete)
         do {
             try mDatabase.run(updateUser)
-            print("User \(user.mEmail!) updated")
+            print("User \(user.mEmail) updated")
             return true
         } catch {
             print(error)

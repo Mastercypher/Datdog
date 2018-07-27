@@ -17,7 +17,7 @@
 		7D3D41FA2107CA2800FA4034 /* NfcReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3D41F92107CA2800FA4034 /* NfcReportController.swift */; };
 		7D44B6302109D851007E6223 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B62F2109D851007E6223 /* User.swift */; };
 		7D44B6322109D861007E6223 /* RegistrationManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B6312109D861007E6223 /* RegistrationManage.swift */; };
-		7D44B634210A6DE2007E6223 /* DateProj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B633210A6DE2007E6223 /* DateProj.swift */; };
+		7D44B634210A6DE2007E6223 /* UtilProj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B633210A6DE2007E6223 /* UtilProj.swift */; };
 		7D44B66C210B05C5007E6223 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D44B65E210B05BD007E6223 /* SQLite.framework */; };
 		7D44B66D210B05D2007E6223 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D44B65E210B05BD007E6223 /* SQLite.framework */; };
 		7D44B66E210B05D2007E6223 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D44B65E210B05BD007E6223 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -40,6 +40,8 @@
 		7D44B69E210B6267007E6223 /* AddVaccinationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B69D210B6267007E6223 /* AddVaccinationController.swift */; };
 		7D44B6A0210B627A007E6223 /* ModifyVaccinationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B69F210B627A007E6223 /* ModifyVaccinationController.swift */; };
 		7D44B6A2210B6290007E6223 /* ViewVaccinationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B6A1210B6290007E6223 /* ViewVaccinationController.swift */; };
+		7D44B6A6210BD8B7007E6223 /* DogDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B6A5210BD8B7007E6223 /* DogDbManager.swift */; };
+		7D44B6A8210BDA62007E6223 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B6A7210BDA62007E6223 /* Dog.swift */; };
 		7DD0712E2109C72A00037A09 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0712D2109C72A00037A09 /* LoginController.swift */; };
 		7DD9916021060667001674C8 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD9915F21060667001674C8 /* MenuController.swift */; };
 		7DD9916221068042001674C8 /* LostsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD9916121068042001674C8 /* LostsController.swift */; };
@@ -136,7 +138,7 @@
 		7D3D41F92107CA2800FA4034 /* NfcReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NfcReportController.swift; sourceTree = "<group>"; };
 		7D44B62F2109D851007E6223 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7D44B6312109D861007E6223 /* RegistrationManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationManage.swift; sourceTree = "<group>"; };
-		7D44B633210A6DE2007E6223 /* DateProj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProj.swift; sourceTree = "<group>"; };
+		7D44B633210A6DE2007E6223 /* UtilProj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilProj.swift; sourceTree = "<group>"; };
 		7D44B653210B05BD007E6223 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../../../Downloads/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		7D44B672210B07B7007E6223 /* UserDbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDbManager.swift; sourceTree = "<group>"; };
 		7D44B675210B55EC007E6223 /* ViewUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUserController.swift; sourceTree = "<group>"; };
@@ -157,6 +159,8 @@
 		7D44B69D210B6267007E6223 /* AddVaccinationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVaccinationController.swift; sourceTree = "<group>"; };
 		7D44B69F210B627A007E6223 /* ModifyVaccinationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyVaccinationController.swift; sourceTree = "<group>"; };
 		7D44B6A1210B6290007E6223 /* ViewVaccinationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVaccinationController.swift; sourceTree = "<group>"; };
+		7D44B6A5210BD8B7007E6223 /* DogDbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogDbManager.swift; sourceTree = "<group>"; };
+		7D44B6A7210BDA62007E6223 /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		7DD0712D2109C72A00037A09 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		7DD9915F21060667001674C8 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		7DD9916121068042001674C8 /* LostsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostsController.swift; sourceTree = "<group>"; };
@@ -329,6 +333,24 @@
 			path = Vaccinations;
 			sourceTree = "<group>";
 		};
+		7D44B6A3210BD883007E6223 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				7D44B62F2109D851007E6223 /* User.swift */,
+				7D44B672210B07B7007E6223 /* UserDbManager.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		7D44B6A4210BD897007E6223 /* Dog */ = {
+			isa = PBXGroup;
+			children = (
+				7D44B6A7210BDA62007E6223 /* Dog.swift */,
+				7D44B6A5210BD8B7007E6223 /* DogDbManager.swift */,
+			);
+			path = Dog;
+			sourceTree = "<group>";
+		};
 		7DD0712A2109C5CA00037A09 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,10 +367,10 @@
 		7DD0712B2109C5D500037A09 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				7D44B62F2109D851007E6223 /* User.swift */,
-				7D44B672210B07B7007E6223 /* UserDbManager.swift */,
+				7D44B6A3210BD883007E6223 /* User */,
+				7D44B6A4210BD897007E6223 /* Dog */,
 				7D44B6312109D861007E6223 /* RegistrationManage.swift */,
-				7D44B633210A6DE2007E6223 /* DateProj.swift */,
+				7D44B633210A6DE2007E6223 /* UtilProj.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -487,6 +509,7 @@
 				7D44B684210B5BA0007E6223 /* ViewLostController.swift in Sources */,
 				7D44B68B210B5C9C007E6223 /* AddFriendController.swift in Sources */,
 				7D44B682210B5B42007E6223 /* ConfirmReportController.swift in Sources */,
+				7D44B6A8210BDA62007E6223 /* Dog.swift in Sources */,
 				7D44B690210B6086007E6223 /* ConnectedController.swift in Sources */,
 				7DE8996221060414004E646B /* MissingController.swift in Sources */,
 				7D44B695210B61DB007E6223 /* AddDogController.swift in Sources */,
@@ -501,7 +524,7 @@
 				7DD991642106804F001674C8 /* ReportsController.swift in Sources */,
 				7D44B69C210B625A007E6223 /* VaccinationsController.swift in Sources */,
 				7D44B680210B5B24007E6223 /* CodeReportController.swift in Sources */,
-				7D44B634210A6DE2007E6223 /* DateProj.swift in Sources */,
+				7D44B634210A6DE2007E6223 /* UtilProj.swift in Sources */,
 				7DE8996421060420004E646B /* FriendsController.swift in Sources */,
 				7D44B6A2210B6290007E6223 /* ViewVaccinationController.swift in Sources */,
 				7D44B6322109D861007E6223 /* RegistrationManage.swift in Sources */,
@@ -512,6 +535,7 @@
 				7D44B678210B55FA007E6223 /* ModifyUserController.swift in Sources */,
 				7D44B697210B6217007E6223 /* ViewDogController.swift in Sources */,
 				7D44B676210B55EC007E6223 /* ViewUserController.swift in Sources */,
+				7D44B6A6210BD8B7007E6223 /* DogDbManager.swift in Sources */,
 				7DE8995E21048F2F004E646B /* DogsController.swift in Sources */,
 				7D44B69A210B624A007E6223 /* ModifyDogController.swift in Sources */,
 				7D0DD8EB210464CE00AE131F /* AppDelegate.swift in Sources */,

@@ -9,10 +9,18 @@
 import UIKit
 
 class WelcomeController: UIViewController {
-    
-    // Remove comments if you want to show the welcome page only once
-    /*
+
+    let db = UserDbManager()
+    var mUser: User? = nil
+
     override func loadView() {
+        mUser = db.getCurrent(view: self)
+        if (mUser != nil) {
+            self.goToMainNavigation()
+        } else {
+            super.loadView()
+        }
+        /*
         let defaults = UserDefaults.standard
         let welcomeDid = defaults.bool(forKey: "welcomeDid")
         if welcomeDid {
@@ -22,9 +30,9 @@ class WelcomeController: UIViewController {
             defaults.set(true, forKey: "welcomeDid")
             super.loadView()
         }
+        */
     }
-    */
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -46,6 +54,9 @@ class WelcomeController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
-
+    func goToMainNavigation(){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "mainNav") as! UITabBarController
+        self.present(vc, animated: false, completion:nil )
+    }
 }
 

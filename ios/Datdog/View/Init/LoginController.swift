@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class LoginController : UIViewController, UITextFieldDelegate {
     
@@ -16,10 +15,25 @@ class LoginController : UIViewController, UITextFieldDelegate {
     var mEmail = String("")
     var mPassword = String("")
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    let db = UserDbManager()
+    var mUser: User? = nil
+    
+    override func loadView() {
+        mUser = db.getCurrent(view: self)
+        if (mUser != nil) {
+            self.goToMainNavigation()
+        } else {
+            super.loadView()
+        }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mUser = db.getCurrent(view: self)
+        if (mUser != nil) {
+            self.goToMainNavigation()
+        }
+    }
     
     @IBAction func eventLogin(_ sender: Any) {
         var errorMessage = String("")
@@ -48,10 +62,10 @@ class LoginController : UIViewController, UITextFieldDelegate {
         
         let task = URLSession.shared.dataTask(with: request) { [unowned self](data, response, error) in
             /*
-            if (data != nil) {
-                let string = String(data: data!, encoding: .utf8)
-                debugPrint(string!)
-            }
+             if (data != nil) {
+             let string = String(data: data!, encoding: .utf8)
+             debugPrint(string!)
+             }
              */
             
             do {
@@ -90,12 +104,16 @@ class LoginController : UIViewController, UITextFieldDelegate {
         }
         
         if(loginSuccess){
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "mainNav") as! UITabBarController
-            self.present(vc, animated: true, completion:nil )
+            self.goToMainNavigation()
         } else {
             let alert = UIAlertController(title: "Attention", message: "Email or password wrong", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Default action"), style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    func goToMainNavigation(){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "mainNav") as! UITabBarController
+        self.present(vc, animated: false, completion:nil )
     }
 }

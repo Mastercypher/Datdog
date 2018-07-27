@@ -149,7 +149,7 @@ class RegistrationController : UIViewController, UITextFieldDelegate {
     
     // Permit to oush the registration data online.
     func pushRegistration(){
-        let dateNow = DateProj.getDateNow()
+        let dateNow = UtilProj.getDateNow()
         let urlString = "http://datdog.altervista.org/user.php?action=insert&" +
             "name_u=\(name)&surname_u=\(surname)&phone_u=\(phone)&birth_u=\(birth)&" +
         "email_u=\(email)&password_u=\(password)&date_create_u=\(dateNow)&date_update_u=\(dateNow)&delete_u=0"

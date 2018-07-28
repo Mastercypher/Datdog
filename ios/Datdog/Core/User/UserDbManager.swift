@@ -175,6 +175,9 @@ class UserDbManager {
     
     // Update a specific user
     func update(user: User, current: Int) -> Bool {
+        // VERY IMPORTANT -> UPDATE DATE
+        user.mDateUpdate = UtilProj.getDateNow()
+        
         let dbUser = mTable.filter(mId == user.mId)
         let updateUser = dbUser.update(mName <- user.mName, mId <- user.mId, mSurname <- user.mSurname,
                                        mPhone <- user.mPhone, mBirth <- user.mBirth, mPassword <- user.mPassword,

@@ -11,18 +11,24 @@ import QuartzCore
 
 class DogsController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tbvDogs: UITableView!
     @IBOutlet weak var btnAddDog: UIButton!
     
     var mDogs: [Dog]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // VIEW
         self.navigationController?.navigationBar.prefersLargeTitles = true
         btnAddDog.layer.cornerRadius = 0.5 * btnAddDog.bounds.size.width;
         btnAddDog.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // LOAD DATA
         let user = UserDbManager().getCurrent(view: self)
         mDogs = DogDbManager().getAll(user: user!)
+        tbvDogs.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,21 +36,23 @@ class DogsController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (mDogs != nil) {
             return (mDogs?.count)!
         } else {
             return 0
         }
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
 
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return mDogs?[section].mName
-        
+        if mDogs != nil {
+            return "You have \(mDogs?.count ?? 0) \((mDogs?.count == 1 ? "dog" : "dogs"))"
+        } else{
+            return "You have no dogs"
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,6 +65,14 @@ class DogsController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let selectedIndex = tbvDogs.indexPathForSelectedRow!
+        let destinationController = segue.destination as! ViewDogController
+        
+        destinationController.mDog = mDogs?[selectedIndex.row]
     }
 }
 

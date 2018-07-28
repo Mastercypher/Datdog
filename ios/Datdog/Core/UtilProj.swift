@@ -18,6 +18,7 @@ class UtilProj {
     
     struct ERR {
         static let SAVING = "Problem encountered while saving data"
+        
         static let LOGOUT = "Problem encountered, you will return to the login screen to try again."
         static let GENERAL_LOGOUT = "Problem encountered, restart the application and try again."
         

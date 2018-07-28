@@ -37,7 +37,7 @@ class ModifyUserController: UIViewController {
         mUser?.mPhone = txfPhone.text
         mUser?.mBirth = txfBirth.text
         if (db.update(user: mUser!, current: UserDbManager.STATUS.CURRENT)){
-            self.navigationController?.popViewController(animated: true)
+            UtilProj.backNavigation(view: self)
         } else {
             UtilProj.alertError(view: self)
         }

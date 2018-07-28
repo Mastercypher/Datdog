@@ -659,7 +659,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abG-Ik-tBg">
-                                                                <rect key="frame" x="65.5" y="21" width="213" height="21"/>
+                                                                <rect key="frame" x="70.5" y="21" width="213" height="21"/>
                                                                 <gestureRecognizers/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -680,7 +680,7 @@
                                                             <constraint firstItem="322-x1-AQt" firstAttribute="centerY" secondItem="4Ut-ud-yST" secondAttribute="centerY" id="J3A-c6-bl6"/>
                                                             <constraint firstItem="abG-Ik-tBg" firstAttribute="centerY" secondItem="4Ut-ud-yST" secondAttribute="centerY" id="VeZ-hn-ddU"/>
                                                             <constraint firstItem="abG-Ik-tBg" firstAttribute="width" secondItem="4Ut-ud-yST" secondAttribute="width" multiplier="6:10" id="XcN-pP-Opz"/>
-                                                            <constraint firstItem="abG-Ik-tBg" firstAttribute="leading" secondItem="i5a-Kg-ktA" secondAttribute="trailing" constant="20" id="fWX-cn-le6"/>
+                                                            <constraint firstItem="abG-Ik-tBg" firstAttribute="leading" secondItem="i5a-Kg-ktA" secondAttribute="trailing" constant="25" id="fWX-cn-le6"/>
                                                             <constraint firstItem="322-x1-AQt" firstAttribute="width" secondItem="4Ut-ud-yST" secondAttribute="width" multiplier="1:20" id="sLt-6o-ZF8"/>
                                                             <constraint firstAttribute="trailing" secondItem="322-x1-AQt" secondAttribute="trailing" constant="10" id="vBF-tP-efM"/>
                                                             <constraint firstItem="i5a-Kg-ktA" firstAttribute="centerY" secondItem="4Ut-ud-yST" secondAttribute="centerY" id="zJi-Tk-Ac1"/>
@@ -711,18 +711,19 @@
                                                                     <constraint firstAttribute="width" secondItem="bwc-Yn-bES" secondAttribute="height" id="0J6-vG-403"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heS-6d-M4K">
-                                                                <rect key="frame" x="65.5" y="21" width="213" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="bYx-od-shB">
                                                                 <rect key="frame" x="327.5" y="23" width="17.5" height="17.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="bYx-od-shB" secondAttribute="height" id="N46-HH-gc9"/>
                                                                 </constraints>
                                                             </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HsP-KX-x08">
+                                                                <rect key="frame" x="70.5" y="21" width="64" height="21"/>
+                                                                <gestureRecognizers/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <gestureRecognizers/>
@@ -730,13 +731,11 @@
                                                             <constraint firstItem="bwc-Yn-bES" firstAttribute="width" secondItem="gpv-7t-euy" secondAttribute="width" multiplier="2:20" id="2Ha-Eh-NuZ"/>
                                                             <constraint firstItem="bYx-od-shB" firstAttribute="width" secondItem="gpv-7t-euy" secondAttribute="width" multiplier="1:20" id="5u8-Ni-7NE"/>
                                                             <constraint firstItem="bwc-Yn-bES" firstAttribute="centerY" secondItem="gpv-7t-euy" secondAttribute="centerY" id="7U3-En-aTW"/>
-                                                            <constraint firstItem="heS-6d-M4K" firstAttribute="centerY" secondItem="gpv-7t-euy" secondAttribute="centerY" id="CR4-GS-Fq1"/>
                                                             <constraint firstItem="bYx-od-shB" firstAttribute="centerY" secondItem="gpv-7t-euy" secondAttribute="centerY" id="E1t-rw-3TB"/>
+                                                            <constraint firstItem="HsP-KX-x08" firstAttribute="centerY" secondItem="gpv-7t-euy" secondAttribute="centerY" id="Eht-tm-EWA"/>
                                                             <constraint firstAttribute="trailing" secondItem="bYx-od-shB" secondAttribute="trailing" constant="10" id="Knk-Bm-Mtd"/>
                                                             <constraint firstItem="bwc-Yn-bES" firstAttribute="leading" secondItem="gpv-7t-euy" secondAttribute="leading" constant="10" id="Och-wy-Nd6"/>
-                                                            <constraint firstAttribute="trailing" secondItem="heS-6d-M4K" secondAttribute="trailing" constant="76.5" id="ZLh-xA-Jxm"/>
-                                                            <constraint firstItem="heS-6d-M4K" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bwc-Yn-bES" secondAttribute="trailing" constant="8" symbolic="YES" id="tcJ-mx-QHO"/>
-                                                            <constraint firstItem="heS-6d-M4K" firstAttribute="width" secondItem="gpv-7t-euy" secondAttribute="width" multiplier="6:10" id="zua-rd-NCF"/>
+                                                            <constraint firstItem="HsP-KX-x08" firstAttribute="leading" secondItem="bwc-Yn-bES" secondAttribute="trailing" constant="25" id="yVQ-Bg-Pt6"/>
                                                         </constraints>
                                                         <connections>
                                                             <outletCollection property="gestureRecognizers" destination="ee2-Jo-x6B" appends="YES" id="bYJ-NL-Z5W"/>
@@ -2732,6 +2731,9 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="touchAdd:" destination="45Q-zR-RVO" eventType="touchUpInside" id="Zax-cW-2kg"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2782,7 +2784,6 @@
                     <connections>
                         <outlet property="sgmSex" destination="0Nd-oC-bjs" id="w7N-G8-IKY"/>
                         <outlet property="sgmSize" destination="k9r-Gm-JKs" id="rtf-f4-9kS"/>
-                        <outlet property="touchAdd" destination="r0m-65-1iK" id="2r1-41-bDi"/>
                         <outlet property="txfBirth" destination="YqO-Gp-9Po" id="PXs-co-Okw"/>
                         <outlet property="txfBreed" destination="lLx-jE-z53" id="Qi4-1x-WpF"/>
                         <outlet property="txfColour" destination="K6l-N0-hAn" id="SyN-IE-5Qx"/>

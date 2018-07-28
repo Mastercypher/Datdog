@@ -134,16 +134,14 @@ class RegistrationController : UIViewController, UITextFieldDelegate {
                     errorMessage = "Password not matching"
                 }
             }else {
-                errorMessage = "Max characters for any field is 50"
+                errorMessage = UtilProj.ERR.CHAR_MAX
             }
         } else {
-            errorMessage = "You have to fill all the field"
+            errorMessage = UtilProj.ERR.CHAR_MIN
         }
         
         if(!errorMessage.isEmpty){
-            let alert = UIAlertController(title: "Attention", message: errorMessage, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Default action"), style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            UtilProj.showAlertOk(view: self, title: "Attention", message: errorMessage, handler: nil)
         }
     }
     

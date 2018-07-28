@@ -10,9 +10,21 @@ import Foundation
 import UIKit
 
 class UtilProj {
-    static let ERR_LOGOUT = "We have encountered a problem, you will return to the login screen to try again."
-    static let ERR_GENERAL = "We have encountered a problem, restart the application and try again."
-
+    
+    struct DBSTATUS {
+        static let AVAILABLE = 0
+        static let DELETE = 1
+    }
+    
+    struct ERR {
+        static let SAVING = "Problem encountered while saving data"
+        static let LOGOUT = "Problem encountered, you will return to the login screen to try again."
+        static let GENERAL_LOGOUT = "Problem encountered, restart the application and try again."
+        
+        static let CHAR_MIN = "You have to fill all the field"
+        static let CHAR_MAX = "Max characters for any field is 50"
+    }
+    
     static func getDateNow() -> String{
         let date = Date()
         let formatter = DateFormatter()
@@ -20,23 +32,31 @@ class UtilProj {
         return formatter.string(from: date)
     }
     
-    static func alertLogout(view: UIViewController){
-        let alert = UIAlertController(title: "Attention", message: self.ERR_LOGOUT, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Logout action"), style: .default, handler: { _ in
-            self.goToLogin(view: view)
-        }))
-        view.present(alert, animated: true, completion: nil)
-    }
-
-    static func alertError(view: UIViewController){
-        let alert = UIAlertController(title: "Attention", message: self.ERR_GENERAL, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Default action"), style: .default, handler: nil ))
+    static func showAlertOk(view: UIViewController, title: String, message: String, handler: ((UIAlertAction) -> Swift.Void)? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Logout action"), style: .default, handler: handler))
         view.present(alert, animated: true, completion: nil)
     }
     
+    static func alertLogout(view: UIViewController){
+        self.showAlertOk(view: view, title: "Attention", message: self.ERR.LOGOUT, handler:{ _ in
+            self.goToLogin(view: view)
+        })
+    }
+    
+    static func alertError(view: UIViewController){
+        self.showAlertOk(view: view, title: "Attention", message: self.ERR.GENERAL_LOGOUT, handler: nil)
+    }
+    
     static func goToLogin(view: UIViewController) {
+        self.showAlertOk(view: view, title: "Attention", message: self.ERR.LOGOUT, handler:{ _ in
+            self.goToLogin(view: view)
+        })
         let vc = view.storyboard?.instantiateViewController(withIdentifier: "loginView") as! LoginController
         view.present(vc, animated: true, completion:nil )
     }
-
+    
+    static func backNavigation(view: UIViewController) {
+        view.navigationController?.popViewController(animated: true)
+    }
 }

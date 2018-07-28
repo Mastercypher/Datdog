@@ -28,7 +28,7 @@ class DogDbManager {
     let mName = Expression<String>("name_d")
     let mBreed = Expression<String>("breed_d")
     let mColour = Expression<String>("colour_d")
-    let mBirth = Expression<Int>("birth_d")
+    let mBirth = Expression<String>("birth_d")
     let mSize = Expression<Int>("size_d")
     let mSex = Expression<Int>("sex_d")
     let mDateCreate = Expression<String>("date_create_u")
@@ -51,6 +51,11 @@ class DogDbManager {
     
     // Creation of the user database
     func createTable() {
+        // REFERENCES
+        let UserDb = UserDbManager()
+        let user = UserDb.mTable
+        let idUser = UserDb.mId
+        // CREATE TABLE
         let createTable = mTable.create(ifNotExists: true) { (table) in
             table.column(mId, primaryKey: true)
             table.column(mIdNfc)
@@ -64,6 +69,8 @@ class DogDbManager {
             table.column(mDateCreate)
             table.column(mDateUpdate)
             table.column(mDelete)
+            table.foreignKey(mIdUser, references: user, idUser)
+            // FOREIGN KEY("user_id") REFERENCES "users"("id") ON DELETE SET NULL
         }
         do {
             try mDatabase.run(createTable)
@@ -72,89 +79,97 @@ class DogDbManager {
         }
     }
     
-    func getById(id: Int) -> User?{
-        /*
-        var userFound: User?
+    func getAll(user: User) -> Set<Dog>{
+        var allDogs = Set<Dog>()
+        
+        do {
+            let query = mTable.filter(mIdUser == user.mId)
+            let dogs = try mDatabase.prepare(query)
+            for dog in dogs {
+                let curDog = Dog(id: dog[mId], idNfc: dog[mIdNfc], idUser: dog[mIdUser], name: dog[mName],
+                             breed: dog[mBreed], colour: dog[mColour], birth: dog[mBirth],
+                             size: dog[mSize], sex: dog[mSex], dateCreate: dog[mDateCreate],
+                             dateUpdate: dog[mDateUpdate], delete: dog[mDelete])
+                allDogs.insert(curDog)
+            }
+        } catch {
+            print(error)
+        }
+        return allDogs
+    }
+    
+    func getById(id: String) -> Dog?{
+        var dogFound: Dog?
         
         do {
             let query = mTable.filter(mId == id)
-            let users = try mDatabase.prepare(query)
-            for user in users {
+            let dogs = try mDatabase.prepare(query)
+            for dog in dogs {
                 // Get only if he's not deleted
-                if user[mDelete] == UserDbManager.STATUS.ACTIVE {
-                    userFound = User(id: user[mId], name: user[mName], surname: user[mSurname], phone: user[mPhone],
-                                     birth: user[mBirth], email: user[mEmail], password: user[mPassword],
-                                     dateCreate: user[mDateCreate], dateUpdate: user[mDateUpdate], delete: user[mDelete])
+                if dog[mDelete] == UserDbManager.STATUS.ACTIVE {
+                    dogFound = Dog(id: dog[mId], idNfc: dog[mIdNfc], idUser: dog[mIdUser], name: dog[mName],
+                                   breed: dog[mBreed], colour: dog[mColour], birth: dog[mBirth],
+                                   size: dog[mSize], sex: dog[mSex], dateCreate: dog[mDateCreate],
+                                   dateUpdate: dog[mDateUpdate], delete: dog[mDelete])
                 }
                 break
             }
         } catch {
             print(error)
         }
-        return userFound
- */
-        return nil
+        return dogFound
     }
     
-    
-    
+    // Inser a dog
     func insert(dog: Dog) -> Bool {
-        /*
-        let query = mTable.insert(mId <- user.mId, mName <- user.mName, mId <- user.mId, mSurname <- user.mSurname,
-                                  mPhone <- user.mPhone, mBirth <- user.mBirth, mEmail <- user.mEmail,
-                                  mPassword <- user.mPassword, mDateCreate <- user.mDateCreate, mDateUpdate <- user.mDateUpdate,
-                                  mCurrent <- current, mDelete <- user.mDelete)
+        let query = mTable.insert(mId <- dog.mId, mIdNfc <- dog.mIdNfc, mIdUser <- dog.mIdUser, mName <- dog.mName,
+                                  mBreed <- dog.mBreed, mColour <- dog.mColour, mBirth <- dog.mBirth, mSize <- dog.mSize,
+                                  mSex <- dog.mSex, mDateCreate <- dog.mDateCreate, mDateUpdate <- dog.mDateUpdate,
+                                  mDelete <- dog.mDelete)
         do {
             try mDatabase.run(query)
-            print("Registred user: \(user.mEmail!)")
+            print("Registred dog: \(dog.mName!)")
             return true
         } catch {
             print(error)
             return false
         }
- */
-        return false
     }
     
-    // Update a specific user
+    // Update a specific dog
     func update(dog: Dog) -> Bool {
-        /*
-        let dbUser = mTable.filter(mId == user.mId)
-        let updateUser = dbUser.update(mName <- user.mName, mId <- user.mId, mSurname <- user.mSurname,
-                                       mPhone <- user.mPhone, mBirth <- user.mBirth, mPassword <- user.mPassword,
-                                       mDateCreate <- user.mDateCreate, mDateUpdate <- user.mDateUpdate,
-                                       mCurrent <- current, mDelete <- user.mDelete)
+        let dbDog = mTable.filter(mId == dog.mId)
+        let query = dbDog.insert(mId <- dog.mId, mIdNfc <- dog.mIdNfc, mIdUser <- dog.mIdUser, mName <- dog.mName,
+                                 mBreed <- dog.mBreed, mColour <- dog.mColour, mBirth <- dog.mBirth, mSize <- dog.mSize,
+                                 mSex <- dog.mSex, mDateCreate <- dog.mDateCreate, mDateUpdate <- dog.mDateUpdate,
+                                 mDelete <- dog.mDelete)
         do {
-            try mDatabase.run(updateUser)
-            print("User \(user.mEmail) updated")
+            try mDatabase.run(query)
+            print("Dog \(dog.mName) updated")
             return true
         } catch {
             print(error)
             return false
         }
- */
-        return false
     }
     
     // Delete the current user
     func delete(dog: Dog) -> Bool {
-        /*
-        let notCurrent = UserDbManager.STATUS.NOT_CURRENT
-        let deleted = UserDbManager.STATUS.DELETED
-        let dbUser = mTable.filter(mId == user.mId)
-        let updateUser = dbUser.update(mName <- user.mName, mId <- user.mId, mSurname <- user.mSurname,
-                                       mPhone <- user.mPhone, mBirth <- user.mBirth, mPassword <- user.mPassword,
-                                       mDateCreate <- user.mDateCreate, mDateUpdate <- user.mDateUpdate,
-                                       mCurrent <- notCurrent, mDelete <- deleted)
+        
+        let delete = UtilProj.DBSTATUS.DELETE
+        let dbDog = mTable.filter(mId == dog.mId)
+        let query = dbDog.insert(mId <- dog.mId, mIdNfc <- dog.mIdNfc, mIdUser <- dog.mIdUser, mName <- dog.mName,
+                                 mBreed <- dog.mBreed, mColour <- dog.mColour, mBirth <- dog.mBirth, mSize <- dog.mSize,
+                                 mSex <- dog.mSex, mDateCreate <- dog.mDateCreate, mDateUpdate <- dog.mDateUpdate,
+                                 mDelete <- delete)
         do {
-            try mDatabase.run(updateUser)
-            print("User \(user.mEmail!) deleted")
+            try mDatabase.run(query)
+            print("User \(dog.mName!) deleted")
             return true
         } catch {
             print(error)
             return false
         }
- */
-        return false
+        
     }
 }

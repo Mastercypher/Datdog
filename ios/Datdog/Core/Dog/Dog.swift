@@ -11,6 +11,11 @@ class Dog: Hashable{
         return mId.hashValue
     }
     
+    static let SEX_M = 0
+    static let SEX_F = 1
+    static let SIZE_SMALL = 0
+    static let SIZE_BIG = 1
+    
     var mId: String!
     var mIdNfc: String!
     var mIdUser: Int!
@@ -18,27 +23,52 @@ class Dog: Hashable{
     var mBreed: String!
     var mColour: String!
     var mBirth: String!
-    var mSize: String!
-    var mSex: String!
+    var mSize: Int!
+    var mSex: Int!
     var mDateCreate: String!
     var mDateUpdate: String!
-    var mDevare: Int!
+    var mDelete: Int!
     
-    /*
-    init(id: Int, name: String, surname: String, phone: String, birth: String, email: String,
-         password: String, dateCreate: String, dateUpdate: String, devare: Int) {
+    // Init with less params
+    init(idUser: Int, name: String, breed: String, colour: String,
+         birth: String, size: Int, sex: Int) {
+        let dateNow = UtilProj.getDateNow()
+        
+        mId = self.createId(idUser: idUser, name: name, dateNow: dateNow)
+        mIdNfc = ""
+        mIdUser = idUser
+        mName = name
+        mBreed = breed
+        mColour = colour
+        mBirth = birth
+        mSize = size
+        mSex = sex
+        mDateCreate = dateNow
+        mDateUpdate = dateNow
+        mDelete = 0
+    }
+    
+    // Init with more params
+    init(id: String, idNfc: String, idUser: Int, name: String, breed: String, colour: String,
+         birth: String, size: Int, sex: Int, dateCreate: String, dateUpdate: String, delete: Int) {
         mId = id
         mIdNfc = idNfc
-        mIdUser = surname
-        mPhone = phone
+        mIdUser = idUser
+        mName = name
+        mBreed = breed
+        mColour = colour
         mBirth = birth
-        mEmail = email
-        mPassword = password
+        mSize = size
+        mSex = sex
         mDateCreate = dateCreate
         mDateUpdate = dateUpdate
-        mDevare = devare
+        mDelete = delete
     }
-    */
+    
+    func createId(idUser: Int, name: String, dateNow: String) -> String{
+        return String(idUser) + "-" + name + "-" + dateNow
+    }
+    
     static func == (lDog: Dog, rDog: Dog) -> Bool {
         return lDog.mId == rDog.mId
     }

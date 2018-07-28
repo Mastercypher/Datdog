@@ -42,7 +42,7 @@ class Dog{
         mSex = sex
         mDateCreate = dateNow
         mDateUpdate = dateNow
-        mDelete = 0
+        mDelete = UtilProj.DBSTATUS.AVAILABLE
     }
     
     // Init with more params

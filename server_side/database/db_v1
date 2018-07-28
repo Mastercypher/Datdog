@@ -53,8 +53,8 @@ CREATE TABLE IF NOT EXISTS vaccination (
 /* FRIEND */
 CREATE TABLE IF NOT EXISTS friend (
   id VARCHAR(50) NOT NULL,
-  id_user_f VARCHAR(50) NOT NULL,
-  id_friend_f VARCHAR(50) NOT NULL,
+  id_user_f INTEGER NOT NULL,
+  id_friend_f INTEGER NOT NULL,
   date_create_f VARCHAR(50) NOT NULL,
   date_update_f VARCHAR(50) NOT NULL,
   delete_f INTEGER NOT NULL,

@@ -6,7 +6,7 @@
 //  Copyright © 2018 Mastercypher. All rights reserved.
 //
 
-class Vaccination{
+class Vaccination {
     
     var mId: String!
     var mIdDog: String!
@@ -41,7 +41,7 @@ class Vaccination{
         mDateCreate = dateCreate
         mDateUpdate = dateUpdate
         mDateCompleted = dateCompleted
-        mDelete = UtilProj.DBSTATUS.AVAILABLE
+        mDelete = delete
     }
     
     func createId(idDog: String, name: String, dateNow: String) -> String{

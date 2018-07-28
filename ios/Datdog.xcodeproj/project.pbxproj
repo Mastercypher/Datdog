@@ -16,6 +16,10 @@
 		7D2B169521071AAC001DF8EC /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2B169421071AAC001DF8EC /* RegistrationController.swift */; };
 		7D315B50210C65E8008C8AE7 /* Vaccination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D315B4F210C65E8008C8AE7 /* Vaccination.swift */; };
 		7D315B52210C65F3008C8AE7 /* VaccDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D315B51210C65F3008C8AE7 /* VaccDbManager.swift */; };
+		7D315B56210C7012008C8AE7 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D315B55210C7012008C8AE7 /* Friend.swift */; };
+		7D315B58210C7018008C8AE7 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D315B57210C7018008C8AE7 /* Report.swift */; };
+		7D315B5A210C7021008C8AE7 /* ReportDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D315B59210C7021008C8AE7 /* ReportDbManager.swift */; };
+		7D315B5C210C702C008C8AE7 /* FriendDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D315B5B210C702C008C8AE7 /* FriendDbManager.swift */; };
 		7D3D41FA2107CA2800FA4034 /* NfcReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3D41F92107CA2800FA4034 /* NfcReportController.swift */; };
 		7D44B6302109D851007E6223 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B62F2109D851007E6223 /* User.swift */; };
 		7D44B6322109D861007E6223 /* RegistrationManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B6312109D861007E6223 /* RegistrationManage.swift */; };
@@ -139,6 +143,10 @@
 		7D2B169421071AAC001DF8EC /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		7D315B4F210C65E8008C8AE7 /* Vaccination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vaccination.swift; sourceTree = "<group>"; };
 		7D315B51210C65F3008C8AE7 /* VaccDbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccDbManager.swift; sourceTree = "<group>"; };
+		7D315B55210C7012008C8AE7 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		7D315B57210C7018008C8AE7 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		7D315B59210C7021008C8AE7 /* ReportDbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDbManager.swift; sourceTree = "<group>"; };
+		7D315B5B210C702C008C8AE7 /* FriendDbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDbManager.swift; sourceTree = "<group>"; };
 		7D3D41F92107CA2800FA4034 /* NfcReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NfcReportController.swift; sourceTree = "<group>"; };
 		7D44B62F2109D851007E6223 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7D44B6312109D861007E6223 /* RegistrationManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationManage.swift; sourceTree = "<group>"; };
@@ -228,6 +236,24 @@
 				7D315B51210C65F3008C8AE7 /* VaccDbManager.swift */,
 			);
 			path = Vaccination;
+			sourceTree = "<group>";
+		};
+		7D315B53210C6FDA008C8AE7 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				7D315B55210C7012008C8AE7 /* Friend.swift */,
+				7D315B5B210C702C008C8AE7 /* FriendDbManager.swift */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
+		7D315B54210C6FE6008C8AE7 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				7D315B57210C7018008C8AE7 /* Report.swift */,
+				7D315B59210C7021008C8AE7 /* ReportDbManager.swift */,
+			);
+			path = Report;
 			sourceTree = "<group>";
 		};
 		7D44B654210B05BD007E6223 /* Products */ = {
@@ -380,6 +406,8 @@
 		7DD0712B2109C5D500037A09 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				7D315B54210C6FE6008C8AE7 /* Report */,
+				7D315B53210C6FDA008C8AE7 /* Friend */,
 				7D315B48210C65C8008C8AE7 /* Vaccination */,
 				7D44B6A3210BD883007E6223 /* User */,
 				7D44B6A4210BD897007E6223 /* Dog */,
@@ -522,11 +550,13 @@
 			files = (
 				7D44B684210B5BA0007E6223 /* ViewLostController.swift in Sources */,
 				7D44B68B210B5C9C007E6223 /* AddFriendController.swift in Sources */,
+				7D315B5C210C702C008C8AE7 /* FriendDbManager.swift in Sources */,
 				7D44B682210B5B42007E6223 /* ConfirmReportController.swift in Sources */,
 				7D44B6A8210BDA62007E6223 /* Dog.swift in Sources */,
 				7D44B690210B6086007E6223 /* ConnectedController.swift in Sources */,
 				7DE8996221060414004E646B /* MissingController.swift in Sources */,
 				7D44B695210B61DB007E6223 /* AddDogController.swift in Sources */,
+				7D315B56210C7012008C8AE7 /* Friend.swift in Sources */,
 				7D44B69E210B6267007E6223 /* AddVaccinationController.swift in Sources */,
 				7DD9916221068042001674C8 /* LostsController.swift in Sources */,
 				7D44B687210B5C16007E6223 /* ViewFriendController.swift in Sources */,
@@ -545,8 +575,10 @@
 				7D44B6322109D861007E6223 /* RegistrationManage.swift in Sources */,
 				7D315B52210C65F3008C8AE7 /* VaccDbManager.swift in Sources */,
 				7D44B673210B07B7007E6223 /* UserDbManager.swift in Sources */,
+				7D315B58210C7018008C8AE7 /* Report.swift in Sources */,
 				7D44B689210B5C3A007E6223 /* NfcFriendController.swift in Sources */,
 				7D0DD8ED210464CE00AE131F /* WelcomeController.swift in Sources */,
+				7D315B5A210C7021008C8AE7 /* ReportDbManager.swift in Sources */,
 				7D0DD8F3210464CE00AE131F /* Datdog.xcdatamodeld in Sources */,
 				7D44B678210B55FA007E6223 /* ModifyUserController.swift in Sources */,
 				7D44B697210B6217007E6223 /* ViewDogController.swift in Sources */,

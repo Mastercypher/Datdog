@@ -1,31 +1,29 @@
 //
-//  DogDbManager.swift
+//  ReportDbManager.swift
 //  Datdog
 //
 //  Created by Alessandro Riccardi on 28/07/2018.
 //  Copyright © 2018 Mastercypher. All rights reserved.
 //
+
 import Foundation
 import SQLite
 import UIKit
 
-class DogDbManager {
+class ReportDbManager {
+    
     
     var mDatabase: Connection!
-    let tableName = "dog"
-    let mTable = Table("dog")
+    let tableName = "report"
+    let mTable = Table("report")
     
     let mId = Expression<String>("id")
-    let mIdNfc = Expression<String>("id_nfc_d")
-    let mIdUser = Expression<Int>("id_user_d")
-    let mName = Expression<String>("name_d")
-    let mBreed = Expression<String>("breed_d")
-    let mColour = Expression<String>("colour_d")
-    let mBirth = Expression<String>("birth_d")
-    let mSize = Expression<Int>("size_d")
-    let mSex = Expression<Int>("sex_d")
+    let mIdUser = Expression<Int>("id_user_r")
+    let mIdDog = Expression<String>("id_dog_r")
+    let mLocation = Expression<String>("location_r")
     let mDateCreate = Expression<String>("date_create_u")
     let mDateUpdate = Expression<String>("date_update_u")
+    let mDateFound = Expression<String>("date_found_r")
     let mDelete = Expression<Int>("delete_u")
     
     
@@ -45,24 +43,25 @@ class DogDbManager {
     // Creation of the user database
     func createTable() {
         // REFERENCES
-        let UserDb = UserDbManager()
-        let user = UserDb.mTable
-        let idUser = UserDb.mId
+        let userDb = UserDbManager()
+        let user = userDb.mTable
+        let idUser = userDb.mId
+        // ____
+        let dogDb = DogDbManager()
+        let dog = dogDb.mTable
+        let idDog = dogDb.mId
         // CREATE TABLE
         let createTable = mTable.create(ifNotExists: true) { (table) in
             table.column(mId, primaryKey: true)
-            table.column(mIdNfc)
             table.column(mIdUser)
-            table.column(mName)
-            table.column(mBreed)
-            table.column(mColour)
-            table.column(mBirth)
-            table.column(mSize)
-            table.column(mSex)
+            table.column(mIdDog)
+            table.column(mLocation)
             table.column(mDateCreate)
             table.column(mDateUpdate)
+            table.column(mDateFound)
             table.column(mDelete)
             table.foreignKey(mIdUser, references: user, idUser)
+            table.foreignKey(mIdDog, references: dog, idDog)
             // FOREIGN KEY("user_id") REFERENCES "users"("id") ON DELETE SET NULL
         }
         do {
@@ -71,7 +70,7 @@ class DogDbManager {
             print(error)
         }
     }
-    
+    /*
     func getAll(user: User) -> Array<Dog>? {
         var allDogs = Array<Dog>()
         
@@ -80,9 +79,9 @@ class DogDbManager {
             let dogs = try mDatabase.prepare(query)
             for dog in dogs {
                 let curDog = Dog(id: dog[mId], idNfc: dog[mIdNfc], idUser: dog[mIdUser], name: dog[mName],
-                             breed: dog[mBreed], colour: dog[mColour], birth: dog[mBirth],
-                             size: dog[mSize], sex: dog[mSex], dateCreate: dog[mDateCreate],
-                             dateUpdate: dog[mDateUpdate], delete: dog[mDelete])
+                                 breed: dog[mBreed], colour: dog[mColour], birth: dog[mBirth],
+                                 size: dog[mSize], sex: dog[mSex], dateCreate: dog[mDateCreate],
+                                 dateUpdate: dog[mDateUpdate], delete: dog[mDelete])
                 allDogs.append(curDog)
             }
         } catch {
@@ -168,4 +167,5 @@ class DogDbManager {
         }
         
     }
+ */
 }

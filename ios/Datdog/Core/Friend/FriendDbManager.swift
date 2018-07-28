@@ -1,16 +1,18 @@
 //
-//  DogDbManager.swift
+//  FriendDbManager.swift
 //  Datdog
 //
 //  Created by Alessandro Riccardi on 28/07/2018.
 //  Copyright © 2018 Mastercypher. All rights reserved.
 //
+
 import Foundation
 import SQLite
 import UIKit
 
-class DogDbManager {
+class FriendDbManager {
     
+    /*
     var mDatabase: Connection!
     let tableName = "dog"
     let mTable = Table("dog")
@@ -80,9 +82,9 @@ class DogDbManager {
             let dogs = try mDatabase.prepare(query)
             for dog in dogs {
                 let curDog = Dog(id: dog[mId], idNfc: dog[mIdNfc], idUser: dog[mIdUser], name: dog[mName],
-                             breed: dog[mBreed], colour: dog[mColour], birth: dog[mBirth],
-                             size: dog[mSize], sex: dog[mSex], dateCreate: dog[mDateCreate],
-                             dateUpdate: dog[mDateUpdate], delete: dog[mDelete])
+                                 breed: dog[mBreed], colour: dog[mColour], birth: dog[mBirth],
+                                 size: dog[mSize], sex: dog[mSex], dateCreate: dog[mDateCreate],
+                                 dateUpdate: dog[mDateUpdate], delete: dog[mDelete])
                 allDogs.append(curDog)
             }
         } catch {
@@ -168,4 +170,5 @@ class DogDbManager {
         }
         
     }
+ */
 }

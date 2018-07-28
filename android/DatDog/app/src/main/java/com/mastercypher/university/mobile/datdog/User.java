@@ -60,7 +60,7 @@ public class User {
         sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         create = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_CREATE)));
         update = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_UPDATE)));
-        delete = Integer.parseInt(c.getString(c.getColumnIndex(COLUMN_DELETE)));
+        delete = c.getInt(c.getColumnIndex(COLUMN_DELETE));
     }
 
     public ContentValues getContentValues() {

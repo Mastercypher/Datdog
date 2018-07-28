@@ -18,20 +18,20 @@ public class Friendship {
     public static final String COLUMN_DELETE = "delete";
 
     private String id;
-    private String user;
-    private String friend;
+    private int user;
+    private int friend;
     private Date create;
     private Date update;
     private int delete;
 
     public Friendship(Cursor c) throws ParseException {
         id = c.getString(c.getColumnIndex(COLUMN_ID));
-        user = c.getString(c.getColumnIndex(COLUMN_ID_USER));
-        friend = c.getString(c.getColumnIndex(COLUMN_ID_FRIEND));
+        user = c.getInt(c.getColumnIndex(COLUMN_ID_USER));
+        friend = c.getInt(c.getColumnIndex(COLUMN_ID_FRIEND));
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         create = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_CREATE)));
         update = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_UPDATE)));
-        delete = Integer.parseInt(c.getString(c.getColumnIndex(COLUMN_DELETE)));
+        delete = c.getInt(c.getColumnIndex(COLUMN_DELETE));
     }
 
     public ContentValues getContentValues() {
@@ -54,19 +54,19 @@ public class Friendship {
         this.id = id;
     }
 
-    public String getUser() {
+    public int getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(int user) {
         this.user = user;
     }
 
-    public String getFriend() {
+    public int getFriend() {
         return friend;
     }
 
-    public void setFriend(String friend) {
+    public void setFriend(int friend) {
         this.friend = friend;
     }
 

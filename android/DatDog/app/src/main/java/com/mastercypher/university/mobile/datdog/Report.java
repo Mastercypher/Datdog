@@ -41,7 +41,7 @@ public class Report {
         } else {
             found = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_FOUND)));
         }
-        delete = Integer.parseInt(c.getString(c.getColumnIndex(COLUMN_DELETE)));
+        delete = c.getInt(c.getColumnIndex(COLUMN_DELETE));
     }
 
     public ContentValues getContentValues() {
@@ -49,9 +49,6 @@ public class Report {
         cv.put(COLUMN_ID, id);
         cv.put(COLUMN_ID_USER, user);
         cv.put(COLUMN_ID_DOG, dog);
-        if (location == null) {
-            location = "";
-        }
         cv.put(COLUMN_LOCATION, location);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         cv.put(COLUMN_DATE_CREATE, sdf.format(create));

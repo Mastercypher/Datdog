@@ -42,26 +42,23 @@ public class Dog {
     public Dog(Cursor c) throws ParseException {
         id = c.getString(c.getColumnIndex(COLUMN_ID));
         id_nfc = c.getString(c.getColumnIndex(COLUMN_ID_NFC));
-        id_user = Integer.parseInt(c.getString(c.getColumnIndex(COLUMN_ID_USER)));
+        id_user = c.getInt(c.getColumnIndex(COLUMN_ID_USER));
         name = c.getString(c.getColumnIndex(COLUMN_NAME));
         breed = c.getString(c.getColumnIndex(COLUMN_BREED));
         colour = c.getString(c.getColumnIndex(COLUMN_COLOUR));
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         birth = sdf.parse(c.getString(c.getColumnIndex(COLUMN_BIRTH)));
-        size = Integer.parseInt(c.getString(c.getColumnIndex(COLUMN_SIZE)));
-        sex = Integer.parseInt(c.getString(c.getColumnIndex(COLUMN_SEX)));
+        size = c.getInt(c.getColumnIndex(COLUMN_SIZE));
+        sex = c.getInt(c.getColumnIndex(COLUMN_SEX));
         sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         create = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_CREATE)));
         update = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_UPDATE)));
-        delete = Integer.parseInt(c.getString(c.getColumnIndex(COLUMN_DELETE)));
+        delete = c.getInt(c.getColumnIndex(COLUMN_DELETE));
     }
 
     public ContentValues getContentValues() {
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_ID, id);
-        if (id_nfc == null) {
-            id_nfc = "";
-        }
         cv.put(COLUMN_ID_NFC, id_nfc);
         cv.put(COLUMN_ID_USER, id_user);
         cv.put(COLUMN_NAME, name);

@@ -41,7 +41,7 @@ public class Vaccination {
         } else {
             completed = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_COMPLETED)));
         }
-        delete = Integer.parseInt(c.getString(c.getColumnIndex(COLUMN_DELETE)));
+        delete = c.getInt(c.getColumnIndex(COLUMN_DELETE));
     }
 
     public ContentValues getContentValues(){

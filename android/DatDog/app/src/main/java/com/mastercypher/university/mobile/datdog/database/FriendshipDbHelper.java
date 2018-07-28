@@ -19,8 +19,8 @@ public class FriendshipDbHelper extends SQLiteOpenHelper {
     public static final String CREATE_TABLE_USER = "CREATE TABLE " +
             Friendship.TABLE_NAME + " (" +
             Friendship.COLUMN_ID + " TEXT PRIMARY KEY, " +
-            Friendship.COLUMN_ID_USER + " TEXT NOT NULL, " +
-            Friendship.COLUMN_ID_FRIEND + " TEXT NOT NULL, " +
+            Friendship.COLUMN_ID_USER + " INTEGER NOT NULL, " +
+            Friendship.COLUMN_ID_FRIEND + " INTEGER NOT NULL, " +
             Friendship.COLUMN_DATE_CREATE + " TEXT NOT NULL, " +
             Friendship.COLUMN_DATE_UPDATE + " TEXT NOT NULL, " +
             Friendship.COLUMN_DELETE + " INTEGER NOT NULL)";

@@ -45,9 +45,9 @@ class DogDbManager {
     // Creation of the user database
     func createTable() {
         // REFERENCES
-        let UserDb = UserDbManager()
-        let user = UserDb.mTable
-        let idUser = UserDb.mId
+        let userDb = UserDbManager()
+        let user = userDb.mTable
+        let idUser = userDb.mId
         // CREATE TABLE
         let createTable = mTable.create(ifNotExists: true) { (table) in
             table.column(mId, primaryKey: true)
@@ -151,21 +151,7 @@ class DogDbManager {
     
     // Delete the current user
     func delete(dog: Dog) -> Bool {
-        
-        let delete = UtilProj.DBSTATUS.DELETE
-        let dbDog = mTable.filter(mId == dog.mId)
-        let query = dbDog.update(mId <- dog.mId, mIdNfc <- dog.mIdNfc, mIdUser <- dog.mIdUser, mName <- dog.mName,
-                                 mBreed <- dog.mBreed, mColour <- dog.mColour, mBirth <- dog.mBirth, mSize <- dog.mSize,
-                                 mSex <- dog.mSex, mDateCreate <- dog.mDateCreate, mDateUpdate <- dog.mDateUpdate,
-                                 mDelete <- delete)
-        do {
-            try mDatabase.run(query)
-            print("User \(dog.mName!) deleted")
-            return true
-        } catch {
-            print(error)
-            return false
-        }
-        
+        dog.mDelete = UtilProj.DBSTATUS.DELETE
+        return self.update(dog: dog)
     }
 }

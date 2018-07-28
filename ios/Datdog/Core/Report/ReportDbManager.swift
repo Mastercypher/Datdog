@@ -12,7 +12,6 @@ import UIKit
 
 class ReportDbManager {
     
-    
     var mDatabase: Connection!
     let tableName = "report"
     let mTable = Table("report")
@@ -40,7 +39,7 @@ class ReportDbManager {
         self.createTable()
     }
     
-    // Creation of the user database
+    // Creation of the report database
     func createTable() {
         // REFERENCES
         let userDb = UserDbManager()
@@ -70,57 +69,80 @@ class ReportDbManager {
             print(error)
         }
     }
-    /*
-    func getAll(user: User) -> Array<Dog>? {
-        var allDogs = Array<Dog>()
+    
+    // For section REPORTS
+    func getAllReports(user: User) -> Array<Report>? {
+        var allReports = Array<Report>()
         
         do {
+            // Filter by id of the user
             let query = mTable.filter(mIdUser == user.mId)
-            let dogs = try mDatabase.prepare(query)
-            for dog in dogs {
-                let curDog = Dog(id: dog[mId], idNfc: dog[mIdNfc], idUser: dog[mIdUser], name: dog[mName],
-                                 breed: dog[mBreed], colour: dog[mColour], birth: dog[mBirth],
-                                 size: dog[mSize], sex: dog[mSex], dateCreate: dog[mDateCreate],
-                                 dateUpdate: dog[mDateUpdate], delete: dog[mDelete])
-                allDogs.append(curDog)
+            let reports = try mDatabase.prepare(query)
+            for report in reports {
+                let curReport = Report(id: report[mId], idUser: report[mIdUser], idDog: report[mIdDog], location: report[mLocation],
+                                       dateCreate: report[mDateCreate], dateUpdate: report[mDateUpdate], dateFound: report[mDateFound],
+                                       delete: report[mDelete])
+                allReports.append(curReport)
             }
         } catch {
             print(error)
         }
-        return allDogs
+        return allReports
     }
     
-    func getById(id: String) -> Dog?{
-        var dogFound: Dog?
+    // For section LOSTS
+    func getAllReportLosts(user: User) -> Array<Report>? {
+        var allReports = Array<Report>()
+        // Get all dog of a user
+        let dogs = DogDbManager().getAll(user: user)
+        
+        do {
+            for dog in dogs! {
+                // Filter by id of the dog
+                let query = mTable.filter(mIdDog == dog.mId)
+                let reports = try mDatabase.prepare(query)
+                for report in reports {
+                    let curReport = Report(id: report[mId], idUser: report[mIdUser], idDog: report[mIdDog], location: report[mLocation],
+                                           dateCreate: report[mDateCreate], dateUpdate: report[mDateUpdate], dateFound: report[mDateFound],
+                                           delete: report[mDelete])
+                    allReports.append(curReport)
+                }
+            }
+        } catch {
+            print(error)
+        }
+        return allReports
+    }
+    
+    func getById(id: String) -> Report?{
+        var reportFound: Report?
         
         do {
             let query = mTable.filter(mId == id)
-            let dogs = try mDatabase.prepare(query)
-            for dog in dogs {
+            let reports = try mDatabase.prepare(query)
+            for report in reports {
                 // Get only if he's not deleted
-                if dog[mDelete] == UtilProj.DBSTATUS.AVAILABLE {
-                    dogFound = Dog(id: dog[mId], idNfc: dog[mIdNfc], idUser: dog[mIdUser], name: dog[mName],
-                                   breed: dog[mBreed], colour: dog[mColour], birth: dog[mBirth],
-                                   size: dog[mSize], sex: dog[mSex], dateCreate: dog[mDateCreate],
-                                   dateUpdate: dog[mDateUpdate], delete: dog[mDelete])
+                if report[mDelete] == UtilProj.DBSTATUS.AVAILABLE {
+                    reportFound = Report(id: report[mId], idUser: report[mIdUser], idDog: report[mIdDog], location: report[mLocation],
+                                                    dateCreate: report[mDateCreate], dateUpdate: report[mDateUpdate],
+                                                    dateFound: report[mDateFound], delete: report[mDelete])
                 }
                 break
             }
         } catch {
             print(error)
         }
-        return dogFound
+        return reportFound
     }
     
-    // Inser a dog
-    func insert(dog: Dog) -> Bool {
-        let query = mTable.insert(mId <- dog.mId, mIdNfc <- dog.mIdNfc, mIdUser <- dog.mIdUser, mName <- dog.mName,
-                                  mBreed <- dog.mBreed, mColour <- dog.mColour, mBirth <- dog.mBirth, mSize <- dog.mSize,
-                                  mSex <- dog.mSex, mDateCreate <- dog.mDateCreate, mDateUpdate <- dog.mDateUpdate,
-                                  mDelete <- dog.mDelete)
+    // Inser a report
+    func insert(report: Report) -> Bool {
+        let query = mTable.insert(mId <- report.mId, mIdUser <- report.mIdUser, mIdDog <- report.mIdDog, mLocation <- report.mLocation,
+                                  mDateCreate <- report.mDateCreate, mDateUpdate <- report.mDateUpdate,
+                                  mDateFound <- report.mDateFound, mDelete <- report.mDelete)
         do {
             try mDatabase.run(query)
-            print("Registred dog: \(dog.mName!)")
+            print("Registred report: \(report.mId!)")
             return true
         } catch {
             print(error)
@@ -128,19 +150,18 @@ class ReportDbManager {
         }
     }
     
-    // Update a specific dog
-    func update(dog: Dog) -> Bool {
+    // Update a specific report
+    func update(report: Report) -> Bool {
         // VERY IMPORTANT -> UPDATE DATE
-        dog.mDateUpdate = UtilProj.getDateNow()
+        report.mDateUpdate = UtilProj.getDateNow()
         
-        let dbDog = mTable.filter(mId == dog.mId)
-        let query = dbDog.update(mIdNfc <- dog.mIdNfc, mIdUser <- dog.mIdUser, mName <- dog.mName,
-                                 mBreed <- dog.mBreed, mColour <- dog.mColour, mBirth <- dog.mBirth, mSize <- dog.mSize,
-                                 mSex <- dog.mSex, mDateCreate <- dog.mDateCreate, mDateUpdate <- dog.mDateUpdate,
-                                 mDelete <- dog.mDelete)
+        let dbReport = mTable.filter(mId == report.mId)
+        let query = dbReport.update(mId <- report.mId, mIdUser <- report.mIdUser, mIdDog <- report.mIdDog, mLocation <- report.mLocation,
+                                 mDateCreate <- report.mDateCreate, mDateUpdate <- report.mDateUpdate,
+                                 mDateFound <- report.mDateFound, mDelete <- report.mDelete)
         do {
             try mDatabase.run(query)
-            print("Dog \(dog.mName) updated")
+            print("Dog \(report.mId) updated")
             return true
         } catch {
             print(error)
@@ -148,24 +169,10 @@ class ReportDbManager {
         }
     }
     
-    // Delete the current user
-    func delete(dog: Dog) -> Bool {
-        
-        let delete = UtilProj.DBSTATUS.DELETE
-        let dbDog = mTable.filter(mId == dog.mId)
-        let query = dbDog.update(mId <- dog.mId, mIdNfc <- dog.mIdNfc, mIdUser <- dog.mIdUser, mName <- dog.mName,
-                                 mBreed <- dog.mBreed, mColour <- dog.mColour, mBirth <- dog.mBirth, mSize <- dog.mSize,
-                                 mSex <- dog.mSex, mDateCreate <- dog.mDateCreate, mDateUpdate <- dog.mDateUpdate,
-                                 mDelete <- delete)
-        do {
-            try mDatabase.run(query)
-            print("User \(dog.mName!) deleted")
-            return true
-        } catch {
-            print(error)
-            return false
-        }
-        
+    // Delete the current report
+    func delete(report: Report) -> Bool {
+        report.mDelete = UtilProj.DBSTATUS.DELETE
+        return self.update(report:report)
     }
- */
+ 
 }

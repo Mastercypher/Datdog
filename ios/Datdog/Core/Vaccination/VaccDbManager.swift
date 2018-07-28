@@ -140,20 +140,7 @@ class VaccDbManager {
     
     // Delete the current Vaccination
     func delete(vacc: Vaccination) -> Bool {
-     
-        let delete = UtilProj.DBSTATUS.DELETE
-        let dbVacc = mTable.filter(mId == vacc.mId)
-        let query = dbVacc.update(mName <- vacc.mName, mDateWhen <- vacc.mDateWhen,
-                                  mDateCreate <- vacc.mDateCreate, mDateUpdate <- vacc.mDateUpdate,
-                                  mDateCompleted <- vacc.mDateCompleted, mDelete <- delete)
-        do {
-            try mDatabase.run(query)
-            print("Vaccination \(vacc.mName!) deleted")
-            return true
-        } catch {
-            print(error)
-            return false
-        }
-     
+        vacc.mDelete = UtilProj.DBSTATUS.DELETE
+        return self.update(vacc: vacc)
     }
 }

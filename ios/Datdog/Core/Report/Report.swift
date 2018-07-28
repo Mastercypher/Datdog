@@ -33,7 +33,7 @@ class Report {
     
     // Init with more params
     init(id: String, idUser: Int, idDog: String, location: String, dateCreate: String, dateUpdate: String,
-         dateCompleted: String, dateFound: String, delete: Int) {
+         dateFound: String, delete: Int) {
         mId = id
         mIdDog = idDog
         mLocation = location

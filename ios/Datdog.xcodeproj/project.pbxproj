@@ -22,7 +22,6 @@
 		7D315B5C210C702C008C8AE7 /* FriendDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D315B5B210C702C008C8AE7 /* FriendDbManager.swift */; };
 		7D3D41FA2107CA2800FA4034 /* NfcReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3D41F92107CA2800FA4034 /* NfcReportController.swift */; };
 		7D44B6302109D851007E6223 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B62F2109D851007E6223 /* User.swift */; };
-		7D44B6322109D861007E6223 /* RegistrationManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B6312109D861007E6223 /* RegistrationManage.swift */; };
 		7D44B634210A6DE2007E6223 /* UtilProj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B633210A6DE2007E6223 /* UtilProj.swift */; };
 		7D44B66C210B05C5007E6223 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D44B65E210B05BD007E6223 /* SQLite.framework */; };
 		7D44B66D210B05D2007E6223 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D44B65E210B05BD007E6223 /* SQLite.framework */; };
@@ -149,7 +148,6 @@
 		7D315B5B210C702C008C8AE7 /* FriendDbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDbManager.swift; sourceTree = "<group>"; };
 		7D3D41F92107CA2800FA4034 /* NfcReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NfcReportController.swift; sourceTree = "<group>"; };
 		7D44B62F2109D851007E6223 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		7D44B6312109D861007E6223 /* RegistrationManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationManage.swift; sourceTree = "<group>"; };
 		7D44B633210A6DE2007E6223 /* UtilProj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilProj.swift; sourceTree = "<group>"; };
 		7D44B653210B05BD007E6223 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../../../Downloads/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		7D44B672210B07B7007E6223 /* UserDbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDbManager.swift; sourceTree = "<group>"; };
@@ -411,7 +409,6 @@
 				7D315B48210C65C8008C8AE7 /* Vaccination */,
 				7D44B6A3210BD883007E6223 /* User */,
 				7D44B6A4210BD897007E6223 /* Dog */,
-				7D44B6312109D861007E6223 /* RegistrationManage.swift */,
 				7D44B633210A6DE2007E6223 /* UtilProj.swift */,
 			);
 			path = Core;
@@ -572,7 +569,6 @@
 				7D44B634210A6DE2007E6223 /* UtilProj.swift in Sources */,
 				7DE8996421060420004E646B /* FriendsController.swift in Sources */,
 				7D44B6A2210B6290007E6223 /* ViewVaccinationController.swift in Sources */,
-				7D44B6322109D861007E6223 /* RegistrationManage.swift in Sources */,
 				7D315B52210C65F3008C8AE7 /* VaccDbManager.swift in Sources */,
 				7D44B673210B07B7007E6223 /* UserDbManager.swift in Sources */,
 				7D315B58210C7018008C8AE7 /* Report.swift in Sources */,

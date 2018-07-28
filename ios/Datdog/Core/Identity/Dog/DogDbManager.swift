@@ -154,6 +154,8 @@ class DogDbManager {
     // Delete the current user
     func delete(dog: Dog) -> Bool {
         dog.mDelete = UtilProj.DBSTATUS.DELETE
-        return self.update(dog: dog)
+        
+        let success = self.update(dog: dog)
+        return success
     }
 }

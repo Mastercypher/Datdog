@@ -47,6 +47,10 @@
 		7D44B6A2210B6290007E6223 /* ViewVaccinationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B6A1210B6290007E6223 /* ViewVaccinationController.swift */; };
 		7D44B6A6210BD8B7007E6223 /* DogDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B6A5210BD8B7007E6223 /* DogDbManager.swift */; };
 		7D44B6A8210BDA62007E6223 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B6A7210BDA62007E6223 /* Dog.swift */; };
+		7D7E01F4210CFDEA007DE23E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E01F2210CFDEA007DE23E /* Reachability.swift */; };
+		7D7E01F5210CFDEA007DE23E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E01F3210CFDEA007DE23E /* Info.plist */; };
+		7D7E01F7210CFE39007DE23E /* DogSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E01F6210CFE39007DE23E /* DogSync.swift */; };
+		7D7E01F9210CFE50007DE23E /* UserSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E01F8210CFE50007DE23E /* UserSync.swift */; };
 		7DD0712E2109C72A00037A09 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0712D2109C72A00037A09 /* LoginController.swift */; };
 		7DD9916021060667001674C8 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD9915F21060667001674C8 /* MenuController.swift */; };
 		7DD9916221068042001674C8 /* LostsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD9916121068042001674C8 /* LostsController.swift */; };
@@ -171,6 +175,11 @@
 		7D44B6A1210B6290007E6223 /* ViewVaccinationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVaccinationController.swift; sourceTree = "<group>"; };
 		7D44B6A5210BD8B7007E6223 /* DogDbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogDbManager.swift; sourceTree = "<group>"; };
 		7D44B6A7210BDA62007E6223 /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
+		7D7E01F1210CFDEA007DE23E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = "../../../../../../../Downloads/Reachability.swift-master/Sources/Reachability.h"; sourceTree = "<group>"; };
+		7D7E01F2210CFDEA007DE23E /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = "../../../../../../../Downloads/Reachability.swift-master/Sources/Reachability.swift"; sourceTree = "<group>"; };
+		7D7E01F3210CFDEA007DE23E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../../../../../../Downloads/Reachability.swift-master/Sources/Info.plist"; sourceTree = "<group>"; };
+		7D7E01F6210CFE39007DE23E /* DogSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogSync.swift; sourceTree = "<group>"; };
+		7D7E01F8210CFE50007DE23E /* UserSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSync.swift; sourceTree = "<group>"; };
 		7DD0712D2109C72A00037A09 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		7DD9915F21060667001674C8 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		7DD9916121068042001674C8 /* LostsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostsController.swift; sourceTree = "<group>"; };
@@ -375,6 +384,7 @@
 			children = (
 				7D44B62F2109D851007E6223 /* User.swift */,
 				7D44B672210B07B7007E6223 /* UserDbManager.swift */,
+				7D7E01F8210CFE50007DE23E /* UserSync.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -384,8 +394,40 @@
 			children = (
 				7D44B6A7210BDA62007E6223 /* Dog.swift */,
 				7D44B6A5210BD8B7007E6223 /* DogDbManager.swift */,
+				7D7E01F6210CFE39007DE23E /* DogSync.swift */,
 			);
 			path = Dog;
+			sourceTree = "<group>";
+		};
+		7D7E01E6210CFD8B007DE23E /* Identity */ = {
+			isa = PBXGroup;
+			children = (
+				7D315B54210C6FE6008C8AE7 /* Report */,
+				7D315B53210C6FDA008C8AE7 /* Friend */,
+				7D315B48210C65C8008C8AE7 /* Vaccination */,
+				7D44B6A3210BD883007E6223 /* User */,
+				7D44B6A4210BD897007E6223 /* Dog */,
+			);
+			path = Identity;
+			sourceTree = "<group>";
+		};
+		7D7E01ED210CFD9C007DE23E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E01F0210CFDDB007DE23E /* Reachability */,
+				7D44B633210A6DE2007E6223 /* UtilProj.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		7D7E01F0210CFDDB007DE23E /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E01F3210CFDEA007DE23E /* Info.plist */,
+				7D7E01F1210CFDEA007DE23E /* Reachability.h */,
+				7D7E01F2210CFDEA007DE23E /* Reachability.swift */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		7DD0712A2109C5CA00037A09 /* View */ = {
@@ -404,12 +446,8 @@
 		7DD0712B2109C5D500037A09 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				7D315B54210C6FE6008C8AE7 /* Report */,
-				7D315B53210C6FDA008C8AE7 /* Friend */,
-				7D315B48210C65C8008C8AE7 /* Vaccination */,
-				7D44B6A3210BD883007E6223 /* User */,
-				7D44B6A4210BD897007E6223 /* Dog */,
-				7D44B633210A6DE2007E6223 /* UtilProj.swift */,
+				7D7E01ED210CFD9C007DE23E /* Util */,
+				7D7E01E6210CFD8B007DE23E /* Identity */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -535,6 +573,7 @@
 				7D0DD8F8210464D000AE131F /* LaunchScreen.storyboard in Resources */,
 				7D0DD8F5210464D000AE131F /* Assets.xcassets in Resources */,
 				7D0DD8F0210464CE00AE131F /* Main.storyboard in Resources */,
+				7D7E01F5210CFDEA007DE23E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,11 +587,14 @@
 				7D44B684210B5BA0007E6223 /* ViewLostController.swift in Sources */,
 				7D44B68B210B5C9C007E6223 /* AddFriendController.swift in Sources */,
 				7D315B5C210C702C008C8AE7 /* FriendDbManager.swift in Sources */,
+				7D7E01F7210CFE39007DE23E /* DogSync.swift in Sources */,
 				7D44B682210B5B42007E6223 /* ConfirmReportController.swift in Sources */,
+				7D7E01F4210CFDEA007DE23E /* Reachability.swift in Sources */,
 				7D44B6A8210BDA62007E6223 /* Dog.swift in Sources */,
 				7D44B690210B6086007E6223 /* ConnectedController.swift in Sources */,
 				7DE8996221060414004E646B /* MissingController.swift in Sources */,
 				7D44B695210B61DB007E6223 /* AddDogController.swift in Sources */,
+				7D7E01F9210CFE50007DE23E /* UserSync.swift in Sources */,
 				7D315B56210C7012008C8AE7 /* Friend.swift in Sources */,
 				7D44B69E210B6267007E6223 /* AddVaccinationController.swift in Sources */,
 				7DD9916221068042001674C8 /* LostsController.swift in Sources */,

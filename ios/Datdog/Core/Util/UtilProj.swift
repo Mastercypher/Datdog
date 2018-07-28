@@ -40,6 +40,14 @@ class UtilProj {
         return formatter.string(from: date)
     }
     
+    static func transformToDate(dateString: String) -> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy-HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        let date = dateFormatter.date(from:dateString)!
+        return date
+    }
+    
     static func getUIColor(hex: String, alpha: CGFloat = 1) -> UIColor?{
         assert(hex[hex.startIndex] == "#", "Expected hex string of format #RRGGBB")
         
@@ -55,6 +63,24 @@ class UtilProj {
             blue:  CGFloat((rgb &     0xFF)      )/255.0,
             alpha: alpha)
     
+    }
+    
+    static func showToast(view: UIViewController, message : String) {
+        let toastLabel = UILabel(frame: CGRect(x: view.view.frame.size.width/2 - 75, y: view.view.frame.size.height-100, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center;
+        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        view.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
     }
     
     static func showAlertOk(view: UIViewController, title: String, message: String, handler: ((UIAlertAction) -> Swift.Void)? = nil) {

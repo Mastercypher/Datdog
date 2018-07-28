@@ -27,6 +27,7 @@ class DogsController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewWillAppear(_ animated: Bool) {
         // LOAD DATA
         let user = UserDbManager().getCurrent(view: self)
+        DogSync().sync(idUser: (user?.mId)!)
         mDogs = DogDbManager().getAll(user: user!)
         tbvDogs.reloadData()
     }

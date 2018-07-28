@@ -6,7 +6,7 @@
 //  Copyright © 2018 Mastercypher. All rights reserved.
 //
 
-class Dog{
+class Dog: Equatable{
     
     static let SEX_M = 0
     static let SEX_F = 1

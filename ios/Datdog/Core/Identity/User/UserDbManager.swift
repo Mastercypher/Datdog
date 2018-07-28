@@ -93,7 +93,7 @@ class UserDbManager {
     }
     
     // Get the user with the active session
-    func getCurrent(view: UIViewController!) -> User? {
+    func getCurrent(view: UIViewController?) -> User? {
         var currentUsers = Set<User>()
         do {
             let users = try mDatabase.prepare(mTable)
@@ -120,8 +120,10 @@ class UserDbManager {
             for user in currentUsers {
                 self.logut(user: user)
             }
-            // Redirect to Login view
-            UtilProj.alertLogout(view: view)
+            if view != nil {
+                // Redirect to Login view
+                UtilProj.alertLogout(view: view!)
+            }
         }
         return nil
     }

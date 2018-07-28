@@ -46,7 +46,7 @@ class DbManager {
      * @return bool
      */
     public function insert() {
-        if($this->controlInjection()) {
+        if ($this->controlInjection()) {
             $success = $this->sqlAction(DbManager::$TYPE_INSERT);
             return $success;
         }
@@ -59,7 +59,7 @@ class DbManager {
      * @return bool
      */
     public function update() {
-        if($this->controlInjection()) {
+        if ($this->controlInjection()) {
             $success = $this->sqlAction(DbManager::$TYPE_UPDATE);
             return $success;
         }
@@ -71,18 +71,27 @@ class DbManager {
      *
      * @return bool
      */
-    public function select(){
-        if($this->controlInjection()) {
-            $success = $this->fetch();
-            return $success;
+    public function select($usrPsw = false) {
+        if ($this->controlInjection()) {
+            if ($usrPsw) {
+                $success = $this->fetch($usrPsw);
+                return $success;
+            } else {
+                $success = $this->fetch();
+                return $success;
+            }
         }
         return false;
     }
 
     /**
      * Return the data referred to the specific row by parameters.
+     *
+     * @param bool $usrPsw
+     *
+     * @return bool
      */
-    private function fetch() {
+    private function fetch($usrPsw = false) {
         try {
             $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
             $sql = $this->getSelectSql($this->paramNames);
@@ -91,6 +100,10 @@ class DbManager {
             $prep = $conn->prepare($sql);
             $prep->execute($valuesToInject);
             $res = $prep->fetchAll();
+
+            if ($usrPsw) {
+                $res["password_u"] = "";
+            }
 
             # Check the respond
             if (empty($prep->errorInfo()[2])) {
@@ -112,13 +125,13 @@ class DbManager {
      *
      * @return bool
      */
-    private function controlInjection(){
+    private function controlInjection() {
         if (empty($this->table) or empty($this->paramNames) or empty($this->params)) {
             JsonMsg::print_response(false, DbManager::$EMPTY_PARAMS);
             return false;
         }
 
-        if(!$this->areEnough()){
+        if (!$this->areEnough()) {
             JsonMsg::print_response(false, DbManager::$NO_ENOUGH_PARAMS);
             return false;
         }
@@ -130,8 +143,8 @@ class DbManager {
      *
      * @return bool
      */
-    private function areEnough(){
-        if(sizeof($this->paramNames) ==  sizeof($this->params)){
+    private function areEnough() {
+        if (sizeof($this->paramNames) == sizeof($this->params)) {
             return true;
         }
         return false;

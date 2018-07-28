@@ -8,21 +8,41 @@
 
 import UIKit
 
-class VaccinationsController: UIViewController {
+class VaccinationsController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    static let SECTION_TODO = 0
+    static let SECTION_COMPLETED = 1
     
     @IBOutlet weak var tbvVaccinations: UITableView!
+    @IBOutlet weak var btnAddVacc: UIButton!
     
     var mDog: Dog?
+    var mVaccsCompleted = Array<Vaccination>()
+    var mVaccsTodo = Array<Vaccination>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        btnAddVacc.layer.cornerRadius = 0.5 * btnAddVacc.bounds.size.width;
+        btnAddVacc.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        mVaccsCompleted.removeAll()
+        mVaccsTodo.removeAll()
         // LOAD DATA
-        let user = UserDbManager().getCurrent(view: self)
-        //mDogs = DogDbManager().getAll(user: user!)
+        if let dog = mDog {
+            let vaccs = VaccDbManager().getAll(dog: dog)
+            if let rVaccs = vaccs {
+                for vacc in rVaccs {
+                    if(vacc.mDateCompleted != "") {
+                        mVaccsCompleted.append(vacc)
+                    } else {
+                        mVaccsTodo.append(vacc)
+                    }
+                }
+            }
+        }
         tbvVaccinations.reloadData()
     }
     
@@ -31,35 +51,48 @@ class VaccinationsController: UIViewController {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        /*if (mDogs != nil) {
-            return (mDogs?.count)!
-        } else {
-            return 0
-        }*/
+        
+        if(section == VaccinationsController.SECTION_TODO ){
+            return mVaccsTodo.count
+        } else if(section == VaccinationsController.SECTION_COMPLETED ){
+            return mVaccsCompleted.count
+        }
         return 0
     }
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        /*
-        if mDogs != nil {
-            return "You have \(mDogs?.count ?? 0) \((mDogs?.count == 1 ? "dog" : "dogs"))"
-        } else{
-            return "You have no dogs"
+        if(section == VaccinationsController.SECTION_TODO ){
+            return "Vaccinations todo: \(mVaccsTodo.count)"
+            
+        } else if(section == VaccinationsController.SECTION_COMPLETED ){
+            return "Vaccinations Completed: \(mVaccsCompleted.count)"
         }
- */
         return ""
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "vaccinationCell", for: indexPath)
-        /*let dog = mDogs?[indexPath.row]
-        cell.textLabel?.text = dog?.mName
-        cell.detailTextLabel?.text = dog?.mColour*/
+        switch (indexPath.section){
+        case VaccinationsController.SECTION_TODO:
+            let vacc = mVaccsTodo[indexPath.row]
+            cell.textLabel?.text = vacc.mName
+            cell.detailTextLabel?.text = vacc.mDateWhen
+            break
+        case VaccinationsController.SECTION_COMPLETED:
+            let vacc = mVaccsCompleted[indexPath.row]
+            cell.textLabel?.text = vacc.mName
+            cell.detailTextLabel?.text = vacc.mDateWhen
+            break
+        default:
+            cell.textLabel?.text = "None"
+            cell.detailTextLabel?.text = "No data"
+        }
+        
         return cell
     }
     
@@ -68,11 +101,32 @@ class VaccinationsController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        /*
-        let selectedIndex = tbvDogs.indexPathForSelectedRow!
-        let destinationController = segue.destination as! ViewDogController
-        
-        destinationController.mDog = mDogs?[selectedIndex.row]
- */
+        switch segue.identifier {
+        case "toAddVacc":
+            let destination = segue.destination as! AddVaccinationController
+            destination.mDog = mDog
+            
+        case "toViewVacc":
+            self.sendInstanceToView(segue: segue)
+            
+        default: break
+        }
+    }
+    
+    func sendInstanceToView(segue: UIStoryboardSegue){
+        let selectedIndex = tbvVaccinations.indexPathForSelectedRow!
+        let destination = segue.destination as! ViewVaccinationController
+        var vacc: Vaccination?
+        switch (selectedIndex.section){
+        case VaccinationsController.SECTION_TODO:
+            vacc = mVaccsTodo[selectedIndex.row]
+            break
+        case VaccinationsController.SECTION_COMPLETED:
+            vacc = mVaccsCompleted[selectedIndex.row]
+            break
+        default:
+            vacc = nil
+        }
+        destination.mVacc = vacc
     }
 }

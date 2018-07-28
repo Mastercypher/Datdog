@@ -79,11 +79,13 @@ class DogDbManager {
             let query = mTable.filter(mIdUser == user.mId)
             let dogs = try mDatabase.prepare(query)
             for dog in dogs {
-                let curDog = Dog(id: dog[mId], idNfc: dog[mIdNfc], idUser: dog[mIdUser], name: dog[mName],
-                             breed: dog[mBreed], colour: dog[mColour], birth: dog[mBirth],
-                             size: dog[mSize], sex: dog[mSex], dateCreate: dog[mDateCreate],
-                             dateUpdate: dog[mDateUpdate], delete: dog[mDelete])
-                allDogs.append(curDog)
+                if dog[mDelete] != UtilProj.DBSTATUS.DELETE{
+                    let curDog = Dog(id: dog[mId], idNfc: dog[mIdNfc], idUser: dog[mIdUser], name: dog[mName],
+                                     breed: dog[mBreed], colour: dog[mColour], birth: dog[mBirth],
+                                     size: dog[mSize], sex: dog[mSex], dateCreate: dog[mDateCreate],
+                                     dateUpdate: dog[mDateUpdate], delete: dog[mDelete])
+                    allDogs.append(curDog)
+                }
             }
         } catch {
             print(error)
@@ -99,7 +101,7 @@ class DogDbManager {
             let dogs = try mDatabase.prepare(query)
             for dog in dogs {
                 // Get only if he's not deleted
-                if dog[mDelete] == UtilProj.DBSTATUS.AVAILABLE {
+                if dog[mDelete] != UtilProj.DBSTATUS.DELETE{
                     dogFound = Dog(id: dog[mId], idNfc: dog[mIdNfc], idUser: dog[mIdUser], name: dog[mName],
                                    breed: dog[mBreed], colour: dog[mColour], birth: dog[mBirth],
                                    size: dog[mSize], sex: dog[mSex], dateCreate: dog[mDateCreate],

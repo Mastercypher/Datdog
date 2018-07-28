@@ -75,26 +75,29 @@ class VaccDbManager {
                 let curVac = Vaccination(id: vacc[mId], idDog: vacc[mIdDog], name: vacc[mName], dateWhen: vacc[mDateWhen],
                                          dateCreate: vacc[mDateCreate], dateUpdate: vacc[mDateUpdate],
                                          dateCompleted: vacc[mDateCompleted], delete: vacc[mDelete])
-                allVaccs.append(curVac)
+                if curVac.mDelete == UtilProj.DBSTATUS.AVAILABLE {
+                    allVaccs.append(curVac)
+                }
             }
         } catch {
             print(error)
         }
         return allVaccs
     }
-
+    
     func getById(id: String) -> Vaccination?{
         var vaccFound: Vaccination?
-     
+        
         do {
             let query = mTable.filter(mId == id)
             let vaccs = try mDatabase.prepare(query)
             for vacc in vaccs {
                 // Get only if he's not deleted
-                if vacc[mDelete] == UtilProj.DBSTATUS.AVAILABLE {
-                    vaccFound = Vaccination(id: vacc[mId], idDog: vacc[mIdDog], name: vacc[mName], dateWhen: vacc[mDateWhen],
-                                           dateCreate: vacc[mDateCreate], dateUpdate: vacc[mDateUpdate],
-                                           dateCompleted: vacc[mDateCompleted], delete: vacc[mDelete])
+                let curVac = Vaccination(id: vacc[mId], idDog: vacc[mIdDog], name: vacc[mName], dateWhen: vacc[mDateWhen],
+                                        dateCreate: vacc[mDateCreate], dateUpdate: vacc[mDateUpdate],
+                                        dateCompleted: vacc[mDateCompleted], delete: vacc[mDelete])
+                if curVac.mDelete == UtilProj.DBSTATUS.AVAILABLE {
+                    vaccFound = curVac
                 }
                 break
             }
@@ -123,7 +126,7 @@ class VaccDbManager {
     func update(vacc: Vaccination) -> Bool {
         // VERY IMPORTANT -> UPDATE DATE
         vacc.mDateUpdate = UtilProj.getDateNow()
-     
+        
         let dbVacc = mTable.filter(mId == vacc.mId)
         let query = dbVacc.update(mName <- vacc.mName, mDateWhen <- vacc.mDateWhen,
                                   mDateCreate <- vacc.mDateCreate, mDateUpdate <- vacc.mDateUpdate,

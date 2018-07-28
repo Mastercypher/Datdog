@@ -16,6 +16,13 @@ class UtilProj {
         static let DELETE = 1
     }
     
+    struct COLORS {
+        static let PRIMARY = "#157EFB"
+        static let WARNING = "#FDBF07"
+        static let SUCCESS = "#28A745"
+        static let DANGER = "#FF3B30"
+    }
+    
     struct ERR {
         static let SAVING = "Problem encountered while saving data"
         
@@ -33,9 +40,29 @@ class UtilProj {
         return formatter.string(from: date)
     }
     
+    static func getUIColor(hex: String, alpha: CGFloat = 1) -> UIColor?{
+        assert(hex[hex.startIndex] == "#", "Expected hex string of format #RRGGBB")
+        
+        let scanner = Scanner(string: hex)
+        scanner.scanLocation = 1  // skip #
+        
+        var rgb: UInt32 = 0
+        scanner.scanHexInt32(&rgb)
+        
+        return UIColor(
+            red:   CGFloat((rgb & 0xFF0000) >> 16)/255.0,
+            green: CGFloat((rgb &   0xFF00) >>  8)/255.0,
+            blue:  CGFloat((rgb &     0xFF)      )/255.0,
+            alpha: alpha)
+    
+    }
+    
     static func showAlertOk(view: UIViewController, title: String, message: String, handler: ((UIAlertAction) -> Swift.Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Logout action"), style: .default, handler: handler))
+        if handler != nil {
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .default, handler: nil))
+        }
         view.present(alert, animated: true, completion: nil)
     }
     

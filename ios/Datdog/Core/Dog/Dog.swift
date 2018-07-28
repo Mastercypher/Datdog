@@ -62,6 +62,11 @@ class Dog{
         mDelete = delete
     }
     
+    func clone() -> Dog {
+        return Dog(id: mId, idNfc: mIdNfc, idUser: mIdUser, name: mName, breed: mBreed, colour: mColour, birth: mColour,
+                   size: mSize, sex: mSex, dateCreate: mDateCreate, dateUpdate: mDateUpdate, delete: mDelete)
+    }
+    
     func createId(idUser: Int, name: String, dateNow: String) -> String{
         return String(idUser) + "-" + name + "-" + dateNow
     }

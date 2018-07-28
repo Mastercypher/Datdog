@@ -19,7 +19,7 @@ class ModifyDogController: UIViewController {
     
     let mDbDog = DogDbManager()
     var mDog: Dog?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -40,33 +40,35 @@ class ModifyDogController: UIViewController {
     
     @IBAction func touchModify(_ sender: Any) {
         var errorMessage = ""
-        mDog?.mName = txfName.text
-        mDog?.mBreed = txfBreed.text
-        mDog?.mColour = txfColour.text
-        mDog?.mBirth = txfBirth.text
-        mDog?.mSex = sgmSex.selectedSegmentIndex
-        mDog?.mSize = sgmSize.selectedSegmentIndex
-        
-        // Check if all the field are more of one character
-        if ((mDog?.mName.count)! > 0 && (mDog?.mBreed.count)! > 0 && (mDog?.mColour.count)! > 0 && (mDog?.mBirth.count)! > 0)  {
-            // Check if all the field are less of 50 characters
-            if ((mDog?.mName.count)! < 50 && (mDog?.mBreed.count)! < 50 && (mDog?.mColour.count)! < 50 && (mDog?.mBirth.count)! < 50)  {
-                let success = mDbDog.update(dog: mDog!)
-                if success {
-                    UtilProj.backNavigation(view: self)
-                } else {
-                    errorMessage = UtilProj.ERR.SAVING
+        if let dog = mDog?.clone() {
+            dog.mName = txfName.text
+            dog.mBreed = txfBreed.text
+            dog.mColour = txfColour.text
+            dog.mBirth = txfBirth.text
+            dog.mSex = sgmSex.selectedSegmentIndex
+            dog.mSize = sgmSize.selectedSegmentIndex
+            
+            // Check if all the field are more of one character
+            if (dog.mName.count > 0 && dog.mBreed.count > 0 && dog.mColour.count > 0 && dog.mBirth.count > 0)  {
+                // Check if all the field are less of 50 characters
+                if (dog.mName.count < 50 && dog.mBreed.count < 50 && dog.mColour.count < 50 && dog.mBirth.count < 50)  {
+                    
+                    let success = mDbDog.update(dog: dog)
+                    if success {
+                        UtilProj.backNavigation(view: self)
+                    } else {
+                        errorMessage = UtilProj.ERR.SAVING
+                    }
+                }else {
+                    errorMessage = UtilProj.ERR.CHAR_MAX
                 }
-            }else {
-                errorMessage = UtilProj.ERR.CHAR_MAX
+            } else {
+                errorMessage = UtilProj.ERR.CHAR_MIN
             }
-        } else {
-            errorMessage = UtilProj.ERR.CHAR_MIN
+            
+            if(!errorMessage.isEmpty){
+                UtilProj.showAlertOk(view: self, title: "Attention", message: errorMessage, handler: nil)
+            }
         }
-        
-        if(!errorMessage.isEmpty){
-            UtilProj.showAlertOk(view: self, title: "Attention", message: errorMessage, handler: nil)
-        }
-        
     }
 }

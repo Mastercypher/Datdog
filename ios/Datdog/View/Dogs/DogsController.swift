@@ -46,7 +46,7 @@ class DogsController: UIViewController, UITableViewDataSource, UITableViewDelega
             return 0
         }
     }
-
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if mDogs != nil {
             return "You have \(mDogs?.count ?? 0) \((mDogs?.count == 1 ? "dog" : "dogs"))"
@@ -68,11 +68,11 @@ class DogsController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let selectedIndex = tbvDogs.indexPathForSelectedRow!
-        let destinationController = segue.destination as! ViewDogController
-        
-        destinationController.mDog = mDogs?[selectedIndex.row]
+        if segue.identifier == "toViewDog" {
+            let selectedIndex = tbvDogs.indexPathForSelectedRow!
+            let destinationController = segue.destination as! ViewDogController
+            destinationController.mDog = mDogs?[selectedIndex.row]
+        }
     }
 }
 

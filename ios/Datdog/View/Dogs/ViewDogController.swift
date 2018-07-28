@@ -38,6 +38,19 @@ class ViewDogController: UIViewController {
     }
     
     @IBAction func touchRemove(_ sender: Any) {
+        let view = self
+        if let dog = mDog {
+            UtilProj.showAlertOk(view: view, title: "Attention", message: "You are deleting a dog", handler: { _ in
+                let res = DogDbManager().delete(dog: dog)
+                if res {
+                    UtilProj.backNavigation(view: view)
+                } else {
+                    UtilProj.alertError(view: view)
+                }
+            })
+        } else {
+            UtilProj.alertError(view: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -46,7 +59,7 @@ class ViewDogController: UIViewController {
             let destination = segue.destination as! ModifyDogController
             destination.mDog = mDog
             
-        case "toVaccinatons":
+        case "toVaccinations":
             let destination = segue.destination as! VaccinationsController
             destination.mDog = mDog
             

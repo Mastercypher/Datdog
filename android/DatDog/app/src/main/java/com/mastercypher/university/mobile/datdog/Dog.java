@@ -59,6 +59,9 @@ public class Dog {
     public ContentValues getContentValues() {
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_ID, id);
+        if (id_nfc == null) {
+            id_nfc = "";
+        }
         cv.put(COLUMN_ID_NFC, id_nfc);
         cv.put(COLUMN_ID_USER, id_user);
         cv.put(COLUMN_NAME, name);

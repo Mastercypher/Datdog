@@ -36,7 +36,7 @@ public class Report {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         create = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_CREATE)));
         update = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_UPDATE)));
-        if (c.getString(c.getColumnIndex(COLUMN_DATE_FOUND)).toLowerCase().equals("null")) {
+        if (c.getString(c.getColumnIndex(COLUMN_DATE_FOUND)).equals("")) {
             found = null;
         } else {
             found = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_FOUND)));
@@ -49,12 +49,15 @@ public class Report {
         cv.put(COLUMN_ID, id);
         cv.put(COLUMN_ID_USER, user);
         cv.put(COLUMN_ID_DOG, dog);
+        if (location == null) {
+            location = "";
+        }
         cv.put(COLUMN_LOCATION, location);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         cv.put(COLUMN_DATE_CREATE, sdf.format(create));
         cv.put(COLUMN_DATE_UPDATE, sdf.format(update));
         if (found == null) {
-            cv.put(COLUMN_DATE_FOUND, "null");
+            cv.put(COLUMN_DATE_FOUND, "");
         } else {
             cv.put(COLUMN_DATE_FOUND, sdf.format(found));
         }

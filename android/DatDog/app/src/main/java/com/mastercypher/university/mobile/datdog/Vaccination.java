@@ -36,7 +36,11 @@ public class Vaccination {
         when = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_WHEN)));
         create = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_CREATE)));
         update = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_UPDATE)));
-        completed = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_COMPLETED)));
+        if (c.getString(c.getColumnIndex(COLUMN_DATE_COMPLETED)).equals("")) {
+            completed = null;
+        } else {
+            completed = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_COMPLETED)));
+        }
         delete = Integer.parseInt(c.getString(c.getColumnIndex(COLUMN_DELETE)));
     }
 
@@ -49,7 +53,11 @@ public class Vaccination {
         cv.put(COLUMN_DATE_WHEN, sdf.format(when));
         cv.put(COLUMN_DATE_CREATE, sdf.format(create));
         cv.put(COLUMN_DATE_UPDATE, sdf.format(update));
-        cv.put(COLUMN_DATE_COMPLETED, sdf.format(completed));
+        if (completed == null) {
+            cv.put(COLUMN_DATE_COMPLETED, "");
+        } else {
+            cv.put(COLUMN_DATE_COMPLETED, sdf.format(completed));
+        }
         cv.put(COLUMN_DELETE, delete);
         return cv;
     }

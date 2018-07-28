@@ -5,7 +5,9 @@ import android.database.Cursor;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Map;
 
 public class Friendship {
 
@@ -23,6 +25,16 @@ public class Friendship {
     private Date create;
     private Date update;
     private int delete;
+
+    public Friendship(Map<String, String> friendship) throws ParseException {
+        id = friendship.get("id");
+        user = Integer.parseInt(friendship.get("id_user_f"));
+        friend = Integer.parseInt(friendship.get("id_friend_f"));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
+        create = sdf.parse(friendship.get("date_create_f"));
+        update = sdf.parse(friendship.get("date_update_f"));
+        delete = Integer.parseInt(friendship.get("delte_f"));
+    }
 
     public Friendship(Cursor c) throws ParseException {
         id = c.getString(c.getColumnIndex(COLUMN_ID));

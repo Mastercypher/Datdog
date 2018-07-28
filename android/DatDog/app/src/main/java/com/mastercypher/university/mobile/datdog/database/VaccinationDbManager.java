@@ -14,27 +14,27 @@ public class VaccinationDbManager {
         vaccinationDbHelper = new VaccinationDbHelper(context);
     }
 
-    public boolean addUser(Vaccination vaccination) {
+    public boolean addVaccination(Vaccination vaccination) {
         SQLiteDatabase db = vaccinationDbHelper.getWritableDatabase();
         long row = db.insert(Vaccination.TABLE_NAME, null, vaccination.getContentValues());
         return row > 0;
     }
 
-    public boolean updateUser(Vaccination vaccination) {
+    public boolean updateVaccination(Vaccination vaccination) {
         SQLiteDatabase db = vaccinationDbHelper.getWritableDatabase();
         long row = db.update(Vaccination.TABLE_NAME, vaccination.getContentValues(),
                 Vaccination.COLUMN_ID + " = ?", new String[]{String.valueOf(vaccination.getId())});
         return row > 0;
     }
 
-    public boolean deleteUser(Vaccination vaccination) {
+    public boolean deleteVaccination(Vaccination vaccination) {
         SQLiteDatabase db = vaccinationDbHelper.getWritableDatabase();
         long row = db.delete(Vaccination.TABLE_NAME,
                 Vaccination.COLUMN_ID + " = ? ", new String[]{String.valueOf(vaccination.getId())});
         return row > 0;
     }
 
-    public boolean selectUser() {
+    public boolean selectVaccination() {
         //TODO: Do I need it?
         return false;
     }

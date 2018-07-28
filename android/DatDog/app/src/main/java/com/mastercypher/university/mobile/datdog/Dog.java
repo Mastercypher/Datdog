@@ -5,7 +5,9 @@ import android.database.Cursor;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Map;
 
 import static com.mastercypher.university.mobile.datdog.User.COLUMN_MAIL;
 import static com.mastercypher.university.mobile.datdog.User.COLUMN_PASSWORD;
@@ -38,6 +40,23 @@ public class Dog {
     private Date create;
     private Date update;
     private int delete;
+
+    public Dog(Map<String, String> dog) throws ParseException {
+        id = dog.get("id");
+        id_nfc = dog.get("id_nfc_d");
+        id_user = Integer.parseInt(dog.get("id_user_d"));
+        name = dog.get("name_d");
+        breed = dog.get("breed_d");
+        colour = dog.get("colour_d");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        birth = sdf.parse(dog.get("birth_d"));
+        size = Integer.parseInt(dog.get("size_d"));
+        sex = Integer.parseInt(dog.get("sex_d"));
+        sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
+        create = sdf.parse(dog.get("date_create_d"));
+        update = sdf.parse(dog.get("date_update_d"));
+        delete = Integer.parseInt(dog.get("delete_d"));
+    }
 
     public Dog(Cursor c) throws ParseException {
         id = c.getString(c.getColumnIndex(COLUMN_ID));

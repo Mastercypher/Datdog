@@ -14,27 +14,27 @@ public class ReportDbManager {
         reportDbHelper = new ReportDbHelper(context);
     }
 
-    public boolean addUser(Report report) {
+    public boolean addReport(Report report) {
         SQLiteDatabase db = reportDbHelper.getWritableDatabase();
         long row = db.insert(Report.TABLE_NAME, null, report.getContentValues());
         return row > 0;
     }
 
-    public boolean updateUser(Report report) {
+    public boolean updateReport(Report report) {
         SQLiteDatabase db = reportDbHelper.getWritableDatabase();
         long row = db.update(Report.TABLE_NAME, report.getContentValues(),
                 Report.COLUMN_ID + " = ?", new String[]{String.valueOf(report.getId())});
         return row > 0;
     }
 
-    public boolean deleteUser(Report report) {
+    public boolean deleteReport(Report report) {
         SQLiteDatabase db = reportDbHelper.getWritableDatabase();
         long row = db.delete(Report.TABLE_NAME,
                 Report.COLUMN_ID + " = ? ", new String[]{String.valueOf(report.getId())});
         return row > 0;
     }
 
-    public boolean selectUser() {
+    public boolean selectReport() {
         //TODO: Do I need it?
         return false;
     }

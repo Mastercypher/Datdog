@@ -6,6 +6,7 @@ import android.database.Cursor;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 public class Report {
 
@@ -27,6 +28,22 @@ public class Report {
     private Date update;
     private Date found;
     private int delete;
+
+    public Report(Map<String, String> report) throws ParseException {
+        id = report.get("id");
+        user = report.get("id_user_r");
+        dog = report.get("id_dog_r");
+        location = report.get("location_r");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
+        create = sdf.parse(report.get("date_create_r"));
+        update = sdf.parse(report.get("date_update_r"));
+        if (report.get("date_found_r").equals("")) {
+            found = null;
+        } else {
+            found = sdf.parse(report.get("date_found_r"));
+        }
+        delete = Integer.parseInt(report.get("delete_r"));
+    }
 
     public Report(Cursor c) throws ParseException {
         id = c.getString(c.getColumnIndex(COLUMN_ID));

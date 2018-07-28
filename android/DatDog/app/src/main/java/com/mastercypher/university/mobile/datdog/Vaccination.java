@@ -6,6 +6,7 @@ import android.database.Cursor;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 public class Vaccination {
 
@@ -27,6 +28,21 @@ public class Vaccination {
     private Date update;
     private Date completed;
     private int delete;
+
+    public Vaccination(Map<String, String> vax) throws ParseException {
+        id = vax.get("id");
+        dog = vax.get("id_dog_v");
+        name = vax.get("name_v");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
+        when = sdf.parse(vax.get("date_when_v"));
+        create = sdf.parse(vax.get("date_create_v"));
+        update = sdf.parse(vax.get("date_update_v"));
+        if (vax.get("date_completed_v").equals("")) {
+            completed = null;
+        } else {
+            completed = sdf.parse(vax.get("date_completed_v"));
+        }
+    }
 
     public Vaccination(Cursor c) throws ParseException {
         id = c.getString(c.getColumnIndex(COLUMN_ID));

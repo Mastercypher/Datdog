@@ -6,10 +6,7 @@
 //  Copyright © 2018 Mastercypher. All rights reserved.
 //
 
-class Dog: Hashable{
-    var hashValue: Int {
-        return mId.hashValue
-    }
+class Dog{
     
     static let SEX_M = 0
     static let SEX_F = 1

@@ -42,7 +42,7 @@ class DogDbManager {
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let fileUrl = documentDirectory.appendingPathComponent("users").appendingPathExtension("sqlite3")
             mDatabase = try Connection(fileUrl.path)
-            //1print("Connected to " + tableName + " db, path: " + fileUrl.path)
+            print("Connected to " + tableName + " db, path: " + fileUrl.path)
         } catch {
             print(error)
         }
@@ -79,8 +79,8 @@ class DogDbManager {
         }
     }
     
-    func getAll(user: User) -> Set<Dog>{
-        var allDogs = Set<Dog>()
+    func getAll(user: User) -> [Dog]? {
+        var allDogs: [Dog]?
         
         do {
             let query = mTable.filter(mIdUser == user.mId)
@@ -90,7 +90,7 @@ class DogDbManager {
                              breed: dog[mBreed], colour: dog[mColour], birth: dog[mBirth],
                              size: dog[mSize], sex: dog[mSex], dateCreate: dog[mDateCreate],
                              dateUpdate: dog[mDateUpdate], delete: dog[mDelete])
-                allDogs.insert(curDog)
+                allDogs? += [curDog]
             }
         } catch {
             print(error)

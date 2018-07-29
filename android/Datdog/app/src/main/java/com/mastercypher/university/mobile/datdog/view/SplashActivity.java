@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
 import com.mastercypher.university.mobile.datdog.entities.User;
 import com.mastercypher.university.mobile.datdog.database.UserDbManager;
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.ParseException;
 import java.util.List;
@@ -33,9 +34,7 @@ public class SplashActivity extends AppCompatActivity {
         List<User> users = new UserDbManager(this).getAllUsers();
         User currentUser = null;
         for (User user : users) {
-            if (currentUser == null) {
-                currentUser = user;
-            } else if (currentUser.getUpdate().before(user.getUpdate())) {
+            if (user.getCurrent() == UtilProj.CURRENT) {
                 // TODO check the current one (this is temporary)
                 currentUser = user;
             }

@@ -17,6 +17,7 @@ import com.mastercypher.university.mobile.datdog.database.UserDbManager;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -62,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             userLogin = new User(account);
                             userLogin.setCurrent(UtilProj.CURRENT);
+                            userLogin.setUpdate(new Date());
                             AccountDirectory.getInstance().setUser(userLogin);
                             new UserDbManager(mContext).addUser(userLogin);
                             //TODO: Task with aim to download all db related to the user logged in.

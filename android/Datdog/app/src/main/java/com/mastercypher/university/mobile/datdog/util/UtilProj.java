@@ -18,7 +18,7 @@ public class UtilProj {
     private static SimpleDateFormat formatDataNoTime = new SimpleDateFormat(PATTERN_DATE_NO_TIME);
 
     public static final int DB_ROW_AVAILABLE = 0;
-    public static final int DB_ROW_DELETE = 0;
+    public static final int DB_ROW_DELETE = 1;
 
     public static final int STRING_SIZE_OK = 0;
     public static final int STRING_SIZE_SMALL = 1;

@@ -4,8 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.mastercypher.university.mobile.datdog.Dog;
-import com.mastercypher.university.mobile.datdog.User;
+import com.mastercypher.university.mobile.datdog.entities.User;
 
 import java.util.LinkedList;
 import java.util.List;

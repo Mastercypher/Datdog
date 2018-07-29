@@ -4,11 +4,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.mastercypher.university.mobile.datdog.Dog;
-import com.mastercypher.university.mobile.datdog.Friendship;
-import com.mastercypher.university.mobile.datdog.Report;
-import com.mastercypher.university.mobile.datdog.User;
-import com.mastercypher.university.mobile.datdog.Vaccination;
+import com.mastercypher.university.mobile.datdog.entities.Dog;
+import com.mastercypher.university.mobile.datdog.entities.Friendship;
+import com.mastercypher.university.mobile.datdog.entities.Report;
+import com.mastercypher.university.mobile.datdog.entities.User;
+import com.mastercypher.university.mobile.datdog.entities.Vaccination;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -30,6 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             User.COLUMN_PASSWORD + " TEXT NOT NULL, " +
             User.COLUMN_DATE_CREATE + " TEXT NOT NULL, " +
             User.COLUMN_DATE_UPDATE + " TEXT NOT NULL, " +
+            User.COLUMN_CURRENT + " INTEGER NOT NULL, " +
             User.COLUMN_DELETE + " INTEGER NOT NULL)";
 
     public static final String CREATE_TABLE_DOG = "CREATE TABLE " +

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.mastercypher.university.mobile.datdog.Friendship;
+import com.mastercypher.university.mobile.datdog.entities.Friendship;
 
 import java.text.ParseException;
 import java.util.LinkedList;

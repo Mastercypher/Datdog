@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.mastercypher.university.mobile.datdog.Vaccination;
+import com.mastercypher.university.mobile.datdog.entities.Vaccination;
 
 import java.text.ParseException;
 

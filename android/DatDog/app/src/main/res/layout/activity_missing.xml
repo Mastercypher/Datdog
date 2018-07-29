@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MissingActivity">
+    tools:context=".view.MissingActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -76,6 +76,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
                 android:scaleType="centerCrop"
+                android:layout_marginBottom="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgReport"

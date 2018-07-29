@@ -2,10 +2,9 @@ package com.mastercypher.university.mobile.datdog.database;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.mastercypher.university.mobile.datdog.Dog;
+import com.mastercypher.university.mobile.datdog.entities.Dog;
 
 import java.text.ParseException;
 import java.util.LinkedList;

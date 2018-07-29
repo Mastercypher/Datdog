@@ -24,6 +24,9 @@ public class UtilProj {
     public static final int STRING_SIZE_SMALL = 1;
     public static final int STRING_SIZE_BIG = 2;
 
+    public static final int LOGOUT = 0;
+    public static final int CURRENT = 1;
+
 
     public static int checkValues(List<String> strToCheck) {
         boolean small = false;

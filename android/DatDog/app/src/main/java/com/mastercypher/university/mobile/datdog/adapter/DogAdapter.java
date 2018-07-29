@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.mastercypher.university.mobile.datdog.Dog;
+import com.mastercypher.university.mobile.datdog.entities.Dog;
 import com.mastercypher.university.mobile.datdog.R;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 

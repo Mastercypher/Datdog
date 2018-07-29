@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashActivity"
+            android:name=".view.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,86 +28,86 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".view.LoginActivity"
             android:label="Login" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".view.RegisterActivity"
             android:label="Registration"
              />
         <activity
-            android:name=".HomeActivity"
+            android:name=".view.HomeActivity"
             android:label="Home" />
         <activity
-            android:name=".MissingActivity"
+            android:name=".view.MissingActivity"
             android:label="Missing" />
         <activity
-            android:name=".FriendsActivity"
+            android:name=".view.FriendsActivity"
             android:label="Friends" />
         <activity
-            android:name=".ReportActivity"
+            android:name=".view.ReportActivity"
             android:label="Choose how to report" />
         <activity
-            android:name=".DogsActivity"
+            android:name=".view.DogsActivity"
             android:label="Your dogs" />
         <activity
-            android:name=".AddDogActivity"
+            android:name=".view.AddDogActivity"
             android:label="Add dog" />
         <activity
-            android:name=".UserInfoActivity"
+            android:name=".view.UserInfoActivity"
             android:label="User info" />
         <activity
-            android:name=".EditUserActivity"
+            android:name=".view.EditUserActivity"
             android:label="Edit user" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".view.SettingsActivity"
             android:label="Settings" />
         <activity
-            android:name=".DogInfoActivity"
+            android:name=".view.DogInfoActivity"
             android:label="Dog info" />
         <activity
-            android:name=".EditDogActivity"
+            android:name=".view.EditDogActivity"
             android:label="Edit dog" />
         <activity
-            android:name=".NfcReportActivity"
+            android:name=".view.NfcReportActivity"
             android:label="Report with NFC" />
         <activity
-            android:name=".CodeReportActivity"
+            android:name=".view.CodeReportActivity"
             android:label="Report with code" />
         <activity
-            android:name=".ConfirmationReportActivity"
+            android:name=".view.ConfirmationReportActivity"
             android:label="Confirm report" />
         <activity
-            android:name=".ConnectActivity"
+            android:name=".view.ConnectActivity"
             android:label="Connect" />
         <activity
-            android:name=".ConnectDogActivity"
+            android:name=".view.ConnectDogActivity"
             android:label="Connect NFC Tag" />
         <activity
-            android:name=".DogTagActivity"
+            android:name=".view.DogTagActivity"
             android:label="Dog&apos;s tag" />
         <activity
-            android:name=".VaxActivity"
+            android:name=".view.VaxActivity"
             android:label="Vaccinations" />
         <activity
-            android:name=".AddVaxActivity"
+            android:name=".view.AddVaxActivity"
             android:label="Add vaccination" />
         <activity
-            android:name=".VaxStatusActivity"
+            android:name=".view.VaxStatusActivity"
             android:label="Status vaccination" />
         <activity
-            android:name=".EditVaxActivity"
+            android:name=".view.EditVaxActivity"
             android:label="Edit vaccination" />
         <activity
-            android:name=".LostActivity"
+            android:name=".view.LostActivity"
             android:label="Your lost" />
         <activity
-            android:name=".LostDogActivity"
+            android:name=".view.LostDogActivity"
             android:label="Status lost dog" />
         <activity
-            android:name=".AddFriendActivity"
+            android:name=".view.AddFriendActivity"
             android:label="Add friend"></activity>
 
         <meta-data

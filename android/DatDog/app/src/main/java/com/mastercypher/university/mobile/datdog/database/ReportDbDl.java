@@ -1,13 +1,12 @@
 package com.mastercypher.university.mobile.datdog.database;
 
 import android.content.Context;
-import android.os.AsyncTask;
 
-import com.mastercypher.university.mobile.datdog.AccountDirectory;
-import com.mastercypher.university.mobile.datdog.DlTask;
-import com.mastercypher.university.mobile.datdog.Dog;
-import com.mastercypher.university.mobile.datdog.Report;
-import com.mastercypher.university.mobile.datdog.User;
+import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
+import com.mastercypher.university.mobile.datdog.util.DlTask;
+import com.mastercypher.university.mobile.datdog.entities.Dog;
+import com.mastercypher.university.mobile.datdog.entities.Report;
+import com.mastercypher.university.mobile.datdog.entities.User;
 
 import java.text.ParseException;
 import java.util.Collection;

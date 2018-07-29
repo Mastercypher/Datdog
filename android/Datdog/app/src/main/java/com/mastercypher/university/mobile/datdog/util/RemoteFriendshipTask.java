@@ -2,7 +2,7 @@ package com.mastercypher.university.mobile.datdog.util;
 
 import android.os.AsyncTask;
 
-import com.mastercypher.university.mobile.datdog.entities.Report;
+import com.mastercypher.university.mobile.datdog.entities.Friendship;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,14 +10,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 
-public class RemoteReportTask extends AsyncTask<Void, Void, Void> {
+public class RemoteFriendshipTask extends AsyncTask<Void, Void, Void> {
 
     private ActionType actionType;
-    private Report report;
+    private Friendship friendship;
 
-    public RemoteReportTask(ActionType at, Report r) {
+    public RemoteFriendshipTask(ActionType at, Friendship f) {
         actionType = at;
-        report = r;
+        friendship = f;
     }
 
     @Override
@@ -27,15 +27,13 @@ public class RemoteReportTask extends AsyncTask<Void, Void, Void> {
         String mode = actionType == ActionType.INSERT ? "insert" : "update";
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         try {
-            URL url = new URL("http://datdog.altervista.org/report.php?action=" + mode +
-                    "&id=" + report.getId() +
-                    "&id_user_r=" + report.getUser() +
-                    "&id_dog_r=" + report.getDog() +
-                    "&location_r=" + report.getLocation() +
-                    "&date_create_r=" + sdf.format(report.getCreate()) +
-                    "&date_update_r=" + sdf.format(report.getUpdate()) +
-                    "&date_found_r=" + sdf.format(report.getFound()) +
-                    "&delete_r=" + report.getDelete());
+            URL url = new URL("http://datdog.altervista.org/friend.php?action=" + mode +
+                    "&id=" + friendship.getId() +
+                    "&id_user_f=" + friendship.getUser() +
+                    "&id_friend_f=" + friendship.getFriend() +
+                    "&date_create_f=" + sdf.format(friendship.getCreate()) +
+                    "&date_update_f=" + sdf.format(friendship.getUpdate()) +
+                    "&delete_f=" + friendship.getDelete());
             conn = (HttpURLConnection) url.openConnection();
             conn.setConnectTimeout(60 * 1000);
             conn.setReadTimeout(60 * 1000);

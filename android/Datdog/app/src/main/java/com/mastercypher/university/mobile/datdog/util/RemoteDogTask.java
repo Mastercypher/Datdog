@@ -26,7 +26,7 @@ public class RemoteDogTask extends AsyncTask<Void, Void, Void> {
         BufferedReader rd = null;
         String mode = actionType == ActionType.INSERT ? "insert" : "update";
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         try {
             URL url = new URL("http://datdog.altervista.org/dog.php?action=" + mode +
                     "&id=" + dog.getId() +

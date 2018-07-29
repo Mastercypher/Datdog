@@ -3,8 +3,10 @@ package com.mastercypher.university.mobile.datdog.database;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.mastercypher.university.mobile.datdog.AccountDirectory;
 import com.mastercypher.university.mobile.datdog.DlTask;
 import com.mastercypher.university.mobile.datdog.Dog;
+import com.mastercypher.university.mobile.datdog.User;
 import com.mastercypher.university.mobile.datdog.Vaccination;
 
 import java.text.ParseException;
@@ -20,11 +22,11 @@ public class VaccinationDbDl {
 
     public VaccinationDbDl(Context c) {
         context = c;
-        System.out.println("vaxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
     }
 
     public void doInBackground() {
-        List<Dog> dogs = new DogDbManager(context).getAllDogs();
+        User user = AccountDirectory.getInstance().getUser();
+        List<Dog> dogs = new DogDbManager(context).getAllDogs(user.getId());
         Iterator<Dog> doggy = dogs.iterator();
         while (doggy.hasNext()) {
             Collection<Map<String, String>> vaxes = null;

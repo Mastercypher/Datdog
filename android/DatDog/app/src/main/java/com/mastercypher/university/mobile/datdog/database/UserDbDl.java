@@ -24,7 +24,6 @@ public class UserDbDl {
 
     public UserDbDl(Context c) {
         context = c;
-        System.out.println("usryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
     }
 
     public void doInBackground() {

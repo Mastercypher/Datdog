@@ -20,7 +20,6 @@ public class FriendshipDbDl {
 
     public FriendshipDbDl(Context c) {
         context = c;
-        System.out.println("friendyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
     }
 
     public void doInBackground() {

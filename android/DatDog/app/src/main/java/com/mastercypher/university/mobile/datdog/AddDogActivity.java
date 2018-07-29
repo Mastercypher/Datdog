@@ -104,7 +104,7 @@ public class AddDogActivity extends AppCompatActivity {
         // Radio Group SIZE
         int rdbSizeId = mRdgSize.getCheckedRadioButtonId();
         RadioButton rdbSize = mRdgSize.findViewById(rdbSizeId);
-        int size = mRdgSex.indexOfChild(rdbSize);
+        int size = mRdgSize.indexOfChild(rdbSize);
 
         List<String> strToCheck = new ArrayList<>();
         strToCheck.add(name);

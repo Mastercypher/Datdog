@@ -27,10 +27,12 @@ public class DogAdapter extends ArrayAdapter<Dog> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_dogs, parent, false);
         }
+        String dogName = dog.getName();
+        String dogBirth = "Birth: " + UtilProj.formatDataNoTime(dog.getBirth());
         TextView txvName = (TextView) convertView.findViewById(R.id.txv_name);
         TextView txvBirth = (TextView) convertView.findViewById(R.id.txv_birth);
-        txvName.setText(dog.getName());
-        txvBirth.setText(UtilProj.formatData(dog.getBirth()));
+        txvName.setText(dogName);
+        txvBirth.setText(dogBirth);
         return convertView;
     }
 }

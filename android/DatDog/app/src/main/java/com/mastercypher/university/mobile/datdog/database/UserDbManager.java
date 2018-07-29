@@ -1,9 +1,14 @@
 package com.mastercypher.university.mobile.datdog.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.mastercypher.university.mobile.datdog.Dog;
 import com.mastercypher.university.mobile.datdog.User;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class UserDbManager {
 
@@ -36,5 +41,28 @@ public class UserDbManager {
     public boolean selectUser() {
         //TODO: Do I need it?
         return false;
+    }
+
+    public List<User> getAllUsers() {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+
+        List<User> users = new LinkedList<>();
+        Cursor c = null;
+        try {
+            String query = "SELECT * " + "FROM " + User.TABLE_NAME;
+
+            c = db.rawQuery(query, null);
+            while (c.moveToNext()) {
+                users.add(new User(c));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            db.close();
+        }
+        return users;
     }
 }

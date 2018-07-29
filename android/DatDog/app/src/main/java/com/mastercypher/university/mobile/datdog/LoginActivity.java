@@ -1,5 +1,6 @@
 package com.mastercypher.university.mobile.datdog;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,11 +22,13 @@ public class LoginActivity extends AppCompatActivity {
     private EditText loginMail;
     private EditText loginPw;
     private Map<String, String> account;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mContext = this;
 
         btnLogin = findViewById(R.id.btnLogin);
         btnToRegister = findViewById(R.id.btnToRegister);
@@ -35,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                User userLogin = null;
                 if (loginMail.getText().toString().equals("") || loginPw.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "Compile both fields.", Toast.LENGTH_LONG).show();
                 } else {
@@ -51,20 +55,18 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (account != null) {
                         try {
-                            AccountDirectory.getInstance().setUser(new User(account));
+                            userLogin = new User(account);
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
-                        //TODO: Task with aim to download all db related to the user logged in.
-                        if (true){
 
-                        } else {
-                            new UserDbManager(getApplicationContext()).addUser(AccountDirectory.getInstance().getUser());
-                        }
+                        AccountDirectory.getInstance().setUser(userLogin);
+                        new UserDbManager(mContext).addUser(userLogin);
+                        //TODO: Task with aim to download all db related to the user logged in.
 
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     } else {
-                        Toast.makeText(getApplicationContext(), "Wrong credentials or deleted account.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Email or password wrong", Toast.LENGTH_LONG).show();
                     }
                 }
             }

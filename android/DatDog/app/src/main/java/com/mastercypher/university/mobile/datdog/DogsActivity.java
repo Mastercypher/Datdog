@@ -85,7 +85,7 @@ public class DogsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Dog dogClicked = (Dog) mListView.getItemAtPosition(position);
-                // TODO go to dog's viee
+                // TODO go to dog's view
             }
         });
     }
@@ -94,11 +94,10 @@ public class DogsActivity extends AppCompatActivity {
         User user = AccountDirectory.getInstance().getUser();
         if (user != null) {
             mDogAdapter.clear();
-
             DogDbManager dogDb = new DogDbManager(this);
             ArrayList<Pair<String, Integer>> arrayOfSchedule = new ArrayList<>();
 
-            mDogAdapter.addAll(dogDb.getAllDogs());
+            mDogAdapter.addAll(dogDb.getAllDogs(user.getId()));
         } else {
             UtilProj.showToast(this, "User account problem, restart the application" );
         }

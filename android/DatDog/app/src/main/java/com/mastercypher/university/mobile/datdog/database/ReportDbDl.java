@@ -7,6 +7,7 @@ import com.mastercypher.university.mobile.datdog.AccountDirectory;
 import com.mastercypher.university.mobile.datdog.DlTask;
 import com.mastercypher.university.mobile.datdog.Dog;
 import com.mastercypher.university.mobile.datdog.Report;
+import com.mastercypher.university.mobile.datdog.User;
 
 import java.text.ParseException;
 import java.util.Collection;
@@ -21,7 +22,6 @@ public class ReportDbDl {
 
     public ReportDbDl(Context c) {
         context = c;
-        System.out.println("reportyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
     }
 
     public void doInBackground() {
@@ -44,7 +44,8 @@ public class ReportDbDl {
             }
         }
 
-        List<Dog> dogs = new DogDbManager(context).getAllDogs();
+        User user = AccountDirectory.getInstance().getUser();
+        List<Dog> dogs = new DogDbManager(context).getAllDogs(user.getId());
         Iterator<Dog> doggy = dogs.iterator();
         while (doggy.hasNext()) {
             try {

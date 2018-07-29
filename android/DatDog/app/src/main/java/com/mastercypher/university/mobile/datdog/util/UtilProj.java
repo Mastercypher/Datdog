@@ -11,7 +11,9 @@ import java.util.List;
 
 public class UtilProj {
     public static final String PATTERN_DATE = "dd/MM/yyyy-HH:mm:ss";
+    public static final String PATTERN_DATE_NO_TIME = "dd/MM/yyyy";
     private static SimpleDateFormat formatData = new SimpleDateFormat(PATTERN_DATE);
+    private static SimpleDateFormat formatDataNoTime = new SimpleDateFormat(PATTERN_DATE_NO_TIME);
 
     public static final int DB_ROW_AVAILABLE = 0;
     public static final int DB_ROW_DELETE = 0;
@@ -51,8 +53,24 @@ public class UtilProj {
         return formatData.format(dateNow);
     }
 
+    /**
+     * Format data to data-string
+     *
+     * @param date
+     * @return
+     */
     public static String formatData(Date date) {
         return formatData.format(date);
+    }
+
+    /**
+     * Format data to data-string (NO TIME)
+     *
+     * @param date
+     * @return
+     */
+    public static String formatDataNoTime(Date date) {
+        return formatDataNoTime.format(date);
     }
 
     public static Date parseDate(String dataString) {

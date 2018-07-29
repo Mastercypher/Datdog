@@ -46,13 +46,14 @@ public class DogDbManager {
         return row > 0;
     }
 
-    public List<Dog> getAllDogs() {
+    public List<Dog> getAllDogs(int idUser) {
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
         List<Dog> dogs = new LinkedList<>();
         Cursor c = null;
         try {
-            String query = "SELECT *" + " FROM " + Dog.TABLE_NAME;
+            String query = "SELECT * " + "FROM " + Dog.TABLE_NAME+
+                    " WHERE user = " + idUser;
 
             c = db.rawQuery(query, null);
             while (c.moveToNext()) {

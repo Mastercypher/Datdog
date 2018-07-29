@@ -18,7 +18,6 @@ public class DogDbDl {
     private Context context;
 
     public DogDbDl(Context c){
-        System.out.println("doggyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
         context = c;
     }
 

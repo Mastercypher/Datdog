@@ -11,7 +11,7 @@ import java.util.List;
 
 public class UtilProj {
     public static final String PATTERN_DATE = "dd/MM/yyyy-HH:mm:ss";
-    public static SimpleDateFormat formatData = new SimpleDateFormat(PATTERN_DATE);
+    private static SimpleDateFormat formatData = new SimpleDateFormat(PATTERN_DATE);
 
     public static final int DB_ROW_AVAILABLE = 0;
     public static final int DB_ROW_DELETE = 0;
@@ -21,37 +21,41 @@ public class UtilProj {
     public static final int STRING_SIZE_BIG = 2;
 
 
-    public static int checkValues(List<String> strToCheck){
+    public static int checkValues(List<String> strToCheck) {
         boolean small = false;
         boolean big = false;
 
         for (String str : strToCheck) {
-            if(!(str.length() > 0)){
+            if (!(str.length() > 0)) {
                 small = true;
                 break;
             }
 
-            if(!(str.length() < 50)){
+            if (!(str.length() < 50)) {
                 big = true;
                 break;
             }
         }
 
-        if (small){
+        if (small) {
             return STRING_SIZE_SMALL;
-        } else if (big){
+        } else if (big) {
             return STRING_SIZE_BIG;
         } else {
             return STRING_SIZE_OK;
         }
     }
 
-    public static String getDateNow(){
+    public static String getDateNow() {
         Date dateNow = Calendar.getInstance().getTime();
         return formatData.format(dateNow);
     }
 
-    public static Date parseDate(String dataString){
+    public static String formatData(Date date) {
+        return formatData.format(date);
+    }
+
+    public static Date parseDate(String dataString) {
         try {
             return formatData.parse(dataString);
         } catch (ParseException e) {
@@ -60,7 +64,7 @@ public class UtilProj {
         return null;
     }
 
-    public static void showToast(Context context, String message){
+    public static void showToast(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 }

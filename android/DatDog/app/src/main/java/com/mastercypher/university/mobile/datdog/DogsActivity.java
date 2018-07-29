@@ -6,14 +6,27 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.mastercypher.university.mobile.datdog.adapter.DogAdapter;
+import com.mastercypher.university.mobile.datdog.database.DogDbManager;
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class DogsActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    private FloatingActionButton btnAddDog;
+    private DogAdapter mDogAdapter;
+    private FloatingActionButton mBtnAddDog;
+    private ListView mListView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -51,14 +64,43 @@ public class DogsActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_dogs);
 
-        btnAddDog = findViewById(R.id.floatingActionButton2);
-
-        btnAddDog.setOnClickListener(new View.OnClickListener() {
+        // Button ADD
+        mBtnAddDog = findViewById(R.id.floatingActionButton2);
+        mBtnAddDog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(DogsActivity.this, AddDogActivity.class));
             }
         });
+
+        // ListView DOGS
+        // Prepare adapter for list of dogs
+        mListView = findViewById(R.id.lsvDogs);
+        ArrayList<Dog> dogsArray = new ArrayList<>();
+        mDogAdapter = new DogAdapter(this, dogsArray);
+        mListView.setAdapter(mDogAdapter);
+        this.refreshDogs();
+
+        mListView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Dog dogClicked = (Dog) mListView.getItemAtPosition(position);
+                // TODO go to dog's viee
+            }
+        });
     }
 
+    private void refreshDogs(){
+        User user = AccountDirectory.getInstance().getUser();
+        if (user != null) {
+            mDogAdapter.clear();
+
+            DogDbManager dogDb = new DogDbManager(this);
+            ArrayList<Pair<String, Integer>> arrayOfSchedule = new ArrayList<>();
+
+            mDogAdapter.addAll(dogDb.getAllDogs());
+        } else {
+            UtilProj.showToast(this, "User account problem, restart the application" );
+        }
+    }
 }

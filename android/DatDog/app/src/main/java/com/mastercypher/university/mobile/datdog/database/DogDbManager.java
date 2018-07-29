@@ -52,8 +52,7 @@ public class DogDbManager {
         List<Dog> dogs = new LinkedList<>();
         Cursor c = null;
         try {
-            String query = "SELECT *" +
-                    " FROM " + Dog.TABLE_NAME;
+            String query = "SELECT *" + " FROM " + Dog.TABLE_NAME;
 
             c = db.rawQuery(query, null);
             while (c.moveToNext()) {

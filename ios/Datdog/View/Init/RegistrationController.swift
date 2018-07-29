@@ -128,10 +128,14 @@ class RegistrationController : UIViewController, UITextFieldDelegate {
             if (self.name.count < 50 && self.surname.count < 50 && self.phone.count < 50 && self.birth.count < 50
                 && self.email.count < 50 && self.password.count < 50 && self.repPassword.count < 50)  {
                 // Check if the repeat password is equal to the password
-                if (self.password.elementsEqual(self.repPassword)){
-                    self.pushRegistration()
+                if (self.password.count > 3){
+                    if (self.password.elementsEqual(self.repPassword)){
+                        self.pushRegistration()
+                    } else {
+                        errorMessage = "Password not matching"
+                    }
                 } else {
-                    errorMessage = "Password not matching"
+                    errorMessage = UtilProj.ERR.PASW_TO_SHORT
                 }
             }else {
                 errorMessage = UtilProj.ERR.CHAR_MAX
@@ -148,7 +152,7 @@ class RegistrationController : UIViewController, UITextFieldDelegate {
     // Permit to oush the registration data online.
     func pushRegistration(){
         let dateNow = UtilProj.getDateNow()
-        let urlString = "http://datdog.altervista.org/user.php?action=insert&" +
+        let urlString = "http://datdog.altervista.org/user.php?action=insert-login&" +
             "name_u=\(name)&surname_u=\(surname)&phone_u=\(phone)&birth_u=\(birth)&" +
         "email_u=\(email)&password_u=\(password)&date_create_u=\(dateNow)&date_update_u=\(dateNow)&delete_u=0"
         let url = URL(string: urlString)!

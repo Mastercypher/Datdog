@@ -46,7 +46,8 @@ class ViewUserController: UIViewController {
         let alert = UIAlertController(title: "Logout", message: "You will be returned to the login screen", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Logout action"), style: .default, handler: { _ in
             view.db.logut(user: view.mUser!)
-            UtilProj.goToLogin(view: view)
+            let vc = view.storyboard?.instantiateViewController(withIdentifier: "loginView") as! LoginController
+            view.present(vc, animated: true, completion:nil )
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)

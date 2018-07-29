@@ -26,9 +26,6 @@ public class DogDbDl {
         try {
             elem = new DlTask().execute("http://datdog.altervista.org/dog.php?action=select&id_user_d=" +
                     AccountDirectory.getInstance().getUser().getId()).get();
-            if (elem!=null){
-                System.out.println("not null");
-            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -36,10 +33,8 @@ public class DogDbDl {
         }
         Iterator<Map<String, String>> it = elem.iterator();
         while (it.hasNext()) {
-            System.out.println("got next");
             try {
                 new DogDbManager(context).addDog(new Dog(it.next()));
-                System.out.println("Inserted");
             } catch (ParseException e) {
                 e.printStackTrace();
             }

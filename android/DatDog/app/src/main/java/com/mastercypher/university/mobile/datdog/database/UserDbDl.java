@@ -27,7 +27,6 @@ public class UserDbDl {
     }
 
     public void doInBackground() {
-        System.out.println("not null");
 
         Collection<Map<String, String>> elem = null;
         Iterator<Map<String,String>> it;

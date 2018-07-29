@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mastercypher.university.mobile.datdog.database.UserDbManager;
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.ParseException;
 import java.util.Map;
@@ -56,15 +57,14 @@ public class LoginActivity extends AppCompatActivity {
                     if (account != null) {
                         try {
                             userLogin = new User(account);
+                            AccountDirectory.getInstance().setUser(userLogin);
+                            new UserDbManager(mContext).addUser(userLogin);
+                            //TODO: Task with aim to download all db related to the user logged in.
+                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         } catch (ParseException e) {
                             e.printStackTrace();
+                            Toast.makeText(getApplicationContext(), UtilProj.ERR_RESTART, Toast.LENGTH_LONG).show();
                         }
-
-                        AccountDirectory.getInstance().setUser(userLogin);
-                        new UserDbManager(mContext).addUser(userLogin);
-                        //TODO: Task with aim to download all db related to the user logged in.
-
-                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     } else {
                         Toast.makeText(getApplicationContext(), "Email or password wrong", Toast.LENGTH_LONG).show();
                     }

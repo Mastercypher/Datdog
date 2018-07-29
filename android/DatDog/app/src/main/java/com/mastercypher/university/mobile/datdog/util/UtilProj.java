@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 public class UtilProj {
+    public static final String ERR_RESTART = "Problem encountered, restart the application";
+
     public static final String PATTERN_DATE = "dd/MM/yyyy-HH:mm:ss";
     public static final String PATTERN_DATE_NO_TIME = "dd/MM/yyyy";
     private static SimpleDateFormat formatData = new SimpleDateFormat(PATTERN_DATE);

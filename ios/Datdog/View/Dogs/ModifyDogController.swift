@@ -26,6 +26,7 @@ class ModifyDogController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        mDog = mDbDog.getById(id: (mDog?.mId)!)
         txfName.text = mDog?.mName
         txfBreed.text = mDog?.mBreed
         txfColour.text = mDog?.mColour

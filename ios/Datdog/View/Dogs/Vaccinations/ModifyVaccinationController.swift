@@ -19,6 +19,7 @@ class ModifyVaccinationController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     override func viewWillAppear(_ animated: Bool) {
+        mVacc = VaccDbManager().getById(id: (mVacc?.mId)!)
         if let vacc = mVacc {
             txfName.text = vacc.mName
             txfWhen.text = vacc.mDateWhen

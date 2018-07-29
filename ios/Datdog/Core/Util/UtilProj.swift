@@ -44,8 +44,8 @@ class UtilProj {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy-HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-        let date = dateFormatter.date(from:dateString)!
-        return date
+        let date = dateFormatter.date(from:dateString)
+        return date!
     }
     
     static func getUIColor(hex: String, alpha: CGFloat = 1) -> UIColor?{

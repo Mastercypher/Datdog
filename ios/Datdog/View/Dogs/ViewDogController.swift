@@ -25,6 +25,7 @@ class ViewDogController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        mDog = DogDbManager().getById(id: (mDog?.mId)!)
         lblTitleName.text = mDog?.mName
         lblBreed.text = mDog?.mBreed
         lblColour.text = mDog?.mColour

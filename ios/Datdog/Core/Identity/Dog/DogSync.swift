@@ -11,6 +11,12 @@ import UIKit
 
 class DogSync {
     
+    var mTableView: UITableView?
+    
+    init(tableview: UITableView) {
+        mTableView = tableview
+    }
+    
     func sync(idUser: Int){
         self.downloadData(idUser: idUser)
     }
@@ -25,12 +31,12 @@ class DogSync {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request) { [unowned self](data, response, error) in
-            
+            /*
             if (data != nil) {
                 let string = String(data: data!, encoding: .utf8)
                 debugPrint(string!)
             }
-            
+            */
             
             do {
                 var remoteDogs = Array<Dog>()
@@ -116,12 +122,13 @@ class DogSync {
             if(update){
                 urlString = "http://datdog.altervista.org/dog.php?action=update&id=\(dog.mId!)&id_nfc_d=\(dog.mIdNfc! ?? "")&id_user_d=\(dog.mIdUser!)&name_d=\(dog.mName!)&breed_d=\(dog.mBreed!)&colour_d=\(dog.mColour!)&birth_d=\(dog.mBirth!)&size_d=\(dog.mSize!)&sex_d=\(dog.mSex!)&date_create_d=\(dog.mDateCreate!)&date_update_d=\(dog.mDateUpdate!)&delete_d=\(dog.mDelete!)"
             } else {
-                urlString = "http://datdog.altervista.org/dog.php?action=insert&id=\(dog.mId!)&id_nfc_d=\(dog.mIdNfc!)!&id_user_d=\(dog.mIdUser!)&name_d=\(dog.mName!)&breed_d=\(dog.mBreed!)&colour_d=\(dog.mColour!)&birth_d=\(dog.mBirth!)&size_d=\(dog.mSize!)&sex_d=\(dog.mSex!)&date_create_d=\(dog.mDateCreate!)&date_update_d=\(dog.mDateUpdate!)&delete_d=\(dog.mDelete!)"
+                urlString = "http://datdog.altervista.org/dog.php?action=insert&id=\(dog.mId!)&id_nfc_d=\(dog.mIdNfc! ?? "")!&id_user_d=\(dog.mIdUser!)&name_d=\(dog.mName!)&breed_d=\(dog.mBreed!)&colour_d=\(dog.mColour!)&birth_d=\(dog.mBirth!)&size_d=\(dog.mSize!)&sex_d=\(dog.mSex!)&date_create_d=\(dog.mDateCreate!)&date_update_d=\(dog.mDateUpdate!)&delete_d=\(dog.mDelete!)"
             }
+            
+            urlString = urlString.replacingOccurrences(of: " ", with: "+")
             upload(urlString: urlString)
         }
     }
-    
     func upload(urlString: String!) {
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
@@ -129,12 +136,12 @@ class DogSync {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request) { [unowned self](data, response, error) in
-            
+            /*
             if (data != nil) {
                 let string = String(data: data!, encoding: .utf8)
                 debugPrint(string!)
             }
-            
+            */
             do {
                 let respond = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
                 let dictionary = respond as! [String : Any]
@@ -142,7 +149,7 @@ class DogSync {
                 
                 if (success!) {
                     print("Success sync")
-
+                    
                 } else {
                     print("Problem remote sync dog ")
                 }
@@ -151,6 +158,10 @@ class DogSync {
             }
         }
         task.resume()
+    }
+    
+    func refreshTable () {
+        mTableView?.reloadData()
     }
     
 }

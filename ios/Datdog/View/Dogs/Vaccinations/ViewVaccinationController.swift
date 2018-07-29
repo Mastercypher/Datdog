@@ -25,6 +25,7 @@ class ViewVaccinationController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        mVacc = VaccDbManager().getById(id: (mVacc?.mId)!)
         let active = mVacc?.mDateCompleted == ""
         lblName.text = mVacc?.mName
         lblWhen.text = mVacc?.mDateWhen

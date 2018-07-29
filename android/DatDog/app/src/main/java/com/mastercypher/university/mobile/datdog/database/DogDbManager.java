@@ -2,10 +2,12 @@ package com.mastercypher.university.mobile.datdog.database;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.mastercypher.university.mobile.datdog.Dog;
 
+import java.text.ParseException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,16 +19,23 @@ public class DogDbManager {
         databaseHelper = new DatabaseHelper(context);
     }
 
-    public boolean addDog(Dog dog) {
-        SQLiteDatabase db = databaseHelper.getWritableDatabase();
-        long row = db.insert(Dog.TABLE_NAME, null, dog.getContentValues());
-        return row > 0;
+    public boolean addDog(Dog dog) throws ParseException {
+        try {
+            SQLiteDatabase db = databaseHelper.getWritableDatabase();
+            long row = db.insert(Dog.TABLE_NAME, null, dog.getContentValues());
+            return row > 0;
+        } catch (SQLiteConstraintException e) {
+            return updateDog(dog);
+        }
     }
 
-    public boolean updateDog(Dog dog) {
+    public boolean updateDog(Dog dog) throws ParseException {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
-        long row = db.update(Dog.TABLE_NAME, dog.getContentValues(),
-                Dog.COLUMN_ID + " = ?", new String[]{String.valueOf(dog.getId())});
+        long row = 0;
+        if (selectDog(dog.getId()).getUpdate().before(dog.getUpdate())) {
+            row = db.update(Dog.TABLE_NAME, dog.getContentValues(),
+                    Dog.COLUMN_ID + " = ?", new String[]{String.valueOf(dog.getId())});
+        }
         return row > 0;
     }
 
@@ -61,8 +70,14 @@ public class DogDbManager {
         return dogs;
     }
 
-    public boolean selectDog() {
-        //TODO: Do I need it?
-        return false;
+    public Dog selectDog(String id_dog) throws ParseException {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+
+        Cursor c = null;
+        String query = "SELECT *" +
+                "FROM " + Dog.TABLE_NAME +
+                " WHERE id = ?";
+         c = db.rawQuery(query, new String[]{String.valueOf(id_dog)});
+         return new Dog(c);
     }
 }

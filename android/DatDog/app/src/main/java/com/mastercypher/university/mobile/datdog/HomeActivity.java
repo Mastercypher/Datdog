@@ -12,6 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.mastercypher.university.mobile.datdog.database.DogDbDl;
+import com.mastercypher.university.mobile.datdog.database.FriendshipDbDl;
+import com.mastercypher.university.mobile.datdog.database.ReportDbDl;
+import com.mastercypher.university.mobile.datdog.database.UserDbDl;
+import com.mastercypher.university.mobile.datdog.database.VaccinationDbDl;
+
 public class HomeActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
@@ -120,5 +126,12 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
             }
         });
+
+        new DogDbDl(HomeActivity.this).doInBackground();
+        new FriendshipDbDl(HomeActivity.this).doInBackground();
+        new UserDbDl(HomeActivity.this).doInBackground();
+        new ReportDbDl(HomeActivity.this).doInBackground();
+        new VaccinationDbDl(HomeActivity.this).doInBackground();
+
     }
 }

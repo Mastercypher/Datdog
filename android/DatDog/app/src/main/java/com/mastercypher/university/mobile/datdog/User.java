@@ -18,9 +18,9 @@ public class User {
     public static final String COLUMN_BIRTH = "birth";
     public static final String COLUMN_MAIL = "mail";
     public static final String COLUMN_PASSWORD = "password";
-    public static final String COLUMN_DATE_CREATE = "create";
-    public static final String COLUMN_DATE_UPDATE = "update";
-    public static final String COLUMN_DELETE = "delete";
+    public static final String COLUMN_DATE_CREATE = "created";
+    public static final String COLUMN_DATE_UPDATE = "updated";
+    public static final String COLUMN_DELETE = "deleted";
 
     private int id;
     private String name;

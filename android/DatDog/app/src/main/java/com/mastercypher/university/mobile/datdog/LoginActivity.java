@@ -8,18 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.mastercypher.university.mobile.datdog.database.DogDbManager;
-import com.mastercypher.university.mobile.datdog.database.FriendshipDbManager;
-import com.mastercypher.university.mobile.datdog.database.ReportDbManager;
-import com.mastercypher.university.mobile.datdog.database.UpdateDbContent;
 import com.mastercypher.university.mobile.datdog.database.UserDbManager;
-import com.mastercypher.university.mobile.datdog.database.VaccinationDbManager;
 
 import java.text.ParseException;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -49,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     try {
                         account = new LoginTask().execute(
-                                "http://datdog.altervista.org/user.php?action=select&email_u="
+                                "http://datdog.altervista.org/user.php?action=select-login&email_u="
                                         + loginMail.getText().toString().toLowerCase()
                                         + "&password_u=" + loginPw.getText().toString()).get();
                     } catch (InterruptedException e) {
@@ -65,8 +56,12 @@ public class LoginActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         //TODO: Task with aim to download all db related to the user logged in.
-                        new UserDbManager(getApplicationContext()).addUser(AccountDirectory.getInstance().getUser());
-                        new UpdateDbContent().execute(getApplication());
+                        if (true){
+
+                        } else {
+                            new UserDbManager(getApplicationContext()).addUser(AccountDirectory.getInstance().getUser());
+                        }
+
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     } else {
                         Toast.makeText(getApplicationContext(), "Wrong credentials or deleted account.", Toast.LENGTH_LONG).show();

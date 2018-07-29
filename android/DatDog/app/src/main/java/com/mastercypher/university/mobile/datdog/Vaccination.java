@@ -14,11 +14,11 @@ public class Vaccination {
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_ID_DOG = "dog";
     public static final String COLUMN_NAME = "name";
-    public static final String COLUMN_DATE_WHEN = "when";
-    public static final String COLUMN_DATE_CREATE = "create";
-    public static final String COLUMN_DATE_UPDATE = "update";
+    public static final String COLUMN_DATE_WHEN = "booked";
+    public static final String COLUMN_DATE_CREATE = "created";
+    public static final String COLUMN_DATE_UPDATE = "updated";
     public static final String COLUMN_DATE_COMPLETED = "completed";
-    public static final String COLUMN_DELETE = "delete";
+    public static final String COLUMN_DELETE = "deleted";
 
     private String id;
     private String dog;

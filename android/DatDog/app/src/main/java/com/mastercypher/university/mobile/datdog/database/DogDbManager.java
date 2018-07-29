@@ -11,34 +11,34 @@ import java.util.List;
 
 public class DogDbManager {
 
-    private DogDbHelper dogDbHelper;
+    private DatabaseHelper databaseHelper;
 
     public DogDbManager(Context context) {
-        dogDbHelper = new DogDbHelper(context);
+        databaseHelper = new DatabaseHelper(context);
     }
 
     public boolean addDog(Dog dog) {
-        SQLiteDatabase db = dogDbHelper.getWritableDatabase();
+        SQLiteDatabase db = databaseHelper.getWritableDatabase();
         long row = db.insert(Dog.TABLE_NAME, null, dog.getContentValues());
         return row > 0;
     }
 
     public boolean updateDog(Dog dog) {
-        SQLiteDatabase db = dogDbHelper.getWritableDatabase();
+        SQLiteDatabase db = databaseHelper.getWritableDatabase();
         long row = db.update(Dog.TABLE_NAME, dog.getContentValues(),
                 Dog.COLUMN_ID + " = ?", new String[]{String.valueOf(dog.getId())});
         return row > 0;
     }
 
     public boolean deleteDog(Dog dog) {
-        SQLiteDatabase db = dogDbHelper.getWritableDatabase();
+        SQLiteDatabase db = databaseHelper.getWritableDatabase();
         long row = db.delete(Dog.TABLE_NAME,
                 Dog.COLUMN_ID + " = ? ", new String[]{String.valueOf(dog.getId())});
         return row > 0;
     }
 
     public List<Dog> getAllDogs() {
-        SQLiteDatabase db = dogDbHelper.getReadableDatabase();
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
         List<Dog> dogs = new LinkedList<>();
         Cursor c = null;

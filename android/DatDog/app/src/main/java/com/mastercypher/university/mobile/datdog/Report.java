@@ -15,10 +15,10 @@ public class Report {
     public static final String COLUMN_ID_USER = "user";
     public static final String COLUMN_ID_DOG = "dog";
     public static final String COLUMN_LOCATION = "location";
-    public static final String COLUMN_DATE_CREATE = "create";
-    public static final String COLUMN_DATE_UPDATE = "update";
+    public static final String COLUMN_DATE_CREATE = "created";
+    public static final String COLUMN_DATE_UPDATE = "updated";
     public static final String COLUMN_DATE_FOUND = "found";
-    public static final String COLUMN_DELETE = "delete";
+    public static final String COLUMN_DELETE = "deleted";
 
     private String id;
     private String user;

@@ -24,9 +24,9 @@ public class Dog {
     public static final String COLUMN_BIRTH = "birth";
     public static final String COLUMN_SIZE = "size";
     public static final String COLUMN_SEX = "sex";
-    public static final String COLUMN_DATE_CREATE = "create";
-    public static final String COLUMN_DATE_UPDATE = "update";
-    public static final String COLUMN_DELETE = "delete";
+    public static final String COLUMN_DATE_CREATE = "created";
+    public static final String COLUMN_DATE_UPDATE = "updated";
+    public static final String COLUMN_DELETE = "deleted";
 
     private String id;
     private String id_nfc;

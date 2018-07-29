@@ -15,9 +15,9 @@ public class Friendship {
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_ID_USER = "user";
     public static final String COLUMN_ID_FRIEND = "friend";
-    public static final String COLUMN_DATE_CREATE = "create";
-    public static final String COLUMN_DATE_UPDATE = "update";
-    public static final String COLUMN_DELETE = "delete";
+    public static final String COLUMN_DATE_CREATE = "created";
+    public static final String COLUMN_DATE_UPDATE = "updated";
+    public static final String COLUMN_DELETE = "deleted";
 
     private String id;
     private int user;

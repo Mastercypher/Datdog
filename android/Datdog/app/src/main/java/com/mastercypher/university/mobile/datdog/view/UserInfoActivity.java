@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
 import com.mastercypher.university.mobile.datdog.R;
+import com.mastercypher.university.mobile.datdog.entities.User;
 
 import java.text.SimpleDateFormat;
 
@@ -106,10 +107,10 @@ public class UserInfoActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        String name = AccountDirectory.getInstance().getUser().getName();
+        User user = AccountDirectory.getInstance().getUser();
+        String name = user.getName();
         String upName = name.substring(0,1).toUpperCase() + name.substring(1);
-        String surname = AccountDirectory.getInstance().getUser().getSurname();
+        String surname = user.getSurname();
         String upSurname = surname.substring(0,1).toUpperCase() + surname.substring(1);
 
         txtName.setText(upName);
@@ -131,7 +132,7 @@ public class UserInfoActivity extends AppCompatActivity {
                 "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        // TODO LOGOUT
+
                     }
                 });
 

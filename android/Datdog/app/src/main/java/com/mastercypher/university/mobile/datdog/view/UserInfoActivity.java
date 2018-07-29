@@ -12,9 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.mastercypher.university.mobile.datdog.database.UserDbManager;
 import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
 import com.mastercypher.university.mobile.datdog.R;
 import com.mastercypher.university.mobile.datdog.entities.User;
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.SimpleDateFormat;
 
@@ -70,11 +72,11 @@ public class UserInfoActivity extends AppCompatActivity {
         btnEdit = findViewById(R.id.btnEditAcc);
         btnLogoutAcc = findViewById(R.id.btnLogout);
         txtComplete = findViewById(R.id.txtComplete);
-        txtName = findViewById(R.id.textView38);
-        txtSurname = findViewById(R.id.textView39);
-        txtPhone = findViewById(R.id.textView40);
-        txtBirth = findViewById(R.id.textView41);
-        txtEmail = findViewById(R.id.textView42);
+        txtName = findViewById(R.id.txv_breed);
+        txtSurname = findViewById(R.id.txv_colour);
+        txtPhone = findViewById(R.id.txv_birth);
+        txtBirth = findViewById(R.id.txv_sex);
+        txtEmail = findViewById(R.id.txv_size);
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,7 +134,10 @@ public class UserInfoActivity extends AppCompatActivity {
                 "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        
+                        User userLogout = AccountDirectory.getInstance().getUser();
+                        userLogout.setCurrent(UtilProj.LOGOUT);
+                        new UserDbManager(getApplicationContext()).updateUser(userLogout);
+                        startActivity(new Intent(UserInfoActivity.this, LoginActivity.class));
                     }
                 });
 

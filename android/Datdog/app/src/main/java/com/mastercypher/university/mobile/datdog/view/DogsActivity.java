@@ -22,6 +22,8 @@ import com.mastercypher.university.mobile.datdog.database.DogDbManager;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class DogsActivity extends AppCompatActivity {
 
@@ -88,20 +90,39 @@ public class DogsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Dog dogClicked = (Dog) mListView.getItemAtPosition(position);
                 // TODO go to dog's view
+                Intent intent = new Intent(getBaseContext(), DogInfoActivity.class);
+                intent.putExtra("id", dogClicked.getId());
+                startActivity(intent);
             }
         });
     }
 
-    private void refreshDogs(){
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mListView != null) {
+            this.refreshDogs();
+        }
+    }
+
+    private void refreshDogs() {
         User user = AccountDirectory.getInstance().getUser();
         if (user != null) {
             mDogAdapter.clear();
             DogDbManager dogDb = new DogDbManager(this);
-            ArrayList<Pair<String, Integer>> arrayOfSchedule = new ArrayList<>();
 
-            mDogAdapter.addAll(dogDb.getAllDogs(user.getId()));
+            List<Dog> dogs = dogDb.getAllDogs(user.getId());
+            Iterator<Dog> i = dogs.iterator();
+            while (i.hasNext()) {
+                Dog dog = i.next(); // must be called before you can call i.remove()
+                // Do something
+                if (dog.getDelete() == UtilProj.DB_ROW_DELETE) {
+                    i.remove();
+                }
+            }
+            mDogAdapter.addAll(dogs);
         } else {
-            UtilProj.showToast(this, "User account problem, restart the application" );
+            UtilProj.showToast(this, "User account problem, restart the application");
         }
     }
 }

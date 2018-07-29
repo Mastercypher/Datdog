@@ -24,6 +24,11 @@ public class Dog {
     public static final String COLUMN_DATE_UPDATE = "updated";
     public static final String COLUMN_DELETE = "deleted";
 
+    public static final int SIZE_SMALL = 0;
+    public static final int SIZE_BIG = 1;
+    public static final int SEX_M = 0;
+    public static final int SEX_F = 1;
+
     private String id;
     private String id_nfc;
     private int id_user;

@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.mastercypher.university.mobile.datdog.entities.Dog;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -39,10 +40,9 @@ public class DogDbManager {
     }
 
     public boolean deleteDog(Dog dog) {
-        SQLiteDatabase db = databaseHelper.getWritableDatabase();
-        long row = db.delete(Dog.TABLE_NAME,
-                Dog.COLUMN_ID + " = ? ", new String[]{String.valueOf(dog.getId())});
-        return row > 0;
+        dog.setDelete(1);
+        dog.setUpdate(new Date());
+        return updateDog(dog);
     }
 
     public List<Dog> getAllDogs(int idUser) {

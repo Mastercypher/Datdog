@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView25"
+                android:id="@+id/txv_title_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
@@ -46,34 +46,30 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/button13"
+                android:id="@+id/btn_remove"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:background="@android:color/transparent"
-                android:shadowColor="#000"
-                android:shadowDx="3.0"
-                android:shadowDy="3.0"
-                android:shadowRadius="3.0"
-                android:text="Remove dog"
+                android:text="Remove"
                 android:textAllCaps="false"
                 android:textColor="@color/colorMissing"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/button14"
+                android:id="@+id/btn_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
                 android:background="@android:color/transparent"
-                android:shadowColor="#000"
-                android:shadowDx="3.0"
-                android:shadowDy="3.0"
-                android:shadowRadius="3.0"
-                android:text="Edit info"
+                android:shadowColor="#868686"
+                android:shadowDx="1.0"
+                android:shadowDy="1.0"
+                android:shadowRadius="1.0"
+                android:text="Edit"
                 android:textAllCaps="false"
                 android:textColor="@color/colorIconBg"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -152,7 +148,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView36" />
 
             <TextView
-                android:id="@+id/textView38"
+                android:id="@+id/txv_breed"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -166,7 +162,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
             <TextView
-                android:id="@+id/textView42"
+                android:id="@+id/txv_size"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -178,10 +174,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/textView33"
-                app:layout_constraintTop_toBottomOf="@+id/textView41" />
+                app:layout_constraintTop_toBottomOf="@+id/txv_sex" />
 
             <TextView
-                android:id="@+id/textView41"
+                android:id="@+id/txv_sex"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -192,10 +188,10 @@
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView36"
-                app:layout_constraintTop_toBottomOf="@+id/textView40" />
+                app:layout_constraintTop_toBottomOf="@+id/txv_birth" />
 
             <TextView
-                android:id="@+id/textView40"
+                android:id="@+id/txv_birth"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -207,10 +203,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/textView37"
-                app:layout_constraintTop_toBottomOf="@+id/textView39" />
+                app:layout_constraintTop_toBottomOf="@+id/txv_colour" />
 
             <TextView
-                android:id="@+id/textView39"
+                android:id="@+id/txv_colour"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -222,9 +218,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/textView34"
-                app:layout_constraintTop_toBottomOf="@+id/textView38" />
+                app:layout_constraintTop_toBottomOf="@+id/txv_breed" />
 
             <RelativeLayout
+                android:id="@+id/rtl_vax"
                 android:layout_width="375dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="16dp"

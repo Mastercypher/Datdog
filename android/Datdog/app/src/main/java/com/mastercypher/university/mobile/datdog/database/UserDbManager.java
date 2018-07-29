@@ -25,13 +25,13 @@ public class UserDbManager {
             long row = db.insert(User.TABLE_NAME, null, user.getContentValues());
             return row > 0;
         } else if (user.getUpdate().after(inDb.getUpdate())) {
-            return updateDog(user);
+            return updateUser(user);
         } else {
             return false;
         }
     }
 
-    public boolean updateDog(User user) {
+    public boolean updateUser(User user) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
         long row = db.update(User.TABLE_NAME, user.getContentValues(),
                 User.COLUMN_ID + " = ?", new String[]{String.valueOf(user.getId())});

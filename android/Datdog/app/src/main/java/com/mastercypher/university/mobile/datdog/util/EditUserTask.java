@@ -19,9 +19,7 @@ public class EditUserTask extends AsyncTask<String, String, Boolean> {
     @Override
     protected Boolean doInBackground(String... strings) {
         HttpURLConnection conn = null;
-        StringBuilder result = new StringBuilder();
         BufferedReader rd = null;
-        Map<String, String> res = null;
         try {
             URL url = new URL(strings[0]);
             conn = (HttpURLConnection) url.openConnection();

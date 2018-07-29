@@ -1,9 +1,12 @@
 package com.mastercypher.university.mobile.datdog.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.mastercypher.university.mobile.datdog.User;
+
+import java.text.ParseException;
 
 public class UserDbManager {
 
@@ -13,13 +16,20 @@ public class UserDbManager {
         databaseHelper = new DatabaseHelper(context);
     }
 
-    public boolean addUser(User user) {
-        SQLiteDatabase db = databaseHelper.getWritableDatabase();
-        long row = db.insert(User.TABLE_NAME, null, user.getContentValues());
-        return row > 0;
+    public boolean addUser(User user) throws ParseException {
+        User inDb = selectUser(user.getId());
+        if (inDb == null) {
+            SQLiteDatabase db = databaseHelper.getWritableDatabase();
+            long row = db.insert(User.TABLE_NAME, null, user.getContentValues());
+            return row > 0;
+        } else if (user.getUpdate().after(inDb.getUpdate())) {
+            return updateDog(user);
+        } else {
+            return false;
+        }
     }
 
-    public boolean updateUser(User user) {
+    public boolean updateDog(User user) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
         long row = db.update(User.TABLE_NAME, user.getContentValues(),
                 User.COLUMN_ID + " = ?", new String[]{String.valueOf(user.getId())});
@@ -33,8 +43,19 @@ public class UserDbManager {
         return row > 0;
     }
 
-    public boolean selectUser() {
-        //TODO: Do I need it?
-        return false;
+    public User selectUser(int id) throws ParseException {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+
+        Cursor c;
+        String query = "SELECT *" +
+                "FROM " + User.TABLE_NAME +
+                " WHERE id = ?";
+        c = db.rawQuery(query, new String[]{String.valueOf(id)});
+        if (c.getCount() == 0) {
+            return null;
+        } else {
+            c.moveToNext();
+            return new User(c);
+        }
     }
 }

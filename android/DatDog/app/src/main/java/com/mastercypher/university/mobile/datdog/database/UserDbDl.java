@@ -24,11 +24,9 @@ public class UserDbDl {
 
     public UserDbDl(Context c) {
         context = c;
-        System.out.println("usryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
     }
 
     public void doInBackground() {
-        System.out.println("not null");
 
         Collection<Map<String, String>> elem = null;
         Iterator<Map<String,String>> it;

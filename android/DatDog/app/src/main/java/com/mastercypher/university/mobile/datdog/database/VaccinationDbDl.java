@@ -20,7 +20,6 @@ public class VaccinationDbDl {
 
     public VaccinationDbDl(Context c) {
         context = c;
-        System.out.println("vaxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
     }
 
     public void doInBackground() {

@@ -21,7 +21,6 @@ public class ReportDbDl {
 
     public ReportDbDl(Context c) {
         context = c;
-        System.out.println("reportyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
     }
 
     public void doInBackground() {

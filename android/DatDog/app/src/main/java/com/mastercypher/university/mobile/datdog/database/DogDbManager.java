@@ -20,22 +20,22 @@ public class DogDbManager {
     }
 
     public boolean addDog(Dog dog) throws ParseException {
-        try {
+        Dog inDb = selectDog(dog.getId());
+        if (inDb == null) {
             SQLiteDatabase db = databaseHelper.getWritableDatabase();
             long row = db.insert(Dog.TABLE_NAME, null, dog.getContentValues());
             return row > 0;
-        } catch (SQLiteConstraintException e) {
+        } else if (dog.getUpdate().after(inDb.getUpdate())) {
             return updateDog(dog);
+        } else {
+            return false;
         }
     }
 
-    public boolean updateDog(Dog dog) throws ParseException {
+    public boolean updateDog(Dog dog) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
-        long row = 0;
-        if (selectDog(dog.getId()).getUpdate().before(dog.getUpdate())) {
-            row = db.update(Dog.TABLE_NAME, dog.getContentValues(),
+        long row = db.update(Dog.TABLE_NAME, dog.getContentValues(),
                     Dog.COLUMN_ID + " = ?", new String[]{String.valueOf(dog.getId())});
-        }
         return row > 0;
     }
 
@@ -73,11 +73,16 @@ public class DogDbManager {
     public Dog selectDog(String id_dog) throws ParseException {
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
-        Cursor c = null;
+        Cursor c;
         String query = "SELECT *" +
                 "FROM " + Dog.TABLE_NAME +
                 " WHERE id = ?";
          c = db.rawQuery(query, new String[]{String.valueOf(id_dog)});
-         return new Dog(c);
+         if (c.getCount() == 0) {
+             return null;
+         } else {
+             c.moveToNext();
+             return new Dog(c);
+         }
     }
 }

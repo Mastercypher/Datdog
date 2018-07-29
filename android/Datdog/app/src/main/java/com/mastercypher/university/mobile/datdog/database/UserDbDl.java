@@ -2,6 +2,8 @@ package com.mastercypher.university.mobile.datdog.database;
 
 import android.content.Context;
 
+import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
+import com.mastercypher.university.mobile.datdog.entities.User;
 import com.mastercypher.university.mobile.datdog.util.DlTask;
 import com.mastercypher.university.mobile.datdog.entities.Friendship;
 
@@ -21,10 +23,10 @@ public class UserDbDl {
     }
 
     public void doInBackground() {
-
+        User user = AccountDirectory.getInstance().getUser();
         Collection<Map<String, String>> elem = null;
         Iterator<Map<String,String>> it;
-        List<Friendship> friendships = new FriendshipDbManager(context).getAllFriendships();
+        List<Friendship> friendships = new FriendshipDbManager(context).getAllFriendships(user.getId());
         Iterator<Friendship> frey = friendships.iterator();
         while (frey.hasNext()) {
             try {

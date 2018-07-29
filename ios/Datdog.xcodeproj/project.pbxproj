@@ -13,18 +13,126 @@
 		7D0DD8F3210464CE00AE131F /* Datdog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D0DD8F1210464CE00AE131F /* Datdog.xcdatamodeld */; };
 		7D0DD8F5210464D000AE131F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D0DD8F4210464D000AE131F /* Assets.xcassets */; };
 		7D0DD8F8210464D000AE131F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0DD8F6210464D000AE131F /* LaunchScreen.storyboard */; };
-		7D0DD90021046AD500AE131F /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0DD8FF21046AD500AE131F /* StartController.swift */; };
 		7D2B169521071AAC001DF8EC /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2B169421071AAC001DF8EC /* RegistrationController.swift */; };
-		7D3D41F821075FE500FA4034 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3D41F721075FE500FA4034 /* KeyboardLayoutConstraint.swift */; };
-		7D3D41FA2107CA2800FA4034 /* ReportNfcController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3D41F92107CA2800FA4034 /* ReportNfcController.swift */; };
+		7D315B50210C65E8008C8AE7 /* Vaccination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D315B4F210C65E8008C8AE7 /* Vaccination.swift */; };
+		7D315B52210C65F3008C8AE7 /* VaccDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D315B51210C65F3008C8AE7 /* VaccDbManager.swift */; };
+		7D315B56210C7012008C8AE7 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D315B55210C7012008C8AE7 /* Friend.swift */; };
+		7D315B58210C7018008C8AE7 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D315B57210C7018008C8AE7 /* Report.swift */; };
+		7D315B5A210C7021008C8AE7 /* ReportDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D315B59210C7021008C8AE7 /* ReportDbManager.swift */; };
+		7D315B5C210C702C008C8AE7 /* FriendDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D315B5B210C702C008C8AE7 /* FriendDbManager.swift */; };
+		7D3D41FA2107CA2800FA4034 /* NfcReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3D41F92107CA2800FA4034 /* NfcReportController.swift */; };
+		7D44B6302109D851007E6223 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B62F2109D851007E6223 /* User.swift */; };
+		7D44B634210A6DE2007E6223 /* UtilProj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B633210A6DE2007E6223 /* UtilProj.swift */; };
+		7D44B66C210B05C5007E6223 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D44B65E210B05BD007E6223 /* SQLite.framework */; };
+		7D44B66D210B05D2007E6223 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D44B65E210B05BD007E6223 /* SQLite.framework */; };
+		7D44B66E210B05D2007E6223 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D44B65E210B05BD007E6223 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7D44B673210B07B7007E6223 /* UserDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B672210B07B7007E6223 /* UserDbManager.swift */; };
+		7D44B676210B55EC007E6223 /* ViewUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B675210B55EC007E6223 /* ViewUserController.swift */; };
+		7D44B678210B55FA007E6223 /* ModifyUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B677210B55FA007E6223 /* ModifyUserController.swift */; };
+		7D44B67E210B5A93007E6223 /* ViewReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B67D210B5A93007E6223 /* ViewReportController.swift */; };
+		7D44B680210B5B24007E6223 /* CodeReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B67F210B5B24007E6223 /* CodeReportController.swift */; };
+		7D44B682210B5B42007E6223 /* ConfirmReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B681210B5B42007E6223 /* ConfirmReportController.swift */; };
+		7D44B684210B5BA0007E6223 /* ViewLostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B683210B5BA0007E6223 /* ViewLostController.swift */; };
+		7D44B687210B5C16007E6223 /* ViewFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B686210B5C16007E6223 /* ViewFriendController.swift */; };
+		7D44B689210B5C3A007E6223 /* NfcFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B688210B5C3A007E6223 /* NfcFriendController.swift */; };
+		7D44B68B210B5C9C007E6223 /* AddFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B68A210B5C9C007E6223 /* AddFriendController.swift */; };
+		7D44B68E210B6075007E6223 /* ConfigureConnectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B68D210B6075007E6223 /* ConfigureConnectController.swift */; };
+		7D44B690210B6086007E6223 /* ConnectedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B68F210B6086007E6223 /* ConnectedController.swift */; };
+		7D44B695210B61DB007E6223 /* AddDogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B694210B61DB007E6223 /* AddDogController.swift */; };
+		7D44B697210B6217007E6223 /* ViewDogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B696210B6217007E6223 /* ViewDogController.swift */; };
+		7D44B69A210B624A007E6223 /* ModifyDogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B699210B624A007E6223 /* ModifyDogController.swift */; };
+		7D44B69C210B625A007E6223 /* VaccinationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B69B210B625A007E6223 /* VaccinationsController.swift */; };
+		7D44B69E210B6267007E6223 /* AddVaccinationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B69D210B6267007E6223 /* AddVaccinationController.swift */; };
+		7D44B6A0210B627A007E6223 /* ModifyVaccinationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B69F210B627A007E6223 /* ModifyVaccinationController.swift */; };
+		7D44B6A2210B6290007E6223 /* ViewVaccinationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B6A1210B6290007E6223 /* ViewVaccinationController.swift */; };
+		7D44B6A6210BD8B7007E6223 /* DogDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B6A5210BD8B7007E6223 /* DogDbManager.swift */; };
+		7D44B6A8210BDA62007E6223 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D44B6A7210BDA62007E6223 /* Dog.swift */; };
+		7D7E01F4210CFDEA007DE23E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E01F2210CFDEA007DE23E /* Reachability.swift */; };
+		7D7E01F5210CFDEA007DE23E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D7E01F3210CFDEA007DE23E /* Info.plist */; };
+		7D7E01F7210CFE39007DE23E /* DogSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E01F6210CFE39007DE23E /* DogSync.swift */; };
+		7D7E01F9210CFE50007DE23E /* UserSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7E01F8210CFE50007DE23E /* UserSync.swift */; };
+		7DD0712E2109C72A00037A09 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0712D2109C72A00037A09 /* LoginController.swift */; };
 		7DD9916021060667001674C8 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD9915F21060667001674C8 /* MenuController.swift */; };
-		7DD9916221068042001674C8 /* LostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD9916121068042001674C8 /* LostController.swift */; };
-		7DD991642106804F001674C8 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD991632106804F001674C8 /* ReportController.swift */; };
-		7DE8995E21048F2F004E646B /* YourDogsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE8995D21048F2F004E646B /* YourDogsController.swift */; };
+		7DD9916221068042001674C8 /* LostsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD9916121068042001674C8 /* LostsController.swift */; };
+		7DD991642106804F001674C8 /* ReportsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD991632106804F001674C8 /* ReportsController.swift */; };
+		7DE8995E21048F2F004E646B /* DogsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE8995D21048F2F004E646B /* DogsController.swift */; };
 		7DE8996221060414004E646B /* MissingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE8996121060414004E646B /* MissingController.swift */; };
 		7DE8996421060420004E646B /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE8996321060420004E646B /* FriendsController.swift */; };
-		7DE899662106042D004E646B /* ConnectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE899652106042D004E646B /* ConnectController.swift */; };
+		7DE899662106042D004E646B /* ConnectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE899652106042D004E646B /* ConnectionsController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7D44B65D210B05BD007E6223 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D44B653210B05BD007E6223 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247AD31C3F04ED00AE3E12;
+			remoteInfo = "SQLite iOS";
+		};
+		7D44B65F210B05BD007E6223 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D44B653210B05BD007E6223 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247ADD1C3F04ED00AE3E12;
+			remoteInfo = "SQLiteTests iOS";
+		};
+		7D44B661210B05BD007E6223 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D44B653210B05BD007E6223 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247B3C1C3F3ED000AE3E12;
+			remoteInfo = "SQLite Mac";
+		};
+		7D44B663210B05BD007E6223 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D44B653210B05BD007E6223 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247B451C3F3ED000AE3E12;
+			remoteInfo = "SQLiteTests Mac";
+		};
+		7D44B665210B05BD007E6223 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D44B653210B05BD007E6223 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03A65E5A1C6BB0F50062603F;
+			remoteInfo = "SQLite tvOS";
+		};
+		7D44B667210B05BD007E6223 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D44B653210B05BD007E6223 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03A65E631C6BB0F60062603F;
+			remoteInfo = "SQLiteTests tvOS";
+		};
+		7D44B669210B05BD007E6223 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D44B653210B05BD007E6223 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A121AC451CA35C79005A31D1;
+			remoteInfo = "SQLite watchOS";
+		};
+		7D44B66F210B05D2007E6223 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D44B653210B05BD007E6223 /* SQLite.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EE247AD21C3F04ED00AE3E12;
+			remoteInfo = "SQLite iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7D44B671210B05D3007E6223 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7D44B66E210B05D2007E6223 /* SQLite.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7D0DD8E7210464CD00AE131F /* Datdog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Datdog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,17 +143,51 @@
 		7D0DD8F4210464D000AE131F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D0DD8F7210464D000AE131F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D0DD8F9210464D000AE131F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D0DD8FF21046AD500AE131F /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 		7D2B169421071AAC001DF8EC /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
-		7D3D41F721075FE500FA4034 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
-		7D3D41F92107CA2800FA4034 /* ReportNfcController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportNfcController.swift; sourceTree = "<group>"; };
+		7D315B4F210C65E8008C8AE7 /* Vaccination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vaccination.swift; sourceTree = "<group>"; };
+		7D315B51210C65F3008C8AE7 /* VaccDbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccDbManager.swift; sourceTree = "<group>"; };
+		7D315B55210C7012008C8AE7 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		7D315B57210C7018008C8AE7 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		7D315B59210C7021008C8AE7 /* ReportDbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDbManager.swift; sourceTree = "<group>"; };
+		7D315B5B210C702C008C8AE7 /* FriendDbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDbManager.swift; sourceTree = "<group>"; };
+		7D3D41F92107CA2800FA4034 /* NfcReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NfcReportController.swift; sourceTree = "<group>"; };
+		7D44B62F2109D851007E6223 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7D44B633210A6DE2007E6223 /* UtilProj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilProj.swift; sourceTree = "<group>"; };
+		7D44B653210B05BD007E6223 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../../../Downloads/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
+		7D44B672210B07B7007E6223 /* UserDbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDbManager.swift; sourceTree = "<group>"; };
+		7D44B675210B55EC007E6223 /* ViewUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUserController.swift; sourceTree = "<group>"; };
+		7D44B677210B55FA007E6223 /* ModifyUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyUserController.swift; sourceTree = "<group>"; };
+		7D44B67D210B5A93007E6223 /* ViewReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewReportController.swift; sourceTree = "<group>"; };
+		7D44B67F210B5B24007E6223 /* CodeReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeReportController.swift; sourceTree = "<group>"; };
+		7D44B681210B5B42007E6223 /* ConfirmReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmReportController.swift; sourceTree = "<group>"; };
+		7D44B683210B5BA0007E6223 /* ViewLostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLostController.swift; sourceTree = "<group>"; };
+		7D44B686210B5C16007E6223 /* ViewFriendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFriendController.swift; sourceTree = "<group>"; };
+		7D44B688210B5C3A007E6223 /* NfcFriendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NfcFriendController.swift; sourceTree = "<group>"; };
+		7D44B68A210B5C9C007E6223 /* AddFriendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendController.swift; sourceTree = "<group>"; };
+		7D44B68D210B6075007E6223 /* ConfigureConnectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureConnectController.swift; sourceTree = "<group>"; };
+		7D44B68F210B6086007E6223 /* ConnectedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedController.swift; sourceTree = "<group>"; };
+		7D44B694210B61DB007E6223 /* AddDogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDogController.swift; sourceTree = "<group>"; };
+		7D44B696210B6217007E6223 /* ViewDogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDogController.swift; sourceTree = "<group>"; };
+		7D44B699210B624A007E6223 /* ModifyDogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyDogController.swift; sourceTree = "<group>"; };
+		7D44B69B210B625A007E6223 /* VaccinationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationsController.swift; sourceTree = "<group>"; };
+		7D44B69D210B6267007E6223 /* AddVaccinationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVaccinationController.swift; sourceTree = "<group>"; };
+		7D44B69F210B627A007E6223 /* ModifyVaccinationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyVaccinationController.swift; sourceTree = "<group>"; };
+		7D44B6A1210B6290007E6223 /* ViewVaccinationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVaccinationController.swift; sourceTree = "<group>"; };
+		7D44B6A5210BD8B7007E6223 /* DogDbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogDbManager.swift; sourceTree = "<group>"; };
+		7D44B6A7210BDA62007E6223 /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
+		7D7E01F1210CFDEA007DE23E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = "../../../../../../../Downloads/Reachability.swift-master/Sources/Reachability.h"; sourceTree = "<group>"; };
+		7D7E01F2210CFDEA007DE23E /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = "../../../../../../../Downloads/Reachability.swift-master/Sources/Reachability.swift"; sourceTree = "<group>"; };
+		7D7E01F3210CFDEA007DE23E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../../../../../../Downloads/Reachability.swift-master/Sources/Info.plist"; sourceTree = "<group>"; };
+		7D7E01F6210CFE39007DE23E /* DogSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogSync.swift; sourceTree = "<group>"; };
+		7D7E01F8210CFE50007DE23E /* UserSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSync.swift; sourceTree = "<group>"; };
+		7DD0712D2109C72A00037A09 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		7DD9915F21060667001674C8 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
-		7DD9916121068042001674C8 /* LostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostController.swift; sourceTree = "<group>"; };
-		7DD991632106804F001674C8 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
-		7DE8995D21048F2F004E646B /* YourDogsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourDogsController.swift; sourceTree = "<group>"; };
+		7DD9916121068042001674C8 /* LostsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostsController.swift; sourceTree = "<group>"; };
+		7DD991632106804F001674C8 /* ReportsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsController.swift; sourceTree = "<group>"; };
+		7DE8995D21048F2F004E646B /* DogsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsController.swift; sourceTree = "<group>"; };
 		7DE8996121060414004E646B /* MissingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingController.swift; sourceTree = "<group>"; };
 		7DE8996321060420004E646B /* FriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
-		7DE899652106042D004E646B /* ConnectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectController.swift; sourceTree = "<group>"; };
+		7DE899652106042D004E646B /* ConnectionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +195,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D44B66D210B05D2007E6223 /* SQLite.framework in Frameworks */,
+				7D44B66C210B05C5007E6223 /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +208,8 @@
 			children = (
 				7D0DD8E9210464CD00AE131F /* Datdog */,
 				7D0DD8E8210464CD00AE131F /* Products */,
+				7D44B653210B05BD007E6223 /* SQLite.xcodeproj */,
+				7D44B66B210B05C5007E6223 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,26 +224,232 @@
 		7D0DD8E9210464CD00AE131F /* Datdog */ = {
 			isa = PBXGroup;
 			children = (
+				7DD0712B2109C5D500037A09 /* Core */,
+				7DD0712A2109C5CA00037A09 /* View */,
 				7D0DD8EA210464CE00AE131F /* AppDelegate.swift */,
-				7D0DD8EC210464CE00AE131F /* WelcomeController.swift */,
-				7D0DD8FF21046AD500AE131F /* StartController.swift */,
 				7D0DD8EE210464CE00AE131F /* Main.storyboard */,
 				7D0DD8F4210464D000AE131F /* Assets.xcassets */,
 				7D0DD8F1210464CE00AE131F /* Datdog.xcdatamodeld */,
 				7D0DD8F6210464D000AE131F /* LaunchScreen.storyboard */,
 				7D0DD8F9210464D000AE131F /* Info.plist */,
-				7DD9915F21060667001674C8 /* MenuController.swift */,
-				7DE8996121060414004E646B /* MissingController.swift */,
-				7DE8996321060420004E646B /* FriendsController.swift */,
-				7DE899652106042D004E646B /* ConnectController.swift */,
-				7DE8995D21048F2F004E646B /* YourDogsController.swift */,
-				7DD9916121068042001674C8 /* LostController.swift */,
-				7DD991632106804F001674C8 /* ReportController.swift */,
-				7D2B169421071AAC001DF8EC /* RegistrationController.swift */,
-				7D3D41F721075FE500FA4034 /* KeyboardLayoutConstraint.swift */,
-				7D3D41F92107CA2800FA4034 /* ReportNfcController.swift */,
 			);
 			path = Datdog;
+			sourceTree = "<group>";
+		};
+		7D315B48210C65C8008C8AE7 /* Vaccination */ = {
+			isa = PBXGroup;
+			children = (
+				7D315B4F210C65E8008C8AE7 /* Vaccination.swift */,
+				7D315B51210C65F3008C8AE7 /* VaccDbManager.swift */,
+			);
+			path = Vaccination;
+			sourceTree = "<group>";
+		};
+		7D315B53210C6FDA008C8AE7 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				7D315B55210C7012008C8AE7 /* Friend.swift */,
+				7D315B5B210C702C008C8AE7 /* FriendDbManager.swift */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
+		7D315B54210C6FE6008C8AE7 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				7D315B57210C7018008C8AE7 /* Report.swift */,
+				7D315B59210C7021008C8AE7 /* ReportDbManager.swift */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		7D44B654210B05BD007E6223 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7D44B65E210B05BD007E6223 /* SQLite.framework */,
+				7D44B660210B05BD007E6223 /* SQLiteTests iOS.xctest */,
+				7D44B662210B05BD007E6223 /* SQLite.framework */,
+				7D44B664210B05BD007E6223 /* SQLiteTests Mac.xctest */,
+				7D44B666210B05BD007E6223 /* SQLite.framework */,
+				7D44B668210B05BD007E6223 /* SQLiteTests tvOS.xctest */,
+				7D44B66A210B05BD007E6223 /* SQLite.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7D44B66B210B05C5007E6223 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7D44B674210B55C4007E6223 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				7DD9915F21060667001674C8 /* MenuController.swift */,
+				7D44B675210B55EC007E6223 /* ViewUserController.swift */,
+				7D44B677210B55FA007E6223 /* ModifyUserController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		7D44B679210B59D2007E6223 /* Init */ = {
+			isa = PBXGroup;
+			children = (
+				7D0DD8EC210464CE00AE131F /* WelcomeController.swift */,
+				7DD0712D2109C72A00037A09 /* LoginController.swift */,
+				7D2B169421071AAC001DF8EC /* RegistrationController.swift */,
+			);
+			path = Init;
+			sourceTree = "<group>";
+		};
+		7D44B67A210B5A00007E6223 /* Missing */ = {
+			isa = PBXGroup;
+			children = (
+				7D44B67C210B5A40007E6223 /* Report */,
+				7D44B67B210B5A39007E6223 /* Lost */,
+				7DE8996121060414004E646B /* MissingController.swift */,
+			);
+			path = Missing;
+			sourceTree = "<group>";
+		};
+		7D44B67B210B5A39007E6223 /* Lost */ = {
+			isa = PBXGroup;
+			children = (
+				7DD9916121068042001674C8 /* LostsController.swift */,
+				7D44B683210B5BA0007E6223 /* ViewLostController.swift */,
+			);
+			path = Lost;
+			sourceTree = "<group>";
+		};
+		7D44B67C210B5A40007E6223 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				7DD991632106804F001674C8 /* ReportsController.swift */,
+				7D44B67D210B5A93007E6223 /* ViewReportController.swift */,
+				7D3D41F92107CA2800FA4034 /* NfcReportController.swift */,
+				7D44B67F210B5B24007E6223 /* CodeReportController.swift */,
+				7D44B681210B5B42007E6223 /* ConfirmReportController.swift */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		7D44B685210B5BC0007E6223 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				7DE8996321060420004E646B /* FriendsController.swift */,
+				7D44B686210B5C16007E6223 /* ViewFriendController.swift */,
+				7D44B688210B5C3A007E6223 /* NfcFriendController.swift */,
+				7D44B68A210B5C9C007E6223 /* AddFriendController.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		7D44B68C210B5DC7007E6223 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				7DE899652106042D004E646B /* ConnectionsController.swift */,
+				7D44B68D210B6075007E6223 /* ConfigureConnectController.swift */,
+				7D44B68F210B6086007E6223 /* ConnectedController.swift */,
+			);
+			path = Connect;
+			sourceTree = "<group>";
+		};
+		7D44B691210B60A2007E6223 /* Dogs */ = {
+			isa = PBXGroup;
+			children = (
+				7D44B698210B622D007E6223 /* Vaccinations */,
+				7D44B694210B61DB007E6223 /* AddDogController.swift */,
+				7D44B696210B6217007E6223 /* ViewDogController.swift */,
+				7DE8995D21048F2F004E646B /* DogsController.swift */,
+				7D44B699210B624A007E6223 /* ModifyDogController.swift */,
+			);
+			path = Dogs;
+			sourceTree = "<group>";
+		};
+		7D44B698210B622D007E6223 /* Vaccinations */ = {
+			isa = PBXGroup;
+			children = (
+				7D44B69B210B625A007E6223 /* VaccinationsController.swift */,
+				7D44B69D210B6267007E6223 /* AddVaccinationController.swift */,
+				7D44B69F210B627A007E6223 /* ModifyVaccinationController.swift */,
+				7D44B6A1210B6290007E6223 /* ViewVaccinationController.swift */,
+			);
+			path = Vaccinations;
+			sourceTree = "<group>";
+		};
+		7D44B6A3210BD883007E6223 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				7D44B62F2109D851007E6223 /* User.swift */,
+				7D44B672210B07B7007E6223 /* UserDbManager.swift */,
+				7D7E01F8210CFE50007DE23E /* UserSync.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		7D44B6A4210BD897007E6223 /* Dog */ = {
+			isa = PBXGroup;
+			children = (
+				7D44B6A7210BDA62007E6223 /* Dog.swift */,
+				7D44B6A5210BD8B7007E6223 /* DogDbManager.swift */,
+				7D7E01F6210CFE39007DE23E /* DogSync.swift */,
+			);
+			path = Dog;
+			sourceTree = "<group>";
+		};
+		7D7E01E6210CFD8B007DE23E /* Identity */ = {
+			isa = PBXGroup;
+			children = (
+				7D315B54210C6FE6008C8AE7 /* Report */,
+				7D315B53210C6FDA008C8AE7 /* Friend */,
+				7D315B48210C65C8008C8AE7 /* Vaccination */,
+				7D44B6A3210BD883007E6223 /* User */,
+				7D44B6A4210BD897007E6223 /* Dog */,
+			);
+			path = Identity;
+			sourceTree = "<group>";
+		};
+		7D7E01ED210CFD9C007DE23E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E01F0210CFDDB007DE23E /* Reachability */,
+				7D44B633210A6DE2007E6223 /* UtilProj.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		7D7E01F0210CFDDB007DE23E /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E01F3210CFDEA007DE23E /* Info.plist */,
+				7D7E01F1210CFDEA007DE23E /* Reachability.h */,
+				7D7E01F2210CFDEA007DE23E /* Reachability.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		7DD0712A2109C5CA00037A09 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7D44B679210B59D2007E6223 /* Init */,
+				7D44B674210B55C4007E6223 /* Menu */,
+				7D44B67A210B5A00007E6223 /* Missing */,
+				7D44B685210B5BC0007E6223 /* Friends */,
+				7D44B68C210B5DC7007E6223 /* Connect */,
+				7D44B691210B60A2007E6223 /* Dogs */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7DD0712B2109C5D500037A09 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7D7E01ED210CFD9C007DE23E /* Util */,
+				7D7E01E6210CFD8B007DE23E /* Identity */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,10 +462,12 @@
 				7D0DD8E3210464CD00AE131F /* Sources */,
 				7D0DD8E4210464CD00AE131F /* Frameworks */,
 				7D0DD8E5210464CD00AE131F /* Resources */,
+				7D44B671210B05D3007E6223 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7D44B670210B05D2007E6223 /* PBXTargetDependency */,
 			);
 			name = Datdog;
 			productName = Datdog;
@@ -146,12 +500,70 @@
 			mainGroup = 7D0DD8DE210464CD00AE131F;
 			productRefGroup = 7D0DD8E8210464CD00AE131F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 7D44B654210B05BD007E6223 /* Products */;
+					ProjectRef = 7D44B653210B05BD007E6223 /* SQLite.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				7D0DD8E6210464CD00AE131F /* Datdog */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		7D44B65E210B05BD007E6223 /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = 7D44B65D210B05BD007E6223 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7D44B660210B05BD007E6223 /* SQLiteTests iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLiteTests iOS.xctest";
+			remoteRef = 7D44B65F210B05BD007E6223 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7D44B662210B05BD007E6223 /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = 7D44B661210B05BD007E6223 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7D44B664210B05BD007E6223 /* SQLiteTests Mac.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLiteTests Mac.xctest";
+			remoteRef = 7D44B663210B05BD007E6223 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7D44B666210B05BD007E6223 /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = 7D44B665210B05BD007E6223 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7D44B668210B05BD007E6223 /* SQLiteTests tvOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLiteTests tvOS.xctest";
+			remoteRef = 7D44B667210B05BD007E6223 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7D44B66A210B05BD007E6223 /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = 7D44B669210B05BD007E6223 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7D0DD8E5210464CD00AE131F /* Resources */ = {
@@ -161,6 +573,7 @@
 				7D0DD8F8210464D000AE131F /* LaunchScreen.storyboard in Resources */,
 				7D0DD8F5210464D000AE131F /* Assets.xcassets in Resources */,
 				7D0DD8F0210464CE00AE131F /* Main.storyboard in Resources */,
+				7D7E01F5210CFDEA007DE23E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,24 +584,63 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D3D41F821075FE500FA4034 /* KeyboardLayoutConstraint.swift in Sources */,
+				7D44B684210B5BA0007E6223 /* ViewLostController.swift in Sources */,
+				7D44B68B210B5C9C007E6223 /* AddFriendController.swift in Sources */,
+				7D315B5C210C702C008C8AE7 /* FriendDbManager.swift in Sources */,
+				7D7E01F7210CFE39007DE23E /* DogSync.swift in Sources */,
+				7D44B682210B5B42007E6223 /* ConfirmReportController.swift in Sources */,
+				7D7E01F4210CFDEA007DE23E /* Reachability.swift in Sources */,
+				7D44B6A8210BDA62007E6223 /* Dog.swift in Sources */,
+				7D44B690210B6086007E6223 /* ConnectedController.swift in Sources */,
 				7DE8996221060414004E646B /* MissingController.swift in Sources */,
-				7DD9916221068042001674C8 /* LostController.swift in Sources */,
+				7D44B695210B61DB007E6223 /* AddDogController.swift in Sources */,
+				7D7E01F9210CFE50007DE23E /* UserSync.swift in Sources */,
+				7D315B56210C7012008C8AE7 /* Friend.swift in Sources */,
+				7D44B69E210B6267007E6223 /* AddVaccinationController.swift in Sources */,
+				7DD9916221068042001674C8 /* LostsController.swift in Sources */,
+				7D44B687210B5C16007E6223 /* ViewFriendController.swift in Sources */,
 				7DD9916021060667001674C8 /* MenuController.swift in Sources */,
-				7DD991642106804F001674C8 /* ReportController.swift in Sources */,
+				7D315B50210C65E8008C8AE7 /* Vaccination.swift in Sources */,
+				7D44B6302109D851007E6223 /* User.swift in Sources */,
+				7D44B6A0210B627A007E6223 /* ModifyVaccinationController.swift in Sources */,
+				7D44B67E210B5A93007E6223 /* ViewReportController.swift in Sources */,
+				7DD0712E2109C72A00037A09 /* LoginController.swift in Sources */,
+				7DD991642106804F001674C8 /* ReportsController.swift in Sources */,
+				7D44B69C210B625A007E6223 /* VaccinationsController.swift in Sources */,
+				7D44B680210B5B24007E6223 /* CodeReportController.swift in Sources */,
+				7D44B634210A6DE2007E6223 /* UtilProj.swift in Sources */,
 				7DE8996421060420004E646B /* FriendsController.swift in Sources */,
+				7D44B6A2210B6290007E6223 /* ViewVaccinationController.swift in Sources */,
+				7D315B52210C65F3008C8AE7 /* VaccDbManager.swift in Sources */,
+				7D44B673210B07B7007E6223 /* UserDbManager.swift in Sources */,
+				7D315B58210C7018008C8AE7 /* Report.swift in Sources */,
+				7D44B689210B5C3A007E6223 /* NfcFriendController.swift in Sources */,
 				7D0DD8ED210464CE00AE131F /* WelcomeController.swift in Sources */,
+				7D315B5A210C7021008C8AE7 /* ReportDbManager.swift in Sources */,
 				7D0DD8F3210464CE00AE131F /* Datdog.xcdatamodeld in Sources */,
-				7D0DD90021046AD500AE131F /* StartController.swift in Sources */,
-				7DE8995E21048F2F004E646B /* YourDogsController.swift in Sources */,
+				7D44B678210B55FA007E6223 /* ModifyUserController.swift in Sources */,
+				7D44B697210B6217007E6223 /* ViewDogController.swift in Sources */,
+				7D44B676210B55EC007E6223 /* ViewUserController.swift in Sources */,
+				7D44B6A6210BD8B7007E6223 /* DogDbManager.swift in Sources */,
+				7DE8995E21048F2F004E646B /* DogsController.swift in Sources */,
+				7D44B69A210B624A007E6223 /* ModifyDogController.swift in Sources */,
 				7D0DD8EB210464CE00AE131F /* AppDelegate.swift in Sources */,
 				7D2B169521071AAC001DF8EC /* RegistrationController.swift in Sources */,
-				7DE899662106042D004E646B /* ConnectController.swift in Sources */,
-				7D3D41FA2107CA2800FA4034 /* ReportNfcController.swift in Sources */,
+				7DE899662106042D004E646B /* ConnectionsController.swift in Sources */,
+				7D44B68E210B6075007E6223 /* ConfigureConnectController.swift in Sources */,
+				7D3D41FA2107CA2800FA4034 /* NfcReportController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7D44B670210B05D2007E6223 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SQLite iOS";
+			targetProxy = 7D44B66F210B05D2007E6223 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7D0DD8EE210464CE00AE131F /* Main.storyboard */ = {
@@ -327,6 +779,7 @@
 		7D0DD8FD210464D000AE131F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Datdog/Info.plist;
@@ -344,6 +797,7 @@
 		7D0DD8FE210464D000AE131F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Datdog/Info.plist;

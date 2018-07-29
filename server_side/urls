@@ -6,8 +6,10 @@
 http://datdog.altervista.org/user.php?action=insert&name_u=riccardi&surname_u=marchi&phone_u=1234567890&birth_u=12/34/56&email_u=riccardo.marchi@gmail.com&password_u=miaomiao&date_create_u=12/34/56-78:90:12&date_update_u=12/34/56-78:90:12&delete_u=0
 --- Update ---
 http://datdog.altervista.org/user.php?action=update&id=11&name_u=riccardi&surname_u=marchi&phone_u=1234567890&birth_u=12/34/56&email_u=riccardo.marchi@gmail.com&password_u=miaomiao&date_create_u=12/34/56-78:90:12&date_update_u=12/34/56-78:90:12&delete_u=0
---- Select ---
-http://datdog.altervista.org/user.php?action=select&email_u=riccardo.marchi@gmail.com&password_u=miaomiao
+--- Select - Login ---
+http://datdog.altervista.org/user.php?action=select-login&email_u=riccardo.marchi@gmail.com&password_u=miaomiao
+--- Select - User ---
+http://datdog.altervista.org/user.php?action=select-user&id=11
 
 
 ///////////////////

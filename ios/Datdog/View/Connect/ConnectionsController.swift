@@ -9,15 +9,11 @@
 import UIKit
 import QuartzCore
 
-class YourDogsController: UIViewController {
-    
-    @IBOutlet weak var btnAddDog: UIButton!
+class ConnectionsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        btnAddDog.layer.cornerRadius = 0.5 * btnAddDog.bounds.size.width;
-        btnAddDog.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
     }
     
     override func didReceiveMemoryWarning() {

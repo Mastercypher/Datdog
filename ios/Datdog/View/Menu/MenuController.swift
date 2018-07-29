@@ -7,11 +7,8 @@
 //
 
 import UIKit
-import QuartzCore
 
 class MenuController: UIViewController {
-    
-    @IBOutlet weak var btnAddDog: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +18,8 @@ class MenuController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
     @IBAction func goMissing(_ sender: Any) {
         self.tabBarController?.selectedIndex = 1;
     }

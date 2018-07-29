@@ -42,7 +42,7 @@ public class UserDbManager {
     public boolean deleteUser(User user) {
         user.setDelete(1);
         user.setUpdate(new Date());
-        return updateDog(user);
+        return updateUser(user);
     }
 
     public User selectUser(int id) throws ParseException {

@@ -132,7 +132,7 @@ public class UserInfoActivity extends AppCompatActivity {
                 "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
+                        
                     }
                 });
 

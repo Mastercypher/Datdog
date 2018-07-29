@@ -44,7 +44,11 @@ public class SplashActivity extends AppCompatActivity {
         } else {
             AccountDirectory.getInstance().setUser(currentUser);
             //TODO: Task with aim to download all db related to the user logged in.
-            new UserDbManager(getApplicationContext()).addUser(currentUser);
+            try {
+                new UserDbManager(getApplicationContext()).addUser(currentUser);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             startActivity(new Intent(this, HomeActivity.class));
             return true;
         }

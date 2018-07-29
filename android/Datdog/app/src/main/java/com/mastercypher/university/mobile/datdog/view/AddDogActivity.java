@@ -19,6 +19,8 @@ import com.mastercypher.university.mobile.datdog.entities.Dog;
 import com.mastercypher.university.mobile.datdog.R;
 import com.mastercypher.university.mobile.datdog.entities.User;
 import com.mastercypher.university.mobile.datdog.database.DogDbManager;
+import com.mastercypher.university.mobile.datdog.util.ActionType;
+import com.mastercypher.university.mobile.datdog.util.RemoteDogTask;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.ParseException;
@@ -29,7 +31,6 @@ import java.util.Map;
 
 public class AddDogActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
     private EditText mEdtName;
     private EditText mEdtBreed;
     private EditText mEdtColor;
@@ -69,7 +70,6 @@ public class AddDogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_dog);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_dogs);
@@ -138,8 +138,9 @@ public class AddDogActivity extends AppCompatActivity {
 
             try {
                 Dog dogToAdd = new Dog(dogMap);
-                new DogDbManager(this).addDog(dogToAdd);
-                // TODO remote sync
+                new DogDbManager(this).addDog(dogToAdd); // Sync to local
+                new RemoteDogTask(ActionType.INSERT, dogToAdd).execute(); // Sync to remote
+
                 startActivity(new Intent(AddDogActivity.this, DogsActivity.class));
                 Toast.makeText(this, name + " added successfully", Toast.LENGTH_LONG).show();
             } catch (ParseException e) {

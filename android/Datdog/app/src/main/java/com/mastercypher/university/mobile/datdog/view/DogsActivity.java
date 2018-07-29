@@ -89,7 +89,6 @@ public class DogsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Dog dogClicked = (Dog) mListView.getItemAtPosition(position);
-                // TODO go to dog's view
                 Intent intent = new Intent(getBaseContext(), DogInfoActivity.class);
                 intent.putExtra("id", dogClicked.getId());
                 startActivity(intent);

@@ -94,6 +94,10 @@ public class Dog {
         return cv;
     }
 
+    public static String createId(int userId, String nameDog, String dateNow){
+        return userId + "-" + nameDog + "-" + dateNow;
+    }
+
     public String getId() {
         return id;
     }

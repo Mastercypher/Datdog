@@ -6,11 +6,33 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.mastercypher.university.mobile.datdog.database.DogDbManager;
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AddDogActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
+    private EditText mEdtName;
+    private EditText mEdtBreed;
+    private EditText mEdtColor;
+    private EditText mEdtBirth;
+    private RadioGroup mRdgSex;
+    private RadioGroup mRdgSize;
+    private Button mBtnAdd;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -47,6 +69,78 @@ public class AddDogActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_dogs);
+
+        this.initComponents();
     }
 
+    private void initComponents() {
+        final AddDogActivity activity = this;
+        mEdtName = findViewById(R.id.edtName);
+        mEdtBreed = findViewById(R.id.edtBreed);
+        mEdtColor = findViewById(R.id.edtColour);
+        mEdtBirth = findViewById(R.id.edtBirth);
+        mRdgSex = findViewById(R.id.rbgSex);
+        mRdgSize = findViewById(R.id.rbgSize);
+        mBtnAdd = findViewById(R.id.btnAdd);
+        mBtnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.actionAdd();
+            }
+        });
+    }
+
+    private void actionAdd(){
+        Map<String, String> dogMap = new HashMap<>();
+        User user = AccountDirectory.getInstance().getUser();
+        String name = mEdtName.getText().toString();
+        String breed = mEdtBreed.getText().toString();
+        String colour = mEdtColor.getText().toString();
+        String birth = mEdtBirth.getText().toString();
+        // Radio Group SEX
+        int rdbSexId = mRdgSex.getCheckedRadioButtonId();
+        RadioButton rdbSex = mRdgSex.findViewById(rdbSexId);
+        int sex = mRdgSex.indexOfChild(rdbSex);
+        // Radio Group SIZE
+        int rdbSizeId = mRdgSize.getCheckedRadioButtonId();
+        RadioButton rdbSize = mRdgSize.findViewById(rdbSizeId);
+        int size = mRdgSex.indexOfChild(rdbSize);
+
+        List<String> strToCheck = new ArrayList<>();
+        strToCheck.add(name);
+        strToCheck.add(breed);
+        strToCheck.add(colour);
+        strToCheck.add(birth);
+        int result = UtilProj.checkValues(strToCheck);
+        if (result == UtilProj.STRING_SIZE_SMALL){
+            Toast.makeText(this, "You have to fill all the fields", Toast.LENGTH_LONG).show();
+        } else if (result == UtilProj.STRING_SIZE_BIG){
+            Toast.makeText(this, "All the field must be less than 50 characters", Toast.LENGTH_LONG).show();
+        } else if (result == UtilProj.STRING_SIZE_OK){
+            String dateNowStr = UtilProj.getDateNow();
+            int status = UtilProj.DB_ROW_AVAILABLE;
+            dogMap.put("id", Dog.createId(user.getId(), name, dateNowStr));
+            dogMap.put("id_nfc_d", "");
+            dogMap.put("id_user_d", user.getId() + "");
+            dogMap.put("name_d", name);
+            dogMap.put("breed_d", breed);
+            dogMap.put("colour_d", colour);
+            dogMap.put("birth_d", birth);
+            dogMap.put("size_d", size + "");
+            dogMap.put("sex_d", sex + "");
+            dogMap.put("date_create_d", dateNowStr);
+            dogMap.put("date_update_d", dateNowStr);
+            dogMap.put("delete_d", status + "");
+
+            try {
+                Dog dogToAdd = new Dog(dogMap);
+                new DogDbManager(this).addDog(dogToAdd);
+                // TODO remote sync
+                Toast.makeText(this, name + " added successfully", Toast.LENGTH_LONG).show();
+            } catch (ParseException e) {
+                e.printStackTrace();
+                Toast.makeText(this, name + " not added for error", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 }

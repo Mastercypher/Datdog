@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editText14"
+                android:id="@+id/edtName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -58,10 +58,10 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText14" />
+                app:layout_constraintTop_toBottomOf="@+id/edtName" />
 
             <EditText
-                android:id="@+id/editText11"
+                android:id="@+id/edtBreed"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -86,10 +86,10 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText11" />
+                app:layout_constraintTop_toBottomOf="@+id/edtBreed" />
 
             <EditText
-                android:id="@+id/editText12"
+                android:id="@+id/edtColour"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -114,10 +114,10 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText12" />
+                app:layout_constraintTop_toBottomOf="@+id/edtColour" />
 
             <EditText
-                android:id="@+id/editText13"
+                android:id="@+id/edtBirth"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -139,7 +139,7 @@
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText13">
+                app:layout_constraintTop_toBottomOf="@+id/edtBirth">
 
                 <TextView
                     android:id="@+id/textView28"
@@ -166,6 +166,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <RadioGroup
+                    android:id="@+id/rbgSex"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
@@ -191,6 +192,7 @@
                 </RadioGroup>
 
                 <RadioGroup
+                    android:id="@+id/rbgSize"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="32dp"
@@ -216,7 +218,7 @@
             </android.support.constraint.ConstraintLayout>
 
             <Button
-                android:id="@+id/button10"
+                android:id="@+id/btnAdd"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"

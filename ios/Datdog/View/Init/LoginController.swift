@@ -54,19 +54,19 @@ class LoginController : UIViewController, UITextFieldDelegate {
     
     // Permit to oush the registration data online.
     func verifyLogin(){
-        let urlString = "http://datdog.altervista.org/user.php?action=select&email_u=\(mEmail)&password_u=\(mPassword)"
+        let urlString = "http://datdog.altervista.org/user.php?action=select-login&email_u=\(mEmail)&password_u=\(mPassword)"
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request) { [unowned self](data, response, error) in
-            /*
+            
              if (data != nil) {
              let string = String(data: data!, encoding: .utf8)
              debugPrint(string!)
              }
-             */
+            
             
             do {
                 let respond = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)

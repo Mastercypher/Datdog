@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.mastercypher.university.mobile.datdog.entities.Friendship;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -39,10 +40,9 @@ public class FriendshipDbManager {
     }
 
     public boolean deleteFriendship(Friendship friendship) {
-        SQLiteDatabase db = databaseHelper.getWritableDatabase();
-        long row = db.delete(Friendship.TABLE_NAME,
-                Friendship.COLUMN_ID + " = ? ", new String[]{String.valueOf(friendship.getId())});
-        return row > 0;
+        friendship.setDelete(1);
+        friendship.setUpdate(new Date());
+        return updateDog(friendship);
     }
 
     public Friendship selectFriendship(String id) throws ParseException {

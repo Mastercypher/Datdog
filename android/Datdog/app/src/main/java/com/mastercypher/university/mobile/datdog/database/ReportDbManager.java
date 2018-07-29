@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.mastercypher.university.mobile.datdog.entities.Report;
 
 import java.text.ParseException;
+import java.util.Date;
 
 public class ReportDbManager {
 
@@ -37,10 +38,16 @@ public class ReportDbManager {
     }
 
     public boolean deleteReport(Report report) {
-        SQLiteDatabase db = databaseHelper.getWritableDatabase();
-        long row = db.delete(Report.TABLE_NAME,
-                Report.COLUMN_ID + " = ? ", new String[]{String.valueOf(report.getId())});
-        return row > 0;
+        report.setDelete(1);
+        report.setUpdate(new Date());
+        return updateReport(report);
+    }
+
+    public boolean foundReport(Report report) {
+        Date date = new Date();
+        report.setFound(date);
+        report.setUpdate(date);
+        return updateReport(report);
     }
 
     public Report selectReport(String id) throws ParseException {

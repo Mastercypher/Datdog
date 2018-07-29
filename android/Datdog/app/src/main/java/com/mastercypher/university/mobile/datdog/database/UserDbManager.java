@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.mastercypher.university.mobile.datdog.entities.User;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.text.ParseException;
@@ -39,10 +40,9 @@ public class UserDbManager {
     }
 
     public boolean deleteUser(User user) {
-        SQLiteDatabase db = databaseHelper.getWritableDatabase();
-        long row = db.delete(User.TABLE_NAME,
-                User.COLUMN_ID + " = ? ", new String[]{String.valueOf(user.getId())});
-        return row > 0;
+        user.setDelete(1);
+        user.setUpdate(new Date());
+        return updateDog(user);
     }
 
     public User selectUser(int id) throws ParseException {

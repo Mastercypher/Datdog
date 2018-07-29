@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.mastercypher.university.mobile.datdog.entities.Vaccination;
 
 import java.text.ParseException;
+import java.util.Date;
 
 public class VaccinationDbManager {
 
@@ -37,10 +38,16 @@ public class VaccinationDbManager {
     }
 
     public boolean deleteVaccination(Vaccination vaccination) {
-        SQLiteDatabase db = databaseHelper.getWritableDatabase();
-        long row = db.delete(Vaccination.TABLE_NAME,
-                Vaccination.COLUMN_ID + " = ? ", new String[]{String.valueOf(vaccination.getId())});
-        return row > 0;
+        vaccination.setDelete(1);
+        vaccination.setUpdate(new Date());
+        return updateDog(vaccination);
+    }
+
+    public boolean completeVaccination(Vaccination vaccination) {
+        Date date = new Date();
+        vaccination.setCompleted(date);
+        vaccination.setUpdate(date);
+        return updateDog(vaccination);
     }
 
     public Vaccination selectVaccination(String id) throws ParseException {

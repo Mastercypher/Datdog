@@ -1,5 +1,6 @@
 package com.mastercypher.university.mobile.datdog.view;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +13,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.mastercypher.university.mobile.datdog.database.UserDbManager;
 import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
 import com.mastercypher.university.mobile.datdog.R;
+import com.mastercypher.university.mobile.datdog.entities.User;
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.SimpleDateFormat;
 
@@ -106,10 +110,10 @@ public class UserInfoActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        String name = AccountDirectory.getInstance().getUser().getName();
+        User user = AccountDirectory.getInstance().getUser();
+        String name = user.getName();
         String upName = name.substring(0,1).toUpperCase() + name.substring(1);
-        String surname = AccountDirectory.getInstance().getUser().getSurname();
+        String surname = user.getSurname();
         String upSurname = surname.substring(0,1).toUpperCase() + surname.substring(1);
 
         txtName.setText(upName);
@@ -122,6 +126,7 @@ public class UserInfoActivity extends AppCompatActivity {
     }
 
     private void logout(){
+        final Context context = this;
         AlertDialog.Builder builder = new AlertDialog.Builder(UserInfoActivity.this);
         builder.setTitle("Logout");
         builder.setMessage("Do you really want to logout?");
@@ -131,7 +136,11 @@ public class UserInfoActivity extends AppCompatActivity {
                 "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        // TODO LOGOUT
+                        User user = AccountDirectory.getInstance().getUser();
+                        user.setCurrent(UtilProj.LOGOUT);
+                        new UserDbManager(context).updateUser(user);
+                        startActivity(new Intent(UserInfoActivity.this, LoginActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                     }
                 });
 

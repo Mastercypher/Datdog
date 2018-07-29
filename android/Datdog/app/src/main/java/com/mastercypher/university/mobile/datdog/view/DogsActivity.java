@@ -27,7 +27,6 @@ import java.util.List;
 
 public class DogsActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
     private DogAdapter mDogAdapter;
     private FloatingActionButton mBtnAddDog;
     private ListView mListView;
@@ -63,7 +62,6 @@ public class DogsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dogs);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_dogs);

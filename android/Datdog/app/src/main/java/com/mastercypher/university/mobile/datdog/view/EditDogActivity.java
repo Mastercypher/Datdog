@@ -37,7 +37,7 @@ public class EditDogActivity extends AppCompatActivity {
     private EditText mEdtBirth;
     private RadioGroup mRdgSex;
     private RadioGroup mRdgSize;
-    private Button mBtnModfy;
+    private Button mBtnEdit;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -58,7 +58,6 @@ public class EditDogActivity extends AppCompatActivity {
                     startActivity(new Intent(EditDogActivity.this, ConnectActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     return true;
                 case R.id.navigation_dogs:
-
                     return true;
             }
             return false;
@@ -88,13 +87,13 @@ public class EditDogActivity extends AppCompatActivity {
         if (mDog != null) {
             final Dog finalDog = mDog;
 
-            mEdtName = findViewById(R.id.edtName);
-            mEdtBreed = findViewById(R.id.edtBreed);
-            mEdtColor = findViewById(R.id.edtColour);
-            mEdtBirth = findViewById(R.id.edtBirth);
-            mRdgSex = findViewById(R.id.rbgSex);
-            mRdgSize = findViewById(R.id.rbgSize);
-            mBtnModfy = findViewById(R.id.btnAdd);
+            mEdtName = findViewById(R.id.edt_name);
+            mEdtBreed = findViewById(R.id.edt_breed);
+            mEdtColor = findViewById(R.id.edt_colour);
+            mEdtBirth = findViewById(R.id.edt_birth);
+            mRdgSex = findViewById(R.id.rbg_sex);
+            mRdgSize = findViewById(R.id.rbg_size);
+            mBtnEdit = findViewById(R.id.btn_edit);
             // Set values
             mEdtName.setText(mDog.getName());
             mEdtBreed.setText(mDog.getBreed());
@@ -103,16 +102,16 @@ public class EditDogActivity extends AppCompatActivity {
             ((RadioButton)mRdgSex.getChildAt(mDog.getSex())).setChecked(true);
             ((RadioButton)mRdgSize.getChildAt(mDog.getSize())).setChecked(true);
 
-            mBtnModfy.setOnClickListener(new View.OnClickListener() {
+            mBtnEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    actionAdd();
+                    actionEdit();
                 }
             });
         }
     }
 
-    private void actionAdd() {
+    private void actionEdit() {
         Map<String, String> dogMap = new HashMap<>();
         User user = AccountDirectory.getInstance().getUser();
         String name = mEdtName.getText().toString();
@@ -141,7 +140,7 @@ public class EditDogActivity extends AppCompatActivity {
         } else if (result == UtilProj.STRING_SIZE_OK) {
             String dateNowStr = UtilProj.getDateNow();
             int status = UtilProj.DB_ROW_AVAILABLE;
-            dogMap.put("id", Dog.createId(user.getId(), name, dateNowStr));
+            dogMap.put("id", mDog.getId());
             dogMap.put("id_nfc_d", "");
             dogMap.put("id_user_d", user.getId() + "");
             dogMap.put("name_d", name);
@@ -150,16 +149,16 @@ public class EditDogActivity extends AppCompatActivity {
             dogMap.put("birth_d", birth);
             dogMap.put("size_d", size + "");
             dogMap.put("sex_d", sex + "");
-            dogMap.put("date_create_d", dateNowStr);
+            dogMap.put("date_create_d", UtilProj.formatData(mDog.getCreate()));
             dogMap.put("date_update_d", dateNowStr);
             dogMap.put("delete_d", status + "");
 
             try {
                 Dog dogToAdd = new Dog(dogMap);
-                new DogDbManager(this).addDog(dogToAdd); // Sync to local
-                new RemoteDogTask(ActionType.INSERT, dogToAdd).execute(); // Sync to remote
+                new DogDbManager(this).updateDog(dogToAdd); // Sync to local
+                new RemoteDogTask(ActionType.UPDATE, dogToAdd).execute(); // Sync to remote
 
-                startActivity(new Intent(AddDogActivity.this, DogsActivity.class));
+                startActivity(new Intent(EditDogActivity.this, DogsActivity.class));
                 Toast.makeText(this, name + " added successfully", Toast.LENGTH_LONG).show();
             } catch (ParseException e) {
                 e.printStackTrace();

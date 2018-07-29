@@ -93,14 +93,14 @@ public class DogInfoActivity extends AppCompatActivity {
             mTxvBreed.setText(mDog.getBreed());
             mTxtColour.setText(mDog.getColour());
             mTxtBirth.setText(UtilProj.formatDataNoTime(mDog.getBirth()));
-            mTxtSex.setText(mDog.getSex() == Dog.SEX_F ? "Male" : "Female");
+            mTxtSex.setText(mDog.getSex() == Dog.SEX_M ? "Male" : "Female");
             mTxtSize.setText(mDog.getSize() == Dog.SIZE_SMALL ? "Small" : "Big");
 
             mBtnRemove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     new DogDbManager(DogInfoActivity.this).deleteDog(finalDog);
-                    startActivity(new Intent(DogInfoActivity.this, DogsActivity.class));
+                    startActivity(new Intent(DogInfoActivity.this, DogInfoActivity.class));
                 }
             });
 

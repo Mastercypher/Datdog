@@ -118,11 +118,11 @@ public class ConfirmationReportActivity extends AppCompatActivity {
         Iterator<Map<String, String>> it = doggo.iterator();
 
         if (!it.hasNext()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+            AlertDialog.Builder builder = new AlertDialog.Builder(ConfirmationReportActivity.this);
             builder.setTitle("No match");
             builder.setMessage("The NFC Tag does not belong to any dog.");
             builder.setCancelable(false);
-
+            
             builder.setNeutralButton(
                     "OK",
                     new DialogInterface.OnClickListener() {
@@ -131,7 +131,7 @@ public class ConfirmationReportActivity extends AppCompatActivity {
                         }
                     });
 
-            builder.show().setCanceledOnTouchOutside(false);
+            builder.show();
         } else {
             try {
                 dog = new Dog(it.next());

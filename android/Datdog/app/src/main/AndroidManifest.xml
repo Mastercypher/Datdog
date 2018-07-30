@@ -47,7 +47,7 @@
             android:name=".view.FriendsActivity"
             android:label="Friends" />
         <activity
-            android:name=".view.ReportActivity"
+            android:name=".view.ReportChoseActivity"
             android:label="Choose how to report" />
         <activity
             android:name=".view.DogsActivity"
@@ -108,6 +108,10 @@
             android:label="Status lost dog" />
         <activity
             android:name=".view.AddFriendActivity"
+            android:label="Add friend"></activity>
+
+        <activity
+            android:name=".view.ReportsActivity"
             android:label="Add friend"></activity>
 
         <meta-data

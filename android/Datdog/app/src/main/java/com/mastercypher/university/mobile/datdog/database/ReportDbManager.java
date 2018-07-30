@@ -4,12 +4,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.mastercypher.university.mobile.datdog.entities.Friendship;
 import com.mastercypher.university.mobile.datdog.entities.Report;
 import com.mastercypher.university.mobile.datdog.util.ActionType;
 import com.mastercypher.university.mobile.datdog.util.RemoteReportTask;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ReportDbManager {
 
@@ -67,5 +70,32 @@ public class ReportDbManager {
             c.moveToNext();
             return new Report(c);
         }
+    }
+
+
+    public List<Report> getUserReports(int idUser) {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+
+        List<Report> reports = new LinkedList<>();
+        Cursor c = null;
+
+        try {
+            String query = "SELECT * " + "FROM " + Report.TABLE_NAME +
+                    " WHERE " + Report.COLUMN_ID_USER + " = " + idUser;
+
+            c = db.rawQuery(query, null);
+            while (c.moveToNext()) {
+                reports.add(new Report(c));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            db.close();
+        }
+
+        return reports;
     }
 }

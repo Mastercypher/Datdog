@@ -12,10 +12,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.mastercypher.university.mobile.datdog.R;
-import com.mastercypher.university.mobile.datdog.adapter.FriendAdapter;
-import com.mastercypher.university.mobile.datdog.database.FriendshipDbManager;
+import com.mastercypher.university.mobile.datdog.adapter.DogAdapter;
+import com.mastercypher.university.mobile.datdog.adapter.ReportAdapter;
+import com.mastercypher.university.mobile.datdog.database.DogDbManager;
+import com.mastercypher.university.mobile.datdog.database.ReportDbManager;
 import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
-import com.mastercypher.university.mobile.datdog.entities.Friendship;
+import com.mastercypher.university.mobile.datdog.entities.Dog;
+import com.mastercypher.university.mobile.datdog.entities.Report;
 import com.mastercypher.university.mobile.datdog.entities.User;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
@@ -23,10 +26,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class FriendsActivity extends AppCompatActivity {
+public class ReportsActivity extends AppCompatActivity {
 
-    private FriendAdapter mDogAdapter;
-    private FloatingActionButton mFabAddFriend;
+    private ReportAdapter mReportAdapter;
+    private FloatingActionButton mBtnAddReport;
     private ListView mListView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -36,19 +39,19 @@ public class FriendsActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    startActivity(new Intent(FriendsActivity.this, HomeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    startActivity(new Intent(ReportsActivity.this, HomeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     return true;
                 case R.id.navigation_missing:
-                    startActivity(new Intent(FriendsActivity.this, MissingActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                    return true;
-                case R.id.navigation_friends:
 
                     return true;
+                case R.id.navigation_friends:
+                    startActivity(new Intent(ReportsActivity.this, FriendsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    return true;
                 case R.id.navigation_connect:
-                    startActivity(new Intent(FriendsActivity.this, ConnectActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    startActivity(new Intent(ReportsActivity.this, ConnectActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     return true;
                 case R.id.navigation_dogs:
-                    startActivity(new Intent(FriendsActivity.this, DogsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    startActivity(new Intent(ReportsActivity.this, DogsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     return true;
             }
             return false;
@@ -58,39 +61,39 @@ public class FriendsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friends);
+        setContentView(R.layout.activity_reports);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navigation.setSelectedItemId(R.id.navigation_friends);
+        navigation.setSelectedItemId(R.id.navigation_dogs);
 
         // Button ADD
-        mFabAddFriend = findViewById(R.id.fab_add_friend);
-        mFabAddFriend.setOnClickListener(new View.OnClickListener() {
+        mBtnAddReport = findViewById(R.id.fab_add_report);
+        mBtnAddReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FriendsActivity.this, AddFriendActivity.class));
+                startActivity(new Intent(ReportsActivity.this, ReportChoseActivity.class));
             }
         });
 
-        // ListView FRIENDA
-        // Prepare adapter for list of dogs
-        mListView = findViewById(R.id.ltv_friends);
-        ArrayList<Friendship> friendsArray = new ArrayList<>();
-        mDogAdapter = new FriendAdapter(this, friendsArray);
-        mListView.setAdapter(mDogAdapter);
+        // ListView REPORTS
+        // Prepare adapter for list of reports
+        mListView = findViewById(R.id.lsvReports);
+        ArrayList<Report> reportsArray = new ArrayList<>();
+        mReportAdapter = new ReportAdapter(this, reportsArray);
+        mListView.setAdapter(mReportAdapter);
         this.refreshDogs();
 
-        mListView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // TODO See info friendship
+
                 /*
-                Dog dogClicked = (Dog) mListView.getItemAtPosition(position);
-                Intent intent = new Intent(getBaseContext(), DogInfoActivity.class);
-                intent.putExtra("id", dogClicked.getId());
+                Report reportClicked = (Report) mListView.getItemAtPosition(position);
+                Intent intent = new Intent(getBaseContext(), ReportInfoActivity.class);
+                intent.putExtra("id", reportClicked.getId());
                 startActivity(intent);
-                 */
+                */
             }
         });
     }
@@ -106,22 +109,19 @@ public class FriendsActivity extends AppCompatActivity {
     private void refreshDogs() {
         User user = AccountDirectory.getInstance().getUser();
         if (user != null) {
-            mDogAdapter.clear();
-            FriendshipDbManager friendDb = new FriendshipDbManager(this);
-
-            List<Friendship> friendships = friendDb.getUserFriends(user.getId());
-            Iterator<Friendship> i = friendships.iterator();
+            mReportAdapter.clear();
+            List<Report> reports = new ReportDbManager(this).getUserReports(user.getId());
+            Iterator<Report> i = reports.iterator();
             while (i.hasNext()) {
-                Friendship friedFriendship = i.next(); // must be called before you can call i.remove()
+                Report report = i.next(); // must be called before you can call i.remove()
                 // Do something
-                if (friedFriendship.getDelete() == UtilProj.DB_ROW_DELETE) {
+                if (report.getDelete() == UtilProj.DB_ROW_DELETE) {
                     i.remove();
                 }
             }
-            mDogAdapter.addAll(friendships);
+            mReportAdapter.addAll(reports);
         } else {
             UtilProj.showToast(this, "User account problem, restart the application");
         }
     }
-
 }

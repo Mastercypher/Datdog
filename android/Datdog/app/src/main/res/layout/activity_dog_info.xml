@@ -225,8 +225,6 @@
                 android:layout_width="375dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -239,6 +237,7 @@
                     android:layout_height="50dp"
                     android:layout_centerInParent="false"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
                     app:srcCompat="@drawable/icon_vaccination" />
 
                 <Button
@@ -258,7 +257,7 @@
                     android:layout_height="30dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="16dp"
                     app:srcCompat="@drawable/icon_arrow_right" />
             </RelativeLayout>
         </android.support.constraint.ConstraintLayout>

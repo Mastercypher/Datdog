@@ -63,11 +63,11 @@ public class EditUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_user);
 
         mTextMessage = (TextView) findViewById(R.id.message);
-        txtname = findViewById(R.id.editText5);
-        txtsurname = findViewById(R.id.editText15);
-        birth = findViewById(R.id.editText16);
-        phone = findViewById(R.id.editText17);
-        update = findViewById(R.id.button15);
+        txtname = findViewById(R.id.edt_name);
+        txtsurname = findViewById(R.id.edt_breed);
+        birth = findViewById(R.id.edt_colour);
+        phone = findViewById(R.id.edt_birth);
+        update = findViewById(R.id.btn_edit);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

@@ -61,15 +61,15 @@ public class FriendshipDbManager {
         }
     }
 
-    public List<Friendship> getAllFriendships() {
+    public List<Friendship> getAllFriendships(int idFriend) {
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
         List<Friendship> friendships = new LinkedList<>();
         Cursor c = null;
 
         try {
-            String query = "SELECT *" +
-                    " FROM " + Friendship.TABLE_NAME;
+            String query = "SELECT * " + "FROM " + Friendship.TABLE_NAME +
+                    " WHERE " + Friendship.COLUMN_ID_FRIEND + " = " + idFriend;
 
             c = db.rawQuery(query, null);
             while (c.moveToNext()) {

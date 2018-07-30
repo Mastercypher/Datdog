@@ -30,12 +30,14 @@ public class DogDbDl {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        Iterator<Map<String, String>> it = elem.iterator();
-        while (it.hasNext()) {
-            try {
-                new DogDbManager(context).addDog(new Dog(it.next()));
-            } catch (ParseException e) {
-                e.printStackTrace();
+        if(elem != null) {
+            Iterator<Map<String, String>> it = elem.iterator();
+            while (it.hasNext()) {
+                try {
+                    new DogDbManager(context).addDog(new Dog(it.next()));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

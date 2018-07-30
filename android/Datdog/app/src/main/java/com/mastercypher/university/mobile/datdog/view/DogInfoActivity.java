@@ -20,16 +20,16 @@ import java.text.ParseException;
 
 public class DogInfoActivity extends AppCompatActivity {
 
-    private Button btnRemove;
-    private Button btnEdit;
-    private TextView mTextMessage;
-    private TextView txvTitleName;
-    private TextView txvBreed;
-    private TextView txtColour;
-    private TextView txtBirth;
-    private TextView txtSex;
-    private TextView txtSize;
-    private RelativeLayout rtlVaccination;
+    private Dog mDog;
+    private Button mBtnRemove;
+    private Button mBtnEdit;
+    private TextView mTxvTitleName;
+    private TextView mTxvBreed;
+    private TextView mTxtColour;
+    private TextView mTxtBirth;
+    private TextView mTxtSex;
+    private TextView mTxtSize;
+    private RelativeLayout mRtlVaccination;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -62,8 +62,7 @@ public class DogInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dog_info);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_dogs);
 
@@ -73,43 +72,44 @@ public class DogInfoActivity extends AppCompatActivity {
 
     private void initComponent(){
         String dogId = getIntent().getStringExtra("id");
-        Dog dog = null;
         try {
-            dog = new DogDbManager(this).selectDog(dogId);
+            mDog = new DogDbManager(this).selectDog(dogId);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if (dog != null) {
-            final Dog finalDog = dog;
-            txvTitleName = findViewById(R.id.txv_title_name);
-            txvBreed = findViewById(R.id.txv_breed);
-            txtColour = findViewById(R.id.txv_colour);
-            txtBirth = findViewById(R.id.txv_birth);
-            txtSex = findViewById(R.id.txv_sex);
-            txtSize = findViewById(R.id.txv_size);
-            rtlVaccination = findViewById(R.id.rtl_vax);
-            btnEdit = findViewById(R.id.btn_edit);
-            btnRemove = findViewById(R.id.btn_remove);
+        if (mDog != null) {
+            final Dog finalDog = mDog;
+            mTxvTitleName = findViewById(R.id.txv_title_name);
+            mTxvBreed = findViewById(R.id.txv_breed);
+            mTxtColour = findViewById(R.id.txv_colour);
+            mTxtBirth = findViewById(R.id.txv_birth);
+            mTxtSex = findViewById(R.id.txv_sex);
+            mTxtSize = findViewById(R.id.txv_size);
+            mRtlVaccination = findViewById(R.id.rtl_vax);
+            mBtnEdit = findViewById(R.id.btn_edit);
+            mBtnRemove = findViewById(R.id.btn_remove);
 
-            txvTitleName.setText(dog.getName());
-            txvBreed.setText(dog.getBreed());
-            txtColour.setText(dog.getColour());
-            txtBirth.setText(UtilProj.formatDataNoTime(dog.getBirth()));
-            txtSex.setText(dog.getSex() == Dog.SEX_F ? "Male" : "Female");
-            txtSize.setText(dog.getSize() == Dog.SIZE_SMALL ? "Small" : "Big");
+            mTxvTitleName.setText(mDog.getName());
+            mTxvBreed.setText(mDog.getBreed());
+            mTxtColour.setText(mDog.getColour());
+            mTxtBirth.setText(UtilProj.formatDataNoTime(mDog.getBirth()));
+            mTxtSex.setText(mDog.getSex() == Dog.SEX_M ? "Male" : "Female");
+            mTxtSize.setText(mDog.getSize() == Dog.SIZE_SMALL ? "Small" : "Big");
 
-            btnRemove.setOnClickListener(new View.OnClickListener() {
+            mBtnRemove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     new DogDbManager(DogInfoActivity.this).deleteDog(finalDog);
-                    startActivity(new Intent(DogInfoActivity.this, DogsActivity.class));
+                    startActivity(new Intent(DogInfoActivity.this, DogInfoActivity.class));
                 }
             });
 
-            btnEdit.setOnClickListener(new View.OnClickListener() {
+            mBtnEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(DogInfoActivity.this, EditDogActivity.class));
+                    Intent intent = new Intent(getBaseContext(), EditDogActivity.class);
+                    intent.putExtra("id", finalDog.getId());
+                    startActivity(intent);
                 }
             });
         }

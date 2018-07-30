@@ -27,7 +27,6 @@ import java.util.List;
 
 public class DogsActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
     private DogAdapter mDogAdapter;
     private FloatingActionButton mBtnAddDog;
     private ListView mListView;
@@ -63,7 +62,6 @@ public class DogsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dogs);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_dogs);
@@ -89,7 +87,6 @@ public class DogsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Dog dogClicked = (Dog) mListView.getItemAtPosition(position);
-                // TODO go to dog's view
                 Intent intent = new Intent(getBaseContext(), DogInfoActivity.class);
                 intent.putExtra("id", dogClicked.getId());
                 startActivity(intent);

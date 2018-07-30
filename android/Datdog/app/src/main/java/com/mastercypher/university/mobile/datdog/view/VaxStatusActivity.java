@@ -6,14 +6,16 @@ import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.mastercypher.university.mobile.datdog.R;
-import com.mastercypher.university.mobile.datdog.database.DogDbManager;
 import com.mastercypher.university.mobile.datdog.database.VaccinationDbManager;
 import com.mastercypher.university.mobile.datdog.entities.Vaccination;
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.ParseException;
 
@@ -78,7 +80,29 @@ public class VaxStatusActivity extends AppCompatActivity {
             fabDone = findViewById(R.id.fab_add_vax);
             ctlStatus = findViewById(R.id.ctl_status);
 
-            txvName.setText(mVax.getName());
+            if(mVax.getCompleted() != null) {
+                // COMPLETED
+
+                String state = Vaccination.SATE_COMPLETED;
+                String when = UtilProj.formatData(mVax.getWhen());
+                txvName.setText(mVax.getName());
+                txvStatus.setText(state);
+                txvWhen.setText(when);
+
+                ctlStatus.setBackgroundColor(ContextCompat.getColor(this, R.color.stateSuccess));
+                fabDone.setVisibility(View.GONE);
+            } else {
+                // NOT COMPLETED
+
+                String state = Vaccination.SATE_TODO;
+                String when = UtilProj.formatData(mVax.getWhen());
+                txvName.setText(mVax.getName());
+                txvStatus.setText(state);
+                txvWhen.setText(when);
+
+                ctlStatus.setBackgroundColor(ContextCompat.getColor(this, R.color.stateWarning));
+                fabDone.setVisibility(View.VISIBLE);
+            }
         }
 
     }

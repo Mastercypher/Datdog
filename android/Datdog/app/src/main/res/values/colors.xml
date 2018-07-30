@@ -19,7 +19,8 @@
     <color name="colorIos">#dfdddd</color>
     <color name="colorCompleted">#28a745</color>
 
-
     <color name="colorLightGray">#c9c9c9</color>
 
+    <color name="stateWarning">#ffc107</color>
+    <color name="stateSuccess">#28a745</color>
 </resources>

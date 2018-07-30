@@ -22,6 +22,9 @@ public class Vaccination {
     public static final String COLUMN_DATE_COMPLETED = "completed";
     public static final String COLUMN_DELETE = "deleted";
 
+    public static final String SATE_TODO = "Todo";
+    public static final String SATE_COMPLETED = "Completed";
+
     private String id;
     private String dog;
     private String name;

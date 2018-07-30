@@ -3,6 +3,8 @@ package com.mastercypher.university.mobile.datdog.entities;
 import android.content.ContentValues;
 import android.database.Cursor;
 
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,7 +39,7 @@ public class Report {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         create = sdf.parse(report.get("date_create_r"));
         update = sdf.parse(report.get("date_update_r"));
-        if (report.get("date_found_r").equals("")) {
+        if (report.get("date_found_r").equals(UtilProj.NONE_VALUE)) {
             found = null;
         } else {
             found = sdf.parse(report.get("date_found_r"));
@@ -53,7 +55,7 @@ public class Report {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         create = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_CREATE)));
         update = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_UPDATE)));
-        if (c.getString(c.getColumnIndex(COLUMN_DATE_FOUND)).equals("")) {
+        if (c.getString(c.getColumnIndex(COLUMN_DATE_FOUND)).equals(UtilProj.NONE_VALUE)) {
             found = null;
         } else {
             found = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_FOUND)));
@@ -71,12 +73,16 @@ public class Report {
         cv.put(COLUMN_DATE_CREATE, sdf.format(create));
         cv.put(COLUMN_DATE_UPDATE, sdf.format(update));
         if (found == null) {
-            cv.put(COLUMN_DATE_FOUND, "");
+            cv.put(COLUMN_DATE_FOUND, UtilProj.NONE_VALUE);
         } else {
             cv.put(COLUMN_DATE_FOUND, sdf.format(found));
         }
         cv.put(COLUMN_DELETE, delete);
         return cv;
+    }
+
+    public static String createId(String dogId, int idReporter, String dateNow){
+        return dogId + "-" + idReporter + "-" + dateNow;
     }
 
     public String getId() {

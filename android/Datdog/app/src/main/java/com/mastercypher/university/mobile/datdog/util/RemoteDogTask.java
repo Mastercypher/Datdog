@@ -47,6 +47,7 @@ public class RemoteDogTask extends AsyncTask<Void, Void, Void> {
             conn.setUseCaches(false);
             conn.setRequestMethod("GET");
             conn.setDoInput(true);
+            conn.getResponseCode();
 
         } catch (Exception e) {
             e.printStackTrace();

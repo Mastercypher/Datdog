@@ -112,10 +112,12 @@ public class NfcReportActivity extends AppCompatActivity {
                         Intent it = new Intent(NfcReportActivity.this, ConfirmationReportActivity.class);
                         it.putExtra("lat", location.getLatitude());
                         it.putExtra("long", location.getLongitude());
+                        it.putExtra("nfc", txtScan.getText().toString());
                         startActivity(it);
                     }
                 } else {
-                    startActivity(new Intent(NfcReportActivity.this, ConfirmationReportActivity.class));
+                    startActivity(new Intent(NfcReportActivity.this, ConfirmationReportActivity.class)
+                            .putExtra("nfc", txtScan.getText().toString()));
                 }
             }
         });

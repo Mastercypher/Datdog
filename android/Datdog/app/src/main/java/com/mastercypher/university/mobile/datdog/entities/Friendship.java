@@ -58,6 +58,10 @@ public class Friendship {
         return cv;
     }
 
+    public static String createId(int userId, int idFriend, String dateNow){
+        return userId + "-" + idFriend + "-" + dateNow;
+    }
+
     public String getId() {
         return id;
     }

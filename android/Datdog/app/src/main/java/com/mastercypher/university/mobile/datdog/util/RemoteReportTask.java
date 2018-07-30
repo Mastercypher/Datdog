@@ -26,6 +26,7 @@ public class RemoteReportTask extends AsyncTask<Void, Void, Void> {
         BufferedReader rd = null;
         String mode = actionType == ActionType.INSERT ? "insert" : "update";
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
+        String foundDate = report.getFound() == null ? UtilProj.NONE_VALUE : sdf.format(report.getFound());
         try {
             URL url = new URL("http://datdog.altervista.org/report.php?action=" + mode +
                     "&id=" + report.getId() +
@@ -34,7 +35,7 @@ public class RemoteReportTask extends AsyncTask<Void, Void, Void> {
                     "&location_r=" + report.getLocation() +
                     "&date_create_r=" + sdf.format(report.getCreate()) +
                     "&date_update_r=" + sdf.format(report.getUpdate()) +
-                    "&date_found_r=" + sdf.format(report.getFound()) +
+                    "&date_found_r=" + foundDate +
                     "&delete_r=" + report.getDelete());
             conn = (HttpURLConnection) url.openConnection();
             conn.setConnectTimeout(60 * 1000);
@@ -42,7 +43,7 @@ public class RemoteReportTask extends AsyncTask<Void, Void, Void> {
             conn.setUseCaches(false);
             conn.setRequestMethod("GET");
             conn.setDoInput(true);
-
+            conn.getResponseCode();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

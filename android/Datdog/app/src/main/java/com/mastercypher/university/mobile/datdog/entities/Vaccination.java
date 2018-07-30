@@ -3,6 +3,8 @@ package com.mastercypher.university.mobile.datdog.entities;
 import android.content.ContentValues;
 import android.database.Cursor;
 
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,7 +39,7 @@ public class Vaccination {
         when = sdf.parse(vax.get("date_when_v"));
         create = sdf.parse(vax.get("date_create_v"));
         update = sdf.parse(vax.get("date_update_v"));
-        if (vax.get("date_completed_v").equals("")) {
+        if (vax.get("date_completed_v").equals(UtilProj.NONE_VALUE)) {
             completed = null;
         } else {
             completed = sdf.parse(vax.get("date_completed_v"));
@@ -52,7 +54,7 @@ public class Vaccination {
         when = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_WHEN)));
         create = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_CREATE)));
         update = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_UPDATE)));
-        if (c.getString(c.getColumnIndex(COLUMN_DATE_COMPLETED)).equals("")) {
+        if (c.getString(c.getColumnIndex(COLUMN_DATE_COMPLETED)).equals(UtilProj.NONE_VALUE)) {
             completed = null;
         } else {
             completed = sdf.parse(c.getString(c.getColumnIndex(COLUMN_DATE_COMPLETED)));
@@ -70,12 +72,16 @@ public class Vaccination {
         cv.put(COLUMN_DATE_CREATE, sdf.format(create));
         cv.put(COLUMN_DATE_UPDATE, sdf.format(update));
         if (completed == null) {
-            cv.put(COLUMN_DATE_COMPLETED, "");
+            cv.put(COLUMN_DATE_COMPLETED, UtilProj.NONE_VALUE);
         } else {
             cv.put(COLUMN_DATE_COMPLETED, sdf.format(completed));
         }
         cv.put(COLUMN_DELETE, delete);
         return cv;
+    }
+
+    public static String createId(String dogId, String nameVax, String dateNow){
+        return dogId + "-" + nameVax + "-" + dateNow;
     }
 
     public String getId() {

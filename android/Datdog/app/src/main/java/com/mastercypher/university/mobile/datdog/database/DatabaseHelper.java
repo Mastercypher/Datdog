@@ -13,7 +13,7 @@ import com.mastercypher.university.mobile.datdog.entities.Vaccination;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "datdog.db";
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 10;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -59,9 +59,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String CREATE_TABLE_REPORT = "CREATE TABLE " +
             Report.TABLE_NAME + " (" +
-            Report.COLUMN_ID + " INTEGER PRIMARY KEY, " +
+            Report.COLUMN_ID + " TEXT PRIMARY KEY, " +
             Report.COLUMN_ID_USER + " TEXT NOT NULL, " +
-            Report.COLUMN_ID_DOG + " INTEGER NOT NULL, " +
+            Report.COLUMN_ID_DOG + " TEXT NOT NULL, " +
             Report.COLUMN_LOCATION + " TEXT, " +
             Report.COLUMN_DATE_CREATE + " TEXT NOT NULL, " +
             Report.COLUMN_DATE_UPDATE + " TEXT NOT NULL, " +

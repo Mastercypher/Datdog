@@ -22,6 +22,7 @@ public class ReportDbManager {
     public boolean addReport(Report report) throws ParseException {
         Report inDb = selectReport(report.getId());
         if (inDb == null) {
+
             SQLiteDatabase db = databaseHelper.getWritableDatabase();
             long row = db.insert(Report.TABLE_NAME, null, report.getContentValues());
             return row > 0;

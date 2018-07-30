@@ -100,7 +100,7 @@ public class VaxStatusActivity extends AppCompatActivity {
                 // COMPLETED
 
                 String state = Vaccination.SATE_COMPLETED;
-                String when = UtilProj.formatData(mVax.getWhen());
+                String when = UtilProj.formatData(mVax.getCompleted());
                 txvName.setText(mVax.getName());
                 txvStatus.setText(state);
                 txvWhen.setText(when);
@@ -124,9 +124,10 @@ public class VaxStatusActivity extends AppCompatActivity {
             mBtnDelte.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    mVax.setDelete(1);
+                    mVax.setCompleted(new Date());
                     boolean success = new VaccinationDbManager(VaxStatusActivity.this).deleteVaccination(mVax);
                     if(success) {
-
                         new RemoteVaccinationTask(ActionType.UPDATE, mVax);
                         finish();
                     }

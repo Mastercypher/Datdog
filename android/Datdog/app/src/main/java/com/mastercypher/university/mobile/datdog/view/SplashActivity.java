@@ -18,6 +18,11 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (getIntent().getBooleanExtra("EXIT", false)) {
+            finish();
+            System.exit(0);
+        }
+
         if (!this.checkCurrentUser()) {
             startActivity(new Intent(this, MainActivity.class));
             finish();

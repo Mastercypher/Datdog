@@ -99,7 +99,7 @@
                 android:gravity="top|left"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
-                android:text="Your dogs"
+                android:text="Dogs"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"
                 android:textSize="30sp"

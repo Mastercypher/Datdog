@@ -40,10 +40,6 @@ public class DogDbManager {
         return row > 0;
     }
 
-    public boolean deleteDog(Dog dog) {
-        return updateDog(dog);
-    }
-
     public List<Dog> getAllDogs(int idUser) {
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
 

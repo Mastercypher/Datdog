@@ -23,6 +23,7 @@ import com.mastercypher.university.mobile.datdog.util.RemoteVaccinationTask;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.ParseException;
+import java.util.Date;
 
 public class VaxStatusActivity extends AppCompatActivity {
 
@@ -122,10 +123,11 @@ public class VaxStatusActivity extends AppCompatActivity {
             mBtnDelte.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    boolean success = new VaccinationDbManager(VaxStatusActivity.this).deleteVaccination(mVax);
+                    mVax.setDelete(UtilProj.DB_ROW_DELETE);
+                    mVax.setUpdate(new Date());
+                    boolean success = new VaccinationDbManager(VaxStatusActivity.this).updateDog(mVax);
                     if(success) {
-
-                        new RemoteVaccinationTask(ActionType.UPDATE, mVax);
+                        new RemoteVaccinationTask(ActionType.UPDATE, mVax).execute();
                         finish();
                     }
                 }

@@ -6,13 +6,21 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.mastercypher.university.mobile.datdog.R;
+import com.mastercypher.university.mobile.datdog.database.DogDbManager;
+import com.mastercypher.university.mobile.datdog.entities.Dog;
+
+import java.text.ParseException;
 
 public class ConnectDogActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
+    private Dog mDog;
+    private TextView mTxvName;
+    private Button mBtnSeeDog;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -45,9 +53,34 @@ public class ConnectDogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connect_dog);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_connect);
+
+        this.initComponent();
+    }
+
+    private void initComponent(){
+        String dogId = getIntent().getStringExtra("id");
+        try {
+            mDog = new DogDbManager(this).selectDog(dogId);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if (mDog != null) {
+            mTxvName = findViewById(R.id.txv_title_name);
+            mBtnSeeDog = findViewById(R.id.btn_see_dog);
+
+            mTxvName.setText(mDog.getName());
+            mBtnSeeDog.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getBaseContext(), DogInfoActivity.class);
+                    intent.putExtra("id", mDog.getId());
+                    startActivity(intent);
+                }
+            });
+        }
     }
 }

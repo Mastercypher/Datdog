@@ -74,7 +74,7 @@ public class UserInfoActivity extends AppCompatActivity {
         txtComplete = findViewById(R.id.txtComplete);
         txtName = findViewById(R.id.txv_breed);
         txtSurname = findViewById(R.id.txv_colour);
-        txtPhone = findViewById(R.id.txv_birth);
+        txtPhone = findViewById(R.id.txv_num_items);
         txtBirth = findViewById(R.id.txv_sex);
         txtEmail = findViewById(R.id.txv_size);
 

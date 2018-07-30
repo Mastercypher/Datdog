@@ -30,7 +30,7 @@ public class RemoteDogTask extends AsyncTask<Void, Void, Void> {
         try {
             URL url = new URL("http://datdog.altervista.org/dog.php?action=" + mode +
                     "&id=" + dog.getId() +
-                    "&id_nfc_d=" + dog.getId_nfc() +
+                    "&id_nfc_d=" + dog.getIdNfc() +
                     "&id_user_d=" + dog.getId_user() +
                     "&name_d=" + dog.getName() +
                     "&breed_d=" + dog.getBreed() +

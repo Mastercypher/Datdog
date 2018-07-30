@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.mastercypher.university.mobile.datdog.R;
 import com.mastercypher.university.mobile.datdog.database.UserDbManager;
-import com.mastercypher.university.mobile.datdog.entities.Dog;
 import com.mastercypher.university.mobile.datdog.entities.Friendship;
 import com.mastercypher.university.mobile.datdog.entities.User;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
@@ -44,7 +43,7 @@ public class FriendAdapter extends ArrayAdapter<Friendship> {
         if (friend != null) {
             String dogName = friend.getName();
             String dogBirth = "Birth: " + UtilProj.formatDataNoTime(friendship.getCreate());
-            TextView txvName = (TextView) convertView.findViewById(R.id.txv_name);
+            TextView txvName = (TextView) convertView.findViewById(R.id.txv_name_section);
             TextView txvBirth = (TextView) convertView.findViewById(R.id.txv_date_friendship);
             txvName.setText(dogName);
             txvBirth.setText(dogBirth);

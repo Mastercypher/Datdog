@@ -8,7 +8,7 @@
     tools:context=".view.ConnectActivity">
 
     <ListView
-        android:id="@+id/ltv_friends"
+        android:id="@+id/ltv_dogs"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="60dp"

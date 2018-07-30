@@ -29,7 +29,7 @@ public class DogAdapter extends ArrayAdapter<Dog> {
         }
         String dogName = dog.getName();
         String dogBirth = "Birth: " + UtilProj.formatDataNoTime(dog.getBirth());
-        TextView txvName = (TextView) convertView.findViewById(R.id.txv_name);
+        TextView txvName = (TextView) convertView.findViewById(R.id.imageView);
         TextView txvBirth = (TextView) convertView.findViewById(R.id.txv_birth);
         txvName.setText(dogName);
         txvBirth.setText(dogBirth);

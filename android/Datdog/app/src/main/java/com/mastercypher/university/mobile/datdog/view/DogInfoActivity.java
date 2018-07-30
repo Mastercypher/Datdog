@@ -79,10 +79,10 @@ public class DogInfoActivity extends AppCompatActivity {
         }
         if (mDog != null) {
             final Dog finalDog = mDog;
-            mTxvTitleName = findViewById(R.id.txv_title_name);
+            mTxvTitleName = findViewById(R.id.imageView);
             mTxvBreed = findViewById(R.id.txv_breed);
             mTxtColour = findViewById(R.id.txv_colour);
-            mTxtBirth = findViewById(R.id.txv_birth);
+            mTxtBirth = findViewById(R.id.txv_num_items);
             mTxtSex = findViewById(R.id.txv_sex);
             mTxtSize = findViewById(R.id.txv_size);
             mRtlVaccination = findViewById(R.id.rtl_vax);

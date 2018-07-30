@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.mastercypher.university.mobile.datdog.entities.Dog;
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -56,7 +57,10 @@ public class DogDbManager {
 
             c = db.rawQuery(query, null);
             while (c.moveToNext()) {
-                dogs.add(new Dog(c));
+                Dog dog = new Dog(c);
+                if(dog.getDelete() != UtilProj.DB_ROW_DELETE) {
+                    dogs.add(dog);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

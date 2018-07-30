@@ -42,6 +42,24 @@ public class Dog {
     private Date update;
     private int delete;
 
+    /**
+     * Constructor used only for create list-view sections
+     */
+    public Dog (String nameSection, int sizeSection){
+        id = "none";
+        id_nfc = "none";
+        id_user = 0;
+        name = nameSection;
+        breed = "none";
+        colour ="none";
+        birth = null;
+        size = sizeSection;
+        sex = 0;
+        create = null;
+        update = null;
+        delete = 0;
+    }
+
     public Dog(Map<String, String> dog) throws ParseException {
         id = dog.get("id");
         id_nfc = dog.get("id_nfc_d");
@@ -107,7 +125,7 @@ public class Dog {
         this.id = id;
     }
 
-    public String getId_nfc() {
+    public String getIdNfc() {
         return id_nfc;
     }
 

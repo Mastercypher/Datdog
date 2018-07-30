@@ -18,7 +18,6 @@ import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
 import com.mastercypher.university.mobile.datdog.entities.Friendship;
 import com.mastercypher.university.mobile.datdog.entities.User;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
-import com.mastercypher.university.mobile.datdog.view.addFriend.AddFriendActivity;
 
 import java.util.ArrayList;
 import java.util.Iterator;

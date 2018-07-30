@@ -107,7 +107,7 @@
             android:name=".view.LostDogActivity"
             android:label="Status lost dog" />
         <activity
-            android:name=".view.addFriend.AddFriendActivity"
+            android:name=".view.AddFriendActivity"
             android:label="Add friend"></activity>
 
         <meta-data

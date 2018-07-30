@@ -7,11 +7,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
-import com.mastercypher.university.mobile.datdog.database.UserDbManager;
-import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
-import com.mastercypher.university.mobile.datdog.entities.Friendship;
+import com.mastercypher.university.mobile.datdog.contract.FriendshipContract;
 import com.mastercypher.university.mobile.datdog.entities.User;
-import com.mastercypher.university.mobile.datdog.view.addFriend.CreateFriendFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,10 +37,10 @@ public class FriendshipTask extends AsyncTask<Void, Void, Map<String, String>> {
     private static final String JSON_ADD = "additional";
 
     private Activity mActivity;
-    private CreateFriendFragment.CreateListener mListener;
+    private FriendshipContract mListener;
     private int mIdFriend;
 
-    public FriendshipTask(Activity activity, CreateFriendFragment.CreateListener listener, int idFriend) {
+    public FriendshipTask(Activity activity, FriendshipContract listener, int idFriend) {
         mActivity = activity;
         mListener = listener;
         mIdFriend = idFriend;
@@ -106,7 +103,6 @@ public class FriendshipTask extends AsyncTask<Void, Void, Map<String, String>> {
                     friendFound = null;
                 }
             }
-
 
         } catch (MalformedURLException e) {
             Log.e(TAG, "L'url non è formattato correttamente", e);

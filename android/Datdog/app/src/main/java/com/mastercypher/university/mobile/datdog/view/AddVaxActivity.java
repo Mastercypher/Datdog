@@ -139,11 +139,12 @@ public class AddVaxActivity extends AppCompatActivity {
 
             try {
                 Vaccination vaxToAdd = new Vaccination(vaxMap);
-                new VaccinationDbManager(this).addVaccination(vaxToAdd); // Sync to local
-                new RemoteVaccinationTask(ActionType.INSERT, vaxToAdd).execute(); // Sync to remote
-
-                Toast.makeText(this, name + " added successfully", Toast.LENGTH_LONG).show();
-                finish();
+                boolean success = new VaccinationDbManager(this).addVaccination(vaxToAdd); // Sync to local
+                if(success) {
+                    new RemoteVaccinationTask(ActionType.INSERT, vaxToAdd).execute(); // Sync to remote
+                    Toast.makeText(this, name + " added successfully", Toast.LENGTH_LONG).show();
+                    finish();
+                }
 
             } catch (ParseException e) {
                 e.printStackTrace();

@@ -12,12 +12,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.mastercypher.university.mobile.datdog.R;
-import com.mastercypher.university.mobile.datdog.adapter.DogAdapter;
 import com.mastercypher.university.mobile.datdog.adapter.FriendAdapter;
-import com.mastercypher.university.mobile.datdog.database.DogDbManager;
 import com.mastercypher.university.mobile.datdog.database.FriendshipDbManager;
 import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
-import com.mastercypher.university.mobile.datdog.entities.Dog;
 import com.mastercypher.university.mobile.datdog.entities.Friendship;
 import com.mastercypher.university.mobile.datdog.entities.User;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;

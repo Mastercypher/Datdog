@@ -141,7 +141,7 @@ public class EditDogActivity extends AppCompatActivity {
             String dateNowStr = UtilProj.getDateNow();
             int status = UtilProj.DB_ROW_AVAILABLE;
             dogMap.put("id", mDog.getId());
-            dogMap.put("id_nfc_d", "");
+            dogMap.put("id_nfc_d", mDog.getIdNfc());
             dogMap.put("id_user_d", user.getId() + "");
             dogMap.put("name_d", name);
             dogMap.put("breed_d", breed);
@@ -155,8 +155,10 @@ public class EditDogActivity extends AppCompatActivity {
 
             try {
                 Dog dogToAdd = new Dog(dogMap);
-                new DogDbManager(this).updateDog(dogToAdd); // Sync to local
-                new RemoteDogTask(ActionType.UPDATE, dogToAdd).execute(); // Sync to remote
+                boolean success = new DogDbManager(this).updateDog(dogToAdd); // Sync to local
+                if (success) {
+                    new RemoteDogTask(ActionType.UPDATE, dogToAdd).execute(); // Sync to remote
+                }
 
                 Toast.makeText(this, name + " edited", Toast.LENGTH_LONG).show();
                 finish();

@@ -19,6 +19,7 @@ import com.mastercypher.university.mobile.datdog.util.RemoteDogTask;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.ParseException;
+import java.util.Date;
 
 public class DogInfoActivity extends AppCompatActivity {
 
@@ -86,7 +87,6 @@ public class DogInfoActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         if (mDog != null) {
-            final Dog finalDog = mDog;
             mTxvTitleName = findViewById(R.id.txv_title_name);
             mTxvBreed = findViewById(R.id.txv_breed);
             mTxtColour = findViewById(R.id.txv_colour);
@@ -108,9 +108,11 @@ public class DogInfoActivity extends AppCompatActivity {
             mBtnRemove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    boolean success = new DogDbManager(DogInfoActivity.this).deleteDog(finalDog);
+                    mDog.setDelete(UtilProj.DB_ROW_DELETE);
+                    mDog.setUpdate(new Date());
+                    boolean success = new DogDbManager(DogInfoActivity.this).updateDog(mDog);
                     if(success) {
-                        new RemoteDogTask(ActionType.UPDATE, finalDog);
+                        new RemoteDogTask(ActionType.UPDATE, mDog).execute();
                         finish();
                     }
                 }
@@ -120,7 +122,7 @@ public class DogInfoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getBaseContext(), EditDogActivity.class);
-                    intent.putExtra("id", finalDog.getId());
+                    intent.putExtra("id", mDog.getId());
                     startActivity(intent);
                 }
             });
@@ -129,7 +131,7 @@ public class DogInfoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getBaseContext(), VaxActivity.class);
-                    intent.putExtra("id", finalDog.getId());
+                    intent.putExtra("id", mDog.getId());
                     startActivity(intent);
                 }
             });

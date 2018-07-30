@@ -26,6 +26,7 @@ public class RemoteVaccinationTask extends AsyncTask<Void, Void, Void> {
         BufferedReader rd = null;
         String mode = actionType == ActionType.INSERT ? "insert" : "update";
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
+        String completedDate = vaccination.getCompleted() == null ? UtilProj.NONE_VALUE : sdf.format(vaccination.getCompleted());
         try {
             URL url = new URL("http://datdog.altervista.org/vaccination.php?action=" + mode +
                     "&id=" + vaccination.getId() +
@@ -34,7 +35,7 @@ public class RemoteVaccinationTask extends AsyncTask<Void, Void, Void> {
                     "&date_when_v=" + sdf.format(vaccination.getWhen()) +
                     "&date_create_v=" + sdf.format(vaccination.getCreate()) +
                     "&date_update_v=" + sdf.format(vaccination.getUpdate()) +
-                    "&date_completed_v=" + sdf.format(vaccination.getCompleted()) +
+                    "&date_completed_v=" + completedDate +
                     "&delete_v=" + vaccination.getDelete());
             conn = (HttpURLConnection) url.openConnection();
             conn.setConnectTimeout(60 * 1000);

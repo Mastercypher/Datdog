@@ -25,12 +25,12 @@ public class DogAdapter extends ArrayAdapter<Dog> {
         Dog dog = (Dog) getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_dogs, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_basic, parent, false);
         }
         String dogName = dog.getName();
         String dogBirth = "Birth: " + UtilProj.formatDataNoTime(dog.getBirth());
-        TextView txvName = (TextView) convertView.findViewById(R.id.imageView);
-        TextView txvBirth = (TextView) convertView.findViewById(R.id.txv_birth);
+        TextView txvName = (TextView) convertView.findViewById(R.id.txv_name);
+        TextView txvBirth = (TextView) convertView.findViewById(R.id.txv_info);
         txvName.setText(dogName);
         txvBirth.setText(dogBirth);
         return convertView;

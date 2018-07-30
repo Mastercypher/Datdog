@@ -4,10 +4,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.mastercypher.university.mobile.datdog.entities.Dog;
 import com.mastercypher.university.mobile.datdog.entities.Vaccination;
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 public class VaccinationDbManager {
 
@@ -48,6 +52,33 @@ public class VaccinationDbManager {
         vaccination.setCompleted(date);
         vaccination.setUpdate(date);
         return updateDog(vaccination);
+    }
+
+    public List<Vaccination> getAllVaxs(String idDog) {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+
+        List<Vaccination> vaxs = new LinkedList<>();
+        Cursor c = null;
+        try {
+            String query = "SELECT * " + "FROM " + Vaccination.TABLE_NAME +
+                    " WHERE " + Vaccination.COLUMN_ID_DOG + " = '" + idDog + "'";
+
+            c = db.rawQuery(query, null);
+            while (c.moveToNext()) {
+                Vaccination vax = new Vaccination(c);
+                if (vax.getDelete() != UtilProj.DB_ROW_DELETE) {
+                    vaxs.add(vax);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            db.close();
+        }
+        return vaxs;
     }
 
     public Vaccination selectVaccination(String id) throws ParseException {

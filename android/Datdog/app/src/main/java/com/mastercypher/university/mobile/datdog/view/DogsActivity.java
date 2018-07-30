@@ -6,12 +6,10 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
 import com.mastercypher.university.mobile.datdog.entities.Dog;
@@ -67,7 +65,7 @@ public class DogsActivity extends AppCompatActivity {
         navigation.setSelectedItemId(R.id.navigation_dogs);
 
         // Button ADD
-        mBtnAddDog = findViewById(R.id.floatingActionButton2);
+        mBtnAddDog = findViewById(R.id.fab_add_vax);
         mBtnAddDog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

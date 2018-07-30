@@ -59,7 +59,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/btn_edit"
+                android:id="@+id/btn_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -226,6 +226,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="16dp"
+                android:clickable="true"
+                android:focusable="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -247,6 +249,7 @@
                     android:background="@android:color/transparent"
                     android:paddingLeft="80dp"
                     android:text="Vaccinations"
+                    android:clickable="false"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
                     android:textSize="18sp" />

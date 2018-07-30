@@ -3,6 +3,8 @@ package com.mastercypher.university.mobile.datdog.entities;
 import android.content.ContentValues;
 import android.database.Cursor;
 
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -46,12 +48,12 @@ public class Dog {
      * Constructor used only for create list-view sections
      */
     public Dog (String nameSection, int sizeSection){
-        id = "none";
-        id_nfc = "none";
+        id = UtilProj.NONE_VALUE;
+        id_nfc = UtilProj.NONE_VALUE;
         id_user = 0;
         name = nameSection;
-        breed = "none";
-        colour ="none";
+        breed = UtilProj.NONE_VALUE;
+        colour =UtilProj.NONE_VALUE;
         birth = null;
         size = sizeSection;
         sex = 0;

@@ -10,29 +10,30 @@ import android.widget.TextView;
 
 import com.mastercypher.university.mobile.datdog.R;
 import com.mastercypher.university.mobile.datdog.entities.Dog;
+import com.mastercypher.university.mobile.datdog.entities.Vaccination;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConnectAdapter extends BaseAdapter {
+public class VaccinationAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<Dog> mDogs;
+    private ArrayList<Vaccination> mVax;
 
-    public ConnectAdapter(Context context, ArrayList<Dog> dogs) {
+    public VaccinationAdapter(Context context, ArrayList<Vaccination> vaxs) {
         mContext = context;
-        mDogs = dogs;
+        mVax = vaxs;
     }
 
     @Override
     public int getCount() {
-        return mDogs.size();
+        return mVax.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mDogs.get(position);
+        return mVax.get(position);
     }
 
     @Override
@@ -41,35 +42,35 @@ public class ConnectAdapter extends BaseAdapter {
     }
 
     public void clear(){
-        mDogs.clear();
+        mVax.clear();
     }
 
-    public void addDog(final Dog dog) {
-        mDogs.add(dog);
+    public void addDog(final Vaccination vax) {
+        mVax.add(vax);
         notifyDataSetChanged();
     }
 
-    public void addSection(final Dog section) {
-        mDogs.add(section);
+    public void addSection(final Vaccination section) {
+        mVax.add(section);
         notifyDataSetChanged();
     }
 
-    public void addAll(List<Dog> dogs){
-        mDogs.addAll(dogs);
+    public void addAll(List<Vaccination> vaxs){
+        mVax.addAll(vaxs);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for position
-        Dog dog = (Dog) getItem(position);
+        Vaccination vax = (Vaccination) getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
 
-        if (dog.getId().equals(UtilProj.NONE_VALUE)) {
+        if (vax.getId().equals(UtilProj.NONE_VALUE)) {
             if (convertView == null) {
                 convertView = LayoutInflater.from(mContext).inflate(R.layout.adapter_split_sections, parent, false);
             }
-            String dogSection = dog.getName();
-            int dogNumItems = dog.getSize();
+            String dogSection = vax.getName();
+            int dogNumItems = vax.getDelete();
             TextView txvName = (TextView) convertView.findViewById(R.id.txv_name);
             TextView txvBirth = (TextView) convertView.findViewById(R.id.txv_info);
             txvName.setText(dogSection);
@@ -79,12 +80,12 @@ public class ConnectAdapter extends BaseAdapter {
             if (convertView == null) {
                 convertView = LayoutInflater.from(mContext).inflate(R.layout.adapter_basic, parent, false);
             }
-            String dogName = dog.getName();
-            String dogBirth = "Birth: " + UtilProj.formatDataNoTime(dog.getBirth());
+            String vaxName = vax.getName();
+            String vaxWhen = "When: " + UtilProj.formatDataNoTime(vax.getWhen());
             TextView txvName = (TextView) convertView.findViewById(R.id.txv_name);
             TextView txvBirth = (TextView) convertView.findViewById(R.id.txv_info);
-            txvName.setText(dogName);
-            txvBirth.setText(dogBirth);
+            txvName.setText(vaxName);
+            txvBirth.setText(vaxWhen);
             return convertView;
         }
     }

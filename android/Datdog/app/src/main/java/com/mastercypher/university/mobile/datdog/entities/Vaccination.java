@@ -31,6 +31,16 @@ public class Vaccination {
     private Date completed;
     private int delete;
 
+    public Vaccination (String nameSection, int sizeSection){
+        id = UtilProj.NONE_VALUE;
+        dog = UtilProj.NONE_VALUE;
+        name = nameSection;
+        when = null;
+        create = null;
+        update = null;
+        delete = sizeSection;
+    }
+
     public Vaccination(Map<String, String> vax) throws ParseException {
         id = vax.get("id");
         dog = vax.get("id_dog_v");

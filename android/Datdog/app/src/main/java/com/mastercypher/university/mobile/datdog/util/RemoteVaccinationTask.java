@@ -1,6 +1,7 @@
 package com.mastercypher.university.mobile.datdog.util;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.mastercypher.university.mobile.datdog.entities.Vaccination;
 
@@ -43,7 +44,6 @@ public class RemoteVaccinationTask extends AsyncTask<Void, Void, Void> {
             conn.setRequestMethod("GET");
             conn.setDoInput(true);
             conn.getResponseCode();
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

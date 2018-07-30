@@ -10,7 +10,7 @@
 
 
     <TextView
-        android:id="@+id/txv_name_section"
+        android:id="@+id/txv_name"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -20,7 +20,7 @@
         android:textColor="@android:color/white" />
 
     <TextView
-        android:id="@+id/txv_num_items"
+        android:id="@+id/txv_info"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"

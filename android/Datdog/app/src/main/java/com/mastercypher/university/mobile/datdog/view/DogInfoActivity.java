@@ -70,7 +70,7 @@ public class DogInfoActivity extends AppCompatActivity {
     }
 
 
-    private void initComponent(){
+    private void initComponent() {
         String dogId = getIntent().getStringExtra("id");
         try {
             mDog = new DogDbManager(this).selectDog(dogId);
@@ -86,8 +86,9 @@ public class DogInfoActivity extends AppCompatActivity {
             mTxtSex = findViewById(R.id.txv_sex);
             mTxtSize = findViewById(R.id.txv_size);
             mRtlVaccination = findViewById(R.id.rtl_vax);
-            mBtnEdit = findViewById(R.id.btn_edit);
+            mBtnEdit = findViewById(R.id.btn_add);
             mBtnRemove = findViewById(R.id.btn_remove);
+            mRtlVaccination = findViewById(R.id.rtl_vax);
 
             mTxvTitleName.setText(mDog.getName());
             mTxvBreed.setText(mDog.getBreed());
@@ -108,6 +109,15 @@ public class DogInfoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getBaseContext(), EditDogActivity.class);
+                    intent.putExtra("id", finalDog.getId());
+                    startActivity(intent);
+                }
+            });
+
+            mRtlVaccination.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getBaseContext(), VaxActivity.class);
                     intent.putExtra("id", finalDog.getId());
                     startActivity(intent);
                 }

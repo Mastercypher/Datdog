@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.mastercypher.university.mobile.datdog.entities.Dog;
 import com.mastercypher.university.mobile.datdog.entities.Vaccination;
+import com.mastercypher.university.mobile.datdog.util.ActionType;
+import com.mastercypher.university.mobile.datdog.util.RemoteVaccinationTask;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.ParseException;
@@ -29,6 +31,9 @@ public class VaccinationDbManager {
             return row > 0;
         } else if (vaccination.getUpdate().after(inDb.getUpdate())) {
             return updateDog(vaccination);
+        } else if (vaccination.getUpdate().before(inDb.getUpdate())) {
+            new RemoteVaccinationTask(ActionType.UPDATE, inDb);
+            return true;
         } else {
             return false;
         }

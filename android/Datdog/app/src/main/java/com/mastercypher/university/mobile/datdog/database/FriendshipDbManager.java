@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.mastercypher.university.mobile.datdog.entities.Friendship;
+import com.mastercypher.university.mobile.datdog.util.ActionType;
+import com.mastercypher.university.mobile.datdog.util.RemoteFriendshipTask;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -27,6 +29,9 @@ public class FriendshipDbManager {
             return row > 0;
         } else if (friendship.getUpdate().after(inDb.getUpdate())) {
             return updateDog(friendship);
+        } else if (friendship.getUpdate().before(inDb.getUpdate())) {
+            new RemoteFriendshipTask(ActionType.UPDATE, inDb);
+            return true;
         } else {
             return false;
         }

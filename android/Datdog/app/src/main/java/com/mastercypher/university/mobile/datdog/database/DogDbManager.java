@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.mastercypher.university.mobile.datdog.entities.Dog;
+import com.mastercypher.university.mobile.datdog.util.ActionType;
+import com.mastercypher.university.mobile.datdog.util.RemoteDogTask;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.ParseException;
@@ -28,6 +30,9 @@ public class DogDbManager {
             return row > 0;
         } else if (dog.getUpdate().after(inDb.getUpdate())) {
             return updateDog(dog);
+        } else if (dog.getUpdate().before(inDb.getUpdate())) {
+            new RemoteDogTask(ActionType.UPDATE, inDb);
+            return true;
         } else {
             return false;
         }

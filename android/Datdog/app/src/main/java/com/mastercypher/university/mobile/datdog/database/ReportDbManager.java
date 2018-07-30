@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.mastercypher.university.mobile.datdog.entities.Report;
+import com.mastercypher.university.mobile.datdog.util.ActionType;
+import com.mastercypher.university.mobile.datdog.util.RemoteReportTask;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -25,6 +27,9 @@ public class ReportDbManager {
             return row > 0;
         } else if (report.getUpdate().after(inDb.getUpdate())) {
             return updateReport(report);
+        } else if (report.getUpdate().before(inDb.getUpdate())) {
+            new RemoteReportTask(ActionType.UPDATE, inDb);
+            return true;
         } else {
             return false;
         }

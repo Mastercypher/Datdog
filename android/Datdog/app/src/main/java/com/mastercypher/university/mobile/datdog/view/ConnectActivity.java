@@ -64,7 +64,7 @@ public class ConnectActivity extends AppCompatActivity {
         navigation.setSelectedItemId(R.id.navigation_connect);
 
 
-        // ListView FRIENDS
+        // ListView DOGS
         // Prepare adapter for list of dogs
         mListView = findViewById(R.id.ltv_dogs);
         ArrayList<Dog> dogs = new ArrayList<>();
@@ -78,7 +78,7 @@ public class ConnectActivity extends AppCompatActivity {
                 // TODO See info connection
 
                 Dog dogClicked = (Dog) mListView.getItemAtPosition(position);
-                if(dogClicked.getIdNfc().equals("none")) {
+                if(dogClicked.getIdNfc().equals(UtilProj.NONE_VALUE)) {
                     Intent intent = new Intent(getBaseContext(), ConnectDogActivity.class);
                     intent.putExtra("id", dogClicked.getId());
                     startActivity(intent);
@@ -111,7 +111,7 @@ public class ConnectActivity extends AppCompatActivity {
             List<Dog> dogs = new DogDbManager(this).getAllDogs(user.getId());
             for (Dog dog : dogs) {
                 // Do something
-                if (dog.getIdNfc().equals("none")) {
+                if (dog.getIdNfc().equals(UtilProj.NONE_VALUE)) {
                     sizeToConnect++;
                 } else {
                     sizeConnected++;
@@ -124,7 +124,7 @@ public class ConnectActivity extends AppCompatActivity {
 
             for (Dog dog : dogs) {
                 // Do something
-                if (dog.getIdNfc().equals("none")) {
+                if (dog.getIdNfc().equals(UtilProj.NONE_VALUE)) {
                     mDogsToConnect.add(dog);
                 } else {
                     mDogsConnected.add(dog);

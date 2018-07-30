@@ -6,13 +6,18 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.mastercypher.university.mobile.datdog.R;
+import com.mastercypher.university.mobile.datdog.database.DogDbManager;
+import com.mastercypher.university.mobile.datdog.entities.Dog;
+
+import java.text.ParseException;
 
 public class EditVaxActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
+    private Dog mDog;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -45,10 +50,24 @@ public class EditVaxActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_vax);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_dogs);
+
+        this.initComponent();
+    }
+
+    private void initComponent() {
+        String dogId = getIntent().getStringExtra("id");
+        try {
+            mDog = new DogDbManager(getApplicationContext()).selectDog(dogId);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if (mDog != null) {
+
+        }
     }
 
 }

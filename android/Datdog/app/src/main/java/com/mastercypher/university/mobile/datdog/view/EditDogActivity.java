@@ -93,7 +93,7 @@ public class EditDogActivity extends AppCompatActivity {
             mEdtBirth = findViewById(R.id.edt_birth);
             mRdgSex = findViewById(R.id.rbg_sex);
             mRdgSize = findViewById(R.id.rbg_size);
-            mBtnEdit = findViewById(R.id.btn_edit);
+            mBtnEdit = findViewById(R.id.btn_add);
             // Set values
             mEdtName.setText(mDog.getName());
             mEdtBreed.setText(mDog.getBreed());

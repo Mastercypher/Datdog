@@ -67,7 +67,7 @@ public class EditUserActivity extends AppCompatActivity {
         txtsurname = findViewById(R.id.edt_breed);
         birth = findViewById(R.id.edt_colour);
         phone = findViewById(R.id.edt_birth);
-        update = findViewById(R.id.btn_edit);
+        update = findViewById(R.id.btn_add);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

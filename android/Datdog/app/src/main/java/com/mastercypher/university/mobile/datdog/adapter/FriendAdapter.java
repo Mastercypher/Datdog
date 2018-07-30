@@ -37,14 +37,14 @@ public class FriendAdapter extends ArrayAdapter<Friendship> {
         }
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_friend, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_basic, parent, false);
         }
 
         if (friend != null) {
             String dogName = friend.getName();
             String dogBirth = "Birth: " + UtilProj.formatDataNoTime(friendship.getCreate());
-            TextView txvName = (TextView) convertView.findViewById(R.id.txv_name_section);
-            TextView txvBirth = (TextView) convertView.findViewById(R.id.txv_date_friendship);
+            TextView txvName = (TextView) convertView.findViewById(R.id.txv_name);
+            TextView txvBirth = (TextView) convertView.findViewById(R.id.txv_info);
             txvName.setText(dogName);
             txvBirth.setText(dogBirth);
         }

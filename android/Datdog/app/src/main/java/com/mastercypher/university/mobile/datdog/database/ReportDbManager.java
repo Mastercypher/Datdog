@@ -12,6 +12,7 @@ import android.support.v4.app.NotificationCompat;
 
 import com.mastercypher.university.mobile.datdog.R;
 import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
+import com.mastercypher.university.mobile.datdog.entities.Dog;
 import com.mastercypher.university.mobile.datdog.entities.Report;
 import com.mastercypher.university.mobile.datdog.util.ActionType;
 import com.mastercypher.university.mobile.datdog.util.RemoteReportTask;
@@ -20,6 +21,7 @@ import com.mastercypher.university.mobile.datdog.view.ReportsActivity;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -71,6 +73,41 @@ public class ReportDbManager {
         long row = db.update(Report.TABLE_NAME, report.getContentValues(),
                 Report.COLUMN_ID + " = ?", new String[]{String.valueOf(report.getId())});
         return row > 0;
+    }
+
+    public List<Report> getLostReport(int userId) throws ParseException {
+        List<Report> reports = null;
+        List<Dog> dogs = new DogDbManager(context).getAllDogs(userId);
+
+        Iterator<Dog> it = dogs.iterator();
+        while (it.hasNext()) {
+            List<Report> reppys = this.selectReportDog(it.next().getId());
+            if (reppys != null) {
+                reports.addAll(reppys);
+            }
+        }
+
+        return reports;
+    }
+
+    private List<Report> selectReportDog(String dogId) throws ParseException {
+        List<Report> reports = null;
+
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+
+        Cursor c;
+        String query = "SELECT *" +
+                "FROM " + Report.TABLE_NAME +
+                " WHERE dog = ?";
+        c = db.rawQuery(query, new String[]{String.valueOf(dogId)});
+        if (c.getCount() == 0) {
+            return null;
+        } else {
+            while (c.moveToNext()) {
+                reports.add(new Report(c));
+            }
+        }
+        return reports;
     }
 
     public boolean deleteReport(Report report) {

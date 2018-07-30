@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mastercypher.university.mobile.datdog.database.UserDbManager;
 import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
 import com.mastercypher.university.mobile.datdog.util.EditUserTask;
 import com.mastercypher.university.mobile.datdog.R;
@@ -103,6 +104,8 @@ public class EditUserActivity extends AppCompatActivity {
                 }
                 AccountDirectory.getInstance().getUser().setPhone(phone.getText().toString());
                 AccountDirectory.getInstance().getUser().setUpdate(now);
+
+                new UserDbManager(EditUserActivity.this).updateUser(AccountDirectory.getInstance().getUser());
 
                 try {
                     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");

@@ -173,19 +173,11 @@
                         android:layout_height="60dp"
                         android:background="@android:color/transparent"
                         android:paddingLeft="80dp"
-                        android:text="Settings"
+                        android:text="Synchronize"
                         android:textAlignment="textStart"
                         android:textAllCaps="false"
                         android:textSize="18sp" />
 
-                    <ImageView
-                        android:id="@+id/imageView11"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        app:srcCompat="@drawable/icon_arrow_right" />
                 </RelativeLayout>
             </LinearLayout>
 

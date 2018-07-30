@@ -36,6 +36,7 @@ public class ReportDbManager {
         Report inDb = selectReport(report.getId());
         if (inDb == null) {
             if (!report.getUser().equals("" + AccountDirectory.getInstance().getUser().getId())) {
+                //TODO: Replace the temp activity with the real one.
                 Intent tapIntent = new Intent(context, ReportActivity.class);
                 PendingIntent tapPendingIntent = PendingIntent.getActivity(context, 0, tapIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 

@@ -120,4 +120,10 @@ public class DogsActivity extends AppCompatActivity {
             UtilProj.showToast(this, "User account problem, restart the application");
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(DogsActivity.this, HomeActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+    }
 }

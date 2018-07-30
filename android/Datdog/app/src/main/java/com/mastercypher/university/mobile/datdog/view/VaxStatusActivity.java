@@ -100,7 +100,7 @@ public class VaxStatusActivity extends AppCompatActivity {
                 // COMPLETED
 
                 String state = Vaccination.SATE_COMPLETED;
-                String when = UtilProj.formatData(mVax.getWhen());
+                String when = UtilProj.formatData(mVax.getCompleted());
                 txvName.setText(mVax.getName());
                 txvStatus.setText(state);
                 txvWhen.setText(when);

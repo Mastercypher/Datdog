@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mastercypher.university.mobile.datdog.R;
 import com.mastercypher.university.mobile.datdog.database.DogDbDl;
@@ -20,6 +21,7 @@ import com.mastercypher.university.mobile.datdog.database.FriendshipDbDl;
 import com.mastercypher.university.mobile.datdog.database.ReportDbDl;
 import com.mastercypher.university.mobile.datdog.database.UserDbDl;
 import com.mastercypher.university.mobile.datdog.database.VaccinationDbDl;
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -126,7 +128,12 @@ public class HomeActivity extends AppCompatActivity {
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
+                new DogDbDl(HomeActivity.this).doInBackground();
+                new FriendshipDbDl(HomeActivity.this).doInBackground();
+                new UserDbDl(HomeActivity.this).doInBackground();
+                new ReportDbDl(HomeActivity.this).doInBackground();
+                new VaccinationDbDl(HomeActivity.this).doInBackground();
+                UtilProj.showToast(HomeActivity.this, "Synchronizing database...");
             }
         });
 

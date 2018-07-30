@@ -128,6 +128,7 @@ public class EditUserActivity extends AppCompatActivity {
 
                 if (successful) {
                     Toast.makeText(getApplicationContext(), "User info edited successfully.", Toast.LENGTH_LONG).show();
+                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "Edit unsuccessful.", Toast.LENGTH_LONG).show();
                 }

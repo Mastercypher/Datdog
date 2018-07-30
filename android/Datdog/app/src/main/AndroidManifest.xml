@@ -51,7 +51,7 @@
             android:label="Choose how to report" />
         <activity
             android:name=".view.DogsActivity"
-            android:label="Your dogs" />
+            android:label="Dogs" />
         <activity
             android:name=".view.AddDogActivity"
             android:label="Add dog" />

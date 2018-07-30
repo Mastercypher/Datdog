@@ -156,8 +156,10 @@ public class EditVaxActivity extends AppCompatActivity {
 
             try {
                 Vaccination vaxToEdit = new Vaccination(vaxMap);
-                new VaccinationDbManager(this).addVaccination(vaxToEdit); // Sync to local
-                new RemoteVaccinationTask(ActionType.UPDATE, vaxToEdit).execute(); // Sync to remote
+                boolean success = new VaccinationDbManager(this).addVaccination(vaxToEdit); // Sync to local
+                if (success) {
+                    new RemoteVaccinationTask(ActionType.UPDATE, vaxToEdit).execute(); // Sync to remote
+                }
 
                 Toast.makeText(this, name + " edited successfully", Toast.LENGTH_LONG).show();
                 finish();

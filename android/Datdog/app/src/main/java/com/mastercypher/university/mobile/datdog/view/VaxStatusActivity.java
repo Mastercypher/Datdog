@@ -124,11 +124,11 @@ public class VaxStatusActivity extends AppCompatActivity {
             mBtnDelte.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mVax.setDelete(1);
-                    mVax.setCompleted(new Date());
-                    boolean success = new VaccinationDbManager(VaxStatusActivity.this).deleteVaccination(mVax);
+                    mVax.setDelete(UtilProj.DB_ROW_DELETE);
+                    mVax.setUpdate(new Date());
+                    boolean success = new VaccinationDbManager(VaxStatusActivity.this).updateDog(mVax);
                     if(success) {
-                        new RemoteVaccinationTask(ActionType.UPDATE, mVax);
+                        new RemoteVaccinationTask(ActionType.UPDATE, mVax).execute();
                         finish();
                     }
                 }

@@ -27,6 +27,7 @@ public class UtilProj {
     public static final int LOGOUT = 0;
     public static final int CURRENT = 1;
 
+    public static final String NONE_VALUE = "none";
 
     public static int checkValues(List<String> strToCheck) {
         boolean small = false;
@@ -85,6 +86,10 @@ public class UtilProj {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static String upperFirstChar(String string) {
+        return string.substring(0, 1).toUpperCase() + string.substring(1);
     }
 
     public static void showToast(Context context, String message) {

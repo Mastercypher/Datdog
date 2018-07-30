@@ -124,7 +124,7 @@ public class AddDogActivity extends AppCompatActivity {
             String dateNowStr = UtilProj.getDateNow();
             int status = UtilProj.DB_ROW_AVAILABLE;
             dogMap.put("id", Dog.createId(user.getId(), name, dateNowStr));
-            dogMap.put("id_nfc_d", "");
+            dogMap.put("id_nfc_d", UtilProj.NONE_VALUE);
             dogMap.put("id_user_d", user.getId() + "");
             dogMap.put("name_d", name);
             dogMap.put("breed_d", breed);

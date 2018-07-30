@@ -23,7 +23,7 @@ public class DogDbDl {
     public void doInBackground() {
         Collection<Map<String, String>> elem = null;
         try {
-            elem = new DlTask().execute("http://datdog.altervista.org/dog.php?action=select&id_user_d=" +
+            elem = new DlTask().execute("http://datdog.altervista.org/dog.php?action=select-user&id_user_d=" +
                     AccountDirectory.getInstance().getUser().getId()).get();
         } catch (InterruptedException e) {
             e.printStackTrace();

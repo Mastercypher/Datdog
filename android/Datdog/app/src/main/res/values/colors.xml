@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#e4af09</color>
+    <color name="colorPrimaryDark">#ad8000</color>
+    <color name="colorLight">#ffe14d</color>
+    <color name="colorAccent">#000000</color>
 
     <color name="colorStandard">#e4af09</color>
-    <color name="colorSecondary">#51b7bc</color>
-    <color name="colorIconBg">#84BDDA</color>
+    <color name="colorSecondary">#007bff</color>
+    <color name="colorAction">#007bff</color>
+    <color name="colorIcon">#84BDDA</color>
 
-    <color name="colorMissing">#ff3b30</color>
+    <color name="colorMissing">#de1b0f</color>
     <color name="colorLightblue">#82c6e6</color>
     <color name="colorLightMoreblue">#a0c8da</color>
     <color name="colorDarkblue">#096b91</color>
@@ -16,4 +18,8 @@
     <color name="colorCode">#005493</color>
     <color name="colorIos">#dfdddd</color>
     <color name="colorCompleted">#28a745</color>
+
+
+    <color name="colorLightGray">#c9c9c9</color>
+
 </resources>

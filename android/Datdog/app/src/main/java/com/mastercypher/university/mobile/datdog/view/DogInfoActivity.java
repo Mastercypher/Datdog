@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.mastercypher.university.mobile.datdog.R;
 import com.mastercypher.university.mobile.datdog.database.DogDbManager;
 import com.mastercypher.university.mobile.datdog.entities.Dog;
+import com.mastercypher.university.mobile.datdog.util.ActionType;
+import com.mastercypher.university.mobile.datdog.util.RemoteDogTask;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.ParseException;
@@ -79,7 +81,7 @@ public class DogInfoActivity extends AppCompatActivity {
         }
         if (mDog != null) {
             final Dog finalDog = mDog;
-            mTxvTitleName = findViewById(R.id.imageView);
+            mTxvTitleName = findViewById(R.id.txv_title_name);
             mTxvBreed = findViewById(R.id.txv_breed);
             mTxtColour = findViewById(R.id.txv_colour);
             mTxtBirth = findViewById(R.id.txv_num_items);
@@ -100,8 +102,12 @@ public class DogInfoActivity extends AppCompatActivity {
             mBtnRemove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    new DogDbManager(DogInfoActivity.this).deleteDog(finalDog);
-                    startActivity(new Intent(DogInfoActivity.this, DogInfoActivity.class));
+                    boolean success = new DogDbManager(DogInfoActivity.this).deleteDog(finalDog);
+                    if(success) {
+                        new RemoteDogTask(ActionType.UPDATE, finalDog);
+                        startActivity(new Intent(DogInfoActivity.this, DogsActivity.class));
+                        finish();
+                    }
                 }
             });
 
@@ -111,6 +117,7 @@ public class DogInfoActivity extends AppCompatActivity {
                     Intent intent = new Intent(getBaseContext(), EditDogActivity.class);
                     intent.putExtra("id", finalDog.getId());
                     startActivity(intent);
+                    finish();
                 }
             });
 

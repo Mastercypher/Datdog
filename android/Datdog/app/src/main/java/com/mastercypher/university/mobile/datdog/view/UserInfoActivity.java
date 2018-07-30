@@ -138,6 +138,7 @@ public class UserInfoActivity extends AppCompatActivity {
                         userLogout.setCurrent(UtilProj.LOGOUT);
                         new UserDbManager(getApplicationContext()).updateUser(userLogout);
                         startActivity(new Intent(UserInfoActivity.this, LoginActivity.class));
+                        finish();
                     }
                 });
 

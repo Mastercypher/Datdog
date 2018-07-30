@@ -3,16 +3,28 @@ package com.mastercypher.university.mobile.datdog.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.mastercypher.university.mobile.datdog.R;
+import com.mastercypher.university.mobile.datdog.database.DogDbManager;
+import com.mastercypher.university.mobile.datdog.database.VaccinationDbManager;
+import com.mastercypher.university.mobile.datdog.entities.Vaccination;
+
+import java.text.ParseException;
 
 public class VaxStatusActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
+    private Vaccination mVax;
+    private TextView txvName;
+    private TextView txvStatus;
+    private TextView txvWhen;
+    private FloatingActionButton fabDone;
+    private ConstraintLayout ctlStatus;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -45,10 +57,30 @@ public class VaxStatusActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vax_status);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_dogs);
+        this.initComponent();
+    }
+
+
+    private void initComponent() {
+        String vaxId = getIntent().getStringExtra("id");
+        try {
+            mVax = new VaccinationDbManager(this).selectVaccination(vaxId);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if (mVax != null) {
+            txvName = findViewById(R.id.txv_name);
+            txvStatus = findViewById(R.id.txv_status);
+            txvWhen = findViewById(R.id.txv_when);
+            fabDone = findViewById(R.id.fab_add_vax);
+            ctlStatus = findViewById(R.id.ctl_status);
+
+            txvName.setText(mVax.getName());
+        }
+
     }
 
 }

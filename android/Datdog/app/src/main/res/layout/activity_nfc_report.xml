@@ -44,7 +44,7 @@
                 android:shadowRadius="3.0"
                 android:text="Scanning"
                 android:textAlignment="center"
-                android:textColor="@color/colorIconBg"
+                android:textColor="@color/colorAction"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

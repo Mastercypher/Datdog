@@ -15,25 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/button22"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/theme_button_complete"
-                android:shadowColor="#000"
-                android:shadowDx="2.0"
-                android:shadowDy="2.0"
-                android:shadowRadius="2.0"
-                android:text="Complete"
-                android:textColor="#ffffff"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
 
             <ImageView
                 android:id="@+id/imageView17"
@@ -49,7 +30,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView70"
+                android:id="@+id/txv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
@@ -63,16 +44,12 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btn_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:background="@android:color/transparent"
-                android:shadowColor="#000"
-                android:shadowDx="3.0"
-                android:shadowDy="3.0"
-                android:shadowRadius="3.0"
                 android:text="Delete"
                 android:textAllCaps="false"
                 android:textColor="@color/colorMissing"
@@ -80,39 +57,33 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/button20"
+                android:id="@+id/btn_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
                 android:background="@android:color/transparent"
-                android:shadowColor="#000"
-                android:shadowDx="3.0"
-                android:shadowDy="3.0"
-                android:shadowRadius="3.0"
+
                 android:text="Edit"
                 android:textAllCaps="false"
-                android:textColor="@color/colorIconBg"
+                android:textColor="@color/colorAction"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/constraintLayout4"
+                android:id="@+id/ctl_status"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="45dp"
                 android:background="@color/colorStandard"
                 app:layout_constraintTop_toBottomOf="@+id/imageView17">
 
                 <TextView
-                    android:id="@+id/textView71"
+                    android:id="@+id/txv_status"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="16dp"
                     android:gravity="center"
-                    android:shadowColor="#000"
-                    android:shadowDx="3.0"
-                    android:shadowDy="3.0"
-                    android:shadowRadius="3.0"
+
                     android:text="TextView"
                     android:textColor="#fff"
                     android:textSize="20sp"
@@ -121,15 +92,11 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView72"
+                    android:id="@+id/txv_when"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="16dp"
                     android:gravity="center"
-                    android:shadowColor="#000"
-                    android:shadowDx="3.0"
-                    android:shadowDy="3.0"
-                    android:shadowRadius="3.0"
                     android:text="TextView"
                     android:textColor="#fff"
                     android:textSize="20sp"
@@ -140,6 +107,20 @@
             </android.support.constraint.ConstraintLayout>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_add_vax"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:tint="#ffffff"
+        app:backgroundTint="@color/colorCompleted"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_icon_checked" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"

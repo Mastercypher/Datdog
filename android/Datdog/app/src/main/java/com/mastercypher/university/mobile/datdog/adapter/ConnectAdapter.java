@@ -74,6 +74,9 @@ public class ConnectAdapter extends BaseAdapter {
             TextView txvBirth = (TextView) convertView.findViewById(R.id.txv_info);
             txvName.setText(dogSection);
             txvBirth.setText(String.valueOf(dogNumItems));
+
+            convertView.setEnabled(false);
+            convertView.setOnClickListener(null);
             return convertView;
         } else {
             if (convertView == null) {

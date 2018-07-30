@@ -17,11 +17,15 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.mastercypher.university.mobile.datdog.R;
+import com.mastercypher.university.mobile.datdog.contract.FriendshipContract;
 import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
+import com.mastercypher.university.mobile.datdog.entities.User;
+import com.mastercypher.university.mobile.datdog.util.FriendshipTask;
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.nio.charset.Charset;
 
-public class AddFriendActivity extends AppCompatActivity implements NfcAdapter.CreateNdefMessageCallback {
+public class AddFriendActivity extends AppCompatActivity implements NfcAdapter.CreateNdefMessageCallback, FriendshipContract {
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -104,7 +108,7 @@ public class AddFriendActivity extends AppCompatActivity implements NfcAdapter.C
     public NdefMessage createNdefMessage(NfcEvent event) {
         String text = ("" + AccountDirectory.getInstance().getUser().getId());
         NdefMessage msg = new NdefMessage(
-                new NdefRecord[] { createMimeRecord(
+                new NdefRecord[]{createMimeRecord(
                         "application/com.example.android.beam", text.getBytes())
 
                 });
@@ -114,10 +118,11 @@ public class AddFriendActivity extends AppCompatActivity implements NfcAdapter.C
     void processIntent(Intent intent) {
         Parcelable[] rawMsgs = intent.getParcelableArrayExtra(
                 NfcAdapter.EXTRA_NDEF_MESSAGES);
-        // only one message sent during the beam
         NdefMessage msg = (NdefMessage) rawMsgs[0];
-        // record 0 contains the MIME type, record 1 is the AAR, if present
-        Toast.makeText(AddFriendActivity.this,(new String(msg.getRecords()[0].getPayload())), Toast.LENGTH_LONG).show();
+        String idFriendString = new String(msg.getRecords()[0].getPayload());
+        int idFriend = Integer.parseInt(idFriendString);
+
+        new FriendshipTask(this, this, idFriend).execute();
     }
 
     public NdefRecord createMimeRecord(String mimeType, byte[] payload) {
@@ -125,5 +130,11 @@ public class AddFriendActivity extends AppCompatActivity implements NfcAdapter.C
         NdefRecord mimeRecord = new NdefRecord(
                 NdefRecord.TNF_MIME_MEDIA, mimeBytes, new byte[0], payload);
         return mimeRecord;
+    }
+
+    @Override
+    public void onFinishCreation(User user) {
+        UtilProj.showToast(this, "You have a new friend: " + user.getName());
+        finish();
     }
 }

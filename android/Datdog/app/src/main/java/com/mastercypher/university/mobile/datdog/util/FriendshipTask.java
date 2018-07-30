@@ -8,7 +8,12 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import com.mastercypher.university.mobile.datdog.contract.FriendshipContract;
+import com.mastercypher.university.mobile.datdog.database.FriendshipDbManager;
+import com.mastercypher.university.mobile.datdog.database.UserDbManager;
+import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
+import com.mastercypher.university.mobile.datdog.entities.Friendship;
 import com.mastercypher.university.mobile.datdog.entities.User;
+import com.mastercypher.university.mobile.datdog.view.AddFriendActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -131,6 +136,31 @@ public class FriendshipTask extends AsyncTask<Void, Void, Map<String, String>> {
         } else {
             try {
                 User friend = new User(friendFound);
+
+                new UserDbManager(mActivity).addUser(friend);
+                String now = UtilProj.getDateNow();
+                Map<String, String> fr1 = new HashMap<>();
+                fr1.put("id", Friendship.createId(AccountDirectory.getInstance().getUser().getId(), friend.getId(), now));
+                fr1.put("id_user_f", "" + AccountDirectory.getInstance().getUser().getId());
+                fr1.put("id_friend_f", "" + friend.getId());
+                fr1.put("date_create_f", now);
+                fr1.put("date_update_f", now);
+                fr1.put("delete_f", "0");
+
+                Friendship usFr = new Friendship(fr1);
+                new FriendshipDbManager(mActivity).addFriendship(usFr);
+                new RemoteFriendshipTask(ActionType.INSERT, usFr).execute();
+
+                fr1 = new HashMap<>();
+                fr1.put("id", Friendship.createId(friend.getId(), AccountDirectory.getInstance().getUser().getId(), now));
+                fr1.put("id_user_f", "" + friend.getId());
+                fr1.put("id_friend_f", "" + AccountDirectory.getInstance().getUser().getId());
+                fr1.put("date_create_f", now);
+                fr1.put("date_update_f", now);
+                fr1.put("delete_f", "0");
+
+                usFr = new Friendship(fr1);
+                new RemoteFriendshipTask(ActionType.INSERT, usFr).execute();
 
                 Log.d(TAG, "Friend accepted");
                 mListener.onFinishCreation(friend);

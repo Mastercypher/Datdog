@@ -71,6 +71,12 @@ public class DogInfoActivity extends AppCompatActivity {
         this.initComponent();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.initComponent();
+    }
+
 
     private void initComponent() {
         String dogId = getIntent().getStringExtra("id");
@@ -105,7 +111,6 @@ public class DogInfoActivity extends AppCompatActivity {
                     boolean success = new DogDbManager(DogInfoActivity.this).deleteDog(finalDog);
                     if(success) {
                         new RemoteDogTask(ActionType.UPDATE, finalDog);
-                        startActivity(new Intent(DogInfoActivity.this, DogsActivity.class));
                         finish();
                     }
                 }
@@ -117,7 +122,6 @@ public class DogInfoActivity extends AppCompatActivity {
                     Intent intent = new Intent(getBaseContext(), EditDogActivity.class);
                     intent.putExtra("id", finalDog.getId());
                     startActivity(intent);
-                    finish();
                 }
             });
 

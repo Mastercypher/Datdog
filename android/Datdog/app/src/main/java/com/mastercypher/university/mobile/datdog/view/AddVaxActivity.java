@@ -142,11 +142,9 @@ public class AddVaxActivity extends AppCompatActivity {
                 new VaccinationDbManager(this).addVaccination(vaxToAdd); // Sync to local
                 new RemoteVaccinationTask(ActionType.INSERT, vaxToAdd).execute(); // Sync to remote
 
-                startActivity(new Intent(AddVaxActivity.this, VaxActivity.class));
-                Intent intent = new Intent(getBaseContext(), VaxActivity.class);
-                intent.putExtra("id", vaxToAdd.getDog());
-                startActivity(intent);
                 Toast.makeText(this, name + " added successfully", Toast.LENGTH_LONG).show();
+                finish();
+
             } catch (ParseException e) {
                 e.printStackTrace();
                 Toast.makeText(this, name + " not added due to an error", Toast.LENGTH_LONG).show();

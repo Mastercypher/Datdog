@@ -41,7 +41,7 @@ public class VaccinationAdapter extends BaseAdapter {
         return position;
     }
 
-    public void clear(){
+    public void clear() {
         mVax.clear();
     }
 
@@ -55,8 +55,9 @@ public class VaccinationAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public void addAll(List<Vaccination> vaxs){
+    public void addAll(List<Vaccination> vaxs) {
         mVax.addAll(vaxs);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -66,9 +67,7 @@ public class VaccinationAdapter extends BaseAdapter {
         // Check if an existing view is being reused, otherwise inflate the view
 
         if (vax.getId().equals(UtilProj.NONE_VALUE)) {
-            if (convertView == null) {
-                convertView = LayoutInflater.from(mContext).inflate(R.layout.adapter_split_sections, parent, false);
-            }
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.adapter_split_sections, parent, false);
             String dogSection = vax.getName();
             int dogNumItems = vax.getDelete();
             TextView txvName = (TextView) convertView.findViewById(R.id.txv_name);
@@ -80,9 +79,8 @@ public class VaccinationAdapter extends BaseAdapter {
             convertView.setOnClickListener(null);
             return convertView;
         } else {
-            if (convertView == null) {
-                convertView = LayoutInflater.from(mContext).inflate(R.layout.adapter_basic, parent, false);
-            }
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.adapter_basic, parent, false);
+
             String vaxName = vax.getName();
             String vaxWhen = "When: " + UtilProj.formatDataNoTime(vax.getWhen());
             TextView txvName = (TextView) convertView.findViewById(R.id.txv_name);

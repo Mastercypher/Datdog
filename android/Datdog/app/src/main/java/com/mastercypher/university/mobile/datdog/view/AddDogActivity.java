@@ -141,8 +141,8 @@ public class AddDogActivity extends AppCompatActivity {
                 new DogDbManager(this).addDog(dogToAdd); // Sync to local
                 new RemoteDogTask(ActionType.INSERT, dogToAdd).execute(); // Sync to remote
 
-                startActivity(new Intent(AddDogActivity.this, DogsActivity.class));
-                Toast.makeText(this, name + " added successfully", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, name + " added", Toast.LENGTH_LONG).show();
+                finish();
             } catch (ParseException e) {
                 e.printStackTrace();
                 Toast.makeText(this, name + " not added due to an error", Toast.LENGTH_LONG).show();

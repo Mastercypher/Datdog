@@ -34,6 +34,17 @@ public class Report {
     private Date found;
     private int delete;
 
+    public Report(String titleSection, int size) {
+        id = "";
+        user = "";
+        dog = "";
+        location = titleSection;
+        create = null;
+        update = null;
+        found = null;
+        delete = size;
+    }
+
     public Report(Map<String, String> report) throws ParseException {
         id = report.get("id");
         user = report.get("id_user_r");

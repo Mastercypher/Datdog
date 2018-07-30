@@ -40,8 +40,6 @@ public class FriendshipDbManager {
     }
 
     public boolean deleteFriendship(Friendship friendship) {
-        friendship.setDelete(1);
-        friendship.setUpdate(new Date());
         return updateDog(friendship);
     }
 

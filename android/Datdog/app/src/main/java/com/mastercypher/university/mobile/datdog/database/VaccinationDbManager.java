@@ -42,8 +42,6 @@ public class VaccinationDbManager {
     }
 
     public boolean deleteVaccination(Vaccination vaccination) {
-        vaccination.setDelete(1);
-        vaccination.setUpdate(new Date());
         return updateDog(vaccination);
     }
 

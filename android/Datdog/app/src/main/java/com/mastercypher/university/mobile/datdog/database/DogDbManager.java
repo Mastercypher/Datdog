@@ -41,8 +41,6 @@ public class DogDbManager {
     }
 
     public boolean deleteDog(Dog dog) {
-        dog.setDelete(1);
-        dog.setUpdate(new Date());
         return updateDog(dog);
     }
 

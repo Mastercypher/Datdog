@@ -38,8 +38,6 @@ public class ReportDbManager {
     }
 
     public boolean deleteReport(Report report) {
-        report.setDelete(1);
-        report.setUpdate(new Date());
         return updateReport(report);
     }
 

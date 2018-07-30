@@ -40,8 +40,6 @@ public class UserDbManager {
     }
 
     public boolean deleteUser(User user) {
-        user.setDelete(1);
-        user.setUpdate(new Date());
         return updateUser(user);
     }
 

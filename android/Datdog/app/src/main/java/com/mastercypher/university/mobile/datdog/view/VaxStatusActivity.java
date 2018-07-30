@@ -23,6 +23,7 @@ import com.mastercypher.university.mobile.datdog.util.RemoteVaccinationTask;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.ParseException;
+import java.util.Date;
 
 public class VaxStatusActivity extends AppCompatActivity {
 
@@ -106,6 +107,7 @@ public class VaxStatusActivity extends AppCompatActivity {
 
                 ctlStatus.setBackgroundColor(ContextCompat.getColor(this, R.color.stateSuccess));
                 fabDone.setVisibility(View.GONE);
+                mBtnEdit.setVisibility(View.GONE);
             } else {
                 // NOT COMPLETED
 
@@ -140,6 +142,27 @@ public class VaxStatusActivity extends AppCompatActivity {
                 }
             });
 
+            fabDone.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Date nowDate = new Date();
+
+                    mVax.setCompleted(nowDate);
+                    mVax.setUpdate(nowDate);
+                    String state = Vaccination.SATE_COMPLETED;
+                    String when = UtilProj.formatData(nowDate);
+                    txvName.setText(mVax.getName());
+                    txvStatus.setText(state);
+                    txvWhen.setText(when);
+
+                    ctlStatus.setBackgroundColor(ContextCompat.getColor(VaxStatusActivity.this, R.color.stateSuccess));
+                    fabDone.setVisibility(View.GONE);
+                    mBtnEdit.setVisibility(View.GONE);
+
+                    new VaccinationDbManager(VaxStatusActivity.this).updateDog(mVax);
+                    new RemoteVaccinationTask(ActionType.UPDATE, mVax).execute();
+                }
+            });
         }
 
     }

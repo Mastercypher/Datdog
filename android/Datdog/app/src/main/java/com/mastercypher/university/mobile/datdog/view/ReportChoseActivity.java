@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.mastercypher.university.mobile.datdog.R;
 
-public class ReportActivity extends AppCompatActivity {
+public class ReportChoseActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
     private TextView txtNfc;
@@ -24,19 +24,19 @@ public class ReportActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    startActivity(new Intent(ReportActivity.this, HomeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    startActivity(new Intent(ReportChoseActivity.this, HomeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     return true;
                 case R.id.navigation_missing:
 
                     return true;
                 case R.id.navigation_friends:
-                    startActivity(new Intent(ReportActivity.this, FriendsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    startActivity(new Intent(ReportChoseActivity.this, FriendsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     return true;
                 case R.id.navigation_connect:
-                    startActivity(new Intent(ReportActivity.this, ConnectActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    startActivity(new Intent(ReportChoseActivity.this, ConnectActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     return true;
                 case R.id.navigation_dogs:
-                    startActivity(new Intent(ReportActivity.this, DogsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                    startActivity(new Intent(ReportChoseActivity.this, DogsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     return true;
             }
             return false;
@@ -46,7 +46,7 @@ public class ReportActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report);
+        setContentView(R.layout.activity_report_chose);
 
         mTextMessage = (TextView) findViewById(R.id.message);
         txtNfc = findViewById(R.id.txtNfc);
@@ -59,14 +59,14 @@ public class ReportActivity extends AppCompatActivity {
         txtNfc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ReportActivity.this, NfcReportActivity.class));
+                startActivity(new Intent(ReportChoseActivity.this, NfcReportActivity.class));
             }
         });
 
         txtCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ReportActivity.this, CodeReportActivity.class));
+                startActivity(new Intent(ReportChoseActivity.this, CodeReportActivity.class));
             }
         });
     }

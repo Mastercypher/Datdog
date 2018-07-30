@@ -9,18 +9,19 @@ import android.database.sqlite.SQLiteDatabase;
 import android.media.RingtoneManager;
 import android.support.v4.app.NotificationCompat;
 
+
 import com.mastercypher.university.mobile.datdog.R;
 import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
 import com.mastercypher.university.mobile.datdog.entities.Report;
 import com.mastercypher.university.mobile.datdog.util.ActionType;
 import com.mastercypher.university.mobile.datdog.util.RemoteReportTask;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
-import com.mastercypher.university.mobile.datdog.view.FriendsActivity;
-import com.mastercypher.university.mobile.datdog.view.ReportActivity;
+import com.mastercypher.university.mobile.datdog.view.ReportsActivity;
 
-import java.security.AccessControlContext;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ReportDbManager {
 
@@ -37,7 +38,7 @@ public class ReportDbManager {
         if (inDb == null) {
             if (!report.getUser().equals("" + AccountDirectory.getInstance().getUser().getId())) {
                 //TODO: Replace the temp activity with the real one.
-                Intent tapIntent = new Intent(context, ReportActivity.class);
+                Intent tapIntent = new Intent(context, ReportsActivity.class);
                 PendingIntent tapPendingIntent = PendingIntent.getActivity(context, 0, tapIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                 NotificationCompat.Builder noti = new NotificationCompat.Builder(context, "Reported")
@@ -97,5 +98,32 @@ public class ReportDbManager {
             c.moveToNext();
             return new Report(c);
         }
+    }
+
+
+    public List<Report> getUserReports(int idUser) {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+
+        List<Report> reports = new LinkedList<>();
+        Cursor c = null;
+
+        try {
+            String query = "SELECT * " + "FROM " + Report.TABLE_NAME +
+                    " WHERE " + Report.COLUMN_ID_USER + " = " + idUser;
+
+            c = db.rawQuery(query, null);
+            while (c.moveToNext()) {
+                reports.add(new Report(c));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            db.close();
+        }
+
+        return reports;
     }
 }

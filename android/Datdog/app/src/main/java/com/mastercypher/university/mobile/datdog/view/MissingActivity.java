@@ -60,7 +60,7 @@ public class MissingActivity extends AppCompatActivity {
         imgReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MissingActivity.this, ReportActivity.class));
+                startActivity(new Intent(MissingActivity.this, ReportsActivity.class));
             }
         });
 

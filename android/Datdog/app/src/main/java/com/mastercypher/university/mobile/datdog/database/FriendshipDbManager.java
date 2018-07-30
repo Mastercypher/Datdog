@@ -89,4 +89,30 @@ public class FriendshipDbManager {
 
         return friendships;
     }
+
+    public List<Friendship> getUserFriends(int idUser) {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+
+        List<Friendship> friendships = new LinkedList<>();
+        Cursor c = null;
+
+        try {
+            String query = "SELECT * " + "FROM " + Friendship.TABLE_NAME +
+                    " WHERE " + Friendship.COLUMN_ID_USER + " = " + idUser;
+
+            c = db.rawQuery(query, null);
+            while (c.moveToNext()) {
+                friendships.add(new Friendship(c));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            db.close();
+        }
+
+        return friendships;
+    }
 }

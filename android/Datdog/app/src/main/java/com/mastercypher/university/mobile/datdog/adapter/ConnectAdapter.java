@@ -56,6 +56,7 @@ public class ConnectAdapter extends BaseAdapter {
 
     public void addAll(List<Dog> dogs){
         mDogs.addAll(dogs);
+        notifyDataSetChanged();
     }
 
     @Override

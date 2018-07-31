@@ -11,15 +11,21 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.mastercypher.university.mobile.datdog.R;
+import com.mastercypher.university.mobile.datdog.database.FriendshipDbManager;
 import com.mastercypher.university.mobile.datdog.database.UserDbManager;
+import com.mastercypher.university.mobile.datdog.entities.Friendship;
 import com.mastercypher.university.mobile.datdog.entities.User;
+import com.mastercypher.university.mobile.datdog.util.ActionType;
+import com.mastercypher.university.mobile.datdog.util.RemoteFriendshipTask;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.ParseException;
+import java.util.Date;
 
 public class FriendInfoActivity extends AppCompatActivity {
 
     private User mFriend;
+    private Friendship mFriendship;
     private Button mBtnRemove;
     private TextView mTxvTitleName;
     private TextView mtxvName;
@@ -68,8 +74,10 @@ public class FriendInfoActivity extends AppCompatActivity {
     }
 
     private void initComponent() {
+        String idFriendship = getIntent().getStringExtra("idFriendship");
         int idFriend = getIntent().getIntExtra("idFriend", 0);
         try {
+            mFriendship = new FriendshipDbManager(this).selectFriendship(idFriendship);
             mFriend = new UserDbManager(FriendInfoActivity.this).selectUser(idFriend);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -94,9 +102,17 @@ public class FriendInfoActivity extends AppCompatActivity {
             mBtnRemove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    UtilProj.showToast(FriendInfoActivity.this, "Friendship removed");
+                    mFriendship.setDelete(UtilProj.DB_ROW_DELETE);
+                    mFriendship.setUpdate(new Date());
+                    boolean success = new FriendshipDbManager(FriendInfoActivity.this).updateFriendship(mFriendship);
+                    if (success) {
+                        new RemoteFriendshipTask(ActionType.UPDATE, mFriendship).execute();
+                        UtilProj.showToast(FriendInfoActivity.this, "Friendship removed");
+                        finish();
+                    }
                 }
             });
+
         }
     }
 

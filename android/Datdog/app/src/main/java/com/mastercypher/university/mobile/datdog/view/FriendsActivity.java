@@ -106,6 +106,7 @@ public class FriendsActivity extends AppCompatActivity {
                     }
                     Intent intent = new Intent(getBaseContext(), FriendInfoActivity.class);
                     intent.putExtra("idFriend", friend.getId());
+                    intent.putExtra("idFriendship", friendship.getId());
                     startActivity(intent);
                 }catch (ParseException e) {
                     e.printStackTrace();

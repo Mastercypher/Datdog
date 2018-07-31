@@ -9,7 +9,6 @@ import com.mastercypher.university.mobile.datdog.util.ActionType;
 import com.mastercypher.university.mobile.datdog.util.RemoteFriendshipTask;
 
 import java.text.ParseException;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class FriendshipDbManager {
             long row = db.insert(Friendship.TABLE_NAME, null, friendship.getContentValues());
             return row > 0;
         } else if (friendship.getUpdate().after(inDb.getUpdate())) {
-            return updateDog(friendship);
+            return updateFriendship(friendship);
         } else if (friendship.getUpdate().before(inDb.getUpdate())) {
             new RemoteFriendshipTask(ActionType.UPDATE, inDb);
             return true;
@@ -37,7 +36,7 @@ public class FriendshipDbManager {
         }
     }
 
-    public boolean updateDog(Friendship friendship) {
+    public boolean updateFriendship(Friendship friendship) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
         long row = db.update(Friendship.TABLE_NAME, friendship.getContentValues(),
                 Friendship.COLUMN_ID + " = ?", new String[]{String.valueOf(friendship.getId())});
@@ -45,7 +44,7 @@ public class FriendshipDbManager {
     }
 
     public boolean deleteFriendship(Friendship friendship) {
-        return updateDog(friendship);
+        return updateFriendship(friendship);
     }
 
     public Friendship selectFriendship(String id) throws ParseException {

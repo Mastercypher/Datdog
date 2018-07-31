@@ -94,6 +94,11 @@ public class ConnectActivity extends AppCompatActivity {
         if (mListView != null) {
             this.refreshConnects();
         }
+        if (!UtilProj.connectionPresent(ConnectActivity.this)) {
+            //TODO: Disable what is not usable during offline mode.
+        } else {
+            //TODO: Re-enable what was disabled.
+        }
     }
 
     private void refreshConnects() {

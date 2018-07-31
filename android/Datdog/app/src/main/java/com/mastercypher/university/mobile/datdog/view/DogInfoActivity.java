@@ -76,6 +76,14 @@ public class DogInfoActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         this.initComponent();
+
+        if (!UtilProj.connectionPresent(DogInfoActivity.this)) {
+            mBtnRemove.setEnabled(false);
+            mBtnEdit.setEnabled(false);
+        } else {
+            mBtnEdit.setEnabled(true);
+            mBtnRemove.setEnabled(true);
+        }
     }
 
 

@@ -68,20 +68,20 @@ public class FriendInfoActivity extends AppCompatActivity {
     }
 
     private void initComponent() {
-        int idFriend = getIntent().getIntExtra("id", 0);
+        int idFriend = getIntent().getIntExtra("idFriend", 0);
         try {
             mFriend = new UserDbManager(FriendInfoActivity.this).selectUser(idFriend);
         } catch (ParseException e) {
             e.printStackTrace();
         }
         if (mFriend != null) {
-            mTxvTitleName = findViewById(R.id.txv_title_name);
+            mTxvTitleName = findViewById(R.id.txt_title_name);
             mtxvName = findViewById(R.id.txv_name);
             mtxvSurname = findViewById(R.id.txv_surname);
             mTxvPhone = findViewById(R.id.txv_phone);
             mTxvBirth = findViewById(R.id.txv_birth);
             mTxvEmail = findViewById(R.id.txv_email);
-            mBtnRemove = findViewById(R.id.btn_edit);
+            mBtnRemove = findViewById(R.id.btn_remove);
 
             String nameTitle = mFriend.getName() + " " + mFriend.getSurname();
             mTxvTitleName.setText(nameTitle);
@@ -100,4 +100,13 @@ public class FriendInfoActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!UtilProj.connectionPresent(FriendInfoActivity.this)) {
+            mBtnRemove.setEnabled(false);
+        } else {
+            mBtnRemove.setEnabled(true);
+        }
+    }
 }

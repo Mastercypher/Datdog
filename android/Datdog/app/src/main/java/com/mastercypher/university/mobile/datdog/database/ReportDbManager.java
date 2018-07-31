@@ -41,7 +41,7 @@ public class ReportDbManager {
         if (inDb == null) {
             if (!report.getUser().equals("" + AccountDirectory.getInstance().getUser().getId())) {
                 //TODO: Replace the temp activity with the real one.
-                Intent tapIntent = new Intent(context, ReportsActivity.class);
+                Intent tapIntent = new Intent(context, ReportsActivity.class).putExtra("id", report.getId());
                 PendingIntent tapPendingIntent = PendingIntent.getActivity(context, 0, tapIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                 NotificationCompat.Builder noti = new NotificationCompat.Builder(context, "Reported")
@@ -85,6 +85,12 @@ public class ReportDbManager {
             List<Report> reppys = this.selectReportDog(it.next().getId());
             if (reppys != null) {
                 reports.addAll(reppys);
+            }
+        }
+
+        for (Report rep : reports) {
+            if (rep.getDelete() == UtilProj.DB_ROW_DELETE) {
+                reports.remove(rep);
             }
         }
 

@@ -32,7 +32,7 @@
                 </android.support.constraint.ConstraintLayout>
 
                 <TextView
-                    android:id="@+id/textView72"
+                    android:id="@+id/txv_status"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="16dp"
@@ -69,7 +69,7 @@
                     app:layout_constraintTop_toTopOf="@+id/imageView18" />
 
                 <TextView
-                    android:id="@+id/textView75"
+                    android:id="@+id/txv_dog_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -90,7 +90,7 @@
                     android:textColor="#000"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@+id/imageView18"
-                    app:layout_constraintTop_toBottomOf="@+id/textView75" />
+                    app:layout_constraintTop_toBottomOf="@+id/txv_dog_name" />
 
                 <TextView
                     android:id="@+id/textView77"
@@ -105,7 +105,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView76" />
 
                 <TextView
-                    android:id="@+id/textView78"
+                    android:id="@+id/txv_breed"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
@@ -116,10 +116,10 @@
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView76"
-                    app:layout_constraintTop_toBottomOf="@+id/textView75" />
+                    app:layout_constraintTop_toBottomOf="@+id/txv_dog_name" />
 
                 <TextView
-                    android:id="@+id/textView79"
+                    android:id="@+id/txv_colour"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
@@ -144,7 +144,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView77" />
 
                 <TextView
-                    android:id="@+id/textView81"
+                    android:id="@+id/txv_owner_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -165,10 +165,10 @@
                     android:textColor="#000"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView81" />
+                    app:layout_constraintTop_toBottomOf="@+id/txv_owner_name" />
 
                 <TextView
-                    android:id="@+id/textView83"
+                    android:id="@+id/txv_phone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
@@ -179,7 +179,7 @@
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView82"
-                    app:layout_constraintTop_toBottomOf="@+id/textView81" />
+                    app:layout_constraintTop_toBottomOf="@+id/txv_owner_name" />
 
                 <com.google.android.gms.maps.MapView
                     android:id="@+id/mapView"
@@ -192,17 +192,13 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView18" />
 
                 <Button
-                    android:id="@+id/button23"
+                    android:id="@+id/btn_delete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:background="@android:color/transparent"
-                    android:shadowColor="#000"
-                    android:shadowDx="3.0"
-                    android:shadowDy="3.0"
-                    android:shadowRadius="3.0"
                     android:text="Delete"
                     android:textAllCaps="false"
                     android:textColor="@android:color/holo_red_light"
@@ -212,16 +208,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
                 <Button
-                    android:id="@+id/button24"
+                    android:id="@+id/btn_found"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/theme_button_complete"
                     android:text="Found"
+                    android:textAllCaps="false"
                     android:textColor="#fff"
                     android:textSize="18sp"
-                    android:textAllCaps="false"
                     app:layout_constraintEnd_toEndOf="@+id/mapView"
                     app:layout_constraintTop_toBottomOf="@+id/mapView" />
 

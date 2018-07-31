@@ -151,7 +151,10 @@ public class ReportDbManager {
 
             c = db.rawQuery(query, null);
             while (c.moveToNext()) {
-                reports.add(new Report(c));
+                Report rep = new Report(c);
+                if(rep.getDelete() != UtilProj.DB_ROW_DELETE) {
+                    reports.add(rep);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

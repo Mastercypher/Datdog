@@ -22,6 +22,9 @@ public class Report {
     public static final String COLUMN_DATE_FOUND = "found";
     public static final String COLUMN_DELETE = "deleted";
 
+    public static final String STATE_FOUND = "Found";
+    public static final String STATE_NOT_FOUND = "Not found";
+
     public static final String STATUS_FOUND = "found";
     public static final String STATUS_NOT_FOUND = "not found";
 

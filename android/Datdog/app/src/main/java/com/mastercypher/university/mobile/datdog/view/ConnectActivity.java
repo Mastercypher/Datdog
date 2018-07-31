@@ -96,6 +96,9 @@ public class ConnectActivity extends AppCompatActivity {
         }
         if (!UtilProj.connectionPresent(ConnectActivity.this)) {
             UtilProj.showToast(ConnectActivity.this, "You're in offline mode, can't use this section.");
+            BottomNavigationView navbar =findViewById(R.id.navigation);
+            startActivity(new Intent(ConnectActivity.this, HomeActivity.class));
+            navbar.setSelectedItemId(R.id.navigation_home);
             finish();
         }
     }

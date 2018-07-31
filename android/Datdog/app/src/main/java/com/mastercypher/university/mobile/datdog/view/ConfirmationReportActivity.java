@@ -158,7 +158,7 @@ public class ConfirmationReportActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Map<String, String> reppy = new HashMap<>();
-                String locat = lat == -1.0 ? UtilProj.NONE_VALUE : (lat + "-" + lon);
+                String locat = lat == -1.0 ? UtilProj.NONE_VALUE : (lat + "---" + lon);
 
                 String now = UtilProj.getDateNow();
                 reppy.put("id", Report.createId(dog.getId(), AccountDirectory.getInstance().getUser().getId(), now));

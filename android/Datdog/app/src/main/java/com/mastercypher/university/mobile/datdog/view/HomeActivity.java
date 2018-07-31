@@ -138,11 +138,15 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        new DogDbDl(HomeActivity.this).doInBackground();
-        new FriendshipDbDl(HomeActivity.this).doInBackground();
-        new UserDbDl(HomeActivity.this).doInBackground();
-        new ReportDbDl(HomeActivity.this).doInBackground();
-        new VaccinationDbDl(HomeActivity.this).doInBackground();
+        if (!UtilProj.connectionPresent(HomeActivity.this)) {
+
+        } else {
+            new DogDbDl(HomeActivity.this).doInBackground();
+            new FriendshipDbDl(HomeActivity.this).doInBackground();
+            new UserDbDl(HomeActivity.this).doInBackground();
+            new ReportDbDl(HomeActivity.this).doInBackground();
+            new VaccinationDbDl(HomeActivity.this).doInBackground();
+        }
     }
 
     @Override

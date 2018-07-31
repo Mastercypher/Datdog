@@ -2,7 +2,6 @@ package com.mastercypher.university.mobile.datdog.view;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -35,9 +34,7 @@ import com.mastercypher.university.mobile.datdog.util.RemoteReportTask;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -46,11 +43,11 @@ import java.util.concurrent.ExecutionException;
 public class ConfirmationReportActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    private TextView dogName;
-    private TextView dogBreed;
-    private TextView dogColour;
-    private TextView ownerName;
-    private TextView ownerPhone;
+    private TextView mTxvDogName;
+    private TextView mTxvDogBreed;
+    private TextView mTxvDogColour;
+    private TextView mTxvOwnerName;
+    private TextView mTxvOwnerPhone;
     private MapView map;
     private Button confirm;
     private TextView noPerm;
@@ -96,11 +93,11 @@ public class ConfirmationReportActivity extends AppCompatActivity {
         nfc = getIntent().getStringExtra("nfc");
 
         mTextMessage = (TextView) findViewById(R.id.message);
-        dogName = findViewById(R.id.textView54);
-        dogBreed = findViewById(R.id.textView57);
-        dogColour = findViewById(R.id.textView58);
-        ownerName = findViewById(R.id.textView60);
-        ownerPhone = findViewById(R.id.textView62);
+        mTxvDogName = findViewById(R.id.txv_dog_name);
+        mTxvDogBreed = findViewById(R.id.txv_breed);
+        mTxvDogColour = findViewById(R.id.txv_colour);
+        mTxvOwnerName = findViewById(R.id.txv_owner_name);
+        mTxvOwnerPhone = findViewById(R.id.txv_phone);
         map = findViewById(R.id.mapView3);
         confirm = findViewById(R.id.button16);
         noPerm = findViewById(R.id.textView21);
@@ -141,11 +138,12 @@ public class ConfirmationReportActivity extends AppCompatActivity {
                 owner = new User(it.next());
                 new UserDbManager(getApplicationContext()).addUser(owner);
 
-                dogName.setText(UtilProj.upperFirstChar(dog.getName()));
-                dogBreed.setText(dog.getBreed());
-                dogColour.setText(dog.getColour());
-                ownerName.setText(UtilProj.upperFirstChar(owner.getName()) + " " + UtilProj.upperFirstChar(owner.getSurname()));
-                ownerPhone.setText(owner.getPhone());
+                String ownerName = owner.getName() + " " + owner.getSurname().substring(0, 1) + ".";
+                mTxvDogName.setText(UtilProj.upperFirstChar(dog.getName()));
+                mTxvDogBreed.setText(dog.getBreed());
+                mTxvDogColour.setText(dog.getColour());
+                mTxvOwnerName.setText(ownerName);
+                mTxvOwnerPhone.setText(owner.getPhone());
 
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -201,7 +199,7 @@ public class ConfirmationReportActivity extends AppCompatActivity {
                 public void onMapReady(GoogleMap googleMap) {
                     LatLng target = new LatLng(lat, lon);
                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(target, 14), 3000, null);
-                    googleMap.addMarker(new MarkerOptions().position(target).title(dogName.getText().toString()));
+                    googleMap.addMarker(new MarkerOptions().position(target).title(mTxvDogName.getText().toString()));
                 }
             });
         }

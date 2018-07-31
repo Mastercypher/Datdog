@@ -86,7 +86,6 @@ public class FriendsActivity extends AppCompatActivity {
         ArrayList<Friendship> friendsArray = new ArrayList<>();
         mDogAdapter = new FriendAdapter(this, friendsArray);
         mListView.setAdapter(mDogAdapter);
-        this.refreshDogs();
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -117,6 +116,8 @@ public class FriendsActivity extends AppCompatActivity {
                 }
             }
         });
+
+        this.refreshDogs();
     }
 
     @Override

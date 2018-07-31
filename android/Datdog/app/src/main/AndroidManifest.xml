@@ -3,11 +3,16 @@
     package="com.mastercypher.university.mobile.datdog">
 
     <uses-permission android:name="android.permission.NFC" />
-    <uses-sdk android:minSdkVersion="10"/>
-    <uses-feature android:name="android.hardware.nfc" android:required="true" />
+    <uses-sdk android:minSdkVersion="10" />
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-feature android:name="android.hardware.location.gps" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -35,8 +40,7 @@
             android:label="Login" />
         <activity
             android:name=".view.RegisterActivity"
-            android:label="Registration"
-             />
+            android:label="Registration" />
         <activity
             android:name=".view.HomeActivity"
             android:label="Home" />
@@ -108,11 +112,11 @@
             android:label="Status lost dog" />
         <activity
             android:name=".view.AddFriendActivity"
-            android:label="Add friend"></activity>
+            android:label="Add friend"/>
 
         <activity
             android:name=".view.ReportsActivity"
-            android:label="Add friend"></activity>
+            android:label="Your reports"/>
 
         <meta-data
             android:name="com.google.android.gms.version"

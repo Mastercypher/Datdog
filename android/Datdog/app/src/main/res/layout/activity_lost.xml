@@ -5,10 +5,10 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.LostActivity">
+    tools:context=".view.DogsActivity">
 
     <ListView
-        android:id="@+id/ltv_friends"
+        android:id="@+id/lsv_losts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="60dp"

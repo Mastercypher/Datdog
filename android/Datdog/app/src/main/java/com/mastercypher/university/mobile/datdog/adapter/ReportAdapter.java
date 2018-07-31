@@ -34,8 +34,8 @@ public class ReportAdapter extends ArrayAdapter<Report> {
         try {
             Dog dogReported = new DogDbManager(getContext()).selectDog(report.getDog());
             String dogName = dogReported.getName();
-            String reportStatus = "Status: " + report.getFound() == UtilProj.NONE_VALUE ?
-                    Report.STATUS_NOT_FOUND : Report.STATUS_FOUND;
+            String reportStatus = "Status: " + (report.getFound() == null ?
+                    Report.STATUS_NOT_FOUND : Report.STATUS_FOUND);
             TextView txvName = (TextView) convertView.findViewById(R.id.txv_name);
             TextView txvBirth = (TextView) convertView.findViewById(R.id.txv_info);
             txvName.setText(dogName);

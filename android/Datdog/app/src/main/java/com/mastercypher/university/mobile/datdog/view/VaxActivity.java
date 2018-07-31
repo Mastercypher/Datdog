@@ -121,6 +121,12 @@ public class VaxActivity extends AppCompatActivity {
         if (mListView != null) {
             this.refreshConnects();
         }
+
+        if (!UtilProj.connectionPresent(VaxActivity.this)) {
+            mFabAddVaccination.setEnabled(false);
+        } else {
+            mFabAddVaccination.setEnabled(true);
+        }
     }
 
     private void refreshConnects() {

@@ -77,6 +77,14 @@ public class VaxStatusActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         this.initComponent();
+
+        if (!UtilProj.connectionPresent(VaxStatusActivity.this)) {
+            mBtnDelte.setEnabled(false);
+            mBtnEdit.setEnabled(false);
+        } else {
+            mBtnEdit.setEnabled(true);
+            mBtnDelte.setEnabled(true);
+        }
     }
 
     private void initComponent() {

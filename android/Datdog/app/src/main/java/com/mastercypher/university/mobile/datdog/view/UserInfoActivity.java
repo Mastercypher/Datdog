@@ -122,6 +122,12 @@ public class UserInfoActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         txtBirth.setText(sdf.format(AccountDirectory.getInstance().getUser().getBirth()));
         txtEmail.setText(AccountDirectory.getInstance().getUser().getEmail());
+
+        if (!UtilProj.connectionPresent(UserInfoActivity.this)) {
+            btnEdit.setEnabled(false);
+        } else {
+            btnEdit.setEnabled(true);
+        }
     }
 
     private void logout(){

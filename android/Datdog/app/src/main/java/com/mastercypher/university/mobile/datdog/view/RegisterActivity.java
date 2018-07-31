@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
 import com.mastercypher.university.mobile.datdog.R;
 import com.mastercypher.university.mobile.datdog.util.RegisterTask;
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -87,5 +88,14 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!UtilProj.connectionPresent(RegisterActivity.this)) {
+            UtilProj.showToast(RegisterActivity.this, "You're in offline mode, can't use this section.");
+            finish();
+        }
     }
 }

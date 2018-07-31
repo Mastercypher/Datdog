@@ -111,4 +111,14 @@ public class ReportInfoActivity extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!UtilProj.connectionPresent(ReportInfoActivity.this)) {
+            mBtnDelete.setEnabled(false);
+        } else {
+            mBtnDelete.setEnabled(true);
+        }
+    }
 }

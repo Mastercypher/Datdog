@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.mastercypher.university.mobile.datdog.R;
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 public class ReportChoseActivity extends AppCompatActivity {
 
@@ -71,4 +72,12 @@ public class ReportChoseActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!UtilProj.connectionPresent(ReportChoseActivity.this)) {
+            UtilProj.showToast(ReportChoseActivity.this, "You're in offline mode, can't use this section.");
+            finish();
+        }
+    }
 }

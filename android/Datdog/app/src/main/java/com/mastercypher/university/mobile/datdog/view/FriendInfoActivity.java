@@ -68,16 +68,9 @@ public class FriendInfoActivity extends AppCompatActivity {
     }
 
     private void initComponent() {
-        String report = getIntent().getStringExtra("idFriend");
-        UtilProj.showToast(this, report);
-    }
-
-
-    /*private void initComponent() {
-        String idFriendString = getIntent().getStringExtra("id");
+        int idFriend = getIntent().getIntExtra("id", 0);
         try {
-            int idFriend = Integer.parseInt(idFriendString);
-            mFriend = new UserDbManager(this).selectUser(idFriend);
+            mFriend = new UserDbManager(FriendInfoActivity.this).selectUser(idFriend);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -105,6 +98,6 @@ public class FriendInfoActivity extends AppCompatActivity {
                 }
             });
         }
-    }*/
+    }
 
 }

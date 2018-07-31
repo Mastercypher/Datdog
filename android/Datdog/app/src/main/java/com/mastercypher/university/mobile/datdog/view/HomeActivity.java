@@ -21,6 +21,7 @@ import com.mastercypher.university.mobile.datdog.database.FriendshipDbDl;
 import com.mastercypher.university.mobile.datdog.database.ReportDbDl;
 import com.mastercypher.university.mobile.datdog.database.UserDbDl;
 import com.mastercypher.university.mobile.datdog.database.VaccinationDbDl;
+import com.mastercypher.university.mobile.datdog.util.DlTask;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 public class HomeActivity extends AppCompatActivity {
@@ -142,7 +143,6 @@ public class HomeActivity extends AppCompatActivity {
         new UserDbDl(HomeActivity.this).doInBackground();
         new ReportDbDl(HomeActivity.this).doInBackground();
         new VaccinationDbDl(HomeActivity.this).doInBackground();
-
     }
 
     @Override

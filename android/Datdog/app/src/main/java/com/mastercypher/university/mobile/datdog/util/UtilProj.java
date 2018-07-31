@@ -1,6 +1,8 @@
 package com.mastercypher.university.mobile.datdog.util;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.widget.Toast;
 
 import java.text.ParseException;
@@ -94,5 +96,11 @@ public class UtilProj {
 
     public static void showToast(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    }
+
+    public static boolean connectionPresent(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        return ((ni != null) && (ni.isConnected()));
     }
 }

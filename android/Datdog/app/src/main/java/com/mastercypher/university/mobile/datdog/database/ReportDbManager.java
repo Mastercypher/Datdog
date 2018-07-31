@@ -88,13 +88,15 @@ public class ReportDbManager {
             }
         }
 
-        for (Report rep : reports) {
-            if (rep.getDelete() == UtilProj.DB_ROW_DELETE) {
-                reports.remove(rep);
+        Iterator<Report> rpIt = reports.iterator();
+        List<Report> returnReports = new LinkedList<>();
+        for(Report rep: reports){
+            if(rep.getDelete() != UtilProj.DB_ROW_DELETE){
+                returnReports.add(rep);
             }
         }
 
-        return reports;
+        return returnReports;
     }
 
     private List<Report> selectReportDog(String dogId) throws ParseException {

@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.mastercypher.university.mobile.datdog.R;
@@ -15,6 +16,7 @@ import com.mastercypher.university.mobile.datdog.util.UtilProj;
 public class DogTagActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
+    private Button btnDelete;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -51,13 +53,15 @@ public class DogTagActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_connect);
+
+        btnDelete = findViewById(R.id.button17);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         if (!UtilProj.connectionPresent(DogTagActivity.this)) {
-            //TODO: disable what is not usable during offline mode.
+
         } else {
             //TODO: Re-enable
         }

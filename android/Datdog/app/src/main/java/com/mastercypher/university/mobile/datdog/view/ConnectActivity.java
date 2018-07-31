@@ -95,9 +95,8 @@ public class ConnectActivity extends AppCompatActivity {
             this.refreshConnects();
         }
         if (!UtilProj.connectionPresent(ConnectActivity.this)) {
-            //TODO: Disable what is not usable during offline mode.
-        } else {
-            //TODO: Re-enable what was disabled.
+            UtilProj.showToast(ConnectActivity.this, "You're in offline mode, can't use this section.");
+            finish();
         }
     }
 

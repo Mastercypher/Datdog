@@ -151,4 +151,15 @@ public class LostDogActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!UtilProj.connectionPresent(LostDogActivity.this)) {
+            mBtnFound.setEnabled(false);
+            mBtnDelete.setEnabled(false);
+        } else {
+            mBtnFound.setEnabled(true);
+            mBtnDelete.setEnabled(true);
+        }
+    }
 }

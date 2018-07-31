@@ -67,7 +67,7 @@ public class LostAdapter extends BaseAdapter {
         Report report = (Report) getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
 
-        if (report.getId().equals(UtilProj.NONE_VALUE)) {
+        if (report.getId().equals("")) {
             if (convertView == null) {
                 convertView = LayoutInflater.from(mContext).inflate(R.layout.adapter_split_sections, parent, false);
             }
@@ -75,9 +75,9 @@ public class LostAdapter extends BaseAdapter {
             String dogName = report.getLocation();
             int countValues = report.getDelete();
             TextView txvName = (TextView) convertView.findViewById(R.id.txv_name);
-            TextView txvBirth = (TextView) convertView.findViewById(R.id.txv_info);
+            TextView txvCount = (TextView) convertView.findViewById(R.id.txv_info);
             txvName.setText(dogName);
-            txvBirth.setText(countValues);
+            txvCount.setText(countValues + "");
         } else {
             if (convertView == null) {
                 convertView = LayoutInflater.from(mContext).inflate(R.layout.adapter_basic, parent, false);

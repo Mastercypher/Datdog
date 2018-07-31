@@ -116,7 +116,7 @@
 
         <activity
             android:name=".view.ReportsActivity"
-            android:label="Add friend"/>
+            android:label="Your reports"/>
 
         <meta-data
             android:name="com.google.android.gms.version"

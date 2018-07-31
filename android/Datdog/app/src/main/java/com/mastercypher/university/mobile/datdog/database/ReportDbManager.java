@@ -20,6 +20,7 @@ import com.mastercypher.university.mobile.datdog.util.UtilProj;
 import com.mastercypher.university.mobile.datdog.view.ReportsActivity;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -76,7 +77,7 @@ public class ReportDbManager {
     }
 
     public List<Report> getLostReport(int userId) throws ParseException {
-        List<Report> reports = null;
+        List<Report> reports = new ArrayList<>();
         List<Dog> dogs = new DogDbManager(context).getAllDogs(userId);
 
         Iterator<Dog> it = dogs.iterator();
@@ -91,7 +92,7 @@ public class ReportDbManager {
     }
 
     private List<Report> selectReportDog(String dogId) throws ParseException {
-        List<Report> reports = null;
+        List<Report> reports = new LinkedList<>();
 
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
 

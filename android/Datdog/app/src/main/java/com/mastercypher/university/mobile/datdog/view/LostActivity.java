@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.mastercypher.university.mobile.datdog.R;
+import com.mastercypher.university.mobile.datdog.adapter.LostAdapter;
 import com.mastercypher.university.mobile.datdog.adapter.ReportAdapter;
 import com.mastercypher.university.mobile.datdog.database.ReportDbManager;
 import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
@@ -18,12 +19,13 @@ import com.mastercypher.university.mobile.datdog.entities.Report;
 import com.mastercypher.university.mobile.datdog.entities.User;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LostActivity extends AppCompatActivity {
 
-    private ReportAdapter mReportAdapter;
+    private LostAdapter mReportAdapter;
     private ListView mListView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -63,9 +65,9 @@ public class LostActivity extends AppCompatActivity {
 
         // ListView REPORTS
         // Prepare adapter for list of reports
-        mListView = findViewById(R.id.lsvReports);
+        mListView = findViewById(R.id.lsv_losts);
         ArrayList<Report> reportsArray = new ArrayList<>();
-        mReportAdapter = new ReportAdapter(this, reportsArray);
+        mReportAdapter = new LostAdapter(this, reportsArray);
         mListView.setAdapter(mReportAdapter);
         this.refreshReports();
 
@@ -102,34 +104,39 @@ public class LostActivity extends AppCompatActivity {
             int sizeNotFound = 0;
             mReportAdapter.clear();
 
-            List<Report> reports = new ReportDbManager(this).getLostReport(user.getId());
-            for (Report report : reports) {
-                // Do something
-                if (report.getFound() == null) {
-                    sizeNotFound++;
-                } else {
-                    sizeFound++;
+            List<Report> reports = null;
+            try {
+                reports = new ReportDbManager(this).getLostReport(user.getId());
+                for (Report report : reports) {
+                    // Do something
+                    if (report.getFound() == null) {
+                        sizeNotFound++;
+                    } else {
+                        sizeFound++;
+                    }
                 }
-            }
-            // Set section name and size
-            Report sectionFound = new Report("Found: ", sizeFound);
-            Report sectionNotFound  = new Report("Not found: ", sizeNotFound);
+                // Set section name and size
+                Report sectionFound = new Report("Found: ", sizeFound);
+                Report sectionNotFound = new Report("Not found: ", sizeNotFound);
 
-            for (Report report : reports) {
-                // Do something
-                if (report.getFound() == null) {
-                    mReportsNotFound.add(report);
-                } else {
-                    mReportsFound.add(report);
+                for (Report report : reports) {
+                    // Do something
+                    if (report.getFound() == null) {
+                        mReportsNotFound.add(report);
+                    } else {
+                        mReportsFound.add(report);
+                    }
                 }
+
+                mReportsFinal.add(sectionNotFound);
+                mReportsFinal.addAll(mReportsNotFound);
+                mReportsFinal.add(sectionFound);
+                mReportsFinal.addAll(mReportsFound);
+
+                mReportAdapter.addAll(mReportsFinal);
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
-
-            mReportsFinal.add(sectionNotFound);
-            mReportsFinal.addAll(mReportsNotFound);
-            mReportsFinal.add(sectionFound);
-            mReportsFinal.addAll(mReportsFound);
-
-            mReportAdapter.addAll(mReportsFinal);
         } else {
             UtilProj.showToast(this, "User account problem, restart the application");
         }

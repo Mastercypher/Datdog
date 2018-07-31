@@ -65,7 +65,7 @@ public class ReportsActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navigation.setSelectedItemId(R.id.navigation_dogs);
+        navigation.setSelectedItemId(R.id.navigation_missing);
 
         // Button ADD
         mBtnAddReport = findViewById(R.id.fab_add_report);

@@ -98,6 +98,12 @@ public class DogsActivity extends AppCompatActivity {
         if (mListView != null) {
             this.refreshDogs();
         }
+
+        if (!UtilProj.connectionPresent(DogsActivity.this)) {
+            mBtnAddDog.setEnabled(false);
+        } else {
+            mBtnAddDog.setEnabled(true);
+        }
     }
 
     private void refreshDogs() {

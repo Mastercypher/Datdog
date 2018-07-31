@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.mastercypher.university.mobile.datdog.R;
+import com.mastercypher.university.mobile.datdog.entities.Dog;
+import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
 public class DogTagActivity extends AppCompatActivity {
 
@@ -49,5 +51,15 @@ public class DogTagActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_connect);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!UtilProj.connectionPresent(DogTagActivity.this)) {
+            //TODO: disable what is not usable during offline mode.
+        } else {
+            //TODO: Re-enable
+        }
     }
 }

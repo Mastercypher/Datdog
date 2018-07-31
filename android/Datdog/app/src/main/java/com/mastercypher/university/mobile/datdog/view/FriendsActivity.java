@@ -101,6 +101,12 @@ public class FriendsActivity extends AppCompatActivity {
         if (mListView != null) {
             this.refreshDogs();
         }
+
+        if (!UtilProj.connectionPresent(FriendsActivity.this)) {
+            mFabAddFriend.setEnabled(false);
+        } else {
+            mFabAddFriend.setEnabled(true);
+        }
     }
 
     private void refreshDogs() {

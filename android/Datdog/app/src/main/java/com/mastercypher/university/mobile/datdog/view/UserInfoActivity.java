@@ -25,7 +25,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private TextView mTextMessage;
     private Button btnLogoutAcc;
     private Button btnEdit;
-    private TextView txtComplete;
+    private TextView txtTitleName;
     private TextView txtName;
     private TextView txtSurname;
     private TextView txtPhone;
@@ -71,12 +71,12 @@ public class UserInfoActivity extends AppCompatActivity {
 
         btnEdit = findViewById(R.id.btnEditAcc);
         btnLogoutAcc = findViewById(R.id.btnLogout);
-        txtComplete = findViewById(R.id.txtComplete);
-        txtName = findViewById(R.id.txv_breed);
-        txtSurname = findViewById(R.id.txv_colour);
-        txtPhone = findViewById(R.id.txv_num_items);
-        txtBirth = findViewById(R.id.txv_sex);
-        txtEmail = findViewById(R.id.txv_size);
+        txtTitleName = findViewById(R.id.txt_title_complete);
+        txtName = findViewById(R.id.txv_name);
+        txtSurname = findViewById(R.id.txv_surname);
+        txtPhone = findViewById(R.id.txv_phone);
+        txtBirth = findViewById(R.id.txv_birth);
+        txtEmail = findViewById(R.id.txv_email);
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,11 +99,11 @@ public class UserInfoActivity extends AppCompatActivity {
 
         txtName.setText(upName);
         txtSurname.setText(upSurname);
-        txtComplete.setText(upName + " " + upSurname);
+        txtTitleName.setText(upName + " " + upSurname);
         txtPhone.setText(AccountDirectory.getInstance().getUser().getPhone());
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         txtBirth.setText(sdf.format(AccountDirectory.getInstance().getUser().getBirth()));
-        txtEmail.setText(AccountDirectory.getInstance().getUser().getMail());
+        txtEmail.setText(AccountDirectory.getInstance().getUser().getEmail());
     }
 
     @Override
@@ -117,11 +117,11 @@ public class UserInfoActivity extends AppCompatActivity {
 
         txtName.setText(upName);
         txtSurname.setText(upSurname);
-        txtComplete.setText(upName + " " + upSurname);
+        txtTitleName.setText(upName + " " + upSurname);
         txtPhone.setText(AccountDirectory.getInstance().getUser().getPhone());
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         txtBirth.setText(sdf.format(AccountDirectory.getInstance().getUser().getBirth()));
-        txtEmail.setText(AccountDirectory.getInstance().getUser().getMail());
+        txtEmail.setText(AccountDirectory.getInstance().getUser().getEmail());
     }
 
     private void logout(){

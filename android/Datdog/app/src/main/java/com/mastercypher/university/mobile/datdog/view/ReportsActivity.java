@@ -87,13 +87,10 @@ public class ReportsActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                /*
                 Report reportClicked = (Report) mListView.getItemAtPosition(position);
                 Intent intent = new Intent(getBaseContext(), ReportInfoActivity.class);
                 intent.putExtra("id", reportClicked.getId());
                 startActivity(intent);
-                */
             }
         });
     }

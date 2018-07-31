@@ -31,7 +31,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txtComplete"
+                android:id="@+id/txt_title_complete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
@@ -143,7 +143,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView36" />
 
             <TextView
-                android:id="@+id/txv_breed"
+                android:id="@+id/txv_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -157,7 +157,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
             <TextView
-                android:id="@+id/txv_size"
+                android:id="@+id/txv_email"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -169,10 +169,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/textView35"
-                app:layout_constraintTop_toBottomOf="@+id/txv_sex" />
+                app:layout_constraintTop_toBottomOf="@+id/txv_birth" />
 
             <TextView
-                android:id="@+id/txv_sex"
+                android:id="@+id/txv_birth"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -183,10 +183,10 @@
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView36"
-                app:layout_constraintTop_toBottomOf="@+id/txv_num_items" />
+                app:layout_constraintTop_toBottomOf="@+id/txv_phone" />
 
             <TextView
-                android:id="@+id/txv_num_items"
+                android:id="@+id/txv_phone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -198,10 +198,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/textView37"
-                app:layout_constraintTop_toBottomOf="@+id/txv_colour" />
+                app:layout_constraintTop_toBottomOf="@+id/txv_surname" />
 
             <TextView
-                android:id="@+id/txv_colour"
+                android:id="@+id/txv_surname"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -213,7 +213,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/textView34"
-                app:layout_constraintTop_toBottomOf="@+id/txv_breed" />
+                app:layout_constraintTop_toBottomOf="@+id/txv_name" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

@@ -124,7 +124,7 @@ public class User {
         this.birth = birth;
     }
 
-    public String getMail() {
+    public String getEmail() {
         return mail;
     }
 

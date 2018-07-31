@@ -75,7 +75,6 @@ public class ConnectActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // TODO See info connection
 
                 Dog dogClicked = (Dog) mListView.getItemAtPosition(position);
                 if(dogClicked.getIdNfc().equals(UtilProj.NONE_VALUE)) {

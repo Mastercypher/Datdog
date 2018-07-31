@@ -75,12 +75,10 @@ public class LostActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                /*
                 Report reportClicked = (Report) mListView.getItemAtPosition(position);
-                Intent intent = new Intent(getBaseContext(), ReportInfoActivity.class);
+                Intent intent = new Intent(getBaseContext(), LostInfoActivity.class);
                 intent.putExtra("id", reportClicked.getId());
                 startActivity(intent);
-                */
             }
         });
     }

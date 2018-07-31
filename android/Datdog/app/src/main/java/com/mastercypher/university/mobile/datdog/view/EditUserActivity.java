@@ -118,7 +118,7 @@ public class EditUserActivity extends AppCompatActivity {
                                     "&surname_u=" + AccountDirectory.getInstance().getUser().getSurname() +
                                     "&phone_u=" + AccountDirectory.getInstance().getUser().getPhone() +
                                     "&birth_u=" + sdfBday.format(AccountDirectory.getInstance().getUser().getBirth()) +
-                                    "&email_u=" + AccountDirectory.getInstance().getUser().getMail() +
+                                    "&email_u=" + AccountDirectory.getInstance().getUser().getEmail() +
                                     "&password_u=" + AccountDirectory.getInstance().getUser().getPw() +
                                     "&date_create_u=" + sdf.format(AccountDirectory.getInstance().getUser().getCreate()) +
                                     "&date_update_u=" + sdf.format(AccountDirectory.getInstance().getUser().getUpdate()) +

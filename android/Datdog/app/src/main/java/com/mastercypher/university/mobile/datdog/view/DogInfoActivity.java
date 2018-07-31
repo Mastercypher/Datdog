@@ -96,11 +96,11 @@ public class DogInfoActivity extends AppCompatActivity {
         }
         if (mDog != null) {
             mTxvTitleName = findViewById(R.id.txv_title_name);
-            mTxvBreed = findViewById(R.id.txv_breed);
-            mTxtColour = findViewById(R.id.txv_colour);
-            mTxtBirth = findViewById(R.id.txv_num_items);
-            mTxtSex = findViewById(R.id.txv_sex);
-            mTxtSize = findViewById(R.id.txv_size);
+            mTxvBreed = findViewById(R.id.txv_name);
+            mTxtColour = findViewById(R.id.txv_surname);
+            mTxtBirth = findViewById(R.id.txv_phone);
+            mTxtSex = findViewById(R.id.txv_birth);
+            mTxtSize = findViewById(R.id.txv_email);
             mRtlVaccination = findViewById(R.id.rtl_vax);
             mBtnEdit = findViewById(R.id.btn_add);
             mBtnRemove = findViewById(R.id.btn_remove);

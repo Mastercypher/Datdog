@@ -14,11 +14,14 @@ import android.widget.ListView;
 import com.mastercypher.university.mobile.datdog.R;
 import com.mastercypher.university.mobile.datdog.adapter.FriendAdapter;
 import com.mastercypher.university.mobile.datdog.database.FriendshipDbManager;
+import com.mastercypher.university.mobile.datdog.database.UserDbManager;
 import com.mastercypher.university.mobile.datdog.entities.AccountDirectory;
 import com.mastercypher.university.mobile.datdog.entities.Friendship;
+import com.mastercypher.university.mobile.datdog.entities.Report;
 import com.mastercypher.university.mobile.datdog.entities.User;
 import com.mastercypher.university.mobile.datdog.util.UtilProj;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -81,16 +84,19 @@ public class FriendsActivity extends AppCompatActivity {
         mListView.setAdapter(mDogAdapter);
         this.refreshDogs();
 
-        mListView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // TODO See info friendship
-                /*
-                Dog dogClicked = (Dog) mListView.getItemAtPosition(position);
-                Intent intent = new Intent(getBaseContext(), DogInfoActivity.class);
-                intent.putExtra("id", dogClicked.getId());
-                startActivity(intent);
-                 */
+
+                Friendship friendship = (Friendship) mListView.getItemAtPosition(position);
+                try {
+                    User friend = new UserDbManager(FriendsActivity.this).selectUser(friendship.getFriend());
+                    Intent intent = new Intent(getBaseContext(), FriendInfoActivity.class);
+                    intent.putExtra("idFriend", friend.getId());
+                    startActivity(intent);
+                }catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

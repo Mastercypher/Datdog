@@ -118,6 +118,18 @@
             android:name=".view.ReportsActivity"
             android:label="Your reports"/>
 
+        <activity
+            android:name=".view.FriendInfoActivity"
+            android:label="Friend's info"/>
+
+        <activity
+            android:name=".view.ReportInfoActivity"
+            android:label="Report's info"/>
+
+        <activity
+            android:name=".view.LostInfoActivity"
+            android:label="Lost's info"/>
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

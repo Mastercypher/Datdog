@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mastercypher.university.mobile.datdog">
+
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-sdk android:minSdkVersion="10" />
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".view.SplashActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".view.LoginActivity"
+            android:label="Login" />
+        <activity
+            android:name=".view.RegisterActivity"
+            android:label="Registration" />
+        <activity
+            android:name=".view.HomeActivity"
+            android:label="Home" />
+        <activity
+            android:name=".view.MissingActivity"
+            android:label="Missing" />
+        <activity
+            android:name=".view.FriendsActivity"
+            android:label="Friends" />
+        <activity
+            android:name=".view.ReportChoseActivity"
+            android:label="Choose how to report" />
+        <activity
+            android:name=".view.DogsActivity"
+            android:label="Dogs" />
+        <activity
+            android:name=".view.AddDogActivity"
+            android:label="Add dog" />
+        <activity
+            android:name=".view.UserInfoActivity"
+            android:label="User info" />
+        <activity
+            android:name=".view.EditUserActivity"
+            android:label="Edit user" />
+        <activity
+            android:name=".view.SettingsActivity"
+            android:label="Settings" />
+        <activity
+            android:name=".view.DogInfoActivity"
+            android:label="Dog info" />
+        <activity
+            android:name=".view.EditDogActivity"
+            android:label="Edit dog" />
+        <activity
+            android:name=".view.NfcReportActivity"
+            android:label="Report with NFC" />
+        <activity
+            android:name=".view.CodeReportActivity"
+            android:label="Report with code" />
+        <activity
+            android:name=".view.ConfirmationReportActivity"
+            android:label="Confirm report" />
+        <activity
+            android:name=".view.ConnectActivity"
+            android:label="Connect" />
+        <activity
+            android:name=".view.ConnectDogActivity"
+            android:label="Connect NFC Tag" />
+        <activity
+            android:name=".view.DogTagActivity"
+            android:label="Dog&apos;s tag" />
+        <activity
+            android:name=".view.VaxActivity"
+            android:label="Vaccinations" />
+        <activity
+            android:name=".view.AddVaxActivity"
+            android:label="Add vaccination" />
+        <activity
+            android:name=".view.VaxStatusActivity"
+            android:label="Status vaccination" />
+        <activity
+            android:name=".view.EditVaxActivity"
+            android:label="Edit vaccination" />
+        <activity
+            android:name=".view.LostActivity"
+            android:label="Your lost" />
+        <activity
+            android:name=".view.LostDogActivity"
+            android:label="Status lost dog" />
+        <activity
+            android:name=".view.AddFriendActivity"
+            android:label="Add friend"/>
+
+        <activity
+            android:name=".view.ReportsActivity"
+            android:label="Your reports"/>
+
+        <activity
+            android:name=".view.FriendInfoActivity"
+            android:label="Friend's info"/>
+
+        <activity
+            android:name=".view.ReportInfoActivity"
+            android:label="Report's info"/>
+
+        <activity
+            android:name=".view.LostInfoActivity"
+            android:label="Lost's info"/>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDF10mc0v4K-vzDmz8DbO5rHBzle_0lXOw" />
+    </application>
+
+</manifest>

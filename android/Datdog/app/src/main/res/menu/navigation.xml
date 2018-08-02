@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/icon_menu"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_missing"
+        android:icon="@drawable/icon_tab_wanted"
+        android:title="Missing" />
+
+    <item
+        android:id="@+id/navigation_friends"
+        android:icon="@drawable/icon_tab_paw"
+        android:title="Friends" />
+
+    <item
+        android:id="@+id/navigation_connect"
+        android:icon="@drawable/icon_tab_connect"
+        android:title="Connect" />
+
+    <item
+        android:id="@+id/navigation_dogs"
+        android:icon="@drawable/icon_tab_all_dogs"
+        android:title="Dogs" />
+
+</menu>

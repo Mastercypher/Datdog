@@ -157,11 +157,29 @@ public class NfcReportActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        if (!nfcAdapter.isEnabled()) {
+
+        try {
+            NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+            if (!nfcAdapter.isEnabled()) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(NfcReportActivity.this);
+                builder.setTitle("Enable NFC");
+                builder.setMessage("Your NFC is disabled. Enable it to make it work.");
+                builder.setCancelable(true);
+                builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.show();
+            }
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
+                    new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+            nfcAdapter.enableForegroundDispatch(this, pendingIntent, null, null);
+        } catch (NullPointerException e) {
             final AlertDialog.Builder builder = new AlertDialog.Builder(NfcReportActivity.this);
-            builder.setTitle("Enable NFC");
-            builder.setMessage("Your NFC is disabled. Enable it to make it work.");
+            builder.setTitle("NFC not working");
+            builder.setMessage("Your device do not support NFC feature.");
             builder.setCancelable(true);
             builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
                 @Override
@@ -171,16 +189,18 @@ public class NfcReportActivity extends AppCompatActivity {
             });
             builder.show();
         }
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
-        nfcAdapter.enableForegroundDispatch(this, pendingIntent, null, null);
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        nfcAdapter.disableForegroundDispatch(this);
+        try {
+            NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+            nfcAdapter.disableForegroundDispatch(this);
+        } catch (NullPointerException e) {
+            // Nfc not supported
+        }
     }
 
     @Override

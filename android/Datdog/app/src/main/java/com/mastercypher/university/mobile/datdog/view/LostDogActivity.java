@@ -112,7 +112,9 @@ public class LostDogActivity extends AppCompatActivity {
             mBtnFound = findViewById(R.id.btn_found);
             map = findViewById(R.id.mapView);
 
-            String ownerName = user.getName() + " " + user.getSurname().substring(0, 1) + ".";
+            String name = user.getName();
+            String surname = user.getSurname();
+            String ownerName =  name + " " + surname.substring(0, 1) + ".";
             mTxvStatus.setText(Report.STATE_NOT_FOUND);
             mTxvDogName.setText(dog.getName());
             mTxvBreed.setText(dog.getBreed());

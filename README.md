@@ -9,13 +9,9 @@ These are the main functionality of the application:
 * make friends other dogs
 * recongize your dog with nfc technology 
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning.
-
 ## Authors
 
-* **Riccardo Marchi** - [Nickname](https://github.com/Nickname)
+* **Riccardo Marchi** - [richiMarchi](https://github.com/richiMarchi)
 * **Alessandro Riccardi** - [Alericcardi](https://github.com/alericcardi)
 
 ## License
